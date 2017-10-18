@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: measureareaDirective <small>directive:ngeoDrawpoint</small></title>
+    <title>JSDoc: Class: Function <small>service:search.createGeoJSONBloodhound</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: measureareaDirective <small>directive:ngeoDrawpoint</small></h1>
+    <h1 class="page-title">Class: Function <small>service:search.createGeoJSONBloodhound</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="measureareaDirective">
-            <span class="ancestors">ngeo.</span>measureareaDirective
+        <h2 id="Function">
+            <span class="ancestors">module:ngeo search namespace~ngeo.search.createGeoJSONBloodhound.</span>Function
         </h2>
         
     
@@ -42,11 +42,41 @@
 
     
 
-    <h4 class="name" id="measureareaDirective"><span class="type-signature"></span>new measureareaDirective<span class="signature">($compile, gettextCatalog, $filter, $injector)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Function"><span class="type-signature"></span>new Function<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    <p>Provides a function that creates a Bloodhound engine
+expecting GeoJSON responses from the search web service, which creates
+<code>ol.Feature</code> objects as suggestions.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>let bloodhound = createGeoJSONBloodhound(
+  'http://example.com/fulltextsearch?query=%QUERY',
+  aFilterFunction,
+  ol.proj.get('EPSG:3857'));
+bloodhound.initialize();
+
+let bloodhound = createGeoJSONBloodhound(
+  '',
+  undefined,
+  ol.proj.get('EPSG:3857'),
+  ol.proj.get('EPSG:21781'),
+  {
+    remote: {
+      url: mySearchEngineUrl,
+      replace: function(url, query) {
+        return url +
+            '?qtext=' + encodeURIComponent(query) +
+            '&lang=' + gettextCatalog.currentLanguage;
+      }
+    }
+  }
+);
+bloodhound.initialize();</code></pre>
+</div>
 
 
 
@@ -91,7 +121,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/import-ds-06-files/src/directives/measurearea.js#L20">src/directives/measurearea.js:20</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/import-ds-06-files/src/modules/search/creategeojsonbloodhound.js#L120">src/modules/search/creategeojsonbloodhound.js:120</a>
     </div>
     
 
@@ -114,19 +144,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="!angular.Directive.html">!angular.Directive</a>
-
-
-    <p>The directive specs.</p>
-
-</div>
-
-    
 
 
 

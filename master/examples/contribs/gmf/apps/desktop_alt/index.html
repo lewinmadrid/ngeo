@@ -110,6 +110,10 @@
               data-toggle="tooltip" data-placement="left" data-original-title="{{'Street View'|translate}}">
               <span class="fa fa-street-view"></span>
             </button>
+            <button ngeo-btn class="btn btn-default" ng-model="mainCtrl.importDataSourceActive"
+              data-toggle="tooltip" data-placement="left" data-original-title="{{'Import Layer'|translate}}">
+              <span class="fa fa-upload"></span>
+            </button>
           </div>
           <br/>
           <br/>
@@ -228,6 +232,17 @@
               </ngeo-googlestreetview>
             </div>
           </div>
+          <div ng-show="mainCtrl.importDataSourceActive" class="row">
+            <div class="col-sm-12">
+              <div class="gmf-app-tools-content-heading">
+                {{'Import Layer'|translate}}
+                <a class="btn close" ng-click="mainCtrl.importDataSource = false">&times;</a>
+              </div>
+              <gmf-importdatasource
+                  map="mainCtrl.map">
+              </gmf-importdatasource>
+            </div>
+          </div>
         </div>
       </div>
       <div class="gmf-app-map-container" ng-class="{'gmf-app-infobar-active': mainCtrl.showInfobar}">
@@ -335,7 +350,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = '045e7d19367c6d3f6bf40f652db43755db75b287';
+        var cacheVersion = 'e4b1bc7e2f5c1dfca6e6728c3bf936e3a920ef79';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

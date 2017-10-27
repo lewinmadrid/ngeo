@@ -60,7 +60,7 @@ path).</p>
 <pre class="prettyprint source"><code> &lt;gmf-layertree
    gmf-layertree-dimensions=&quot;ctrl.dimensions&quot;
    gmf-layertree-map=&quot;ctrl.map&quot;>
- &lt;/gmf-layertree></code></pre><p>You can add an attribute 'gmf-layertree-openlinksinnewwindow=&quot;true&quot;' to open
+ &lt;/gmf-layertree></code></pre><p>You can add an attribute 'gmf-layertree-openlinksinnewwindow=&quot;::true&quot;' to open
 metadata URLs in a new window. By default, and in the default template,
 links will be opened in a popup.</p>
 <p>Used UI metadata:</p>
@@ -109,6 +109,30 @@ possible also open a new window.</li>
 
         <tr>
             
+                <td class="name"><code>gmf-layertree-map</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The map.</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>gmf-layertree-dimensions</code></td>
             
 
@@ -136,13 +160,16 @@ possible also open a new window.</li>
 
         <tr>
             
-                <td class="name"><code>gmf-layertree-map</code></td>
+                <td class="name"><code>gmf-layertree-openlinksinnewwindow</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+|
+
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
 
 
 
@@ -153,7 +180,8 @@ possible also open a new window.</li>
 
             
 
-            <td class="description last">The map.</td>
+            <td class="description last">if true, open
+    metadataURLs in a new window. Otherwise open them in a popup.</td>
         </tr>
 
     
@@ -194,7 +222,7 @@ possible also open a new window.</li>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/directives/layertree.js#L99">contribs/gmf/src/directives/layertree.js:99</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/directives/layertree.js#L101">contribs/gmf/src/directives/layertree.js:101</a>
     </div>
     
 

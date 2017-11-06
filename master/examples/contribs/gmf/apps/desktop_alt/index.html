@@ -23,11 +23,6 @@
       </div>
     </header>
     <main>
-      <div
-         ngeo-import-dnd
-         ngeo-import-dnd-options="::mainCtrl.importOptions">
-      </div>
-
       <div class="gmf-app-data-panel">
         <div class="gmf-app-header">
           <div class="dropdown">
@@ -37,32 +32,6 @@
               <span translate>Themes</span>
               <span class="caret"></span>
             </a>
-            <div class="import">
-              <div>Local</div>
-              <div class="import-local"
-                ngeo-import-local
-                ngeo-import-local-options="::mainCtrl.importOptions">
-              </div>
-              <div>Online</div>
-              <div
-                ngeo-import-online
-                ngeo-import-online-options="::mainCtrl.importOptions">
-              </div>
-
-              <!-- Display WMS GetCapabilities results -->
-              <div ng-if="wmsGetCap"
-                   ngeo-wms-get-cap="wmsGetCap"
-                   ngeo-wms-get-cap-map="::map"
-                   ngeo-wms-get-cap-options="::mainCtrl.importOptions">
-              </div>
-
-              <!-- Display WMTS GetCapabilities results -->
-              <div ng-if="wmtsGetCap"
-                   ngeo-wmts-get-cap="wmtsGetCap"
-                   ngeo-wmts-get-cap-map="::map"
-                   ngeo-wmts-get-cap-options="::mainCtrl.importOptions">
-              </div>
-            </div>
             <gmf-themeselector class="dropdown-menu"
               gmf-themeselector-currenttheme="mainCtrl.theme"
               gmf-themeselector-filter="::mainCtrl.filter">
@@ -349,7 +318,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = '741e3e7b3632d5885d31e6317cd4569947937a5a';
+        var cacheVersion = '861c6d9715361bb6c75aec51115f53e36c49cf20';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

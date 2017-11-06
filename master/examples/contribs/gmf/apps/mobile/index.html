@@ -72,6 +72,15 @@
         ngeo-mobile-geolocation-options="::mainCtrl.mobileGeolocationOptions">
         <span class="fa fa-dot-circle-o"></span>
       </button>
+      <gmf-displaywindow
+        content="mainCtrl.displaywindowContent"
+        desktop="false"
+        height="mainCtrl.displaywindowHeight"
+        open="mainCtrl.displaywindowOpen"
+        title="mainCtrl.displaywindowTitle"
+        url="mainCtrl.displaywindowUrl"
+        width="mainCtrl.displaywindowWidth"
+      ></gmf-displaywindow>
       <div class="gmf-app-map-messages">
         <gmf-disclaimer gmf-disclaimer-map="::mainCtrl.map"></gmf-disclaimer>
         <div class="alert alert-info alert-dismissible fade in hidden-xs" role="alert">
@@ -160,7 +169,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = '861c6d9715361bb6c75aec51115f53e36c49cf20';
+        var cacheVersion = '006a3e329571c9eb4ef3cb5b8543af280ec58cd5';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

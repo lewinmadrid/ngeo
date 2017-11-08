@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: drawpointDirective <small>directive:ngeoDrawpoint</small></title>
+    <title>JSDoc: Class: DecorateGeolocation <small>service:ngeoDecorateGeolocation</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: drawpointDirective <small>directive:ngeoDrawpoint</small></h1>
+    <h1 class="page-title">Class: DecorateGeolocation <small>service:ngeoDecorateGeolocation</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="drawpointDirective">
-            <span class="ancestors">ngeo.</span>drawpointDirective
+        <h2 id="DecorateGeolocation">
+            <span class="ancestors">ngeo.</span>DecorateGeolocation
         </h2>
         
     
@@ -42,11 +42,19 @@
 
     
 
-    <h4 class="name" id="drawpointDirective"><span class="type-signature"></span>new drawpointDirective<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="DecorateGeolocation"><span class="type-signature"></span>new DecorateGeolocation<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    <p>Provides a function that adds a &quot;tracking&quot; property (using
+<code>Object.defineProperty</code>) to the <code>ol.Geolocation</code> instance, making it
+possible to activate/deactivate the tracking mode.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code> &lt;input type=&quot;checkbox&quot; ngModel=&quot;geolocation.tracking&quot; /></code></pre><p>See our live example: <a href="../examples/geolocation.html">../examples/geolocation.html</a></p>
+</div>
 
 
 
@@ -91,7 +99,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/directives/drawpoint.js#L15">src/directives/drawpoint.js:15</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/services/decorategeolocation.js#L22">src/services/decorategeolocation.js:22</a>
     </div>
     
 
@@ -114,19 +122,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="angular.Directive.html">angular.Directive</a>
-
-
-    <p>The directive specs.</p>
-
-</div>
-
-    
 
 
 

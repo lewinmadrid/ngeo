@@ -76,7 +76,9 @@
         <gmf-disclaimer gmf-disclaimer-map="::mainCtrl.map"></gmf-disclaimer>
         <div class="alert alert-info alert-dismissible fade in hidden-xs" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="{{'Close' | translate }}"><span aria-hidden="true" class="fa fa-times"></span></button>
-          <span>{{"You're using the mobile application. Check out the" | translate }} <a href="http://camptocamp.github.io/ngeo/master/examples/contribs/gmf/apps/desktop/?no_redirect">{{'standard application' | translate}}</a>.</span>
+          <span translate
+            translate-params-url="'http://camptocamp.github.io/ngeo/master/examples/contribs/gmf/apps/desktop/?no_redirect'">
+            You're using the mobile application. Check out the <a href="{{url}}">standard application</a>.</span>
         </div>
       </div>
     </main>
@@ -160,7 +162,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = 'c825d1790c5bd0a7b03bd14b06c0b40eaa22c34b';
+        var cacheVersion = '8f026fd8647754c6f870893ca0be551c79fbff57';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

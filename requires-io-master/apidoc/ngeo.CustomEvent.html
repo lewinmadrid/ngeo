@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: backgroundlayerselectorComponent <small>component:gmfBackgroundlayerselector</small></title>
+    <title>JSDoc: Class: CustomEvent</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: backgroundlayerselectorComponent <small>component:gmfBackgroundlayerselector</small></h1>
+    <h1 class="page-title">Class: CustomEvent</h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="backgroundlayerselectorComponent">
-            <span class="ancestors">gmf.</span>backgroundlayerselectorComponent
+        <h2 id="CustomEvent">
+            <span class="ancestors">ngeo.</span>CustomEvent
         </h2>
         
     
@@ -42,24 +42,12 @@
 
     
 
-    <h4 class="name" id="backgroundlayerselectorComponent"><span class="type-signature"></span>new backgroundlayerselectorComponent<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="CustomEvent"><span class="type-signature"></span>new CustomEvent<span class="signature">(type, detail)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="description">
-    <p>Provide a &quot;background layer selector&quot; component.</p>
-<p>Example:</p>
-<pre class="prettyprint source"><code> &lt;gmf-backgroundlayerselector
-   gmf-backgroundlayerselector-dimensions=&quot;::ctrl.dimensions&quot;
-   gmf-backgroundlayerselector-map=&quot;::ctrl.map&quot;
-   gmf-backgroundlayerselector-select=&quot;onBackgroundSelected()&quot;>
- &lt;/gmf-backgroundlayerselector></code></pre><p>Used UI metadata:</p>
-<ul>
-<li>thumbnail: The URL used for the icon.</li>
-</ul>
-</div>
 
 
 
@@ -68,10 +56,7 @@
 
 
 
-
-
-
-    <h5>HTML attributes:</h5>
+    <h5>Parameters:</h5>
     
 
 <table class="params">
@@ -83,8 +68,6 @@
 
         <th>Type</th>
 
-        
-        <th>Attributes</th>
         
 
         
@@ -98,104 +81,47 @@
 
         <tr>
             
-                <td class="name"><code>gmf-backgroundlayerselector-dimensions</code></td>
+                <td class="name"><code>type</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>></span>
-
-
-
+                string
             
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last">The dimensions.</td>
+            <td class="description last"><p>Event type.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>gmf-backgroundlayerselector-map</code></td>
+                <td class="name"><code>detail</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
-
-
-
+                <a href="T.html">T</a>
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last">The map.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gmf-backgroundlayerselector-select</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Function called
-    when a layer was selected by the user.</td>
+            <td class="description last"><p>Event Detail.</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -231,7 +157,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/requires-io-master/contribs/gmf/src/directives/backgroundlayerselector.js#L60">contribs/gmf/src/directives/backgroundlayerselector.js:60</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/requires-io-master/src/customevent.js#L12">src/customevent.js:12</a>
     </div>
     
 
@@ -261,6 +187,17 @@
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="http://openlayers.org/en/master/apidoc/ol.events.Event.html">ol.events.Event</a></li>
+    </ul>
+
+
+    
 
     
 
@@ -270,6 +207,66 @@
 
     
 
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="detail"><span class="type-signature"></span>detail<span class="type-signature">: T</span> </h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/requires-io-master/src/customevent.js#L19">src/customevent.js:19</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     

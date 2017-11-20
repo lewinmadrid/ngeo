@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Interface: OGC</title>
+    <title>JSDoc: Class: BackgroundEvent</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Interface: OGC</h1>
+    <h1 class="page-title">Class: BackgroundEvent</h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="OGC">
-            <span class="ancestors">ngeox.datasource.</span>OGC
+        <h2 id="BackgroundEvent">
+            <span class="ancestors">ngeo.BackgroundLayerMgr.</span>BackgroundEvent
         </h2>
         
     
@@ -40,7 +40,112 @@
     
         
 
+    
+
+    <h4 class="name" id="BackgroundEvent"><span class="type-signature"></span>new BackgroundEvent<span class="signature">(type, current, previous)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
         
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ngeo.BackgroundLayerMgr.EventType.html">ngeo.BackgroundLayerMgr.EventType</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Type.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>current</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.layer.Base.html">ol.layer.Base</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Current background layer.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>previous</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.layer.Base.html">ol.layer.Base</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Previous background layer.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
 
 
 <dl class="details">
@@ -55,6 +160,13 @@
 
     
 
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="ngeox.BackgroundEvent.html">ngeox.BackgroundEvent</a></li>
+        
+    </ul></dd>
     
 
     
@@ -72,7 +184,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1352">options/ngeox.js:1352</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/src/services/backgroundlayermgr.js#L177">src/services/backgroundlayermgr.js:177</a>
     </div>
     
 
@@ -84,7 +196,20 @@
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 
@@ -95,7 +220,7 @@
 
 
     <ul>
-        <li><a href="ngeox.datasource.DataSource.html">ngeox.datasource.DataSource</a></li>
+        <li><a href="http://openlayers.org/en/master/apidoc/ol.events.Event.html">ol.events.Event</a></li>
     </ul>
 
 
@@ -114,782 +239,15 @@
 
         
             
-<h4 class="name" id="activeDimensions"><span class="type-signature">(non-null) </span>activeDimensions<span class="type-signature">: <a href="ngeox.html#DimensionsActive">ngeox.DimensionsActive</a></span> </h4>
+<h4 class="name" id="current"><span class="type-signature"></span>current<span class="type-signature">: <a href="http://openlayers.org/en/master/apidoc/ol.layer.Base.html">ol.layer.Base</a></span> </h4>
 
 
 
 
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1357">options/ngeox.js:1357</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="combinableForWFS"><span class="type-signature"></span>combinableForWFS<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1367">options/ngeox.js:1367</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="combinableForWMS"><span class="type-signature"></span>combinableForWMS<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1362">options/ngeox.js:1362</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="filterCondition"><span class="type-signature"></span>filterCondition<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1392">options/ngeox.js:1392</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="filterRules"><span class="type-signature">(nullable) </span>filterRules<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;!<a href="ngeox.rule.Rule.html">ngeox.rule.Rule</a>:<a href="-_.html"></a>></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1397">options/ngeox.js:1397</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="queryable"><span class="type-signature"></span>queryable<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="ngeox.datasource.DataSource.html#queryable">ngeox.datasource.DataSource#queryable</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1345">options/ngeox.js:1345</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="supportsWFS"><span class="type-signature"></span>supportsWFS<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1372">options/ngeox.js:1372</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="supportsWMS"><span class="type-signature"></span>supportsWMS<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1377">options/ngeox.js:1377</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="wfsUrl"><span class="type-signature"></span>wfsUrl<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1387">options/ngeox.js:1387</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="wmsUrl"><span class="type-signature"></span>wmsUrl<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1382">options/ngeox.js:1382</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="combinableWithDataSourceForWFS"><span class="type-signature"></span>combinableWithDataSourceForWFS<span class="signature">(dataSource)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dataSource</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeox.datasource.OGC.html">ngeox.datasource.OGC</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Data source.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1404">options/ngeox.js:1404</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    boolean
-
-
-    <p>Whether this data source can be combined to the given
-    other data source to fetch features in a single WFS request.</p>
-
+<div class="description">
+    <p>The current (new) layer used as background.</p>
 </div>
 
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="combinableWithDataSourceForWMS"><span class="type-signature"></span>combinableWithDataSourceForWMS<span class="signature">(dataSource)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dataSource</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeox.datasource.OGC.html">ngeox.datasource.OGC</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Data source.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
 
 
 
@@ -923,7 +281,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1412">options/ngeox.js:1412</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/src/services/backgroundlayermgr.js#L185">src/services/backgroundlayermgr.js:185</a>
     </div>
     
 
@@ -939,97 +297,16 @@
 
 
 
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
         
-<div class="param-desc">
+            
+<h4 class="name" id="previous"><span class="type-signature"></span>previous<span class="type-signature">: <a href="http://openlayers.org/en/master/apidoc/ol.layer.Base.html">ol.layer.Base</a></span> </h4>
 
-    boolean
 
 
-    <p>Whether this data source can be combined to the given
-    other data source to fetch features in a single WMS request.</p>
 
+<div class="description">
+    <p>The layer used as background before a change.</p>
 </div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="haveTheSameActiveDimensions"><span class="type-signature"></span>haveTheSameActiveDimensions<span class="signature">(dataSource)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dataSource</code></td>
-            
-
-            <td class="type">
-            
-                <a href="!ngeox.datasource.OGC.html">!ngeox.datasource.OGC</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Remote data source to compare with
-    this one.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
 
 
 
@@ -1048,6 +325,13 @@
     
 
     
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="ngeox.BackgroundEvent.html#previous">ngeox.BackgroundEvent#previous</a></li>
+        
+    </ul></dd>
+    
 
     
 
@@ -1064,7 +348,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/options/ngeox.js#L1422">options/ngeox.js:1422</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/feature-GSGMF-140-remove-double-provides/src/services/backgroundlayermgr.js#L191">src/services/backgroundlayermgr.js:191</a>
     </div>
     
 
@@ -1080,32 +364,9 @@
 
 
 
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
         
-<div class="param-desc">
-
-    boolean
-
-
-    <p>Whether the two data sources have the same active
-    dimensions. If both have no dimensions, they are considered to be
-    sharing the same dimensions.</p>
-
-</div>
-
     
 
-
-
-        
     
 
     

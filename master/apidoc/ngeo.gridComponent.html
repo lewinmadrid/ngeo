@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: ngeo.LayertreeController</title>
+    <title>JSDoc: Class: gridComponent <small>component:ngeoGrid</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: ngeo.LayertreeController</h1>
+    <h1 class="page-title">Class: gridComponent <small>component:ngeoGrid</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="Visitor">
-            <span class="ancestors">ngeo.LayertreeController.</span>Visitor
+        <h2 id="gridComponent">
+            <span class="ancestors">ngeo.</span>gridComponent
         </h2>
         
     
@@ -40,16 +40,38 @@
     
         
 
-        
-
-
     
-    <h5 class="subsection-title">Properties:</h5>
-    
+
+    <h4 class="name" id="gridComponent"><span class="type-signature"></span>new gridComponent<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
-<table class="props">
+
+
+<div class="description">
+    <p>A grid component for displaying tabular data. The columns of the grid
+are sortable, rows can be selected with a single click (also in combination
+with SHIFT and CTRL/Meta).</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>&lt;ngeo-grid
+  ngeo-grid-configuration=&quot;::ctrl.gridConfiguration&quot;
+&lt;/ngeo-grid></code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>HTML attributes:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -62,158 +84,7 @@
 
         
 
-        
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>function(ngeo.LayertreeController)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="ngeo.LayertreeController.html#VisitorDecision">ngeo.LayertreeController.VisitorDecision</a></span>
-|
-
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/directives/layertree.js#L474">src/directives/layertree.js:474</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2 id="VisitorDecision">
-            <span class="ancestors">ngeo.LayertreeController.</span>VisitorDecision
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-        
-
-
-    
-    <h5 class="subsection-title">Enumeration:</h5>
-    
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        
         <th class="last">Description</th>
-        
     </tr>
     </thead>
 
@@ -222,13 +93,13 @@
 
         <tr>
             
-                <td class="name"><code>STOP</code></td>
+                <td class="name"><code>ngeo-grid-configuration</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+<span class="param-type"><a href="ngeo.GridConfig.html">ngeo.GridConfig</a></span>
 
 
 
@@ -239,66 +110,15 @@
 
             
 
-            
-            <td class="description last"></td>
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>SKIP</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            
-            <td class="description last"></td>
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>DESCEND</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            
-            <td class="description last"></td>
-            </td>
+            <td class="description last">The
+configuration to use.</td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -332,7 +152,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/directives/layertree.js#L462">src/directives/layertree.js:462</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/directives/grid.js#L181">src/directives/grid.js:181</a>
     </div>
     
 
@@ -344,7 +164,20 @@
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 

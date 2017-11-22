@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: mobileGeolocationDirective <small>directive:ngeoMobileGeolocation</small></title>
+    <title>JSDoc: Class: Mgr <small>service:ngeoToolActivateMgr</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: mobileGeolocationDirective <small>directive:ngeoMobileGeolocation</small></h1>
+    <h1 class="page-title">Class: Mgr <small>service:ngeoToolActivateMgr</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="mobileGeolocationDirective">
-            <span class="ancestors">ngeo.</span>mobileGeolocationDirective
+        <h2 id="Mgr">
+            <span class="ancestors">ngeo.ToolActivate.</span>Mgr
         </h2>
         
     
@@ -42,19 +42,24 @@
 
     
 
-    <h4 class="name" id="mobileGeolocationDirective"><span class="type-signature"></span>new mobileGeolocationDirective<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Mgr"><span class="type-signature"></span>new Mgr<span class="signature">($rootScope)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Provide a &quot;mobile geolocation&quot; directive.</p>
+    <p>Provides a service to manage the activation of <code>ngeo.toolActivate</code> objects.</p>
 <p>Example:</p>
-<pre class="prettyprint source"><code> &lt;button ngeo-mobile-geolocation
-   ngeo-mobile-geolocation-map=&quot;ctrl.map&quot;
-   ngeo-mobile-geolocation-options=&quot;ctrl.mobileGeolocationOptions&quot;>
- &lt;/button></code></pre><p>See our live example: <a href="../examples/mobilegeolocation.html">../examples/mobilegeolocation.html</a></p>
+<p>Each tool must be registered before using it.</p>
+<pre class="prettyprint source"><code>let tool = new ngeo.ToolActivate(interaction, 'active');
+ngeoToolActivateMgr.registerTool('mapTools', tool);</code></pre><p>A tool will be registered in a group identified by a group name.
+Once registered a tool can be activated and deactivated. When activating a
+tool, all others tools in the same group will be deactivated.</p>
+<pre class="prettyprint source"><code>ngeoToolActivateMgr.activateTool(tool);
+ngeoToolActivateMgr.deactivateTool(tool);</code></pre><p>See our live examples:
+<a href="../examples/mapquery.html">../examples/mapquery.html</a>
+<a href="../examples/toolActivate.html">../examples/toolActivate.html</a></p>
 </div>
 
 
@@ -65,9 +70,7 @@
 
 
 
-
-
-    <h5>HTML attributes:</h5>
+    <h5>Parameters:</h5>
     
 
 <table class="params">
@@ -92,16 +95,12 @@
 
         <tr>
             
-                <td class="name"><code>ngeo-mobile-geolocation-map</code></td>
+                <td class="name"><code>$rootScope</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
-
-
-
+                <a href="angular.Scope.html">angular.Scope</a>
             
             </td>
 
@@ -109,36 +108,14 @@
 
             
 
-            <td class="description last">The map.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ngeo-mobile-geolocation-options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="ngeox.html#MobileGeolocationDirectiveOptions">ngeox.MobileGeolocationDirectiveOptions</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The options.</td>
+            <td class="description last"><p>The rootScope provider.</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -174,7 +151,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/165-constraint-window-drag/src/directives/mobilegeolocation.js#L44">src/directives/mobilegeolocation.js:44</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/165-constraint-window-drag/src/services/toolActivateMgr.js#L87">src/services/toolActivateMgr.js:87</a>
     </div>
     
 
@@ -197,19 +174,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="angular.Directive.html">angular.Directive</a>
-
-
-    <p>The Directive Definition Object.</p>
-
-</div>
-
-    
 
 
 
@@ -228,6 +192,749 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="activateTool"><span class="type-signature"></span>activateTool<span class="signature">(tool)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Activate a tool.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tool</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ngeo.ToolActivate.html">ngeo.ToolActivate</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Tool to activate.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/165-constraint-window-drag/src/services/toolActivateMgr.js#L193">src/services/toolActivateMgr.js:193</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="deactivateTool"><span class="type-signature"></span>deactivateTool<span class="signature">(tool)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Deactivate a tool.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tool</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ngeo.ToolActivate.html">ngeo.ToolActivate</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Tool to deactivate.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/165-constraint-window-drag/src/services/toolActivateMgr.js#L203">src/services/toolActivateMgr.js:203</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="registerTool"><span class="type-signature"></span>registerTool<span class="signature">(groupName, tool, [opt_defaultActivate]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Register a tool.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                string
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Name of the group of this tool.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tool</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ngeo.ToolActivate.html">ngeo.ToolActivate</a>
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Tool to register.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>[opt_defaultActivate]</code></td>
+            
+
+            <td class="type">
+            
+                <a href="boolean=.html">boolean=</a>
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If true, this tool will be activated
+    when all other tools in the group are deactivated.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/165-constraint-window-drag/src/services/toolActivateMgr.js#L112">src/services/toolActivateMgr.js:112</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="unregisterGroup"><span class="type-signature"></span>unregisterGroup<span class="signature">(groupName)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Unregister each tool from a group.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                string
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the group of tools to unregister.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/165-constraint-window-drag/src/services/toolActivateMgr.js#L177">src/services/toolActivateMgr.js:177</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="unregisterTool"><span class="type-signature"></span>unregisterTool<span class="signature">(groupName, tool)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Unregister a tool from a group.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>groupName</code></td>
+            
+
+            <td class="type">
+            
+                string
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the group of this tool.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tool</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ngeo.ToolActivate.html">ngeo.ToolActivate</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Tool to unregister.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/165-constraint-window-drag/src/services/toolActivateMgr.js#L158">src/services/toolActivateMgr.js:158</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     

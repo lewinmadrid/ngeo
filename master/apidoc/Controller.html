@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: gmfx.datasource</title>
+    <title>JSDoc: Class: Controller</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: gmfx.datasource</h1>
+    <h1 class="page-title">Class: Controller</h1>
 
     
 
@@ -28,8 +28,7 @@
 
 <header>
     
-        <h2 id="DataSourcePrintReportObject">
-            <span class="ancestors">gmfx.datasource.</span>DataSourcePrintReportObject
+        <h2 id="Controller">Controller
         </h2>
         
     
@@ -40,16 +39,26 @@
     
         
 
-        
-
-
     
-    <h5 class="subsection-title">Properties:</h5>
-    
+
+    <h4 class="name" id="Controller"><span class="type-signature"></span>new Controller<span class="signature">($element, ngeoOlcsService)</span><span class="type-signature"></span></h4>
 
     
 
-<table class="props">
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -62,7 +71,7 @@
 
         
 
-        
+        <th class="last">Description</th>
     </tr>
     </thead>
 
@@ -71,16 +80,12 @@
 
         <tr>
             
-                <td class="name"><code>title</code></td>
+                <td class="name"><code>$element</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
+                <a href="!jQuery.html">!jQuery</a>
             
             </td>
 
@@ -88,23 +93,19 @@
 
             
 
-            </td>
+            <td class="description last"><p>The element</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>table</code></td>
+                <td class="name"><code>ngeoOlcsService</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="gmfx.datasource.html#DataSourceTableObject">gmfx.datasource.DataSourceTableObject</a></span>
-
-
-
+                <a href="ngeo.olcs.Service.html">ngeo.olcs.Service</a>
             
             </td>
 
@@ -112,12 +113,16 @@
 
             
 
-            </td>
+            <td class="description last"><p>The ol-cesium service.</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
+
+
 
 
 
@@ -151,7 +156,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/options/gmfx.js#L662">contribs/gmf/options/gmfx.js:662</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/modules/olcs/controls3d.js#L19">src/modules/olcs/controls3d.js:19</a>
     </div>
     
 
@@ -163,7 +168,20 @@
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 
@@ -180,46 +198,31 @@
     
 
     
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2 id="DataSourceTableObject">
-            <span class="ancestors">gmfx.datasource.</span>DataSourceTableObject
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
+        <h3 class="subsection-title">Methods</h3>
 
         
-
-
-    
-    <h5 class="subsection-title">Properties:</h5>
-    
+            
 
     
 
-<table class="props">
+    <h4 class="name" id="rotate"><span class="type-signature"></span>rotate<span class="signature">(angle)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -232,7 +235,7 @@
 
         
 
-        
+        <th class="last">Description</th>
     </tr>
     </thead>
 
@@ -241,16 +244,12 @@
 
         <tr>
             
-                <td class="name"><code>columns</code></td>
+                <td class="name"><code>angle</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>></span>
-
-
-
+                number
             
             </td>
 
@@ -258,36 +257,16 @@
 
             
 
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>:<a href="-_.html"></a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>:<a href="-_.html"></a>)>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
+            <td class="description last"><p>Angle in degrees.</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
+
+
 
 
 
@@ -321,7 +300,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/options/gmfx.js#L653">contribs/gmf/options/gmfx.js:653</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/modules/olcs/controls3d.js#L156">src/modules/olcs/controls3d.js:156</a>
     </div>
     
 
@@ -333,9 +312,218 @@
 </dl>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
+            
+
     
+
+    <h4 class="name" id="tilt"><span class="type-signature"></span>tilt<span class="signature">(angle)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>angle</code></td>
+            
+
+            <td class="type">
+            
+                number
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Angle in degrees.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/modules/olcs/controls3d.js#L166">src/modules/olcs/controls3d.js:166</a>
     </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="zoom"><span class="type-signature"></span>zoom<span class="signature">(delta)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>delta</code></td>
+            
+
+            <td class="type">
+            
+                number
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>1 to zoom out and 1 to zoom in.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
 
     
 
@@ -343,12 +531,54 @@
 
     
 
-     
+    
+
+    
 
     
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/modules/olcs/controls3d.js#L183">src/modules/olcs/controls3d.js:183</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     

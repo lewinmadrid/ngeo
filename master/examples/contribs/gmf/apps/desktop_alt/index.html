@@ -110,9 +110,9 @@
                 <a class="btn close" ng-click="mainCtrl.printPanelActive = false">&times;</a>
               </div>
               <gmf-print
-                gmf-print-map="mainCtrl.map"
+                gmf-print-map="::mainCtrl.map"
                 gmf-print-active="mainCtrl.printActive"
-                gmf-print-rotatemask="true">
+                gmf-print-rotatemask="::true">
               </gmf-print>
             </div>
           </div>
@@ -327,7 +327,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = 'ef4cb913d7c8f44375278d6b4f9b0a228718dfc7';
+        var cacheVersion = 'ab37bd0e833d843cc8ae1c6977788515ccff0dc6';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

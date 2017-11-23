@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Permalink <small>service:gmfPermalink</small></title>
+    <title>JSDoc: Namespace: gmf</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Permalink <small>service:gmfPermalink</small></h1>
+    <h1 class="page-title">Namespace: gmf</h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="Permalink">
-            <span class="ancestors">gmf.</span>Permalink
+        <h2 id="AuthenticationDefaultResponse">
+            <span class="ancestors">gmf.</span>AuthenticationDefaultResponse
         </h2>
         
     
@@ -40,42 +40,16 @@
     
         
 
+        
+
+
+    
+    <h5 class="subsection-title">Properties:</h5>
     
 
-    <h4 class="name" id="Permalink"><span class="type-signature"></span>new Permalink<span class="signature">($q, $timeout, $rootScope, $injector, ngeoDebounce, ngeoEventHelper, ngeoStateManager, ngeoLocation)</span><span class="type-signature"></span></h4>
-
     
 
-
-
-<div class="description">
-    <p>The Permalink service for GMF, which uses the <code>ngeo.StateManager</code> to manage
-the GMF application state. Here's the list of states are are managed:</p>
-<ul>
-<li>the map center and zoom level</li>
-<li>the current background layer selected</li>
-<li>whether to add a crosshair feature in the map or not</li>
-<li>the dimensions value</li>
-</ul>
-<p>To have the whole possibilities offer by the permalink, these services
-should be instantiated: ngeoBackgroundLayerMgr, ngeoFeatureOverlayMgr,
-ngeoFeatureHelper, gmfPermalinkOptions, gmfThemes, gmfObjectEditingManager,
-gmfThemeManager, defaultTheme, gmfTreeManager, ngeoWfsPermalink,
-ngeoAutoProjection and ngeoFeatures.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -88,7 +62,7 @@ ngeoAutoProjection and ngeoFeatures.</p>
 
         
 
-        <th class="last">Description</th>
+        
     </tr>
     </thead>
 
@@ -97,12 +71,16 @@ ngeoAutoProjection and ngeoFeatures.</p>
 
         <tr>
             
-                <td class="name"><code>$q</code></td>
+                <td class="name"><code>success</code></td>
             
 
             <td class="type">
             
-                <a href="!angular.$q.html">!angular.$q</a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
             
             </td>
 
@@ -110,156 +88,12 @@ ngeoAutoProjection and ngeoFeatures.</p>
 
             
 
-            <td class="description last"><p>The Angular $q service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>$timeout</code></td>
-            
-
-            <td class="type">
-            
-                <a href="angular.$timeout.html">angular.$timeout</a>
-            
             </td>
-
-            
-
-            
-
-            <td class="description last"><p>Angular timeout service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>$rootScope</code></td>
-            
-
-            <td class="type">
-            
-                <a href="angular.Scope.html">angular.Scope</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Angular rootScope.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>$injector</code></td>
-            
-
-            <td class="type">
-            
-                <a href="angular.$injector.html">angular.$injector</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Main injector.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ngeoDebounce</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.Debounce.html">ngeo.Debounce</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>ngeo Debounce service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ngeoEventHelper</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.EventHelper.html">ngeo.EventHelper</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Ngeo event helper service</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ngeoStateManager</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.StateManager.html">ngeo.StateManager</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The ngeo StateManager service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ngeoLocation</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.Location.html">ngeo.Location</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>ngeo location service.</p></td>
         </tr>
 
     
     </tbody>
 </table>
-
-
-
-
 
 
 
@@ -293,7 +127,7 @@ ngeoAutoProjection and ngeoFeatures.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L112">contribs/gmf/src/services/permalink.js:112</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/authenticationservice.js#L25">contribs/gmf/src/services/authenticationservice.js:25</a>
     </div>
     
 
@@ -305,20 +139,7 @@ ngeoAutoProjection and ngeoFeatures.</p>
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     
     </div>
 
@@ -333,409 +154,48 @@ ngeoAutoProjection and ngeoFeatures.</p>
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="gmfUser_"><span class="type-signature">(nullable) </span>gmfUser_<span class="type-signature">: <a href="gmfx.html#User">gmfx.User</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
 
     
 
     
 
     
+</article>
 
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L280">contribs/gmf/src/services/permalink.js:280</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="~gmfPermalinkOptions"><span class="type-signature">(inner, constant, non-null) </span>gmfPermalinkOptions<span class="type-signature">: <a href="gmfx.html#PermalinkOptions">gmfx.PermalinkOptions</a></span> </h4>
-
-
-
-
-<div class="description">
-    <p>The options to configure the gmf permalink service with.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L207">contribs/gmf/src/services/permalink.js:207</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="~ngeoFeatureOverlayMgr"><span class="type-signature">(inner, constant, nullable) </span>ngeoFeatureOverlayMgr<span class="type-signature">: <a href="ngeo.FeatureOverlayMgr.html">ngeo.FeatureOverlayMgr</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L179">contribs/gmf/src/services/permalink.js:179</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
+        <h2 id="AuthenticationLoginResponse">
+            <span class="ancestors">gmf.</span>AuthenticationLoginResponse
+        </h2>
         
     
+</header>
 
+<article>
+    <div class="container-overview">
     
-        <h3 class="subsection-title">Methods</h3>
+        
 
         
-            
+
 
     
-
-    <h4 class="name" id="defaultThemeName"><span class="type-signature"></span>defaultThemeName<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get the default theme from url, local storage, user functionalities or
-defaultTheme constant.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
+    <h5 class="subsection-title">Properties:</h5>
     
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L892">contribs/gmf/src/services/permalink.js:892</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="?string.html">?string</a>
-
-
-    <p>default theme name.</p>
-
-</div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="defaultThemeNameFromFunctionalities"><span class="type-signature"></span>defaultThemeNameFromFunctionalities<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get the default theme from user functionalities.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L925">contribs/gmf/src/services/permalink.js:925</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="?string.html">?string</a>
-
-
-    <p>default theme name.</p>
-
-</div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getBackgroundLayer"><span class="type-signature"></span>getBackgroundLayer<span class="signature">(layers)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get the background layer object to use to initialize the map from the
-state manager.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -748,7 +208,7 @@ state manager.</p>
 
         
 
-        <th class="last">Description</th>
+        
     </tr>
     </thead>
 
@@ -757,12 +217,19 @@ state manager.</p>
 
         <tr>
             
-                <td class="name"><code>layers</code></td>
+                <td class="name"><code>functionalities</code></td>
             
 
             <td class="type">
             
-                <a href="!Array.<!ol.layer.Base>.html">!Array.<!ol.layer.Base></a>
+                
+<span class="param-type"><a href="gmfx.html#AuthenticationFunctionalities">gmfx.AuthenticationFunctionalities</a></span>
+|
+
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
+
+
+
             
             </td>
 
@@ -770,7 +237,115 @@ state manager.</p>
 
             
 
-            <td class="description last"><p>Array of background layer objects.</p></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>is_password_changed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+|
+
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>role_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>
+|
+
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>role_name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+|
+
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>username</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+|
+
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            </td>
         </tr>
 
     
@@ -780,10 +355,6 @@ state manager.</p>
 
 
 
-
-
-
-
 <dl class="details">
 
     
@@ -813,7 +384,7 @@ state manager.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L794">contribs/gmf/src/services/permalink.js:794</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/authenticationservice.js#L17">contribs/gmf/src/services/authenticationservice.js:17</a>
     </div>
     
 
@@ -825,93 +396,18 @@ state manager.</p>
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
         
-<div class="param-desc">
-
-    <a href="?ol.layer.Base.html">?ol.layer.Base</a>
-
-
-    <p>Background layer.</p>
-
-</div>
-
     
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getFeatures"><span class="type-signature"></span>getFeatures<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get the ngeo features from the state manager for initialization purpose</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L639">contribs/gmf/src/services/permalink.js:639</a>
     </div>
+
+    
+
+    
+
+    
+
+     
+
     
 
     
@@ -919,7 +415,11 @@ state manager.</p>
     
 
     
-</dl>
+
+    
+</article>
+
+</section>
 
 
 
@@ -927,524 +427,32 @@ state manager.</p>
 
 
 
+<section>
 
+<header>
+    
+        <h2 id="AuthenticationRouteSuffix">
+            <span class="ancestors">gmf.</span>AuthenticationRouteSuffix
+        </h2>
+        
+    
+</header>
 
-
-
-
-
-<h5>Returns:</h5>
+<article>
+    <div class="container-overview">
+    
+        
 
         
-<div class="param-desc">
 
-    <a href="!Array.<!ol.Feature>.html">!Array.<!ol.Feature></a>
 
-
-    <p>The features read from the state manager.</p>
-
-</div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getMapCenter"><span class="type-signature"></span>getMapCenter<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get the coordinate to use to initialize the map view from the state manager.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L512">contribs/gmf/src/services/permalink.js:512</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="?ol.Coordinate.html">?ol.Coordinate</a>
-
-
-    <p>The coordinate for the map view center.</p>
-
-</div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getMapCrosshair"><span class="type-signature"></span>getMapCrosshair<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get the map crosshair property from the state manager, if defined.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L552">contribs/gmf/src/services/permalink.js:552</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    boolean
-
-
-    <p>Whether map crosshair property is set or not.</p>
-
-</div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getMapTooltip"><span class="type-signature"></span>getMapTooltip<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get the tooltip text from the state manager.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L594">contribs/gmf/src/services/permalink.js:594</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    string|undefined
-
-
-    <p>Tooltip text.</p>
-
-</div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getMapZoom"><span class="type-signature"></span>getMapZoom<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get the zoom level to use to initialize the map view from the state manager.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L538">contribs/gmf/src/services/permalink.js:538</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    number|undefined
-
-
-    <p>The zoom for the map view.</p>
-
-</div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="refreshFirstLevelGroups"><span class="type-signature"></span>refreshFirstLevelGroups<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Get the current first level node names in the tree manager and update the
-correspondent state of the permalink.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L837">contribs/gmf/src/services/permalink.js:837</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
+    <h5 class="subsection-title">Enumeration:</h5>
     
-
-    <h4 class="name" id="setDimensions"><span class="type-signature"></span>setDimensions<span class="signature">(dimensions)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
 
-    <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -1457,7 +465,9 @@ correspondent state of the permalink.</p>
 
         
 
+        
         <th class="last">Description</th>
+        
     </tr>
     </thead>
 
@@ -1466,12 +476,16 @@ correspondent state of the permalink.</p>
 
         <tr>
             
-                <td class="name"><code>dimensions</code></td>
+                <td class="name"><code>CHANGE_PASSWORD</code></td>
             
 
             <td class="type">
             
-                <a href="!Object.<string, string>.html">!Object.<string, string></a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
             
             </td>
 
@@ -1479,16 +493,118 @@ correspondent state of the permalink.</p>
 
             
 
-            <td class="description last"><p>The global dimensions object.</p></td>
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>IS_LOGGED_IN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>LOGIN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>LOGOUT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>RESET_PASSWORD</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
         </tr>
 
     
     </tbody>
 </table>
-
-
-
-
 
 
 
@@ -1522,7 +638,7 @@ correspondent state of the permalink.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L652">contribs/gmf/src/services/permalink.js:652</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/authenticationservice.js#L31">contribs/gmf/src/services/authenticationservice.js:31</a>
     </div>
     
 
@@ -1534,6 +650,30 @@ correspondent state of the permalink.</p>
 </dl>
 
 
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -1541,43 +681,34 @@ correspondent state of the permalink.</p>
 
 
 
+<section>
 
+<header>
+    
+        <h2 id="PermalinkExtDSSeparator">
+            <span class="ancestors">gmf.</span>PermalinkExtDSSeparator
+        </h2>
+        
+    
+</header>
 
-
-
-
-
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>External data source separators</p></div>
+        
 
         
-            
+
+
+    
+    <h5 class="subsection-title">Enumeration:</h5>
+    
 
     
 
-    <h4 class="name" id="setMap"><span class="type-signature"></span>setMap<span class="signature">(map)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Bind an ol3 map object to this service. The service will, from there on,
-listen to the properties changed within the map view and update the following
-state properties: map_x, map_y and map_zoom.</p>
-<p>If the service is already bound to a map, those events are unlistened first.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -1590,7 +721,9 @@ state properties: map_x, map_y and map_zoom.</p>
 
         
 
+        
         <th class="last">Description</th>
+        
     </tr>
     </thead>
 
@@ -1599,12 +732,16 @@ state properties: map_x, map_y and map_zoom.</p>
 
         <tr>
             
-                <td class="name"><code>map</code></td>
+                <td class="name"><code>LIST</code></td>
             
 
             <td class="type">
             
-                <a href="?ol.Map.html">?ol.Map</a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
             
             </td>
 
@@ -1612,16 +749,40 @@ state properties: map_x, map_y and map_zoom.</p>
 
             
 
-            <td class="description last"><p>The ol3 map object.</p></td>
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>NAMES</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
         </tr>
 
     
     </tbody>
 </table>
-
-
-
-
 
 
 
@@ -1655,7 +816,7 @@ state properties: map_x, map_y and map_zoom.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L682">contribs/gmf/src/services/permalink.js:682</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L52">contribs/gmf/src/services/permalink.js:52</a>
     </div>
     
 
@@ -1667,6 +828,30 @@ state properties: map_x, map_y and map_zoom.</p>
 </dl>
 
 
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -1674,41 +859,32 @@ state properties: map_x, map_y and map_zoom.</p>
 
 
 
+<section>
 
+<header>
+    
+        <h2 id="PermalinkOpenLayersLayerProperties">
+            <span class="ancestors">gmf.</span>PermalinkOpenLayersLayerProperties
+        </h2>
+        
+    
+</header>
 
-
-
-
-
+<article>
+    <div class="container-overview">
+    
+        
 
         
-            
+
+
+    
+    <h5 class="subsection-title">Enumeration:</h5>
+    
 
     
 
-    <h4 class="name" id="setMapCrosshair"><span class="type-signature"></span>setMapCrosshair<span class="signature">([opt_center]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Sets the map crosshair to the center (or the map center if nothing provided).
-Overwrites an existing map crosshair.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -1718,12 +894,12 @@ Overwrites an existing map crosshair.</p>
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
+        
         <th class="last">Description</th>
+        
     </tr>
     </thead>
 
@@ -1732,39 +908,31 @@ Overwrites an existing map crosshair.</p>
 
         <tr>
             
-                <td class="name"><code>[opt_center]</code></td>
+                <td class="name"><code>OPACITY</code></td>
             
 
             <td class="type">
             
-                <a href="?ol.Coordinate=.html">?ol.Coordinate=</a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Optional center coordinate.</p></td>
+            
+            <td class="description last"></td>
+            </td>
         </tr>
 
     
     </tbody>
 </table>
-
-
-
-
 
 
 
@@ -1798,7 +966,7 @@ Overwrites an existing map crosshair.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L563">contribs/gmf/src/services/permalink.js:563</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L31">contribs/gmf/src/services/permalink.js:31</a>
     </div>
     
 
@@ -1810,6 +978,30 @@ Overwrites an existing map crosshair.</p>
 </dl>
 
 
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -1817,41 +1009,32 @@ Overwrites an existing map crosshair.</p>
 
 
 
+<section>
 
+<header>
+    
+        <h2 id="PermalinkParamPrefix">
+            <span class="ancestors">gmf.</span>PermalinkParamPrefix
+        </h2>
+        
+    
+</header>
 
-
-
-
-
+<article>
+    <div class="container-overview">
+    
+        
 
         
-            
+
+
+    
+    <h5 class="subsection-title">Enumeration:</h5>
+    
 
     
 
-    <h4 class="name" id="setMapTooltip"><span class="type-signature"></span>setMapTooltip<span class="signature">(tooltipText, [opt_center]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Sets the map tooltip to the center (or the map center if nothing provided).
-Overwrites an existing map tooltip.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -1861,12 +1044,12 @@ Overwrites an existing map tooltip.</p>
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
+        
         <th class="last">Description</th>
+        
     </tr>
     </thead>
 
@@ -1875,67 +1058,161 @@ Overwrites an existing map tooltip.</p>
 
         <tr>
             
-                <td class="name"><code>tooltipText</code></td>
+                <td class="name"><code>DIMENSIONS</code></td>
             
 
             <td class="type">
             
-                string
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
             
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Text to display in tooltip.</p></td>
+            
+            <td class="description last"></td>
+            </td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>[opt_center]</code></td>
+                <td class="name"><code>TREE_ENABLE</code></td>
             
 
             <td class="type">
             
-                <a href="?ol.Coordinate=.html">?ol.Coordinate=</a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
 
-                
+            
 
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>TREE_GROUP_LAYERS</code></td>
+            
+
+            <td class="type">
+            
                 
-                </td>
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
             
 
             
 
-            <td class="description last"><p>Optional center coordinate.</p></td>
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>TREE_GROUP_OPACITY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>TREE_OPACITY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>WFS</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
         </tr>
 
     
     </tbody>
 </table>
-
-
-
-
 
 
 
@@ -1969,7 +1246,7 @@ Overwrites an existing map tooltip.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L604">contribs/gmf/src/services/permalink.js:604</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/permalink.js#L38">contribs/gmf/src/services/permalink.js:38</a>
     </div>
     
 
@@ -1981,6 +1258,30 @@ Overwrites an existing map tooltip.</p>
 </dl>
 
 
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -1988,14 +1289,571 @@ Overwrites an existing map tooltip.</p>
 
 
 
+<section>
+
+<header>
+    
+        <h2 id="PrintStateEnum">
+            <span class="ancestors">gmf.</span>PrintStateEnum
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+    
+    <h5 class="subsection-title">Enumeration:</h5>
+    
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        
+        <th class="last">Description</th>
+        
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>NOT_IN_USE</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PRINTING</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ERROR_ON_REPORT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>CAPABILITIES_NOT_LOADED</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ERROR_ON_GETCAPABILITIES</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
 
+<dl class="details">
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/directives/print.js#L20">contribs/gmf/src/directives/print.js:20</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
         
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2 id="RasterParam">
+            <span class="ancestors">gmf.</span>RasterParam
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+    
+    <h5 class="subsection-title">Enumeration:</h5>
+    
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        
+        <th class="last">Description</th>
+        
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>X</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/raster.js#L9">contribs/gmf/src/services/raster.js:9</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2 id="ThemeManagerEventType">
+            <span class="ancestors">gmf.</span>ThemeManagerEventType
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+    
+    <h5 class="subsection-title">Enumeration:</h5>
+    
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        
+        <th class="last">Description</th>
+        
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>THEME_NAME_SET</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"><p>Triggered when the theme name change.</p></td>
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/fix-type-depth/contribs/gmf/src/services/thememanager.js#L19">contribs/gmf/src/services/thememanager.js:19</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
     
 
     

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: bboxQueryDirective <small>directive:ngeoBboxQuery</small></title>
+    <title>JSDoc: Class: printComponent <small>component:gmfPrint</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: bboxQueryDirective <small>directive:ngeoBboxQuery</small></h1>
+    <h1 class="page-title">Class: printComponent <small>component:gmfPrint</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="bboxQueryDirective">
-            <span class="ancestors">ngeo.</span>bboxQueryDirective
+        <h2 id="printComponent">
+            <span class="ancestors">gmf.</span>printComponent
         </h2>
         
     
@@ -42,28 +42,36 @@
 
     
 
-    <h4 class="name" id="bboxQueryDirective"><span class="type-signature"></span>new bboxQueryDirective<span class="signature">(ngeoMapQuerent)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="printComponent"><span class="type-signature"></span>new printComponent<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Provides a &quot;bbox query&quot; directive.</p>
-<p>This directive is responsible of binding a map and the ngeo query service
-together. While active, drawing a bbox while CTRL or the 'meta' key is pressed
-issues a request to the query service.</p>
-<p>This directive doesn't require to be rendered in a visible DOM element, but
-it could be used with a ngeo-btn to manage the activation of the directive.
-See below an example without any use of UI:</p>
-<p>Example:</p>
-<pre class="prettyprint source"><code> &lt;span
-   ngeo-bbox-query=&quot;&quot;
-   ngeo-bbox-query-map=&quot;::ctrl.map&quot;
-   ngeo-bbox-query-limit=&quot;50&quot;
-   ngeo-bbox-query-active=&quot;ctrl.queryActive&quot;>
-   ngeo-bbox-query-autoclear=&quot;ctrl.queryAutoClear&quot;>
- &lt;/span></code></pre><p>See the live example: <a href="../examples/bboxquery.html">../examples/bboxquery.html</a></p>
+    <p>Provide a component that display a print panel. This panel is populated with
+a form corresponding to the capabilities delivered by a GMF print v3 server.
+If you want to use another template for your print panel, you can see the
+available layout information in the 'gmfx.PrintLayoutInfo' classes.</p>
+<p>Simple example:</p>
+<pre class="prettyprint source"><code> &lt;gmf-print
+   gmf-print-map=&quot;::mainCtrl.map&quot;
+   gmf-print-active=&quot;printActive&quot;
+   gmf-print-rotatemask=&quot;::true&quot;>
+ &lt;/gmf-print></code></pre><p>Example with user defined attribute:</p>
+<pre class="prettyprint source"><code> &lt;gmf-print
+   gmf-print-map=&quot;::mainCtrl.map&quot;
+   gmf-print-active=&quot;printActive&quot;
+   gmf-print-rotatemask=&quot;::true&quot;
+   gmf-print-hiddenattributes=&quot;::['name']&quot;
+   gmf-print-attributes-out=&quot;::attributes&quot;>
+   &lt;div ng-repeat=&quot;attribute in ::attributes&quot;>
+     &lt;div ng-if=&quot;attribute.name == 'name'&quot;>
+       &lt;input ng-model=&quot;attribute.value&quot; placeholder=&quot;name&quot; />
+     &lt;/div>
+   &lt;/div>
+ &lt;/gmf-print></code></pre><p>Note: The 'print' and 'cancel' functions can also be called via globals
+events 'gmfStartPrint' and 'gmfCancelPrint'.</p>
 </div>
 
 
@@ -74,6 +82,158 @@ See below an example without any use of UI:</p>
 
 
 
+
+
+    <h5>HTML attributes:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-print-map</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The map.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-print-active</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A boolean that informs if the
+    panel is open or not.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-print-rotatemask</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Optional. True to apply
+    rotation on the mask instead of the map. By default, the map rotates.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-print-fieldvalues</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>, (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>:<a href="-_.html"></a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>:<a href="-_.html"></a>)></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">optional. Key, value object to define default
+    value in each of your print panel field. The key refers to the
+    property's name of the field.
+    Example: {'comments': 'demo', 'legend': false}. Doesn't work for the dpi
+    and the scale. Server's values are used in priorty.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-print-hiddenattributes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The list of attributes that should be hidden.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -109,7 +269,7 @@ See below an example without any use of UI:</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/directives/bboxquery.js#L37">src/directives/bboxquery.js:37</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/directives/print.js#L128">contribs/gmf/src/directives/print.js:128</a>
     </div>
     
 
@@ -132,19 +292,6 @@ See below an example without any use of UI:</p>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="angular.Directive.html">angular.Directive</a>
-
-
-    <p>The Directive Definition Object.</p>
-
-</div>
-
-    
 
 
 

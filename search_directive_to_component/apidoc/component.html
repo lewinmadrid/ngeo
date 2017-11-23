@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: </title>
+    <title>JSDoc: Class: component <small>component:ngeoOlcsControls3d</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: </h1>
+    <h1 class="page-title">Class: component <small>component:ngeoOlcsControls3d</small></h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2 id="">
+        <h2 id="component">component
         </h2>
         
     
@@ -41,16 +41,20 @@
 
     
 
-    <h4 class="name" id=""><span class="type-signature"></span>new <span class="signature">(options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="component"><span class="type-signature">(non-null) </span>new component<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Layer source for the Swisstopo tile server.
-WARNING: This tile server is not publicly available: you have to be
-         registered by Swisstopo to use the service.</p>
+    <p>Provides the &quot;ngeoOlcsControls3d&quot; component, a widget for
+controlling the 3D camera.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>&lt;ngeo-olcs-controls3d ng-if=&quot;$ctrl.manager && $ctrl.manager.is3dEnabled()&quot;>
+&lt;/ngeo-olcs-controls3d></code></pre><p>By default the directive uses &quot;controls3d.html&quot; as its templateUrl. This
+can be changed by redefining the &quot;ngeoOlcsControls3dTemplateUrl&quot; value.</p>
+<p>See our live example: <a href="../examples/simple3d.html">../examples/simple3d.html</a></p>
 </div>
 
 
@@ -61,7 +65,9 @@ WARNING: This tile server is not publicly available: you have to be
 
 
 
-    <h5>Parameters:</h5>
+
+
+    <h5>HTML attributes:</h5>
     
 
 <table class="params">
@@ -86,12 +92,16 @@ WARNING: This tile server is not publicly available: you have to be
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>ngeo-olcs-manager</code></td>
             
 
             <td class="type">
             
-                <a href="ngeox.source.SwisstopoOptions.html">ngeox.source.SwisstopoOptions</a>
+                
+<span class="param-type">olcs.contrib.Manager</span>
+
+
+
             
             </td>
 
@@ -99,14 +109,12 @@ WARNING: This tile server is not publicly available: you have to be
 
             
 
-            <td class="description last"><p>WMTS options.</p></td>
+            <td class="description last">The OL-Cesium manager.</td>
         </tr>
 
     
     </tbody>
 </table>
-
-
 
 
 
@@ -142,19 +150,12 @@ WARNING: This tile server is not publicly available: you have to be
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/search_directive_to_component/src/source/swisstopo.js#L86">src/source/swisstopo.js:86</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/search_directive_to_component/src/modules/olcs/controls3d.js#L235">src/modules/olcs/controls3d.js:235</a>
     </div>
     
 
     
 
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://api3.geo.admin.ch/services/sdiservices.html#wmts">https://api3.geo.admin.ch/services/sdiservices.html#wmts</a></li>
-        </ul>
-    </dd>
     
 
     
@@ -177,207 +178,6 @@ WARNING: This tile server is not publicly available: you have to be
 
     
     </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li><a href="http://openlayers.org/en/master/apidoc/ol.source.WMTS.html">ol.source.WMTS</a></li>
-    </ul>
-
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2 id="">
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    <h4 class="name" id=""><span class="type-signature"></span>new <span class="signature">(options)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Layer source for the ASIT VD tile server.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeox.source.AsitVDOptions.html">ngeox.source.AsitVDOptions</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>WMTS options.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/search_directive_to_component/src/source/asitvd.js#L37">src/source/asitvd.js:37</a>
-    </div>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="https://www.asitvd.ch/chercher/geoservices/fond-de-plan-asit-vd.html">https://www.asitvd.ch/chercher/geoservices/fond-de-plan-asit-vd.html</a></li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li><a href="http://openlayers.org/en/master/apidoc/ol.source.WMTS.html">ol.source.WMTS</a></li>
-    </ul>
-
 
     
 

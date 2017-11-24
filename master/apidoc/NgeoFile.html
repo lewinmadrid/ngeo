@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: GmfTheme</title>
+    <title>JSDoc: Class: NgeoFile</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: GmfTheme</h1>
+    <h1 class="page-title">Class: NgeoFile</h1>
 
     
 
@@ -28,8 +28,7 @@
 
 <header>
     
-        <h2 id="GmfTheme">
-            <span class="ancestors">gmfThemes.</span>GmfTheme
+        <h2 id="NgeoFile">NgeoFile
         </h2>
         
     
@@ -42,15 +41,12 @@
 
     
 
-    <h4 class="name" id="GmfTheme"><span class="type-signature"></span>new GmfTheme<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="NgeoFile"><span class="type-signature"></span>new NgeoFile<span class="signature">($q, $http, gettext)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="description">
-    <p>The element we can select in the theme selector.</p>
-</div>
 
 
 
@@ -58,6 +54,91 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>$q</code></td>
+            
+
+            <td class="type">
+            
+                <a href="angular.$q.html">angular.$q</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>$http</code></td>
+            
+
+            <td class="type">
+            
+                <a href="angular.$http.html">angular.$http</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gettext</code></td>
+            
+
+            <td class="type">
+            
+                <a href="gettext.html">gettext</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -95,7 +176,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L85">contribs/gmf/externs/gmf-themes.js:85</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/utils/File.js#L15">src/utils/File.js:15</a>
     </div>
     
 
@@ -123,17 +204,6 @@
 
     
     </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li><a href="gmfThemes.GmfBaseNode.html">gmfThemes.GmfBaseNode</a></li>
-    </ul>
-
 
     
 
@@ -146,19 +216,256 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
-<h4 class="name" id="children"><span class="type-signature">(non-null) </span>children<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;!<a href="gmfThemes.GmfGroup.html">gmfThemes.GmfGroup</a>:<a href="-_.html"></a>></span> </h4>
+
+    
+
+    <h4 class="name" id="load"><span class="type-signature"></span>load<span class="signature">(url, [opt_cancelP]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
 
 
 
 
-<div class="description">
-    <p>The first level layer groups.</p>
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                string
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>[opt_cancelP]</code></td>
+            
+
+            <td class="type">
+            
+                <a href="angular.$q.Deferred=.html">angular.$q.Deferred=</a>
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/utils/File.js#L73">src/utils/File.js:73</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="angular.$q.Promise<Blob>.html">angular.$q.Promise<Blob></a>
+
+
+    <p>.</p>
+
 </div>
 
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="read"><span class="type-signature"></span>read<span class="signature">(file)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>file</code></td>
+            
+
+            <td class="type">
+            
+                <a href="!Blob.html">!Blob</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
 
 
 
@@ -192,7 +499,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L92">contribs/gmf/externs/gmf-themes.js:92</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/utils/File.js#L43">src/utils/File.js:43</a>
     </div>
     
 
@@ -208,256 +515,30 @@
 
 
 
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
         
-            
-<h4 class="name" id="functionalities"><span class="type-signature">(non-null) </span>functionalities<span class="type-signature">: <a href="gmfThemes.GmfFunctionalities.html">gmfThemes.GmfFunctionalities</a></span> </h4>
+<div class="param-desc">
+
+    <a href="angular.$q.Promise<string>.html">angular.$q.Promise<string></a>
 
 
+    <p>.</p>
 
-
-<div class="description">
-    <p>The Functionalities related to the theme.</p>
 </div>
 
-
-
-
-
-<dl class="details">
-
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L99">contribs/gmf/externs/gmf-themes.js:99</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
 
 
 
         
-            
-<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="gmfThemes.GmfBaseNode.html#id">gmfThemes.GmfBaseNode#id</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L63">contribs/gmf/externs/gmf-themes.js:63</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="metadata"><span class="type-signature">(non-null) </span>metadata<span class="type-signature">: <a href="gmfThemes.GmfMetaData.html">gmfThemes.GmfMetaData</a></span> </h4>
-
-
-
-
-<div class="description">
-    <p>The related metadata.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="gmfThemes.GmfBaseNode.html#metadata">gmfThemes.GmfBaseNode#metadata</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L70">contribs/gmf/externs/gmf-themes.js:70</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="gmfThemes.GmfBaseNode.html#name">gmfThemes.GmfBaseNode#name</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L76">contribs/gmf/externs/gmf-themes.js:76</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
-
     
 
     

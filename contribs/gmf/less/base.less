@@ -9,7 +9,11 @@
 @import 'vars.less';
 
 html, body {
+  // fixed position is a workaround for the iOS landscape issue when the page top
+  // is hidden behind the address bar.
+  position: fixed;
   height: 100%;
+  width: 100%;
 }
 
 body {

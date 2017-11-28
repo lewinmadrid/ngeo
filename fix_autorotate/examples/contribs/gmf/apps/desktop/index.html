@@ -113,7 +113,7 @@
                 <a class="btn close" ng-click="mainCtrl.printPanelActive = false">&times;</a>
               </div>
               <gmf-print
-                gmf-print-map="mainCtrl.map"
+                gmf-print-map="::mainCtrl.map"
                 gmf-print-active="mainCtrl.printActive">
               </gmf-print>
             </div>
@@ -204,13 +204,21 @@
         </div>
       </div>
       <div class="gmf-app-map-container" ng-class="{'gmf-app-infobar-active': mainCtrl.showInfobar}">
-        <gmf-search gmf-search-map="mainCtrl.map"
-          gmf-search-datasources="mainCtrl.searchDatasources"
-          gmf-search-coordinatesprojections="mainCtrl.searchCoordinatesProjections"
-          gmf-search-colorchooser="false"
+        <gmf-search gmf-search-map="::mainCtrl.map"
+          gmf-search-datasources="::mainCtrl.searchDatasources"
+          gmf-search-coordinatesprojections="::mainCtrl.searchCoordinatesProjections"
           gmf-search-placeholder="{{'Search…'|translate}}"
-          gmf-search-clearbutton="true">
+          gmf-search-clearbutton="::true">
         </gmf-search>
+        <gmf-displaywindow
+          content="mainCtrl.displaywindowContent"
+          desktop="true"
+          height="mainCtrl.displaywindowHeight"
+          open="mainCtrl.displaywindowOpen"
+          title="mainCtrl.displaywindowTitle"
+          url="mainCtrl.displaywindowUrl"
+          width="mainCtrl.displaywindowWidth"
+        ></gmf-displaywindow>
         <div class="gmf-app-map-bottom-controls">
           <div class="gmf-backgroundlayerbutton btn-group dropup">
             <button
@@ -230,6 +238,7 @@
             </gmf-disclaimer>
           </div>
           <gmf-displayquerywindow
+            gmf-displayquerywindow-draggable-containment="::mainCtrl.displaywindowDraggableContainment"
             gmf-displayquerywindow-featuresstyle="::mainCtrl.queryFeatureStyle"
             gmf-displayquerywindow-desktop="true">
           </gmf-displayquerywindow>
@@ -294,7 +303,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = '31db9a154911f7932c90dd0835f9937c02423440';
+        var cacheVersion = 'ebd6f4c18762d022d5c4a9456f3fdbeac414b7ec';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

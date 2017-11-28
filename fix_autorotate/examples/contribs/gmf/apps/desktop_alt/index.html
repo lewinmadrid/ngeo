@@ -23,11 +23,6 @@
       </div>
     </header>
     <main>
-      <div
-         ngeo-import-dnd
-         ngeo-import-dnd-options="::mainCtrl.importOptions">
-      </div>
-
       <div class="gmf-app-data-panel">
         <div class="gmf-app-header">
           <div class="dropdown">
@@ -37,32 +32,6 @@
               <span translate>Themes</span>
               <span class="caret"></span>
             </a>
-            <div class="import">
-              <div>Local</div>
-              <div class="import-local"
-                ngeo-import-local
-                ngeo-import-local-options="::mainCtrl.importOptions">
-              </div>
-              <div>Online</div>
-              <div
-                ngeo-import-online
-                ngeo-import-online-options="::mainCtrl.importOptions">
-              </div>
-
-              <!-- Display WMS GetCapabilities results -->
-              <div ng-if="wmsGetCap"
-                   ngeo-wms-get-cap="wmsGetCap"
-                   ngeo-wms-get-cap-map="::map"
-                   ngeo-wms-get-cap-options="::mainCtrl.importOptions">
-              </div>
-
-              <!-- Display WMTS GetCapabilities results -->
-              <div ng-if="wmtsGetCap"
-                   ngeo-wmts-get-cap="wmtsGetCap"
-                   ngeo-wmts-get-cap-map="::map"
-                   ngeo-wmts-get-cap-options="::mainCtrl.importOptions">
-              </div>
-            </div>
             <gmf-themeselector class="dropdown-menu"
               gmf-themeselector-currenttheme="mainCtrl.theme"
               gmf-themeselector-filter="::mainCtrl.filter">
@@ -141,9 +110,9 @@
                 <a class="btn close" ng-click="mainCtrl.printPanelActive = false">&times;</a>
               </div>
               <gmf-print
-                gmf-print-map="mainCtrl.map"
+                gmf-print-map="::mainCtrl.map"
                 gmf-print-active="mainCtrl.printActive"
-                gmf-print-rotatemask="true">
+                gmf-print-rotatemask="::true">
               </gmf-print>
             </div>
           </div>
@@ -245,13 +214,23 @@
         </div>
       </div>
       <div class="gmf-app-map-container" ng-class="{'gmf-app-infobar-active': mainCtrl.showInfobar}">
-        <gmf-search gmf-search-map="mainCtrl.map"
-          gmf-search-datasources="mainCtrl.searchDatasources"
-          gmf-search-coordinatesprojections="mainCtrl.searchCoordinatesProjections"
-          gmf-search-colorchooser="true"
+        <gmf-search gmf-search-map="::mainCtrl.map"
+          gmf-search-datasources="::mainCtrl.searchDatasources"
+          gmf-search-coordinatesprojections="::mainCtrl.searchCoordinatesProjections"
+          gmf-search-colorchooser="::true"
           gmf-search-placeholder="{{'Search…'|translate}}"
-          gmf-search-clearbutton="true">
+          gmf-search-clearbutton="::true">
         </gmf-search>
+        <gmf-displaywindow
+          content="mainCtrl.displaywindowContent"
+          desktop="true"
+          draggable-containment="mainCtrl.displaywindowDraggableContainment"
+          height="mainCtrl.displaywindowHeight"
+          open="mainCtrl.displaywindowOpen"
+          title="mainCtrl.displaywindowTitle"
+          url="mainCtrl.displaywindowUrl"
+          width="mainCtrl.displaywindowWidth"
+        ></gmf-displaywindow>
         <div class="gmf-app-map-bottom-controls">
           <div class="gmf-backgroundlayerbutton btn-group dropup">
             <button
@@ -349,7 +328,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = '31db9a154911f7932c90dd0835f9937c02423440';
+        var cacheVersion = 'ebd6f4c18762d022d5c4a9456f3fdbeac414b7ec';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

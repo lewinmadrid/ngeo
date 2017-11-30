@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: gmfThemes</title>
+    <title>JSDoc: Class: FulltextSearch</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: gmfThemes</h1>
+    <h1 class="page-title">Class: FulltextSearch</h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="GmfOgcServers">
-            <span class="ancestors">gmfThemes.</span>GmfOgcServers
+        <h2 id="FulltextSearch">
+            <span class="ancestors">gmf.search.</span>FulltextSearch
         </h2>
         
     
@@ -40,7 +40,96 @@
     
         
 
+    
+
+    <h4 class="name" id="FulltextSearch"><span class="type-signature"></span>new FulltextSearch<span class="signature">($injector, $http)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Provides the c2c-geoportal full-text search.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
         
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>$injector</code></td>
+            
+
+            <td class="type">
+            
+                <a href="angular.$injector.html">angular.$injector</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Main injector.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>$http</code></td>
+            
+
+            <td class="type">
+            
+                <a href="angular.$http.html">angular.$http</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Angular http service.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
 
 
 <dl class="details">
@@ -72,7 +161,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/gmf_search_to_module/contribs/gmf/externs/gmf-themes.js#L312">contribs/gmf/externs/gmf-themes.js:312</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/gmf_search_to_module/contribs/gmf/src/search/fulltextsearch.js#L17">contribs/gmf/src/search/fulltextsearch.js:17</a>
     </div>
     
 
@@ -84,7 +173,20 @@
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 
@@ -99,7 +201,234 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
 
+        
+            
+<h4 class="name" id=".module"><span class="type-signature">(static, non-null) </span>module<span class="type-signature">: angular.Module</span> </h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/gmf_search_to_module/contribs/gmf/src/search/fulltextsearch.js#L69">contribs/gmf/src/search/fulltextsearch.js:69</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="search"><span class="type-signature"></span>search<span class="signature">(query, params)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Perform a search query on the c2c-geoportal full-text search.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+
+            <td class="type">
+            
+                string
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Search query.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+
+            <td class="type">
+            
+                <a href="Object.<string, string>.html">Object.<string, string></a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Additional parameters.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/gmf_search_to_module/contribs/gmf/src/search/fulltextsearch.js#L52">contribs/gmf/src/search/fulltextsearch.js:52</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="Promise.html">Promise</a>
+
+
+    <p>Request promise with data array.</p>
+
+</div>
+
+    
+
+
+
+        
     
 
     

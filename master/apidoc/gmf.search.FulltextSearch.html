@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: gmf.EditfeatureController</title>
+    <title>JSDoc: Class: FulltextSearch</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: gmf.EditfeatureController</h1>
+    <h1 class="page-title">Class: FulltextSearch</h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="State">
-            <span class="ancestors">gmf.EditfeatureController.</span>State
+        <h2 id="FulltextSearch">
+            <span class="ancestors">gmf.search.</span>FulltextSearch
         </h2>
         
     
@@ -39,19 +39,31 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>The different possible values of the <code>state</code> inner property.</p></div>
-        
-
-        
-
-
-    
-    <h5 class="subsection-title">Enumeration:</h5>
-    
 
     
 
-<table class="props">
+    <h4 class="name" id="FulltextSearch"><span class="type-signature"></span>new FulltextSearch<span class="signature">($injector, $http)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Provides the c2c-geoportal full-text search.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -64,9 +76,7 @@
 
         
 
-        
         <th class="last">Description</th>
-        
     </tr>
     </thead>
 
@@ -75,16 +85,12 @@
 
         <tr>
             
-                <td class="name"><code>IDLE</code></td>
+                <td class="name"><code>$injector</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
+                <a href="angular.$injector.html">angular.$injector</a>
             
             </td>
 
@@ -92,25 +98,19 @@
 
             
 
-            
-            <td class="description last"><p>The default state. While idle, nothing happens.</p></td>
-            </td>
+            <td class="description last"><p>Main injector.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>DEACTIVATE_EXECUTE</code></td>
+                <td class="name"><code>$http</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
+                <a href="angular.$http.html">angular.$http</a>
             
             </td>
 
@@ -118,97 +118,16 @@
 
             
 
-            
-            <td class="description last"><p>The state active after the deactivation of the editing tools and the
-unsaved modifications were saved or discarded.</p></td>
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>DEACTIVATE_PENDING</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            
-            <td class="description last"><p>The state active when the deactivation of the editing tools is in
-progress while there are unsaved modifications.</p></td>
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>STOP_EDITING_EXECUTE</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            
-            <td class="description last"><p>Final state set after the &quot;stop editing&quot; button has been clicked while
-no unsaved modifications were made or if the user saved them or confirmed
-to continue without saving.</p></td>
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>STOP_EDITING_PENDING</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            
-            <td class="description last"><p>The state that is active while when the &quot;stop editing&quot; button has been
-clicked but before any confirmation has been made to continue.</p></td>
-            </td>
+            <td class="description last"><p>Angular http service.</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
+
+
 
 
 
@@ -242,7 +161,7 @@ clicked but before any confirmation has been made to continue.</p></td>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/directives/editfeature.js#L1142">contribs/gmf/src/directives/editfeature.js:1142</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/search/fulltextsearch.js#L17">contribs/gmf/src/search/fulltextsearch.js:17</a>
     </div>
     
 
@@ -254,7 +173,20 @@ clicked but before any confirmation has been made to continue.</p></td>
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 
@@ -269,7 +201,234 @@ clicked but before any confirmation has been made to continue.</p></td>
     
 
     
+        <h3 class="subsection-title">Members</h3>
 
+        
+            
+<h4 class="name" id=".module"><span class="type-signature">(static, non-null) </span>module<span class="type-signature">: angular.Module</span> </h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/search/fulltextsearch.js#L69">contribs/gmf/src/search/fulltextsearch.js:69</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="search"><span class="type-signature"></span>search<span class="signature">(query, params)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Perform a search query on the c2c-geoportal full-text search.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+
+            <td class="type">
+            
+                string
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Search query.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+
+            <td class="type">
+            
+                <a href="Object.<string, string>.html">Object.<string, string></a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Additional parameters.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/search/fulltextsearch.js#L52">contribs/gmf/src/search/fulltextsearch.js:52</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="Promise.html">Promise</a>
+
+
+    <p>Request promise with data array.</p>
+
+</div>
+
+    
+
+
+
+        
     
 
     

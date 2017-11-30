@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: objecteditingComponent <small>component:gmfObjectediting</small></title>
+    <title>JSDoc: Class: fulltextSearch_</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: objecteditingComponent <small>component:gmfObjectediting</small></h1>
+    <h1 class="page-title">Class: fulltextSearch_</h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="objecteditingComponent">
-            <span class="ancestors">gmf.</span>objecteditingComponent
+        <h2 id="fulltextSearch_">
+            <span class="ancestors">gmf.search.fulltextSearch.</span>fulltextSearch_
         </h2>
         
     
@@ -42,24 +42,14 @@
 
     
 
-    <h4 class="name" id="objecteditingComponent"><span class="type-signature"></span>new objecteditingComponent<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="fulltextSearch_"><span class="type-signature"></span>new fulltextSearch_<span class="signature">($injector, $http)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Component used to edit the geometry of a single feature using advanced
-tools. The geometry must be Multi.</p>
-<p>Example:</p>
-<pre class="prettyprint source"><code>&lt;gmf-objectediting
-    gmf-objectediting-active=&quot;ctrl.objectEditingActive&quot;
-    gmf-objectediting-feature=&quot;ctrl.objectEditingFeature&quot;
-    gmf-objectediting-geomtype=&quot;ctrl.objectEditingGeomType&quot;
-    gmf-objectediting-layernodeid=&quot;ctrl.objectEditingLayerNodeId&quot;
-    gmf-objectediting-map=&quot;::ctrl.map&quot;
-    gmf-objectediting-sketchfeatures=&quot;::ctrl.sketchFeatures&quot;>
-&lt;/gmf-objectediting></code></pre>
+    <p>Provides the c2c-geoportal full-text search.</p>
 </div>
 
 
@@ -70,9 +60,7 @@ tools. The geometry must be Multi.</p>
 
 
 
-
-
-    <h5>HTML attributes:</h5>
+    <h5>Parameters:</h5>
     
 
 <table class="params">
@@ -97,16 +85,12 @@ tools. The geometry must be Multi.</p>
 
         <tr>
             
-                <td class="name"><code>gmf-objectediting-active</code></td>
+                <td class="name"><code>$injector</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
-
-
-
+                <a href="angular.$injector.html">angular.$injector</a>
             
             </td>
 
@@ -114,24 +98,19 @@ tools. The geometry must be Multi.</p>
 
             
 
-            <td class="description last">Whether the component is
-    active or not.</td>
+            <td class="description last"><p>Main injector.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>gmf-objectediting-feature</code></td>
+                <td class="name"><code>$http</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Feature.html">ol.Feature</a></span>
-
-
-
+                <a href="angular.$http.html">angular.$http</a>
             
             </td>
 
@@ -139,108 +118,14 @@ tools. The geometry must be Multi.</p>
 
             
 
-            <td class="description last">The feature to edit.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gmf-objectediting-geomtype</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The geometry type.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gmf-objectediting-layernodeid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The GMF layer node id.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gmf-objectediting-map</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The map.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gmf-objectediting-sketchfeatures</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Collection.html">ol.Collection</a>:<a href="-_.html"></a>.&lt;<a href="http://openlayers.org/en/master/apidoc/ol.Feature.html">ol.Feature</a>:<a href="-_.html"></a>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Collection of temporary features being drawn by the tools.</td>
+            <td class="description last"><p>Angular http service.</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -276,7 +161,7 @@ tools. The geometry must be Multi.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/gmf_search_to_module/contribs/gmf/src/directives/objectediting.js#L79">contribs/gmf/src/directives/objectediting.js:79</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/gmf_search_to_module/contribs/gmf/src/search/fulltextsearch.js#L23">contribs/gmf/src/search/fulltextsearch.js:23</a>
     </div>
     
 
@@ -317,6 +202,173 @@ tools. The geometry must be Multi.</p>
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="search"><span class="type-signature"></span>search<span class="signature">(query, params)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Perform a search query on the c2c-geoportal full-text search.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+
+            <td class="type">
+            
+                string
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Search query.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+
+            <td class="type">
+            
+                <a href="Object.<string, string>.html">Object.<string, string></a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Additional parameters.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/gmf_search_to_module/contribs/gmf/src/search/fulltextsearch.js#L58">contribs/gmf/src/search/fulltextsearch.js:58</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="Promise.html">Promise</a>
+
+
+    <p>Request promise with data array.</p>
+
+</div>
+
+    
+
+
+
+        
     
 
     

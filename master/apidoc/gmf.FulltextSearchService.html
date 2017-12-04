@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Class: FulltextSearchService</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,45 +17,366 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
-
-    
-
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
+    <h1 class="page-title">Class: FulltextSearchService</h1>
 
     
 
 
 
 
-    <section>
-        <article><h1>ngeo</h1><p>ngeo is a JS library that aims to ease the development of applications based on
-<a href="https://angularjs.org/">AngularJS</a> and <a href="http://openlayers.org">OpenLayers</a>.</p>
-<p>More specifically, ngeo is a collection of AngularJS Directives and Services
-useful for developing applications combining AngularJS and OpenLayers.</p>
-<p>Through the Directives, Services and examples it provides, ngeo defines
-a specific way to combine Angular and OpenLayers in an application.</p>
-<p>If you use ngeo we recommend that you also use Closure, because this is the way
-we design and use ngeo at Camptocamp. But using Closure is not mandatory:
-standalone builds of ngeo can be created.</p>
-<p><a href="../examples">Examples</a></p></article>
-    </section>
+<section>
+
+<header>
+    
+        <h2 id="FulltextSearchService">
+            <span class="ancestors">gmf.</span>FulltextSearchService
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    <h4 class="name" id="FulltextSearchService"><span class="type-signature"></span>new FulltextSearchService<span class="signature">($injector, $http)</span><span class="type-signature"></span></h4>
+
+    
 
 
+
+<div class="description">
+    <p>Provides the c2c-geoportal full-text search.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>$injector</code></td>
+            
+
+            <td class="type">
+            
+                <a href="angular.$injector.html">angular.$injector</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Main injector.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>$http</code></td>
+            
+
+            <td class="type">
+            
+                <a href="angular.$http.html">angular.$http</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Angular http service.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/fulltextsearch.js#L16">contribs/gmf/src/services/fulltextsearch.js:16</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="search"><span class="type-signature"></span>search<span class="signature">(query, params)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Perform a search query on the c2c-geoportal full-text search.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+
+            <td class="type">
+            
+                string
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Search query.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+
+            <td class="type">
+            
+                <a href="Object.<string, string>.html">Object.<string, string></a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Additional parameters.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/fulltextsearch.js#L51">contribs/gmf/src/services/fulltextsearch.js:51</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="Promise.html">Promise</a>
+
+
+    <p>Request promise with data array.</p>
+
+</div>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

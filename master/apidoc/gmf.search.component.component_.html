@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: ngeo.datasource.Group</title>
+    <title>JSDoc: Class: component_ <small>component:gmfSearch</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: ngeo.datasource.Group</h1>
+    <h1 class="page-title">Class: component_ <small>component:gmfSearch</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="VisibilityState">
-            <span class="ancestors">ngeo.datasource.Group.</span>VisibilityState
+        <h2 id="component_">
+            <span class="ancestors">gmf.search.component.</span>component_
         </h2>
         
     
@@ -40,16 +40,75 @@
     
         
 
-        
-
-
     
-    <h5 class="subsection-title">Enumeration:</h5>
-    
+
+    <h4 class="name" id="component_"><span class="type-signature"></span>new component_<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
-<table class="props">
+
+
+<div class="description">
+    <p>A component that allows to search and recenter on a selected
+result's feature.
+It can search in multiple GeoJSON datasources.
+It can filter and group results by a feature's property.</p>
+<p>This component uses the <a href="ngeo.FeatureOverlayMgr.html"><code>ngeo.FeatureOverlayMgr</code></a> to create a
+feature overlay for drawing features on the map. The application
+is responsible to initialize the <a href="ngeo.FeatureOverlayMgr.html"><code>ngeo.FeatureOverlayMgr</code></a>
+with the map.</p>
+<p>Example flat results:</p>
+<pre class="prettyprint source"><code> &lt;gmf-search gmf-search-map=&quot;::ctrl.map&quot;
+   gmf-search-options=&quot;::ctrl.searchOptions&quot;
+   gmf-search-styles=&quot;::ctrl.searchStyles&quot;
+   gmf-search-datasources=&quot;::ctrl.searchDatasources&quot;
+   gmf-search-coordinatesprojections=&quot;::ctrl.searchCoordinatesProjections&quot;
+   gmf-search-clearbutton=&quot;::true&quot;>
+ &lt;/gmf-search>
+ &lt;script>
+   (function() {
+     let module = angular.module('app');
+     module.value('fulltextsearchUrl', '${request.route_url('fulltextsearch', _query={&quot;limit&quot;: 20}) | n}');
+     module.value('gmfSearchGroups', []);
+     module.constant('gmfSearchActions', [
+           {action: 'add_theme', title: 'Add a theme'},
+           {action: 'add_group', title: 'Add a sub theme'},
+           {action: 'add_layer', title: 'Add a layer'}
+     ]);
+   })();
+ &lt;/script></code></pre><p>Example with categories:</p>
+<pre class="prettyprint source"><code> &lt;gmf-search gmf-search-map=&quot;::ctrl.map&quot;
+   gmf-search-options=&quot;::ctrl.searchOptions&quot;
+   gmf-search-styles=&quot;::ctrl.searchStyles&quot;
+   gmf-search-datasources=&quot;::ctrl.searchDatasources&quot;
+   gmf-search-coordinatesprojections=&quot;::ctrl.searchCoordinatesProjections&quot;
+   gmf-search-clearbutton=&quot;::true&quot;>
+   gmf-search-colorchooser=&quot;::true&quot;>
+ &lt;/gmf-search>
+ &lt;script>
+   (function() {
+     let module = angular.module('app');
+     module.value('fulltextsearchUrl', '${request.route_url('fulltextsearch', _query={&quot;limit&quot;: 30, &quot;partitionlimit&quot;: 5}) | n}');
+     module.value('gmfSearchGroups', ${dumps(fulltextsearch_groups) | n});
+     module.value('gmfSearchActions', []);
+   })();
+ &lt;/script></code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>HTML attributes:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -62,9 +121,7 @@
 
         
 
-        
         <th class="last">Description</th>
-        
     </tr>
     </thead>
 
@@ -73,7 +130,7 @@
 
         <tr>
             
-                <td class="name"><code>INDETERMINATE</code></td>
+                <td class="name"><code>gmf-search-input-value</code></td>
             
 
             <td class="type">
@@ -90,22 +147,20 @@
 
             
 
-            
-            <td class="description last"></td>
-            </td>
+            <td class="description last">The input value (read only).</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>OFF</code></td>
+                <td class="name"><code>gmf-search-map</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
 
 
 
@@ -116,22 +171,23 @@
 
             
 
-            
-            <td class="description last"></td>
-            </td>
+            <td class="description last">The map.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ON</code></td>
+                <td class="name"><code>gmf-search-options</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+<span class="param-type">TypeaheadOptions</span>
+|
+
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
 
 
 
@@ -142,14 +198,214 @@
 
             
 
+            <td class="description last">Addition Typeahead options.</td>
+        </tr>
+
+    
+
+        <tr>
             
-            <td class="description last"></td>
+                <td class="name"><code>gmf-search-datasource</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="gmfx.html#SearchComponentDatasource">gmfx.SearchComponentDatasource</a></span>
+
+
+
+            
             </td>
+
+            
+
+            
+
+            <td class="description last">The datasources.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-search-styles</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>, <a href="http://openlayers.org/en/master/apidoc/ol.style.Style.html">ol.style.Style</a>:<a href="-_.html"></a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A map of styles to apply on searched features. Keys
+     must be the 'layer_name' propertie of features except for coordinates
+     where the key ifor its style is the value of the constant
+     'gmf.COORDINATES_LAYER_NAME'. The 'default' key is used to apply the
+     default style.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-search-coordinatesprojections</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">codes
+     of supported projections for coordinates search (projections must be
+     defined in ol3). If not provided, only the map's view projection
+     format will be supported.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-search-clearbutton</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The clear button.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-search-colorchooser</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Whether to let the user
+     change the style of the feature on the map. Default is false.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-search-listeners</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ngeox.SearchComponentListeners</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The listeners.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-search-maxzoom</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The maximum zoom we will zoom on result, default is 16.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-search-on-init</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Optional function called when the component is initialized.</td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -183,7 +439,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/datasource/group.js#L167">src/datasource/group.js:167</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/search/component.js#L142">contribs/gmf/src/search/component.js:142</a>
     </div>
     
 
@@ -195,7 +451,20 @@
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 

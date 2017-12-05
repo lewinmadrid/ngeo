@@ -1,5 +1,16 @@
 goog.provide('app.search');
 
+import './search.css'
+import 'jquery/dist/jquery.js'
+import 'angular/angular.js'
+import 'angular-gettext/dist/angular-gettext.js'
+import 'angular-ui-date/dist/date.js'
+import 'angular-float-thead/angular-floatThead.js'
+import 'floatthead/dist/jquery.floatThead.min.js'
+import 'corejs-typeahead/dist/typeahead.bundle.js'
+import 'proj4/dist/proj4.js'
+import '../utils/watchwatchers.js'
+
 /** @suppress {extraRequire} */
 goog.require('ngeo.proj.EPSG21781');
 /** @suppress {extraRequire} */

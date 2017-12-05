@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Number <small>filter:ngeoNumber</small></title>
+    <title>JSDoc: Class: directive_ <small>directive:ngeoMap</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Number <small>filter:ngeoNumber</small></h1>
+    <h1 class="page-title">Class: directive_ <small>directive:ngeoMap</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="Number">
-            <span class="ancestors">ngeo.</span>Number
+        <h2 id="directive_">
+            <span class="ancestors">ngeo.map.directive.</span>directive_
         </h2>
         
     
@@ -42,24 +42,25 @@
 
     
 
-    <h4 class="name" id="Number"><span class="type-signature"></span>new Number<span class="signature">($locale)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="directive_"><span class="type-signature"></span>new directive_<span class="signature">($window, ngeoSyncDataSourcesMap)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>A filter used to format a number with a precision, using the locale.</p>
-<p>Arguments:</p>
-<ul>
-<li>opt_precision: The used precision, default is 3.</li>
-</ul>
+    <p>Provides a directive used to insert a user-defined OpenLayers
+map in the DOM. The directive does not create an isolate scope.</p>
 <p>Examples:</p>
-<pre class="prettyprint source"><code> {{0.1234 | ngeoNumber}} => 0.123
- {{1.234 | ngeoNumber}} => 1.23
- {{12.34 | ngeoNumber}} => 12.3
- {{123.4 | ngeoNumber}} => 123
- {{1234 | ngeoNumber}} => 1230</code></pre>
+<p>  Simple:</p>
+<pre class="prettyprint source"><code> &lt;div ngeo-map=&quot;ctrl.map&quot;>&lt;/div></code></pre><p>  Manage window resizing:</p>
+<pre class="prettyprint source"><code> &lt;div
+   ngeo-map=&quot;ctrl.map&quot;
+   ngeo-map-manage-resize=&quot;ctrl.manageResize&quot;
+   ngeo-map-resize-transition=&quot;ctrl.resizeTransition&quot;>
+ &lt;/div></code></pre><p>See our live examples:
+<a href="../examples/permalink.html">../examples/permalink.html</a>
+<a href="../examples/simple.html">../examples/simple.html</a></p>
 </div>
 
 
@@ -70,7 +71,9 @@
 
 
 
-    <h5>Parameters:</h5>
+
+
+    <h5>HTML attributes:</h5>
     
 
 <table class="params">
@@ -95,12 +98,16 @@
 
         <tr>
             
-                <td class="name"><code>$locale</code></td>
+                <td class="name"><code>ngeo-map</code></td>
             
 
             <td class="type">
             
-                <a href="angular.$locale.html">angular.$locale</a>
+                
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
+
+
+
             
             </td>
 
@@ -108,14 +115,12 @@
 
             
 
-            <td class="description last"><p>Angular locale</p></td>
+            <td class="description last">The map.</td>
         </tr>
 
     
     </tbody>
 </table>
-
-
 
 
 
@@ -151,7 +156,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/services/filters.js#L57">src/services/filters.js:57</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/directive.js#L50">src/map/directive.js:50</a>
     </div>
     
 
@@ -179,10 +184,10 @@
         
 <div class="param-desc">
 
-    <a href="ngeox.number.html">ngeox.number</a>
+    <a href="angular.Directive.html">angular.Directive</a>
 
 
-    <p>Function used to format number into a string.</p>
+    <p>Directive Definition Object.</p>
 
 </div>
 
@@ -205,189 +210,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="~result"><span class="type-signature">(inner) </span>result<span class="signature">(number, [opt_precision]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>number</code></td>
-            
-
-            <td class="type">
-            
-                number
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The number to format.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[opt_precision]</code></td>
-            
-
-            <td class="type">
-            
-                <a href="number=.html">number=</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The used precision, default is 3.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/services/filters.js#L65">src/services/filters.js:65</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    string
-
-
-    <p>The formatted string.</p>
-
-</div>
-
-    
-
-
-
-        
     
 
     

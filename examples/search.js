@@ -1,4 +1,7 @@
-goog.module('app.search');
+/**
+ * @module
+ */
+let exports = {};
 
 import './search.css'
 import 'jquery/dist/jquery.js'
@@ -11,18 +14,18 @@ import 'corejs-typeahead/dist/typeahead.bundle.js'
 import 'proj4/dist/proj4.js'
 import '../utils/watchwatchers.js'
 
-const ngeoProjEPSG21781 = goog.require('ngeo.proj.EPSG21781');
-const ngeoMapDirective = goog.require('ngeo.mapDirective');
-const ngeoBase = goog.require('ngeo');
-const olMap = goog.require('ol.Map');
-const olView = goog.require('ol.View');
-const olLayerTile = goog.require('ol.layer.Tile');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olProj = goog.require('ol.proj');
-const olSourceOSM = goog.require('ol.source.OSM');
-const olSourceVector = goog.require('ol.source.Vector');
-const googAsserts = goog.require('goog.asserts');
-const ngeoSearchModule = goog.require('ngeo.search.module');
+import ngeoProjEPSG21781 from 'ngeo6/proj/EPSG21781';
+import ngeoMapDirective from 'ngeo6/mapDirective';
+import ngeoBase from 'ngeo6';
+import olMap from 'ol/Map';
+import olView from 'ol/View';
+import olLayerTile from 'ol/layer/Tile';
+import olLayerVector from 'ol/layer/Vector';
+import olProj from 'ol/proj';
+import olSourceOSM from 'ol/source/OSM';
+import olSourceVector from 'ol/source/Vector';
+import googAsserts from 'goog/asserts';
+import ngeoSearchModule from 'ngeo6/search/module';
 
 
 /** @type {!angular.Module} **/
@@ -228,3 +231,4 @@ app.MainController = function() {
 
 
 app.module.controller('MainController', app.MainController);
+export default exports;

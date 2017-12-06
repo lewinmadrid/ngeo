@@ -85,23 +85,14 @@ const iconRule = {
   }
 };
 
-
-const createHtmlPlugin = function(chunks) {
-  return new HtmlWebpackPlugin({
-    template: 'examples/search.html',
-    chunksSortMode: 'manual',
-    chunks
-  });
-};
-
-
 const config = {
   context: __dirname + '/../',
   devtool: 'source-map',
   entry: {
+    app: './examples/search.js',
   },
   output: {
-    path: __dirname + '/../dist/search'
+    path: __dirname + '/../dist/'
   },
   module: {
     rules: [
@@ -118,19 +109,27 @@ const config = {
     new webpack.optimize.ModuleConcatenationPlugin(),
     providePlugin,
     new ExtractTextPlugin('[name].css'),
-    new ExtractTextPlugin('[name].less')
+    new ExtractTextPlugin('[name].less'),
+    new HtmlWebpackPlugin({
+      template: 'examples/search.html',
+      chunksSortMode: 'manual',
+      filename: 'search.html',
+      chunks: ['app'],
+    }),
   ],
   resolve: {
     modules: [
       '../node_modules'
     ],
     alias: {
-      'jquery-ui/datepicker' : 'jquery-ui/ui/widgets/datepicker'
+      'jquery-ui/datepicker' : 'jquery-ui/ui/widgets/datepicker',
+      'goog/asserts': __dirname + '/../src/utils/goog.asserts.js',
+      'ngeo': __dirname + '/../src',
+      'gmf': __dirname + '/../contribs/gmf/src',
     }
   }
 };
 
 module.exports = {
-  config,
-  createHtmlPlugin
+  config: config,
 };

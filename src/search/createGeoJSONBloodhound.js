@@ -1,9 +1,8 @@
 /**
- * @module
- */
-/**
  * @module ngeo search namespace
  */
+
+import 'corejs-typeahead/dist/typeahead.bundle'
 import olBase from 'ol';
 import olFormatGeoJSON from 'ol/format/GeoJSON';
 import olObj from 'ol/obj';

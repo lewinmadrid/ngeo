@@ -2,8 +2,8 @@
  * @module
  */
 import googAsserts from 'goog/asserts';
-import ngeoBase from './index.js';
-import ngeoDatasourceSyncDataSourcesMap from './datasource/SyncDataSourcesMap.js';
+import ngeoBase from 'ngeo/index.js';
+import ngeoDatasourceSyncDataSourcesMap from 'ngeo/datasource/SyncDataSourcesMap.js';
 import olEvents from 'ol/events';
 import olMap from 'ol/Map';
 

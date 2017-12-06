@@ -131,6 +131,22 @@ jobs:
     - make dist/ngeo.js
     - make dist/gmf.js
     if: type = pull_request
+  - stage: Build
+    env:
+    - JOB=webpack
+    script:
+    - node node_modules/googshift/filename-case-from-module.js src '*.js'
+    - node node_modules/googshift/filename-case-from-module.js contribs/gmf/src '*.js'
+    - node_modules/.bin/jscodeshift --transform node_modules/googshift/transforms/goog_provide_to_goog_module.js src contribs/gmf/src examples contribs/gmf/examples test contribs/gmf/test
+    - node_modules/.bin/jscodeshift --transform node_modules/googshift/transforms/goog_module_to_es6_module.js src contribs/gmf/src examples contribs/gmf/examples test contribs/gmf/test
+    - buildtools/git-grep-sed " from '\.\./" "s/ from '\.\.\// from 'ngeo\//g"
+    - buildtools/git-grep-sed " from 'ol/" "s/ from 'ol\/\(.*\)';/ from \'ol\/\L\1\';/g"
+    - NODE_ENV=dev node_modules/.bin/webpack
+    - rm -rf dist/*
+    - NODE_ENV=prod node_modules/.bin/webpack
+    - make test
+    - make lint
+    if: type = pull_request
   - stage: Build and publish
     env:
     - JOB=publish-npm

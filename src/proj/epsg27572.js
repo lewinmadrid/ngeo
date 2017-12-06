@@ -1,6 +1,7 @@
 /**
  * @module
  */
+import 'proj4/dist/proj4-src';
 import olProj from 'ol/proj';
 import olProjProj4 from 'ol/proj/proj4';
 

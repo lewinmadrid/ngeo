@@ -34,65 +34,7 @@
  * @author agrieve@google.com (Andrew Grieve)
  */
 
-goog.provide('goog.asserts');
-goog.provide('goog.asserts.AssertionError');
-
-goog.require('goog.debug.Error');
-goog.require('goog.dom.NodeType');
-goog.require('goog.string');
-
-
-/**
- * @define {boolean} Whether to strip out asserts or to leave them in.
- */
-goog.define('goog.asserts.ENABLE_ASSERTS', goog.DEBUG);
-
-
-
-/**
- * Error object for failed assertions.
- * @param {string} messagePattern The pattern that was used to form message.
- * @param {!Array<*>} messageArgs The items to substitute into the pattern.
- * @constructor
- * @extends {goog.debug.Error}
- * @final
- */
-goog.asserts.AssertionError = function(messagePattern, messageArgs) {
-  messageArgs.unshift(messagePattern);
-  goog.debug.Error.call(this, goog.string.subs.apply(null, messageArgs));
-  // Remove the messagePattern afterwards to avoid permanently modifying the
-  // passed in array.
-  messageArgs.shift();
-
-  /**
-   * The message pattern used to format the error message. Error handlers can
-   * use this to uniquely identify the assertion.
-   * @type {string}
-   */
-  this.messagePattern = messagePattern;
-};
-goog.inherits(goog.asserts.AssertionError, goog.debug.Error);
-
-
-/** @override */
-goog.asserts.AssertionError.prototype.name = 'AssertionError';
-
-
-/**
- * The default error handler.
- * @param {!goog.asserts.AssertionError} e The exception to be handled.
- */
-goog.asserts.DEFAULT_ERROR_HANDLER = function(e) {
-  throw e;
-};
-
-
-/**
- * The handler responsible for throwing or logging assertion errors.
- * @private {function(!goog.asserts.AssertionError)}
- */
-goog.asserts.errorHandler_ = goog.asserts.DEFAULT_ERROR_HANDLER;
-
+let exports = {};
 
 /**
  * Throws an exception with the given message and "Assertion failed" prefixed
@@ -104,7 +46,7 @@ goog.asserts.errorHandler_ = goog.asserts.DEFAULT_ERROR_HANDLER;
  * @throws {goog.asserts.AssertionError} When the value is not a number.
  * @private
  */
-goog.asserts.doAssertFailure_ = function(
+exports.doAssertFailure_ = function(
     defaultMessage, defaultArgs, givenMessage, givenArgs) {
   var message = 'Assertion failed';
   if (givenMessage) {
@@ -118,8 +60,8 @@ goog.asserts.doAssertFailure_ = function(
   // a stack trace is added to var message above. With this, a stack trace is
   // not added until this line (it causes the extra garbage to be added after
   // the assertion message instead of in the middle of it).
-  var e = new goog.asserts.AssertionError('' + message, args || []);
-  goog.asserts.errorHandler_(e);
+  var e = new exports.AssertionError('' + message, args || []);
+  exports.errorHandler_(e);
 };
 
 
@@ -129,9 +71,9 @@ goog.asserts.doAssertFailure_ = function(
  * messages.
  * @param {function(!goog.asserts.AssertionError)} errorHandler
  */
-goog.asserts.setErrorHandler = function(errorHandler) {
-  if (goog.asserts.ENABLE_ASSERTS) {
-    goog.asserts.errorHandler_ = errorHandler;
+exports.setErrorHandler = function(errorHandler) {
+  if (exports.ENABLE_ASSERTS) {
+    exports.errorHandler_ = errorHandler;
   }
 };
 
@@ -146,9 +88,9 @@ goog.asserts.setErrorHandler = function(errorHandler) {
  * @return {T} The value of the condition.
  * @throws {goog.asserts.AssertionError} When the condition evaluates to false.
  */
-goog.asserts.assert = function(condition, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !condition) {
-    goog.asserts.doAssertFailure_(
+exports.assert = function(condition, opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS && !condition) {
+    exports.doAssertFailure_(
         '', null, opt_message, Array.prototype.slice.call(arguments, 2));
   }
   return condition;
@@ -173,10 +115,10 @@ goog.asserts.assert = function(condition, opt_message, var_args) {
  * @param {...*} var_args The items to substitute into the failure message.
  * @throws {goog.asserts.AssertionError} Failure.
  */
-goog.asserts.fail = function(opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS) {
-    goog.asserts.errorHandler_(
-        new goog.asserts.AssertionError(
+exports.fail = function(opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS) {
+    exports.errorHandler_(
+        new exports.AssertionError(
             'Failure' + (opt_message ? ': ' + opt_message : ''),
             Array.prototype.slice.call(arguments, 1)));
   }
@@ -191,9 +133,9 @@ goog.asserts.fail = function(opt_message, var_args) {
  * @return {number} The value, guaranteed to be a number when asserts enabled.
  * @throws {goog.asserts.AssertionError} When the value is not a number.
  */
-goog.asserts.assertNumber = function(value, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !goog.isNumber(value)) {
-    goog.asserts.doAssertFailure_(
+exports.assertNumber = function(value, opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS && !goog.isNumber(value)) {
+    exports.doAssertFailure_(
         'Expected number but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
   }
@@ -209,9 +151,9 @@ goog.asserts.assertNumber = function(value, opt_message, var_args) {
  * @return {string} The value, guaranteed to be a string when asserts enabled.
  * @throws {goog.asserts.AssertionError} When the value is not a string.
  */
-goog.asserts.assertString = function(value, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !goog.isString(value)) {
-    goog.asserts.doAssertFailure_(
+exports.assertString = function(value, opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS && !goog.isString(value)) {
+    exports.doAssertFailure_(
         'Expected string but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
   }
@@ -228,9 +170,9 @@ goog.asserts.assertString = function(value, opt_message, var_args) {
  *     enabled.
  * @throws {goog.asserts.AssertionError} When the value is not a function.
  */
-goog.asserts.assertFunction = function(value, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !goog.isFunction(value)) {
-    goog.asserts.doAssertFailure_(
+exports.assertFunction = function(value, opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS && !goog.isFunction(value)) {
+    exports.doAssertFailure_(
         'Expected function but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
   }
@@ -246,9 +188,9 @@ goog.asserts.assertFunction = function(value, opt_message, var_args) {
  * @return {!Object} The value, guaranteed to be a non-null object.
  * @throws {goog.asserts.AssertionError} When the value is not an object.
  */
-goog.asserts.assertObject = function(value, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !goog.isObject(value)) {
-    goog.asserts.doAssertFailure_(
+exports.assertObject = function(value, opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS && !goog.isObject(value)) {
+    exports.doAssertFailure_(
         'Expected object but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
   }
@@ -264,9 +206,9 @@ goog.asserts.assertObject = function(value, opt_message, var_args) {
  * @return {!Array<?>} The value, guaranteed to be a non-null array.
  * @throws {goog.asserts.AssertionError} When the value is not an array.
  */
-goog.asserts.assertArray = function(value, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !goog.isArray(value)) {
-    goog.asserts.doAssertFailure_(
+exports.assertArray = function(value, opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS && !goog.isArray(value)) {
+    exports.doAssertFailure_(
         'Expected array but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
   }
@@ -283,9 +225,9 @@ goog.asserts.assertArray = function(value, opt_message, var_args) {
  *     enabled.
  * @throws {goog.asserts.AssertionError} When the value is not a boolean.
  */
-goog.asserts.assertBoolean = function(value, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !goog.isBoolean(value)) {
-    goog.asserts.doAssertFailure_(
+exports.assertBoolean = function(value, opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS && !goog.isBoolean(value)) {
+    exports.doAssertFailure_(
         'Expected boolean but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
   }
@@ -302,10 +244,10 @@ goog.asserts.assertBoolean = function(value, opt_message, var_args) {
  *     enabled.
  * @throws {goog.asserts.AssertionError} When the value is not an Element.
  */
-goog.asserts.assertElement = function(value, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS &&
+exports.assertElement = function(value, opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS &&
       (!goog.isObject(value) || value.nodeType != goog.dom.NodeType.ELEMENT)) {
-    goog.asserts.doAssertFailure_(
+    exports.doAssertFailure_(
         'Expected Element but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
   }
@@ -328,11 +270,11 @@ goog.asserts.assertElement = function(value, opt_message, var_args) {
  * @return {T}
  * @template T
  */
-goog.asserts.assertInstanceof = function(value, type, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !(value instanceof type)) {
-    goog.asserts.doAssertFailure_(
+exports.assertInstanceof = function(value, type, opt_message, var_args) {
+  if (exports.ENABLE_ASSERTS && !(value instanceof type)) {
+    exports.doAssertFailure_(
         'Expected instanceof %s but got %s.',
-        [goog.asserts.getType_(type), goog.asserts.getType_(value)],
+        [exports.getType_(type), exports.getType_(value)],
         opt_message, Array.prototype.slice.call(arguments, 3));
   }
   return value;
@@ -343,9 +285,9 @@ goog.asserts.assertInstanceof = function(value, type, opt_message, var_args) {
  * Checks that no enumerable keys are present in Object.prototype. Such keys
  * would break most code that use {@code for (var ... in ...)} loops.
  */
-goog.asserts.assertObjectPrototypeIsIntact = function() {
+exports.assertObjectPrototypeIsIntact = function() {
   for (var key in Object.prototype) {
-    goog.asserts.fail(key + ' should not be enumerable in Object.prototype.');
+    exports.fail(key + ' should not be enumerable in Object.prototype.');
   }
 };
 
@@ -357,7 +299,7 @@ goog.asserts.assertObjectPrototypeIsIntact = function() {
  * @return {string} The best display name for the value, or 'unknown type name'.
  * @private
  */
-goog.asserts.getType_ = function(value) {
+exports.getType_ = function(value) {
   if (value instanceof Function) {
     return value.displayName || value.name || 'unknown type name';
   } else if (value instanceof Object) {
@@ -368,3 +310,5 @@ goog.asserts.getType_ = function(value) {
   }
 };
 
+
+export default exports;

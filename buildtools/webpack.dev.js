@@ -22,16 +22,9 @@ module.exports = webpackMerge(commons.config, {
   output: {
     filename: '[name].js'
   },
-  entry: {
-    app: './examples/search.js',
-  },
   module: {
     rules: [
-      resourcesRule
+      resourcesRule,
     ]
   },
-  plugins: [
-    commons.createHtmlPlugin(['dependencies', 'app', 'loadApp']),
-    loaderOptionsPlugin
-  ]
 });

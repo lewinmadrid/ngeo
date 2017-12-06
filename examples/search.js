@@ -3,33 +3,33 @@
  */
 let exports = {};
 
-import './search.css'
-import 'jquery/dist/jquery.js'
-import 'angular/angular.js'
-import 'angular-gettext/dist/angular-gettext.js'
-import 'angular-ui-date/dist/date.js'
-import 'angular-float-thead/angular-floatThead.js'
-import 'floatthead/dist/jquery.floatThead.min.js'
-import 'corejs-typeahead/dist/typeahead.bundle.js'
-import 'proj4/dist/proj4.js'
-import '../utils/watchwatchers.js'
+import './search.css';
+import 'jquery/dist/jquery.js';
+import 'angular/angular.js';
+import 'angular-gettext/dist/angular-gettext.js';
+import 'angular-ui-date/dist/date.js';
+import 'angular-float-thead/angular-floatThead.js';
+import 'floatthead/dist/jquery.floatThead.min.js';
+import 'corejs-typeahead/dist/typeahead.bundle.js';
+import 'proj4/dist/proj4.js';
+import '../utils/watchwatchers.js';
 
-import ngeoProjEPSG21781 from 'ngeo6/proj/EPSG21781';
-import ngeoMapDirective from 'ngeo6/mapDirective';
-import ngeoBase from 'ngeo6';
-import olMap from 'ol/Map';
-import olView from 'ol/View';
-import olLayerTile from 'ol/layer/Tile';
-import olLayerVector from 'ol/layer/Vector';
-import olProj from 'ol/proj';
-import olSourceOSM from 'ol/source/OSM';
-import olSourceVector from 'ol/source/Vector';
+import ngeoProjEPSG21781 from 'ngeo/proj/epsg21781.js';
+import ngeoMapDirective from 'ngeo/directives/mapDirective.js';
+import ngeoBase from 'ngeo/index.js';
+import olMap from 'ol/Map.js';
+import olView from 'ol/View.js';
+import olLayerTile from 'ol/layer/Tile.js';
+import olLayerVector from 'ol/layer/Vector.js';
+import olProj from 'ol/proj.js';
+import olSourceOSM from 'ol/source/OSM.js';
+import olSourceVector from 'ol/source/Vector.js';
 import googAsserts from 'goog/asserts';
-import ngeoSearchModule from 'ngeo6/search/module';
+import ngeoSearchModule from 'ngeo/search/module.js';
 
 
 /** @type {!angular.Module} **/
-app.module = angular.module('app', [
+const module = angular.module('app', [
   ngeoBase.module.name,
   ngeoSearchModule.name
 ]);
@@ -38,7 +38,7 @@ app.module = angular.module('app', [
 /**
  * @type {!angular.Component}
  */
-app.searchComponent = {
+const searchComponent = {
   bndings: {
     'map': '=appSearchMap'
   },
@@ -52,7 +52,7 @@ app.searchComponent = {
 };
 
 
-app.module.component('appSearch', app.searchComponent);
+module.component('appSearch', searchComponent);
 
 
 /**
@@ -64,7 +64,7 @@ app.module.component('appSearch', app.searchComponent);
  *     create GeoJSON Bloodhound service.
  * @ngInject
  */
-app.SearchController = function($element, $rootScope, $compile, ngeoSearchCreateGeoJSONBloodhound) {
+const SearchController = function($element, $rootScope, $compile, ngeoSearchCreateGeoJSONBloodhound) {
   /**
    * @private
    * @type {angular.JQLite}
@@ -133,7 +133,7 @@ app.SearchController = function($element, $rootScope, $compile, ngeoSearchCreate
    * @export
    */
   this.listeners = /** @type {ngeox.SearchDirectiveListeners} */ ({
-    select: app.SearchController.select_.bind(this)
+    select: SearchController.select_.bind(this)
   });
 };
 
@@ -141,7 +141,7 @@ app.SearchController = function($element, $rootScope, $compile, ngeoSearchCreate
 /**
  * @export
  */
-app.SearchController.prototype.$onInit = function() {
+SearchController.prototype.$onInit = function() {
   // Empty the search field on focus and blur.
   const input = this.$element.find('input');
   input.on('focus blur', () => {
@@ -154,7 +154,7 @@ app.SearchController.prototype.$onInit = function() {
  * @return {ol.layer.Vector} The vector layer.
  * @private
  */
-app.SearchController.prototype.createVectorLayer_ = function() {
+SearchController.prototype.createVectorLayer_ = function() {
   const vectorLayer = new olLayerVector({
     source: new olSourceVector()
   });
@@ -171,7 +171,7 @@ app.SearchController.prototype.createVectorLayer_ = function() {
  * @return {Bloodhound} The bloodhound engine.
  * @private
  */
-app.SearchController.prototype.createAndInitBloodhound_ = function(ngeoSearchCreateGeoJSONBloodhound) {
+SearchController.prototype.createAndInitBloodhound_ = function(ngeoSearchCreateGeoJSONBloodhound) {
   const url = 'https://geomapfish-demo.camptocamp.net/2.2/wsgi/fulltextsearch?query=%QUERY';
   const bloodhound = ngeoSearchCreateGeoJSONBloodhound(
     url, undefined, olProj.get('EPSG:3857'), olProj.get('EPSG:21781'));
@@ -184,10 +184,10 @@ app.SearchController.prototype.createAndInitBloodhound_ = function(ngeoSearchCre
  * @param {jQuery.Event} event Event.
  * @param {Object} suggestion Suggestion.
  * @param {TypeaheadDataset} dataset Dataset.
- * @this {app.SearchController}
+ * @this {SearchController}
  * @private
  */
-app.SearchController.select_ = function(event, suggestion, dataset) {
+SearchController.select_ = function(event, suggestion, dataset) {
   const feature = /** @type {ol.Feature} */ (suggestion);
   const featureGeometry = /** @type {ol.geom.SimpleGeometry} */
       (feature.getGeometry());
@@ -203,14 +203,14 @@ app.SearchController.select_ = function(event, suggestion, dataset) {
 };
 
 
-app.module.controller('AppSearchController', app.SearchController);
+module.controller('AppSearchController', SearchController);
 
 
 /**
  * @constructor
  * @ngInject
  */
-app.MainController = function() {
+const MainController = function() {
   /**
    * @type {ol.Map}
    * @export
@@ -230,5 +230,6 @@ app.MainController = function() {
 };
 
 
-app.module.controller('MainController', app.MainController);
+module.controller('MainController', MainController);
+
 export default exports;

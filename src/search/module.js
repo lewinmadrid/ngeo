@@ -1,7 +1,4 @@
 /**
- * @module
- */
-/**
  * @module ngeo search namespace
  */
 import ngeoSearchSearchDirective from '../search/searchDirective.js';

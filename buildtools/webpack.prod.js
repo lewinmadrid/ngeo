@@ -1,10 +1,11 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const commons = require('./webpack.commons.js');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 
 const resourcesRule = {
-  test: /\.(jpeg)$/,
+  test: /\.jpeg$/,
   use: {
     loader: 'url-loader',
     options: {
@@ -24,19 +25,46 @@ const fontRule = {
   }
 };
 
+const jsUse = {
+  loader: 'babel-loader',
+  options: {
+    presets: ['es2015'],
+    plugins: ['angularjs-annotate'],
+  }
+}
 
-module.exports = webpackMerge(common.config, {
+const ngeoRule = {
+  test: /ngeo\/src\/.*\.js$/,
+  use: jsUse,
+}
+
+const examplesRule = {
+  test: /ngeo\/examples\/.*\.js$/,
+  use: jsUse,
+}
+
+module.exports = webpackMerge(commons.config, {
   output: {
-    filename: 'build/[name].[chunkhash:20].js'
+    filename: '[name].[chunkhash:20].js'
   },
   module: {
     rules: [
       resourcesRule,
-      fontRule
+      fontRule,
+      ngeoRule,
+      examplesRule,
     ]
   },
   plugins: [
-    common.createHtmlPlugin(['dependencies', 'app', 'loadApp']),
-    definePlugin
-  ]
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+    }),
+  ],
+  resolve: {
+    alias: {
+      'goog/asserts': __dirname + '/../src/utils/goog.asserts.prod.js',
+    }
+  },
 });

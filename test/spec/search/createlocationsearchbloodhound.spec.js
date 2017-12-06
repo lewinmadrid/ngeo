@@ -1,23 +1,29 @@
 /* global geoAdminLocationSearch */
-goog.require('ngeo.search.createLocationSearchBloodhound');
-goog.require('ngeo.test.data.geoAdminLocationSearch');
-goog.require('ngeo.search.module');
-goog.require('ngeo');
+
+import geoAdminLocationSearch from '../data/geoAdminLocationSearch';
+import ngeoSearchModule from 'ngeo/search/module';
+import ngeoCreateLocationSearchBloodhound from 'ngeo/search/createLocationSearchBloodhound'; 
+import ngeoBase from 'ngeo/index.js';
+import olProj from 'ol/proj';
+
+ngeoBase.module.requires.push(ngeoSearchModule.name);
+angular.module('myTest', [ngeoBase.module.name]);
 
 describe('ngeo.search.createLocationSearchBloodhound', () => {
 
-  let ngeoCreateLocationSearchBloodhound;
-  ngeo.module.requires.push(ngeo.search.module.name);
+  let ngeoCreateLocationSearchBloodhound_;
+
+  beforeEach(angular.mock.module('myTest'));
 
   beforeEach(() => {
-    inject(($injector) => {
-      ngeoCreateLocationSearchBloodhound = $injector.get('ngeoCreateLocationSearchBloodhound');
+    inject((ngeoCreateLocationSearchBloodhound) => {
+      ngeoCreateLocationSearchBloodhound_ = ngeoCreateLocationSearchBloodhound;
     });
   });
 
   it('Parses the features correctly', () => {
-    const bloodhound = ngeoCreateLocationSearchBloodhound({
-      targetProjection: ol.proj.get('EPSG:3857'),
+    const bloodhound = ngeoCreateLocationSearchBloodhound_({
+      targetProjection: olProj.get('EPSG:3857'),
       limit: 5
     });
     const transform = bloodhound.remote.transform;

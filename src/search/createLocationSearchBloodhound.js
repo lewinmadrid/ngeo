@@ -1,17 +1,18 @@
 /**
- * @module
- */
-/**
  * @module ngeo location search namespace
  */
+
+import 'corejs-typeahead/dist/typeahead.bundle'
 import olBase from 'ol';
 import olObj from 'ol/obj';
 import olProj from 'ol/proj';
-import ngeoProjEPSG21781 from '../proj/EPSG21781.js';
+import ngeoProjEPSG21781 from 'ngeo/proj/epsg21781.js';
 import olGeomPoint from 'ol/geom/Point';
 import olFeature from 'ol/Feature';
 
-const exports = function(opt_options) {
+const exports = {};
+
+const ngeoCreateLocationSearchBloodhound = function(opt_options) {
   const options = opt_options || {};
 
   const sourceProjection = olProj.get(ngeoProjEPSG21781);
@@ -124,9 +125,7 @@ const exports = function(opt_options) {
  */
 exports.module = angular.module('ngeoCreateLocationSearchBloodhound', []);
 
-exports.module.value(
-  'ngeoCreateLocationSearchBloodhound',
-  exports);
+exports.module.value('ngeoCreateLocationSearchBloodhound', ngeoCreateLocationSearchBloodhound);
 
 
 /**
@@ -149,4 +148,5 @@ exports.module.value(
  * @ngname search.createLocationSearchBloodhound
  */
 exports.Function;
+
 export default exports;

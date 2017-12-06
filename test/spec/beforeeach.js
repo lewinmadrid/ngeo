@@ -1,7 +1,5 @@
 /*eslint valid-jsdoc: 0 */
 
-goog.require('ngeo.search.module');
-
 beforeEach(() => {
   jasmine.addMatchers({
     /**

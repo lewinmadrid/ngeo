@@ -15,6 +15,9 @@
  * @module ngeo
  */
 let exports = {};
+import 'angular-gettext/dist/angular-gettext';
+import 'angular-ui-date/dist/date';
+import 'angular-float-thead/angular-floatThead';
 import olFormatIGC from 'ol/format/IGC';
 import olSourceRaster from 'ol/source/Raster';
 import olVectorTile from 'ol/VectorTile';

@@ -1,18 +1,18 @@
-goog.provide('ngeo.datasource.OGC');
+goog.module('ngeo.datasource.OGC');
 
-goog.require('goog.asserts');
-goog.require('ngeo.datasource.DataSource');
-goog.require('ngeo.datasource.OGC');
-goog.require('ol.format.GML2');
-goog.require('ol.format.GML3');
-goog.require('ol.format.WFS');
-goog.require('ol.format.WMSGetFeatureInfo');
+const googAsserts = goog.require('goog.asserts');
+const ngeoDatasourceDataSource = goog.require('ngeo.datasource.DataSource');
+const ngeoDatasourceOGC = goog.require('ngeo.datasource.OGC');
+const olFormatGML2 = goog.require('ol.format.GML2');
+const olFormatGML3 = goog.require('ol.format.GML3');
+const olFormatWFS = goog.require('ol.format.WFS');
+const olFormatWMSGetFeatureInfo = goog.require('ol.format.WMSGetFeatureInfo');
 
 
 /**
  * @implements {ngeox.datasource.OGC}
  */
-ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
+ngeoDatasourceOGC = class extends ngeoDatasourceDataSource {
 
   /**
    * A data source contain information of a single source of data that can
@@ -91,7 +91,7 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
      * @private
      */
     this.geometryName_ = options.geometryName ||
-      ngeo.datasource.OGC.DEFAULT_GEOMETRY_NAME_;
+      ngeoDatasourceOGC.DEFAULT_GEOMETRY_NAME_;
 
     /**
      * The type of images to fetch by queries by the (WMS) or (WMTS) .
@@ -115,14 +115,14 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
      * @private
      */
     this.ogcServerType_ = options.ogcServerType ||
-      ngeo.datasource.OGC.ServerType.MAPSERVER;
+      ngeoDatasourceOGC.ServerType.MAPSERVER;
 
     /**
      * The type data source. Can be: 'WMS' or 'WMTS'.
      * @type {string}
      * @private
      */
-    this.ogcType_ = options.ogcType || ngeo.datasource.OGC.Type.WMS;
+    this.ogcType_ = options.ogcType || ngeoDatasourceOGC.Type.WMS;
 
     /**
      * Whether the geometry from this data source can be used to snap the
@@ -191,7 +191,7 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
      * @private
      */
     this.wfsFeatureNS_ = options.wfsFeatureNS ||
-      ngeo.datasource.OGC.WFSFeatureNS[this.ogcServerType_];
+      ngeoDatasourceOGC.WFSFeatureNS[this.ogcServerType_];
 
     /**
      * The feature prefix to use with WFS requests.
@@ -199,7 +199,7 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
      * @private
      */
     this.wfsFeaturePrefix_ = options.wfsFeaturePrefix ||
-      ngeo.datasource.OGC.WFSFeaturePrefix.FEATURE;
+      ngeoDatasourceOGC.WFSFeaturePrefix.FEATURE;
 
     /**
      * The OutputFormat to use with WFS requests.
@@ -207,7 +207,7 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
      * @private
      */
     this.wfsOutputFormat_ = options.wfsOutputFormat ||
-      ngeo.datasource.OGC.WFSOutputFormat.GML3;
+      ngeoDatasourceOGC.WFSOutputFormat.GML3;
 
     /**
      * The url to use for (WFS) requests.
@@ -222,7 +222,7 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
      * @private
      */
     this.wmsInfoFormat_ = options.wmsInfoFormat ||
-      ngeo.datasource.OGC.WMSInfoFormat.GML;
+      ngeoDatasourceOGC.WMSInfoFormat.GML;
 
     /**
      * Whether the (WMS) images returned by this data source
@@ -269,13 +269,13 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
     let wfsFormat = null;
     if (this.supportsWFS && layers.length) {
       let format = undefined;
-      if (this.wfsOutputFormat_ === ngeo.datasource.OGC.WFSOutputFormat.GML3) {
-        format = new ol.format.GML3();
-      } else if (this.wfsOutputFormat_ === ngeo.datasource.OGC.WFSOutputFormat.GML2) {
-        format = new ol.format.GML2();
+      if (this.wfsOutputFormat_ === ngeoDatasourceOGC.WFSOutputFormat.GML3) {
+        format = new olFormatGML3();
+      } else if (this.wfsOutputFormat_ === ngeoDatasourceOGC.WFSOutputFormat.GML2) {
+        format = new olFormatGML2();
       }
-      goog.asserts.assert(format);
-      wfsFormat = new ol.format.WFS({
+      googAsserts.assert(format);
+      wfsFormat = new olFormatWFS({
         featureNS: this.wfsFeatureNS,
         featureType: layers,
         gmlFormat: format
@@ -290,8 +290,8 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
 
     let wmsFormat = null;
     if (this.supportsWMS && layers.length) {
-      if (this.wmsInfoFormat === ngeo.datasource.OGC.WMSInfoFormat.GML) {
-        wmsFormat = new ol.format.WMSGetFeatureInfo({
+      if (this.wmsInfoFormat === ngeoDatasourceOGC.WMSInfoFormat.GML) {
+        wmsFormat = new olFormatWMSGetFeatureInfo({
           layers
         });
       }
@@ -876,9 +876,9 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
    * @export
    */
   getFiltrableOGCLayerName() {
-    goog.asserts.assert(this.filtrable);
+    googAsserts.assert(this.filtrable);
     const layerNames = this.getOGCLayerNames();
-    goog.asserts.assert(layerNames.length === 1);
+    googAsserts.assert(layerNames.length === 1);
     return layerNames[0];
   }
 
@@ -889,7 +889,7 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
    * @private
    */
   updateGeometryNameFromAttributes_() {
-    let geometryName = ngeo.datasource.OGC.DEFAULT_GEOMETRY_NAME_;
+    let geometryName = ngeoDatasourceOGC.DEFAULT_GEOMETRY_NAME_;
 
     if (this.attributes) {
       for (const attribute of this.attributes) {
@@ -945,13 +945,13 @@ ngeo.datasource.OGC = class extends ngeo.datasource.DataSource {
  * @param {string} url Url
  * @return {string} Guessed OGC service type.
  */
-ngeo.datasource.OGC.guessServiceTypeByUrl = function(url) {
+ngeoDatasourceOGC.guessServiceTypeByUrl = function(url) {
   let type;
 
   if (/(wmts)/i.test(url)) {
-    type = ngeo.datasource.OGC.Type.WMTS;
+    type = ngeoDatasourceOGC.Type.WMTS;
   } else {
-    type = ngeo.datasource.OGC.Type.WMS;
+    type = ngeoDatasourceOGC.Type.WMS;
   }
 
   return type;
@@ -963,14 +963,14 @@ ngeo.datasource.OGC.guessServiceTypeByUrl = function(url) {
  * @type {string}
  * @private
  */
-ngeo.datasource.OGC.DEFAULT_GEOMETRY_NAME_ = 'the_geom';
+ngeoDatasourceOGC.DEFAULT_GEOMETRY_NAME_ = 'the_geom';
 
 
 /**
  * Available OGC server types.
  * @enum {string}
  */
-ngeo.datasource.OGC.ServerType = {
+ngeoDatasourceOGC.ServerType = {
   GEOSERVER: 'geoserver',
   MAPSERVER: 'mapserver',
   QGISSERVER: 'qgisserver'
@@ -981,7 +981,7 @@ ngeo.datasource.OGC.ServerType = {
  * Available OGC types.
  * @enum {string}
  */
-ngeo.datasource.OGC.Type = {
+ngeoDatasourceOGC.Type = {
   WMS: 'WMS',
   WMTS: 'WMTS'
 };
@@ -991,7 +991,7 @@ ngeo.datasource.OGC.Type = {
  * Available Feature namespace for WFS requests.
  * @const {Object.<string, string>}
  */
-ngeo.datasource.OGC.WFSFeatureNS = {
+ngeoDatasourceOGC.WFSFeatureNS = {
   'geoserver': 'http://www.opengis.net/gml/3.2',
   'mapserver': 'http://mapserver.gis.umn.edu/mapserver',
   'qgisserver': 'http://www.qgis.org/gml'
@@ -1002,7 +1002,7 @@ ngeo.datasource.OGC.WFSFeatureNS = {
  * Available Feature namespace for WFS requests.
  * @enum {string}
  */
-ngeo.datasource.OGC.WFSFeaturePrefix = {
+ngeoDatasourceOGC.WFSFeaturePrefix = {
   FEATURE: 'feature'
 };
 
@@ -1011,7 +1011,7 @@ ngeo.datasource.OGC.WFSFeaturePrefix = {
  * Available OutputFormat for WFS requests.
  * @enum {string}
  */
-ngeo.datasource.OGC.WFSOutputFormat = {
+ngeoDatasourceOGC.WFSOutputFormat = {
   GML2: 'GML2',
   GML3: 'GML3'
 };
@@ -1021,6 +1021,6 @@ ngeo.datasource.OGC.WFSOutputFormat = {
  * Available InfoFormat for WMS requests.
  * @enum {string}
  */
-ngeo.datasource.OGC.WMSInfoFormat = {
+ngeoDatasourceOGC.WMSInfoFormat = {
   GML: 'application/vnd.ogc.gml'
 };

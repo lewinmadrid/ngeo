@@ -1,7 +1,7 @@
-goog.provide('ngeo.AutoProjection');
+goog.module('ngeo.AutoProjection');
 
-goog.require('ngeo');
-goog.require('ol.proj');
+const ngeoBase = goog.require('ngeo');
+const olProj = goog.require('ol.proj');
 
 /**
  * @constructor
@@ -9,7 +9,7 @@ goog.require('ol.proj');
  * @ngdoc service
  * @ngname ngeoAutoProjection
  */
-ngeo.AutoProjection = function() {};
+exports = function() {};
 
 
 /**
@@ -19,7 +19,7 @@ ngeo.AutoProjection = function() {};
  * @return {?ol.Coordinate} A coordinate or null if the format is not valid.
  * @export
  */
-ngeo.AutoProjection.prototype.stringToCoordinates = function(str) {
+exports.prototype.stringToCoordinates = function(str) {
   const coords = str.match(/([\d\.']+)[\s,]+([\d\.']+)/);
   if (coords) {
     const x = parseFloat(coords[1].replace('\'', ''));
@@ -40,7 +40,7 @@ ngeo.AutoProjection.prototype.stringToCoordinates = function(str) {
  * @return {Array.<ol.proj.Projection>} An array of projections.
  * @export
  */
-ngeo.AutoProjection.prototype.getProjectionList = function(projectionsCodes) {
+exports.prototype.getProjectionList = function(projectionsCodes) {
   let code, proj;
   const projections = [];
   projectionsCodes.forEach((projection) => {
@@ -48,7 +48,7 @@ ngeo.AutoProjection.prototype.getProjectionList = function(projectionsCodes) {
     if (code.substr(0, 5) != 'EPSG:') {
       code = `EPSG:${code}`;
     }
-    proj = ol.proj.get(code);
+    proj = olProj.get(code);
     if (proj !== null) {
       projections.push(proj);
     } else {
@@ -72,7 +72,7 @@ ngeo.AutoProjection.prototype.getProjectionList = function(projectionsCodes) {
  *     in one of the given projections, or null else.
  * @export
  */
-ngeo.AutoProjection.prototype.tryProjections = function(coordinates,
+exports.prototype.tryProjections = function(coordinates,
   extent, viewProjection, opt_projections) {
   let position;
   if (opt_projections === undefined) {
@@ -80,7 +80,7 @@ ngeo.AutoProjection.prototype.tryProjections = function(coordinates,
   }
   opt_projections.some((projection) => {
     try {
-      position = ol.proj.transform(coordinates, projection, viewProjection);
+      position = olProj.transform(coordinates, projection, viewProjection);
       if (ol.extent.containsCoordinate(extent, position)) {
         return true;
       }
@@ -107,7 +107,7 @@ ngeo.AutoProjection.prototype.tryProjections = function(coordinates,
  *     in one of the given projections, or null else.
  * @export
  */
-ngeo.AutoProjection.prototype.tryProjectionsWithInversion = function(
+exports.prototype.tryProjectionsWithInversion = function(
   coordinates, extent, viewProjection, opt_projections) {
   let position = this.tryProjections(coordinates, extent, viewProjection,
     opt_projections);
@@ -119,4 +119,4 @@ ngeo.AutoProjection.prototype.tryProjectionsWithInversion = function(
 };
 
 
-ngeo.module.service('ngeoAutoProjection', ngeo.AutoProjection);
+ngeoBase.module.service('ngeoAutoProjection', exports);

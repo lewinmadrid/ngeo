@@ -1,12 +1,12 @@
-goog.provide('ngeo.rule.Geometry');
+goog.module('ngeo.rule.Geometry');
 
-goog.require('ngeo.rule.Rule');
-goog.require('ol.events');
-goog.require('ol.Feature');
-goog.require('ol.format.GeoJSON');
+const ngeoRuleRule = goog.require('ngeo.rule.Rule');
+const olEvents = goog.require('ol.events');
+const olFeature = goog.require('ol.Feature');
+const olFormatGeoJSON = goog.require('ol.format.GeoJSON');
 
 
-ngeo.rule.Geometry = class extends ngeo.rule.Rule {
+exports = class extends ngeoRuleRule {
 
   /**
    * A rule bound to the geometry of a `ol.Feature` object. Changes made
@@ -29,13 +29,13 @@ ngeo.rule.Geometry = class extends ngeo.rule.Rule {
      * @type {!ol.Feature}
      * @private
      */
-    this.feature_ = new ol.Feature(properties);
+    this.feature_ = new olFeature(properties);
 
     /**
      * @type {!ol.format.GeoJSON}
      * @private
      */
-    this.format_ = new ol.format.GeoJSON();
+    this.format_ = new olFormatGeoJSON();
 
     /**
      * @type {boolean}
@@ -56,7 +56,7 @@ ngeo.rule.Geometry = class extends ngeo.rule.Rule {
     this.geometryChangeListenerKey_ = null;
 
     this.listenerKeys.push(
-      ol.events.listen(
+      olEvents.listen(
         this.feature_,
         ol.Object.getChangeEventType(this.feature.getGeometryName()),
         this.handleFeatureGeometryChange_,
@@ -183,7 +183,7 @@ ngeo.rule.Geometry = class extends ngeo.rule.Rule {
     // (2) Listen, if geom
     const geometry = this.feature_.getGeometry();
     if (geometry) {
-      this.geometryChangeListenerKey_ = ol.events.listen(
+      this.geometryChangeListenerKey_ = olEvents.listen(
         geometry,
         'change',
         this.handleGeometryChange_,

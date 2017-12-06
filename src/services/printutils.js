@@ -1,6 +1,6 @@
-goog.provide('ngeo.PrintUtils');
+goog.module('ngeo.PrintUtils');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -11,7 +11,7 @@ goog.require('ngeo');
  * @ngdoc service
  * @ngname ngeoPrintUtils
  */
-ngeo.PrintUtils = function() {
+exports = function() {
 
   /**
    * @type {number}
@@ -32,14 +32,14 @@ ngeo.PrintUtils = function() {
  * @const
  * @private
  */
-ngeo.PrintUtils.INCHES_PER_METER_ = 39.37;
+exports.INCHES_PER_METER_ = 39.37;
 
 
 /**
  * @const
  * @private
  */
-ngeo.PrintUtils.DOTS_PER_INCH_ = 72;
+exports.DOTS_PER_INCH_ = 72;
 
 
 /**
@@ -56,13 +56,13 @@ ngeo.PrintUtils.DOTS_PER_INCH_ = 72;
  * listener.
  * @export
  */
-ngeo.PrintUtils.prototype.createPrintMaskPostcompose = function(getSize, getScale, opt_rotation) {
+exports.prototype.createPrintMaskPostcompose = function(getSize, getScale, opt_rotation) {
   const self = this;
 
   return (
-  /**
-       * @param {ol.render.Event} evt Postcompose event.
-       */
+    /**
+         * @param {ol.render.Event} evt Postcompose event.
+         */
     function(evt) {
       const context = evt.context;
       const frameState = evt.frameState;
@@ -79,8 +79,8 @@ ngeo.PrintUtils.prototype.createPrintMaskPostcompose = function(getSize, getScal
       const width = size[0] * ol.has.DEVICE_PIXEL_RATIO;
       const scale = getScale(frameState);
 
-      const ppi = ngeo.PrintUtils.DOTS_PER_INCH_;
-      const ipm = ngeo.PrintUtils.INCHES_PER_METER_;
+      const ppi = exports.DOTS_PER_INCH_;
+      const ipm = exports.INCHES_PER_METER_;
 
       const extentHalfWidth =
             (((width / ppi) / ipm) * scale / resolution) / 2;
@@ -114,7 +114,8 @@ ngeo.PrintUtils.prototype.createPrintMaskPostcompose = function(getSize, getScal
       // Fill the mask
       context.fillStyle = 'rgba(0, 5, 25, 0.5)';
       context.fill();
-    });
+    }
+  );
 };
 
 
@@ -125,7 +126,7 @@ ngeo.PrintUtils.prototype.createPrintMaskPostcompose = function(getSize, getScal
  * @param {number} extentHalfHeight Extent half height.
  * @private
  */
-ngeo.PrintUtils.prototype.drawPrintZone_ = function(context, center,
+exports.prototype.drawPrintZone_ = function(context, center,
   extentHalfWidth, extentHalfHeight) {
   const minx = center[0] - extentHalfWidth;
   const miny = center[1] - extentHalfHeight;
@@ -149,7 +150,7 @@ ngeo.PrintUtils.prototype.drawPrintZone_ = function(context, center,
  * @param {number} rotation Rotation value in radians.
  * @private
  */
-ngeo.PrintUtils.prototype.drawPrintZoneWithRotation_ = function(context, center,
+exports.prototype.drawPrintZoneWithRotation_ = function(context, center,
   extentHalfWidth, extentHalfHeight, rotation) {
   // diagonal = distance p1 to center.
   const diagonal = Math.sqrt(Math.pow(extentHalfWidth, 2) +
@@ -191,16 +192,16 @@ ngeo.PrintUtils.prototype.drawPrintZoneWithRotation_ = function(context, center,
  * in `printMapScales`.
  * @export
  */
-ngeo.PrintUtils.prototype.getOptimalScale = function(
+exports.prototype.getOptimalScale = function(
   mapSize, mapResolution, printMapSize, printMapScales) {
 
   const mapWidth = mapSize[0] * mapResolution;
   const mapHeight = mapSize[1] * mapResolution;
 
-  const scaleWidth = mapWidth * ngeo.PrintUtils.INCHES_PER_METER_ *
-      ngeo.PrintUtils.DOTS_PER_INCH_ / printMapSize[0];
-  const scaleHeight = mapHeight * ngeo.PrintUtils.INCHES_PER_METER_ *
-      ngeo.PrintUtils.DOTS_PER_INCH_ / printMapSize[1];
+  const scaleWidth = mapWidth * exports.INCHES_PER_METER_ *
+      exports.DOTS_PER_INCH_ / printMapSize[0];
+  const scaleHeight = mapHeight * exports.INCHES_PER_METER_ *
+      exports.DOTS_PER_INCH_ / printMapSize[1];
 
   const scale = Math.min(scaleWidth, scaleHeight);
 
@@ -223,11 +224,11 @@ ngeo.PrintUtils.prototype.getOptimalScale = function(
  * @return {number} The optimal map resolution.
  * @export
  */
-ngeo.PrintUtils.prototype.getOptimalResolution = function(
+exports.prototype.getOptimalResolution = function(
   mapSize, printMapSize, printMapScale) {
 
   const dotsPerMeter =
-      ngeo.PrintUtils.DOTS_PER_INCH_ * ngeo.PrintUtils.INCHES_PER_METER_;
+      exports.DOTS_PER_INCH_ * exports.INCHES_PER_METER_;
 
   const resolutionX = (printMapSize[0] * printMapScale) /
       (dotsPerMeter * mapSize[0]);
@@ -245,7 +246,7 @@ ngeo.PrintUtils.prototype.getOptimalResolution = function(
  * @param {ol.Coordinate} mapCenter Center of the map to print.
  * @return {ol.Coordinate} The coordinates of the bottom left corner.
  */
-ngeo.PrintUtils.prototype.getBottomLeftCorner = function(mapCenter) {
+exports.prototype.getBottomLeftCorner = function(mapCenter) {
   return [mapCenter[0] - this.extentHalfHorizontalDistance_,
     mapCenter[1] - this.extentHalfVerticalDistance_];
 };
@@ -256,7 +257,7 @@ ngeo.PrintUtils.prototype.getBottomLeftCorner = function(mapCenter) {
  * @param {ol.Coordinate} mapCenter Center of the map to print.ç
  * @return {ol.Coordinate} The coordinates of the bottom rigth corner.
  */
-ngeo.PrintUtils.prototype.getBottomRightCorner = function(mapCenter) {
+exports.prototype.getBottomRightCorner = function(mapCenter) {
   return [mapCenter[0] + this.extentHalfHorizontalDistance_,
     mapCenter[1] - this.extentHalfVerticalDistance_];
 };
@@ -267,7 +268,7 @@ ngeo.PrintUtils.prototype.getBottomRightCorner = function(mapCenter) {
  * @param {ol.Coordinate} mapCenter Center of the map to print.
  * @return {ol.Coordinate} The coordinates of the up left corner.
  */
-ngeo.PrintUtils.prototype.getUpLeftCorner = function(mapCenter) {
+exports.prototype.getUpLeftCorner = function(mapCenter) {
   return [mapCenter[0] - this.extentHalfHorizontalDistance_,
     mapCenter[1] + this.extentHalfVerticalDistance_];
 };
@@ -278,10 +279,10 @@ ngeo.PrintUtils.prototype.getUpLeftCorner = function(mapCenter) {
  * @param {ol.Coordinate} mapCenter Center of the map to print.
  * @return {ol.Coordinate} The coordinates of the up right corner.
  */
-ngeo.PrintUtils.prototype.getUpRightCorner = function(mapCenter) {
+exports.prototype.getUpRightCorner = function(mapCenter) {
   return [mapCenter[0] + this.extentHalfHorizontalDistance_,
     mapCenter[1] + this.extentHalfVerticalDistance_];
 };
 
 
-ngeo.module.service('ngeoPrintUtils', ngeo.PrintUtils);
+ngeoBase.module.service('ngeoPrintUtils', exports);

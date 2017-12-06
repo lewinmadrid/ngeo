@@ -1,10 +1,10 @@
-goog.provide('ngeo.mapDirective');
+goog.module('ngeo.mapDirective');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
-goog.require('ngeo.datasource.SyncDataSourcesMap');
-goog.require('ol.events');
-goog.require('ol.Map');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
+const ngeoDatasourceSyncDataSourcesMap = goog.require('ngeo.datasource.SyncDataSourcesMap');
+const olEvents = goog.require('ol.events');
+const olMap = goog.require('ol.Map');
 
 
 /**
@@ -38,7 +38,7 @@ goog.require('ol.Map');
  * @ngdoc directive
  * @ngname ngeoMap
  */
-ngeo.mapDirective = function($window, ngeoSyncDataSourcesMap) {
+exports = function($window, ngeoSyncDataSourcesMap) {
   return {
     restrict: 'A',
     /**
@@ -52,7 +52,7 @@ ngeo.mapDirective = function($window, ngeoSyncDataSourcesMap) {
       const prop = attrs[attr];
 
       const map = scope.$eval(prop);
-      goog.asserts.assertInstanceof(map, ol.Map);
+      googAsserts.assertInstanceof(map, olMap);
 
       map.setTarget(element[0]);
 
@@ -75,7 +75,7 @@ ngeo.mapDirective = function($window, ngeoSyncDataSourcesMap) {
         const resizeTransition = /** @type {number|undefined} */ (
           scope.$eval(resizeTransitionProp));
 
-        ol.events.listen(
+        olEvents.listen(
           $window,
           'resize',
           () => {
@@ -105,4 +105,4 @@ ngeo.mapDirective = function($window, ngeoSyncDataSourcesMap) {
   };
 };
 
-ngeo.module.directive('ngeoMap', ngeo.mapDirective);
+ngeoBase.module.directive('ngeoMap', exports);

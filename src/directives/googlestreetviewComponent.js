@@ -1,17 +1,17 @@
-goog.provide('ngeo.googlestreetviewComponent');
+goog.module('ngeo.googlestreetviewComponent');
 
-goog.require('ol.events');
-goog.require('ol.Feature');
-goog.require('ol.Observable');
-goog.require('ol.geom.Point');
-goog.require('ngeo');
-goog.require('ngeo.FeatureOverlayMgr');
+const olEvents = goog.require('ol.events');
+const olFeature = goog.require('ol.Feature');
+const olObservable = goog.require('ol.Observable');
+const olGeomPoint = goog.require('ol.geom.Point');
+const ngeoBase = goog.require('ngeo');
+const ngeoFeatureOverlayMgr = goog.require('ngeo.FeatureOverlayMgr');
 
 
 /**
  * @private
  */
-ngeo.GooglestreetviewController = class {
+ngeoBase.GooglestreetviewController = class {
 
   /**
    * @param {angular.JQLite} $element Element.
@@ -74,7 +74,7 @@ ngeo.GooglestreetviewController = class {
      * @type {!ol.Feature}
      * @private
      */
-    this.feature_ = new ol.Feature();
+    this.feature_ = new olFeature();
 
     /**
      * @type {!ngeo.FeatureOverlay}
@@ -130,7 +130,7 @@ ngeo.GooglestreetviewController = class {
      * @type {ol.geom.Point}
      * @private
      */
-    this.point_ = new ol.geom.Point([0, 0]);
+    this.point_ = new olGeomPoint([0, 0]);
 
     this.feature_.setGeometry(this.point_);
 
@@ -218,10 +218,10 @@ ngeo.GooglestreetviewController = class {
 
     if (active) {
       keys.push(
-        ol.events.listen(this.map, 'click', this.handleMapClick_, this)
+        olEvents.listen(this.map, 'click', this.handleMapClick_, this)
       );
     } else {
-      ol.Observable.unByKey(keys);
+      olObservable.unByKey(keys);
       keys.length = 0;
     }
   }
@@ -355,13 +355,13 @@ ngeo.GooglestreetviewController = class {
 };
 
 
-ngeo.module.component('ngeoGooglestreetview', {
+ngeoBase.module.component('ngeoGooglestreetview', {
   bindings: {
     'active': '<',
     'featureStyle': '<?',
     'map': '<',
     'radius': '<?'
   },
-  controller: ngeo.GooglestreetviewController,
-  templateUrl: () => `${ngeo.baseTemplateUrl}/googlestreetview.html`
+  controller: ngeoBase.GooglestreetviewController,
+  templateUrl: () => `${ngeoBase.baseTemplateUrl}/googlestreetview.html`
 });

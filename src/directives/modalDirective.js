@@ -1,7 +1,7 @@
-goog.provide('ngeo.modalDirective');
+goog.module('ngeo.modalDirective');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -38,9 +38,9 @@ goog.require('ngeo');
  * @ngdoc component
  * @ngname ngeoModal
  */
-ngeo.modalDirective;
+exports;
 
-ngeo.modalDirective.Controller = class {
+exports.Controller = class {
   /**
    * @ngInject
    * @param {!angular.Scope} $scope Scope.
@@ -121,7 +121,7 @@ ngeo.modalDirective.Controller = class {
 
     this.modal_.on('shown.bs.modal hidden.bs.modal', (e) => {
       const type = e.type;
-      goog.asserts.assert(type == 'shown' || type == 'hidden');
+      googAsserts.assert(type == 'shown' || type == 'hidden');
       this.$scope_.$apply(() => {
         this.ngModel.$setViewValue(type == 'shown');
       });
@@ -169,7 +169,7 @@ ngeo.modalDirective.Controller = class {
 /**
  * @type {!angular.Component}
  */
-ngeo.modalDirective.Component = {
+exports.Component = {
   template: `<div class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -181,11 +181,11 @@ ngeo.modalDirective.Component = {
     'ngModel': 'ngModel'
   },
   transclude: true,
-  controller: ngeo.modalDirective.Controller,
+  controller: exports.Controller,
   bindings: {
     'destroyContent': '<ngeoModalDestroyContentOnHide',
     'resizable': '<ngeoModalResizable'
   }
 };
 
-ngeo.module.component('ngeoModal', ngeo.modalDirective.Component);
+ngeoBase.module.component('ngeoModal', exports.Component);

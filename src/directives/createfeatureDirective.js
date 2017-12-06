@@ -1,16 +1,15 @@
-goog.provide('ngeo.createfeatureDirective');
+goog.module('ngeo.createfeatureDirective');
 
-goog.require('ngeo');
-goog.require('ngeo.EventHelper');
-/** @suppress {extraRequire} */
-goog.require('ngeo.filters');
-goog.require('ngeo.interaction.MeasureArea');
-goog.require('ngeo.interaction.MeasureLength');
-goog.require('ngeo.utils');
-goog.require('ol.events');
-goog.require('ol.Feature');
-goog.require('ol.interaction.Draw');
-goog.require('ol.style.Style');
+const ngeoBase = goog.require('ngeo');
+const ngeoEventHelper = goog.require('ngeo.EventHelper');
+const ngeoFilters = goog.require('ngeo.filters');
+const ngeoInteractionMeasureArea = goog.require('ngeo.interaction.MeasureArea');
+const ngeoInteractionMeasureLength = goog.require('ngeo.interaction.MeasureLength');
+const ngeoUtils = goog.require('ngeo.utils');
+const olEvents = goog.require('ol.events');
+const olFeature = goog.require('ol.Feature');
+const olInteractionDraw = goog.require('ol.interaction.Draw');
+const olStyleStyle = goog.require('ol.style.Style');
 
 
 /**
@@ -51,9 +50,9 @@ goog.require('ol.style.Style');
  * @ngdoc directive
  * @ngname ngeoCreatefeature
  */
-ngeo.createfeatureDirective = function() {
+exports = function() {
   return {
-    controller: ngeo.CreatefeatureController,
+    controller: ngeoBase.CreatefeatureController,
     bindToController: true,
     scope: {
       'active': '=ngeoCreatefeatureActive',
@@ -64,7 +63,7 @@ ngeo.createfeatureDirective = function() {
   };
 };
 
-ngeo.module.directive('ngeoCreatefeature', ngeo.createfeatureDirective);
+ngeoBase.module.directive('ngeoCreatefeature', exports);
 
 
 /**
@@ -81,7 +80,7 @@ ngeo.module.directive('ngeoCreatefeature', ngeo.createfeatureDirective);
  * @ngdoc controller
  * @ngname ngeoCreatefeatureController
  */
-ngeo.CreatefeatureController = function(gettextCatalog, $compile, $filter, $scope,
+ngeoBase.CreatefeatureController = function(gettextCatalog, $compile, $filter, $scope,
   $timeout, ngeoEventHelper) {
 
   /**
@@ -166,20 +165,20 @@ ngeo.CreatefeatureController = function(gettextCatalog, $compile, $filter, $scop
 /**
  * Initialize the directive.
  */
-ngeo.CreatefeatureController.prototype.$onInit = function() {
+ngeoBase.CreatefeatureController.prototype.$onInit = function() {
   this.active = this.active === true;
   const gettextCatalog = this.gettextCatalog_;
 
   // Create the draw or measure interaction depending on the geometry type
   let interaction;
-  if (this.geomType === ngeo.GeometryType.POINT ||
-      this.geomType === ngeo.GeometryType.MULTI_POINT
+  if (this.geomType === ngeoBase.GeometryType.POINT ||
+      this.geomType === ngeoBase.GeometryType.MULTI_POINT
   ) {
-    interaction = new ol.interaction.Draw({
+    interaction = new olInteractionDraw({
       type: /** @type {ol.geom.GeometryType} */ ('Point')
     });
-  } else if (this.geomType === ngeo.GeometryType.LINE_STRING ||
-      this.geomType === ngeo.GeometryType.MULTI_LINE_STRING
+  } else if (this.geomType === ngeoBase.GeometryType.LINE_STRING ||
+      this.geomType === ngeoBase.GeometryType.MULTI_LINE_STRING
   ) {
     const helpMsg = gettextCatalog.getString('Click to start drawing length');
     const contMsg = gettextCatalog.getString(
@@ -187,16 +186,16 @@ ngeo.CreatefeatureController.prototype.$onInit = function() {
       'Double-click or click last point to finish'
     );
 
-    interaction = new ngeo.interaction.MeasureLength(
+    interaction = new ngeoInteractionMeasureLength(
       this.filter_('ngeoUnitPrefix'),
       {
-        style: new ol.style.Style(),
+        style: new olStyleStyle(),
         startMsg: this.compile_(`<div translate>${helpMsg}</div>`)(this.scope_)[0],
         continueMsg: this.compile_(`<div translate>${contMsg}</div>`)(this.scope_)[0]
       }
     );
-  } else if (this.geomType === ngeo.GeometryType.POLYGON ||
-      this.geomType === ngeo.GeometryType.MULTI_POLYGON
+  } else if (this.geomType === ngeoBase.GeometryType.POLYGON ||
+      this.geomType === ngeoBase.GeometryType.MULTI_POLYGON
   ) {
     const helpMsg = gettextCatalog.getString('Click to start drawing area');
     const contMsg = gettextCatalog.getString(
@@ -204,10 +203,10 @@ ngeo.CreatefeatureController.prototype.$onInit = function() {
       'Double-click or click starting point to finish'
     );
 
-    interaction = new ngeo.interaction.MeasureArea(
+    interaction = new ngeoInteractionMeasureArea(
       this.filter_('ngeoUnitPrefix'),
       {
-        style: new ol.style.Style(),
+        style: new olStyleStyle(),
         startMsg: this.compile_(`<div translate>${helpMsg}</div>`)(this.scope_)[0],
         continueMsg: this.compile_(`<div translate>${contMsg}</div>`)(this.scope_)[0]
       }
@@ -221,21 +220,21 @@ ngeo.CreatefeatureController.prototype.$onInit = function() {
   this.map.addInteraction(interaction);
 
   const uid = ol.getUid(this);
-  if (interaction instanceof ol.interaction.Draw) {
+  if (interaction instanceof olInteractionDraw) {
     this.ngeoEventHelper_.addListenerKey(
       uid,
-      ol.events.listen(
+      olEvents.listen(
         interaction,
         'drawend',
         this.handleDrawEnd_,
         this
       )
     );
-  } else if (interaction instanceof ngeo.interaction.MeasureLength ||
-     interaction instanceof ngeo.interaction.MeasureArea) {
+  } else if (interaction instanceof ngeoInteractionMeasureLength ||
+     interaction instanceof ngeoInteractionMeasureArea) {
     this.ngeoEventHelper_.addListenerKey(
       uid,
-      ol.events.listen(
+      olEvents.listen(
         interaction,
         'measureend',
         this.handleDrawEnd_,
@@ -252,7 +251,7 @@ ngeo.CreatefeatureController.prototype.$onInit = function() {
  * @param {ol.interaction.Draw.Event|ngeox.MeasureEvent} event Event.
  * @export
  */
-ngeo.CreatefeatureController.prototype.handleDrawEnd_ = function(event) {
+ngeoBase.CreatefeatureController.prototype.handleDrawEnd_ = function(event) {
   let sketch;
   if (event.feature) {
     // ol.interaction.Draw.Event
@@ -267,9 +266,9 @@ ngeo.CreatefeatureController.prototype.handleDrawEnd_ = function(event) {
   let geometry = sketch.getGeometry();
   const type = geometry.getType();
   if (this.geomType.indexOf('Multi') != type.indexOf('Multi')) {
-    geometry = ngeo.utils.toMulti(geometry);
+    geometry = ngeoUtils.toMulti(geometry);
   }
-  const feature = new ol.Feature(geometry);
+  const feature = new olFeature(geometry);
   if (this.features instanceof ol.Collection) {
     this.features.push(feature);
   } else {
@@ -281,7 +280,7 @@ ngeo.CreatefeatureController.prototype.handleDrawEnd_ = function(event) {
 /**
  * Cleanup event listeners and remove the interaction from the map.
  */
-ngeo.CreatefeatureController.prototype.$onDestroy = function() {
+ngeoBase.CreatefeatureController.prototype.$onDestroy = function() {
   this.timeout_(() => {
     const uid = ol.getUid(this);
     this.ngeoEventHelper_.clearListenerKey(uid);

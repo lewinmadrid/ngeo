@@ -11,41 +11,26 @@
 /**
  * @module ngeo
  */
-goog.provide('ngeo');
+goog.module('ngeo');
 
 
-// Required by olx
-/** @suppress {extraRequire} */
-goog.require('ol.format.IGC');
-/** @suppress {extraRequire} */
-goog.require('ol.source.Raster');
-/** @suppress {extraRequire} */
-goog.require('ol.VectorTile');
-/** @suppress {extraRequire} */
-goog.require('ol.Overlay');
-/** @suppress {extraRequire} */
-goog.require('ol.control.ScaleLine');
-/** @suppress {extraRequire} */
-goog.require('ol.source.WMTS');
-/** @suppress {extraRequire} */
-goog.require('ol.style.Icon');
-/** @suppress {extraRequire} */
-goog.require('ol.layer.VectorTile');
-// Required by ol3
-/** @suppress {extraRequire} */
-goog.require('ol.Map');
-/** @suppress {extraRequire} */
-goog.require('ol.source.Vector');
-/** @suppress {extraRequire} */
-goog.require('ol.render.Feature');
-/** @suppress {extraRequire} */
-goog.require('ol.source.VectorTile');
-/** @suppress {extraRequire} */
-goog.require('ol.style.AtlasManager');
+const olFormatIGC = goog.require('ol.format.IGC');
+const olSourceRaster = goog.require('ol.source.Raster');
+const olVectorTile = goog.require('ol.VectorTile');
+const olOverlay = goog.require('ol.Overlay');
+const olControlScaleLine = goog.require('ol.control.ScaleLine');
+const olSourceWMTS = goog.require('ol.source.WMTS');
+const olStyleIcon = goog.require('ol.style.Icon');
+const olLayerVectorTile = goog.require('ol.layer.VectorTile');
+const olMap = goog.require('ol.Map');
+const olSourceVector = goog.require('ol.source.Vector');
+const olRenderFeature = goog.require('ol.render.Feature');
+const olSourceVectorTile = goog.require('ol.source.VectorTile');
+const olStyleAtlasManager = goog.require('ol.style.AtlasManager');
 
 
 /** @type {!angular.Module} */
-ngeo.module = angular.module('ngeo', [
+exports.module = angular.module('ngeo', [
   'gettext', 'ui.date', 'floatThead'
   // src/modules/* were added for producing the dist/ngeo.js file, which is badly broken.
   // removing them as they conflict with the "virtual" angular module root "vocation" of this file.
@@ -56,20 +41,20 @@ ngeo.module = angular.module('ngeo', [
  * The default template base URL for directive partials, used as-is by the template cache.
  * @type {string}
  */
-ngeo.baseTemplateUrl = 'ngeo';
+exports.baseTemplateUrl = 'ngeo';
 
 /**
  * The default template base URL for modules, used as-is by the template cache.
  * @type {string}
  */
-ngeo.baseModuleTemplateUrl = 'ngeomodule';
+exports.baseModuleTemplateUrl = 'ngeomodule';
 
 
 /**
  * @enum {string}
  * @export
  */
-ngeo.AttributeType = {
+exports.AttributeType = {
   /**
    * @type {string}
    */
@@ -105,7 +90,7 @@ ngeo.AttributeType = {
  * @enum {string}
  * @export
  */
-ngeo.FeatureProperties = {
+exports.FeatureProperties = {
   /**
    * @type {string}
    * @export
@@ -168,7 +153,7 @@ ngeo.FeatureProperties = {
  * @enum {string}
  * @export
  */
-ngeo.FilterCondition = {
+exports.FilterCondition = {
   /**
    * @type {string}
    * @export
@@ -191,7 +176,7 @@ ngeo.FilterCondition = {
  * @enum {string}
  * @export
  */
-ngeo.GeometryType = {
+exports.GeometryType = {
   /**
    * @type {string}
    * @export
@@ -244,7 +229,7 @@ ngeo.GeometryType = {
  * @enum {string}
  * @export
  */
-ngeo.NumberType = {
+exports.NumberType = {
   /**
    * @type {string}
    * @export

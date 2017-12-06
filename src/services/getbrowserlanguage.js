@@ -1,6 +1,6 @@
-goog.provide('ngeo.GetBrowserLanguage');
+goog.module('ngeo.GetBrowserLanguage');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -12,7 +12,7 @@ goog.require('ngeo');
  *
  * @typedef {function(Array.<string>):string}
  */
-ngeo.GetBrowserLanguage;
+exports;
 
 
 /**
@@ -22,7 +22,7 @@ ngeo.GetBrowserLanguage;
  * @ngdoc service
  * @ngname ngeoGetBrowserLanguage
  */
-ngeo.getBrowserLanguageFactory = function($window) {
+ngeoBase.getBrowserLanguageFactory = function($window) {
   return (
   /**
        * @param {Array.<string>} availableLanguages Available languages.
@@ -44,4 +44,4 @@ ngeo.getBrowserLanguageFactory = function($window) {
 };
 
 
-ngeo.module.factory('ngeoGetBrowserLanguage', ngeo.getBrowserLanguageFactory);
+ngeoBase.module.factory('ngeoGetBrowserLanguage', ngeoBase.getBrowserLanguageFactory);

@@ -1,18 +1,18 @@
 /**
  * @module ngeo search namespace
  */
-goog.provide('ngeo.search.module');
+goog.module('ngeo.search.module');
 
-goog.require('ngeo.search.searchDirective');
-goog.require('ngeo.search.createGeoJSONBloodhound');
-goog.require('ngeo.search.createLocationSearchBloodhound');
+const ngeoSearchSearchDirective = goog.require('ngeo.search.searchDirective');
+const ngeoSearchCreateGeoJSONBloodhound = goog.require('ngeo.search.createGeoJSONBloodhound');
+const ngeoSearchCreateLocationSearchBloodhound = goog.require('ngeo.search.createLocationSearchBloodhound');
 
 
 /**
  * @type {!angular.Module}
  */
-ngeo.search.module = angular.module('ngeoSearchModule', [
-  ngeo.search.searchDirective.module.name,
-  ngeo.search.createGeoJSONBloodhound.module.name,
-  ngeo.search.createLocationSearchBloodhound.module.name
+exports = angular.module('ngeoSearchModule', [
+  ngeoSearchSearchDirective.module.name,
+  ngeoSearchCreateGeoJSONBloodhound.module.name,
+  ngeoSearchCreateLocationSearchBloodhound.module.name
 ]);

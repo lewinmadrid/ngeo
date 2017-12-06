@@ -1,6 +1,6 @@
-goog.provide('ngeo.Popover');
+goog.module('ngeo.Popover');
 
-goog.require('ol.Overlay');
+const olOverlay = goog.require('ol.Overlay');
 
 
 /**
@@ -12,7 +12,7 @@ goog.require('ol.Overlay');
  * @extends {ol.Overlay}
  * @param {olx.OverlayOptions=} opt_options Overlay options.
  */
-ngeo.Popover = function(opt_options) {
+exports = function(opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
@@ -43,16 +43,16 @@ ngeo.Popover = function(opt_options) {
 
   options.element = $('<div />')[0];
 
-  ol.Overlay.call(this, options);
+  olOverlay.call(this, options);
 
 };
-ol.inherits(ngeo.Popover, ol.Overlay);
+ol.inherits(exports, olOverlay);
 
 
 /**
  * @override
  */
-ngeo.Popover.prototype.setMap = function(map) {
+exports.prototype.setMap = function(map) {
 
   const element = this.getElement();
 
@@ -61,7 +61,7 @@ ngeo.Popover.prototype.setMap = function(map) {
     $(element).popover('destroy');
   }
 
-  ol.Overlay.prototype.setMap.call(this, map);
+  olOverlay.prototype.setMap.call(this, map);
 
   if (map) {
     const contentEl = this.contentEl_;

@@ -1,4 +1,4 @@
-goog.provide('ngeo.coordinate');
+goog.module('ngeo.coordinate');
 
 
 /**
@@ -9,14 +9,14 @@ goog.provide('ngeo.coordinate');
  * @param {number} nesting Nesting level.
  * @return {Array.<ol.Coordinate>|ol.Coordinate} Converted coordinates.
  */
-ngeo.coordinate.toXY = function(coordinates, nesting) {
+exports.toXY = function(coordinates, nesting) {
   if (nesting === 0) {
     if (coordinates.length > 2) {
       coordinates = [coordinates[0], coordinates[1]];
     }
   } else {
     for (let i = 0, ii = coordinates.length; i < ii; i++) {
-      coordinates[i] = ngeo.coordinate.toXY(coordinates[i], nesting - 1);
+      coordinates[i] = exports.toXY(coordinates[i], nesting - 1);
     }
   }
   return coordinates;

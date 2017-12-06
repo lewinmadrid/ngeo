@@ -1,8 +1,8 @@
-goog.provide('ngeo.Notification');
+goog.module('ngeo.Notification');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
-goog.require('ngeo.Message');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
+const ngeoMessage = goog.require('ngeo.Message');
 
 
 /**
@@ -19,9 +19,9 @@ goog.require('ngeo.Message');
  * @abstract
  * @ngInject
  */
-ngeo.Notification = function($timeout) {
+exports = function($timeout) {
 
-  ngeo.Message.call(this);
+  ngeoMessage.call(this);
 
   /**
    * @type {angular.$timeout}
@@ -45,7 +45,7 @@ ngeo.Notification = function($timeout) {
   this.cache_ = {};
 
 };
-ol.inherits(ngeo.Notification, ngeo.Message);
+ol.inherits(exports, ngeoMessage);
 
 
 /**
@@ -53,7 +53,7 @@ ol.inherits(ngeo.Notification, ngeo.Message);
  * @type {number}
  * @private
  */
-ngeo.Notification.DEFAULT_DELAY_ = 7000;
+exports.DEFAULT_DELAY_ = 7000;
 
 
 // MAIN API METHODS
@@ -66,7 +66,7 @@ ngeo.Notification.DEFAULT_DELAY_ = 7000;
  *     object A message or list of messages as text or configuration objects.
  * @export
  */
-ngeo.Notification.prototype.notify = function(object) {
+exports.prototype.notify = function(object) {
   this.show(object);
 };
 
@@ -75,7 +75,7 @@ ngeo.Notification.prototype.notify = function(object) {
  * Clears all messages that are currently being shown.
  * @export
  */
-ngeo.Notification.prototype.clear = function() {
+exports.prototype.clear = function() {
   for (const uid in this.cache_) {
     this.clearMessageByCacheItem_(this.cache_[parseInt(uid, 10)]);
   }
@@ -85,22 +85,22 @@ ngeo.Notification.prototype.clear = function() {
 /**
  * @override
  */
-ngeo.Notification.prototype.showMessage = function(message) {
+exports.prototype.showMessage = function(message) {
   const type = message.type;
-  goog.asserts.assertString(type, 'Type should be set.');
+  googAsserts.assertString(type, 'Type should be set.');
 
   const classNames = ['alert', 'fade'];
   switch (type) {
-    case ngeo.MessageType.ERROR:
+    case ngeoBase.MessageType.ERROR:
       classNames.push('alert-danger');
       break;
-    case ngeo.MessageType.INFORMATION:
+    case ngeoBase.MessageType.INFORMATION:
       classNames.push('alert-info');
       break;
-    case ngeo.MessageType.SUCCESS:
+    case ngeoBase.MessageType.SUCCESS:
       classNames.push('alert-success');
       break;
-    case ngeo.MessageType.WARNING:
+    case ngeoBase.MessageType.WARNING:
       classNames.push('alert-warning');
       break;
     default:
@@ -120,7 +120,7 @@ ngeo.Notification.prototype.showMessage = function(message) {
   el.html(message.msg).addClass('in');
 
   const delay = message.delay !== undefined ? message.delay :
-    ngeo.Notification.DEFAULT_DELAY_;
+    exports.DEFAULT_DELAY_;
 
   const item = /** @type {ngeo.Notification.CacheItem} */ ({
     el
@@ -143,7 +143,7 @@ ngeo.Notification.prototype.showMessage = function(message) {
  * @param {ngeo.Notification.CacheItem} item Cache item.
  * @private
  */
-ngeo.Notification.prototype.clearMessageByCacheItem_ = function(item) {
+exports.prototype.clearMessageByCacheItem_ = function(item) {
   const el = item.el;
   const promise = item.promise;
   const uid = ol.getUid(el);
@@ -166,7 +166,7 @@ ngeo.Notification.prototype.clearMessageByCacheItem_ = function(item) {
  *     promise: angular.$q.Promise
  * }}
  */
-ngeo.Notification.CacheItem;
+exports.CacheItem;
 
 
-ngeo.module.service('ngeoNotification', ngeo.Notification);
+ngeoBase.module.service('ngeoNotification', exports);

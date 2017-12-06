@@ -1,8 +1,8 @@
-goog.provide('ngeo.resizemapDirective');
+goog.module('ngeo.resizemapDirective');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
-goog.require('ol.Map');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
+const olMap = goog.require('ol.Map');
 
 
 /**
@@ -26,7 +26,7 @@ goog.require('ol.Map');
  * @ngdoc directive
  * @ngname ngeoResizemap
  */
-ngeo.resizemapDirective = function($window) {
+exports = function($window) {
   const /** @type {number} */ duration = 1000;
 
   return {
@@ -40,10 +40,10 @@ ngeo.resizemapDirective = function($window) {
       const attr = 'ngeoResizemap';
       const prop = attrs[attr];
       const map = scope.$eval(prop);
-      goog.asserts.assertInstanceof(map, ol.Map);
+      googAsserts.assertInstanceof(map, olMap);
 
       const stateExpr = attrs['ngeoResizemapState'];
-      goog.asserts.assert(stateExpr !== undefined);
+      googAsserts.assert(stateExpr !== undefined);
 
       let start;
       let animationDelayKey;
@@ -76,4 +76,4 @@ ngeo.resizemapDirective = function($window) {
 };
 
 
-ngeo.module.directive('ngeoResizemap', ngeo.resizemapDirective);
+ngeoBase.module.directive('ngeoResizemap', exports);

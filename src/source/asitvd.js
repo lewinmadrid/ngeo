@@ -1,9 +1,9 @@
 goog.module('ngeo.source.AsitVD');
 goog.module.declareLegacyNamespace();
 
-goog.require('ol');
-goog.require('ol.source.WMTS');
-goog.require('ol.tilegrid.WMTS');
+const olBase = goog.require('ol');
+const olSourceWMTS = goog.require('ol.source.WMTS');
+const olTilegridWMTS = goog.require('ol.tilegrid.WMTS');
 
 
 /**
@@ -18,7 +18,7 @@ const asitVDResolutions = [
 /**
  * @const {ol.tilegrid.WMTS}
  */
-const asitVDTileGrid = new ol.tilegrid.WMTS({
+const asitVDTileGrid = new olTilegridWMTS({
   extent: [420000, 30000, 900000, 350000],
   resolutions: asitVDResolutions,
   matrixIds: asitVDResolutions.map((value, index) => `${index}`)
@@ -36,7 +36,7 @@ const asitVDTileGrid = new ol.tilegrid.WMTS({
  */
 exports = function(options) {
 
-  ol.source.WMTS.call(this, {
+  olSourceWMTS.call(this, {
     attributions: 'géodonnées &copy; Etat de Vaud & &copy; contributeurs OpenStreetMap',
     url: 'https://ows{1-4}.asitvd.ch/wmts/1.0.0/{Layer}/default/default/0/' +
         '21781/{TileMatrix}/{TileRow}/{TileCol}.png',
@@ -49,4 +49,4 @@ exports = function(options) {
     tileGrid: asitVDTileGrid
   });
 };
-ol.inherits(exports, ol.source.WMTS);
+olBase.inherits(exports, olSourceWMTS);

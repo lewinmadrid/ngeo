@@ -1,8 +1,8 @@
-goog.provide('ngeo.interaction.MeasureLength');
+goog.module('ngeo.interaction.MeasureLength');
 
-goog.require('ngeo.interaction.Measure');
-goog.require('ol.geom.LineString');
-goog.require('ol.interaction.Draw');
+const ngeoInteractionMeasure = goog.require('ngeo.interaction.Measure');
+const olGeomLineString = goog.require('ol.geom.LineString');
+const olInteractionDraw = goog.require('ol.interaction.Draw');
 
 
 /**
@@ -18,11 +18,11 @@ goog.require('ol.interaction.Draw');
  * @param {ngeox.interaction.MeasureOptions=} opt_options Options
  * @export
  */
-ngeo.interaction.MeasureLength = function(format, opt_options) {
+exports = function(format, opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
-  ngeo.interaction.Measure.call(this, options);
+  ngeoInteractionMeasure.call(this, options);
 
 
   /**
@@ -47,14 +47,14 @@ ngeo.interaction.MeasureLength = function(format, opt_options) {
   this.format = format;
 
 };
-ol.inherits(ngeo.interaction.MeasureLength, ngeo.interaction.Measure);
+ol.inherits(exports, ngeoInteractionMeasure);
 
 
 /**
  * @inheritDoc
  */
-ngeo.interaction.MeasureLength.prototype.createDrawInteraction = function(style, source) {
-  return new ol.interaction.Draw({
+exports.prototype.createDrawInteraction = function(style, source) {
+  return new olInteractionDraw({
     type: /** @type {ol.geom.GeometryType} */ ('LineString'),
     source: source,
     style: style
@@ -65,11 +65,11 @@ ngeo.interaction.MeasureLength.prototype.createDrawInteraction = function(style,
 /**
  * @inheritDoc
  */
-ngeo.interaction.MeasureLength.prototype.handleMeasure = function(callback) {
-  const geom = goog.asserts.assertInstanceof(this.sketchFeature.getGeometry(), ol.geom.LineString);
+exports.prototype.handleMeasure = function(callback) {
+  const geom = goog.asserts.assertInstanceof(this.sketchFeature.getGeometry(), olGeomLineString);
   const proj = this.getMap().getView().getProjection();
   goog.asserts.assert(proj);
-  const output = ngeo.interaction.Measure.getFormattedLength(geom, proj, this.precision, this.format);
+  const output = ngeoInteractionMeasure.getFormattedLength(geom, proj, this.precision, this.format);
   const coord = geom.getLastCoordinate();
   callback(output, coord);
 };

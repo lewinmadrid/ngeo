@@ -1,8 +1,8 @@
-goog.provide('ngeo.drawpointDirective');
+goog.module('ngeo.drawpointDirective');
 
-goog.require('ngeo');
-goog.require('ol.events');
-goog.require('ol.interaction.Draw');
+const ngeoBase = goog.require('ngeo');
+const olEvents = goog.require('ol.events');
+const olInteractionDraw = goog.require('ol.interaction.Draw');
 
 
 /**
@@ -11,7 +11,7 @@ goog.require('ol.interaction.Draw');
  * @ngdoc directive
  * @ngname ngeoDrawpoint
  */
-ngeo.drawpointDirective = function() {
+exports = function() {
   return {
     restrict: 'A',
     require: '^^ngeoDrawfeature',
@@ -23,21 +23,21 @@ ngeo.drawpointDirective = function() {
      */
     link: ($scope, element, attrs, drawFeatureCtrl) => {
 
-      const drawPoint = new ol.interaction.Draw({
+      const drawPoint = new olInteractionDraw({
         type: /** @type {ol.geom.GeometryType} */ ('Point')
       });
 
       drawFeatureCtrl.registerInteraction(drawPoint);
       drawFeatureCtrl.drawPoint = drawPoint;
 
-      ol.events.listen(
+      olEvents.listen(
         drawPoint,
         'drawend',
         drawFeatureCtrl.handleDrawEnd.bind(
-          drawFeatureCtrl, ngeo.GeometryType.POINT),
+          drawFeatureCtrl, ngeoBase.GeometryType.POINT),
         drawFeatureCtrl
       );
-      ol.events.listen(
+      olEvents.listen(
         drawPoint,
         'change:active',
         drawFeatureCtrl.handleActiveChange,
@@ -48,4 +48,4 @@ ngeo.drawpointDirective = function() {
 };
 
 
-ngeo.module.directive('ngeoDrawpoint', ngeo.drawpointDirective);
+ngeoBase.module.directive('ngeoDrawpoint', exports);

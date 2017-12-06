@@ -1,7 +1,7 @@
-goog.provide('ngeo.profile');
+goog.module('ngeo.profile');
 
-goog.require('goog.asserts');
-goog.require('ol.obj');
+const googAsserts = goog.require('goog.asserts');
+const olObj = goog.require('ol.obj');
 
 
 /**
@@ -58,7 +58,7 @@ goog.require('ol.obj');
  * @param {ngeox.profile.ProfileOptions} options Profile options.
  * @export
  */
-ngeo.profile = function(options) {
+exports = function(options) {
   /**
    * Whether the simplified profile should be shown.
    * @type {boolean}
@@ -176,7 +176,7 @@ ngeo.profile = function(options) {
   };
 
   if (options.formatter !== undefined) {
-    ol.obj.assign(formatter, options.formatter);
+    olObj.assign(formatter, options.formatter);
   }
 
   /**
@@ -544,7 +544,7 @@ ngeo.profile = function(options) {
 
   profile.showPois = function(pois) {
     pois = pois !== undefined ? pois : [];
-    goog.asserts.assert(pois.length === 0 || poiExtractor !== undefined);
+    googAsserts.assert(pois.length === 0 || poiExtractor !== undefined);
 
     const pe = poiExtractor;
     const g = svg.select('g');

@@ -1,13 +1,13 @@
-goog.provide('ngeo.datasource.DataSources');
+goog.module('ngeo.datasource.DataSources');
 
-goog.require('ngeo');
-goog.require('ol.Collection');
+const ngeoBase = goog.require('ngeo');
+const olCollection = goog.require('ol.Collection');
 
 
-ngeo.module.value('ngeoDataSources', new ol.Collection());
+ngeoBase.module.value('ngeoDataSources', new olCollection());
 
 
 /**
  * @typedef {!ol.Collection.<!ngeo.datasource.DataSource>}
  */
-ngeo.datasource.DataSources;
+exports;

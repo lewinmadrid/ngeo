@@ -1,12 +1,12 @@
-goog.provide('ngeo.rule.Rule');
+goog.module('ngeo.rule.Rule');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
  * @implements {ngeox.rule.Rule}
  */
-ngeo.rule.Rule = class {
+exports = class {
 
   /**
    * The abstract class for all filter rules.
@@ -279,8 +279,8 @@ ngeo.rule.Rule = class {
     const upperBoundary = this.upperBoundary;
 
     if (operator) {
-      if (operator === ngeo.rule.Rule.OperatorType.BETWEEN ||
-          operator === ngeo.rule.Rule.TemporalOperatorType.DURING) {
+      if (operator === exports.OperatorType.BETWEEN ||
+          operator === exports.TemporalOperatorType.DURING) {
         if (lowerBoundary !== null && upperBoundary !== null) {
           value = {
             operator,
@@ -336,7 +336,7 @@ ngeo.rule.Rule = class {
 /**
  * @enum {string}
  */
-ngeo.rule.Rule.OperatorType = {
+exports.OperatorType = {
   BETWEEN: '..',
   EQUAL_TO: '=',
   GREATER_THAN: '>',
@@ -351,7 +351,7 @@ ngeo.rule.Rule.OperatorType = {
 /**
  * @enum {string}
  */
-ngeo.rule.Rule.SpatialOperatorType = {
+exports.SpatialOperatorType = {
   CONTAINS: 'contains',
   INTERSECTS: 'intersects',
   WITHIN: 'within'
@@ -361,7 +361,7 @@ ngeo.rule.Rule.SpatialOperatorType = {
 /**
  * @enum {string}
  */
-ngeo.rule.Rule.TemporalOperatorType = {
+exports.TemporalOperatorType = {
   BEGINS: '>=',
   DURING: '..',
   ENDS: '<=',

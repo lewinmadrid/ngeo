@@ -1,22 +1,22 @@
-goog.provide('ngeo.MapQuerent');
+goog.module('ngeo.MapQuerent');
 
-goog.require('ngeo');
-goog.require('ngeo.Querent');
-goog.require('ngeo.datasource.DataSourcesHelper');
+const ngeoBase = goog.require('ngeo');
+const ngeoQuerent = goog.require('ngeo.Querent');
+const ngeoDatasourceDataSourcesHelper = goog.require('ngeo.datasource.DataSourcesHelper');
 
 
 /**
  * The `ngeoQueryResult` is the value service where the features of the query
  * result are added.
  */
-ngeo.module.value('ngeoQueryResult', /** @type {ngeox.QueryResult} */ ({
+ngeoBase.module.value('ngeoQueryResult', /** @type {ngeox.QueryResult} */ ({
   sources: [],
   total: 0,
   pending: false
 }));
 
 
-ngeo.MapQuerent = class {
+exports = class {
 
   /**
    * The ngeo Map Querent is the service bound to a map that issues
@@ -208,4 +208,4 @@ ngeo.MapQuerent = class {
 };
 
 
-ngeo.module.service('ngeoMapQuerent', ngeo.MapQuerent);
+ngeoBase.module.service('ngeoMapQuerent', exports);

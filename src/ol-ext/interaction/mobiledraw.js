@@ -1,15 +1,15 @@
-goog.provide('ngeo.interaction.MobileDraw');
+goog.module('ngeo.interaction.MobileDraw');
 
-goog.require('ol.events');
-goog.require('ol.Feature');
-goog.require('ol.functions');
-goog.require('ol.geom.LineString');
-goog.require('ol.geom.Point');
-goog.require('ol.geom.SimpleGeometry');
-goog.require('ol.interaction.Draw');
-goog.require('ol.interaction.Interaction');
-goog.require('ol.layer.Vector');
-goog.require('ol.source.Vector');
+const olEvents = goog.require('ol.events');
+const olFeature = goog.require('ol.Feature');
+const olFunctions = goog.require('ol.functions');
+const olGeomLineString = goog.require('ol.geom.LineString');
+const olGeomPoint = goog.require('ol.geom.Point');
+const olGeomSimpleGeometry = goog.require('ol.geom.SimpleGeometry');
+const olInteractionDraw = goog.require('ol.interaction.Draw');
+const olInteractionInteraction = goog.require('ol.interaction.Interaction');
+const olLayerVector = goog.require('ol.layer.Vector');
+const olSourceVector = goog.require('ol.source.Vector');
 
 
 /**
@@ -38,10 +38,10 @@ ngeo.interaction.MobileDrawProperty = {
  * @param {ngeox.interaction.MobileDrawOptions} options Options
  * @export
  */
-ngeo.interaction.MobileDraw = function(options) {
+exports = function(options) {
 
-  ol.interaction.Interaction.call(this, {
-    handleEvent: ol.functions.TRUE
+  olInteractionInteraction.call(this, {
+    handleEvent: olFunctions.TRUE
   });
 
   /**
@@ -95,43 +95,43 @@ ngeo.interaction.MobileDraw = function(options) {
    * @type {ol.layer.Vector}
    * @private
    */
-  this.overlay_ = new ol.layer.Vector({
-    source: new ol.source.Vector({
+  this.overlay_ = new olLayerVector({
+    source: new olSourceVector({
       useSpatialIndex: false,
       wrapX: options.wrapX ? options.wrapX : false
     }),
     style: options.style ? options.style :
-      ol.interaction.Draw.getDefaultStyleFunction(),
+      olInteractionDraw.getDefaultStyleFunction(),
     updateWhileAnimating: true,
     updateWhileInteracting: true
   });
 
-  ol.events.listen(this, 'change:active', this.updateState_, this);
+  olEvents.listen(this, 'change:active', this.updateState_, this);
 
   this.set(ngeo.interaction.MobileDrawProperty.DIRTY, false);
   this.set(ngeo.interaction.MobileDrawProperty.DRAWING, false);
   this.set(ngeo.interaction.MobileDrawProperty.VALID, false);
 
 };
-ol.inherits(ngeo.interaction.MobileDraw, ol.interaction.Interaction);
+ol.inherits(exports, olInteractionInteraction);
 
 
 /**
  * @inheritDoc
  */
-ngeo.interaction.MobileDraw.prototype.setMap = function(map) {
+exports.prototype.setMap = function(map) {
 
   const currentMap = this.getMap();
   if (currentMap) {
     if (this.changeEventKey_) {
-      ol.events.unlistenByKey(this.changeEventKey_);
+      olEvents.unlistenByKey(this.changeEventKey_);
     }
   }
 
-  ol.interaction.Interaction.prototype.setMap.call(this, map);
+  olInteractionInteraction.prototype.setMap.call(this, map);
 
   if (map) {
-    this.changeEventKey_ = ol.events.listen(map.getView(),
+    this.changeEventKey_ = olEvents.listen(map.getView(),
       'change:center',
       this.handleViewCenterChange_, this);
   }
@@ -151,7 +151,7 @@ ngeo.interaction.MobileDraw.prototype.setMap = function(map) {
  * @observable
  * @export
  */
-ngeo.interaction.MobileDraw.prototype.getDirty = function() {
+exports.prototype.getDirty = function() {
   return /** @type {boolean} */ (
     this.get(ngeo.interaction.MobileDrawProperty.DIRTY));
 };
@@ -163,7 +163,7 @@ ngeo.interaction.MobileDraw.prototype.getDirty = function() {
  * @observable
  * @export
  */
-ngeo.interaction.MobileDraw.prototype.getDrawing = function() {
+exports.prototype.getDrawing = function() {
   return /** @type {boolean} */ (
     this.get(ngeo.interaction.MobileDrawProperty.DRAWING));
 };
@@ -177,7 +177,7 @@ ngeo.interaction.MobileDraw.prototype.getDrawing = function() {
  * @observable
  * @export
  */
-ngeo.interaction.MobileDraw.prototype.getValid = function() {
+exports.prototype.getValid = function() {
   return /** @type {boolean} */ (
     this.get(ngeo.interaction.MobileDrawProperty.VALID));
 };
@@ -188,7 +188,7 @@ ngeo.interaction.MobileDraw.prototype.getValid = function() {
  * @return {?ol.Feature} The sketch feature, or null if none.
  * @export
  */
-ngeo.interaction.MobileDraw.prototype.getFeature = function() {
+exports.prototype.getFeature = function() {
   return this.sketchFeature_;
 };
 
@@ -201,7 +201,7 @@ ngeo.interaction.MobileDraw.prototype.getFeature = function() {
  * it.
  * @export
  */
-ngeo.interaction.MobileDraw.prototype.addToDrawing = function() {
+exports.prototype.addToDrawing = function() {
 
   // no need to do anything if interaction is not active, nor drawing
   const active = this.getActive();
@@ -219,12 +219,12 @@ ngeo.interaction.MobileDraw.prototype.addToDrawing = function() {
   // == point ==
   if (this.type_ === 'Point') {
     if (!this.sketchFeature_) {
-      this.sketchFeature_ = new ol.Feature(new ol.geom.Point(coordinate));
-      this.dispatchEvent(new ol.interaction.Draw.Event(
+      this.sketchFeature_ = new olFeature(new olGeomPoint(coordinate));
+      this.dispatchEvent(new olInteractionDraw.Event(
         /** @type {ol.interaction.DrawEventType} */ ('drawstart'), this.sketchFeature_));
     }
     sketchFeatureGeom = this.sketchFeature_.getGeometry();
-    goog.asserts.assertInstanceof(sketchFeatureGeom, ol.geom.SimpleGeometry);
+    goog.asserts.assertInstanceof(sketchFeatureGeom, olGeomSimpleGeometry);
     sketchFeatureGeom.setCoordinates(coordinate);
     return;
   }
@@ -234,12 +234,12 @@ ngeo.interaction.MobileDraw.prototype.addToDrawing = function() {
     this.sketchPoints_.push(this.sketchPoint_);
     if (!this.sketchFeature_) {
       coordinates = [coordinate.slice(), coordinate.slice()];
-      this.sketchFeature_ = new ol.Feature(new ol.geom.LineString(coordinates));
-      this.dispatchEvent(new ol.interaction.Draw.Event(
+      this.sketchFeature_ = new olFeature(new olGeomLineString(coordinates));
+      this.dispatchEvent(new olInteractionDraw.Event(
         /** @type {ol.interaction.DrawEventType} */ ('drawstart'), this.sketchFeature_));
     } else {
       sketchFeatureGeom = this.sketchFeature_.getGeometry();
-      goog.asserts.assertInstanceof(sketchFeatureGeom, ol.geom.SimpleGeometry);
+      goog.asserts.assertInstanceof(sketchFeatureGeom, olGeomSimpleGeometry);
       coordinates = sketchFeatureGeom.getCoordinates();
       coordinates.push(coordinate.slice());
       sketchFeatureGeom.setCoordinates(coordinates);
@@ -277,7 +277,7 @@ ngeo.interaction.MobileDraw.prototype.addToDrawing = function() {
  * Clear the drawing
  * @export
  */
-ngeo.interaction.MobileDraw.prototype.clearDrawing = function() {
+exports.prototype.clearDrawing = function() {
   this.setActive(false);
   this.setActive(true);
 };
@@ -287,7 +287,7 @@ ngeo.interaction.MobileDraw.prototype.clearDrawing = function() {
  * Finish drawing. If there's a sketch point, it's added first.
  * @export
  */
-ngeo.interaction.MobileDraw.prototype.finishDrawing = function() {
+exports.prototype.finishDrawing = function() {
 
   // no need to do anything if interaction is not active, nor drawing
   const active = this.getActive();
@@ -303,7 +303,7 @@ ngeo.interaction.MobileDraw.prototype.finishDrawing = function() {
 
   this.set(ngeo.interaction.MobileDrawProperty.DRAWING, false);
 
-  this.dispatchEvent(new ol.interaction.Draw.Event(
+  this.dispatchEvent(new olInteractionDraw.Event(
     /** @type {ol.interaction.DrawEventType} */ ('drawend'), this.sketchFeature_));
 };
 
@@ -315,7 +315,7 @@ ngeo.interaction.MobileDraw.prototype.finishDrawing = function() {
  * Start drawing by adding the sketch point first.
  * @private
  */
-ngeo.interaction.MobileDraw.prototype.startDrawing_ = function() {
+exports.prototype.startDrawing_ = function() {
   this.set(ngeo.interaction.MobileDrawProperty.DRAWING, true);
   this.createOrUpdateSketchPoint_();
   this.updateSketchFeatures_();
@@ -331,7 +331,7 @@ ngeo.interaction.MobileDraw.prototype.startDrawing_ = function() {
  * set to the center of the map.
  * @private
  */
-ngeo.interaction.MobileDraw.prototype.modifyDrawing_ = function() {
+exports.prototype.modifyDrawing_ = function() {
   if (!this.sketchFeature_) {
     return;
   }
@@ -340,7 +340,7 @@ ngeo.interaction.MobileDraw.prototype.modifyDrawing_ = function() {
 
   if (this.type_ === 'LineString') {
     const sketchFeatureGeom = this.sketchFeature_.getGeometry();
-    goog.asserts.assertInstanceof(sketchFeatureGeom, ol.geom.SimpleGeometry);
+    goog.asserts.assertInstanceof(sketchFeatureGeom, olGeomSimpleGeometry);
     const coordinates = sketchFeatureGeom.getCoordinates();
     coordinates.pop();
     coordinates.push(center);
@@ -360,7 +360,7 @@ ngeo.interaction.MobileDraw.prototype.modifyDrawing_ = function() {
  * @return {?ol.Feature} The sketch feature (or null if none).
  * @private
  */
-ngeo.interaction.MobileDraw.prototype.abortDrawing_ = function() {
+exports.prototype.abortDrawing_ = function() {
   const sketchFeature = this.sketchFeature_;
   if (sketchFeature || this.sketchPoints_.length > 0) {
     this.sketchFeature_ = null;
@@ -378,7 +378,7 @@ ngeo.interaction.MobileDraw.prototype.abortDrawing_ = function() {
 /**
  * @private
  */
-ngeo.interaction.MobileDraw.prototype.updateState_ = function() {
+exports.prototype.updateState_ = function() {
   const map = this.getMap();
   const active = this.getActive();
   if (!map || !active) {
@@ -394,7 +394,7 @@ ngeo.interaction.MobileDraw.prototype.updateState_ = function() {
  * @param {ol.Object.Event} evt Event.
  * @private
  */
-ngeo.interaction.MobileDraw.prototype.handleViewCenterChange_ = function(evt) {
+exports.prototype.handleViewCenterChange_ = function(evt) {
   // no need to do anything if interaction is not active, nor drawing
   const active = this.getActive();
   const drawing = this.getDrawing();
@@ -417,14 +417,14 @@ ngeo.interaction.MobileDraw.prototype.handleViewCenterChange_ = function(evt) {
 /**
  * @private
  */
-ngeo.interaction.MobileDraw.prototype.createOrUpdateSketchPoint_ = function() {
+exports.prototype.createOrUpdateSketchPoint_ = function() {
   const center = this.getCenter_();
 
   if (this.sketchPoint_) {
     const geometry = this.getSketchPointGeometry_();
     geometry.setCoordinates(center);
   } else {
-    this.sketchPoint_ = new ol.Feature(new ol.geom.Point(center));
+    this.sketchPoint_ = new olFeature(new olGeomPoint(center));
   }
 
 };
@@ -434,7 +434,7 @@ ngeo.interaction.MobileDraw.prototype.createOrUpdateSketchPoint_ = function() {
  * Redraw the sketch features.
  * @private
  */
-ngeo.interaction.MobileDraw.prototype.updateSketchFeatures_ = function() {
+exports.prototype.updateSketchFeatures_ = function() {
   const sketchFeatures = [];
   if (this.sketchFeature_) {
     sketchFeatures.push(this.sketchFeature_);
@@ -454,10 +454,10 @@ ngeo.interaction.MobileDraw.prototype.updateSketchFeatures_ = function() {
  * @return {ol.geom.Point} Point.
  * @private
  */
-ngeo.interaction.MobileDraw.prototype.getSketchPointGeometry_ = function() {
+exports.prototype.getSketchPointGeometry_ = function() {
   goog.asserts.assert(this.sketchPoint_, 'sketch point should be thruty');
   const geometry = this.sketchPoint_.getGeometry();
-  goog.asserts.assertInstanceof(geometry, ol.geom.Point);
+  goog.asserts.assertInstanceof(geometry, olGeomPoint);
   return geometry;
 };
 
@@ -467,7 +467,7 @@ ngeo.interaction.MobileDraw.prototype.getSketchPointGeometry_ = function() {
  * @return {ol.Coordinate} Coordinate.
  * @private
  */
-ngeo.interaction.MobileDraw.prototype.getCenter_ = function() {
+exports.prototype.getCenter_ = function() {
   const center = this.getMap().getView().getCenter();
   goog.asserts.assertArray(center);
   return center;

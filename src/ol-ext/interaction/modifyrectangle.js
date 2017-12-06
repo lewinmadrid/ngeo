@@ -1,17 +1,17 @@
-goog.provide('ngeo.interaction.ModifyRectangle');
+goog.module('ngeo.interaction.ModifyRectangle');
 
-goog.require('goog.asserts');
-goog.require('ol');
-goog.require('ol.Collection');
-goog.require('ol.Feature');
-goog.require('ol.MapBrowserPointerEvent');
-goog.require('ol.events');
-goog.require('ol.geom.Point');
-goog.require('ol.geom.Polygon');
-goog.require('ol.interaction.Modify');
-goog.require('ol.interaction.Pointer');
-goog.require('ol.layer.Vector');
-goog.require('ol.source.Vector');
+const googAsserts = goog.require('goog.asserts');
+const olBase = goog.require('ol');
+const olCollection = goog.require('ol.Collection');
+const olFeature = goog.require('ol.Feature');
+const olMapBrowserPointerEvent = goog.require('ol.MapBrowserPointerEvent');
+const olEvents = goog.require('ol.events');
+const olGeomPoint = goog.require('ol.geom.Point');
+const olGeomPolygon = goog.require('ol.geom.Polygon');
+const olInteractionModify = goog.require('ol.interaction.Modify');
+const olInteractionPointer = goog.require('ol.interaction.Pointer');
+const olLayerVector = goog.require('ol.layer.Vector');
+const olSourceVector = goog.require('ol.source.Vector');
 
 
 /**
@@ -26,11 +26,11 @@ goog.require('ol.source.Vector');
  * @export
  * @api
  */
-ngeo.interaction.ModifyRectangle = function(options) {
+exports = function(options) {
 
-  goog.asserts.assert(options.features);
+  googAsserts.assert(options.features);
 
-  ol.interaction.Pointer.call(this, {
+  olInteractionPointer.call(this, {
     handleDownEvent: this.handleDown_,
     handleDragEvent: this.handleDrag_,
     handleUpEvent: this.handleUp_
@@ -43,14 +43,14 @@ ngeo.interaction.ModifyRectangle = function(options) {
   this.modified_ = false;
 
   // Get the style for the box and the points
-  const style = options.style ? options.style : ol.interaction.Modify.getDefaultStyleFunction();
+  const style = options.style ? options.style : olInteractionModify.getDefaultStyleFunction();
 
   /**
    * @type {ol.layer.Vector}
    * @private
    */
-  this.vectorPoints_ = new ol.layer.Vector({
-    source: new ol.source.Vector({
+  this.vectorPoints_ = new olLayerVector({
+    source: new olSourceVector({
       wrapX: !!options.wrapX
     }),
     visible: this.getActive(),
@@ -84,21 +84,21 @@ ngeo.interaction.ModifyRectangle = function(options) {
    */
   this.params_ = null;
 
-  ol.events.listen(this.features_, 'add', this.handleFeatureAdd_, this);
-  ol.events.listen(this.features_, 'remove', this.handleFeatureRemove_, this);
+  olEvents.listen(this.features_, 'add', this.handleFeatureAdd_, this);
+  olEvents.listen(this.features_, 'remove', this.handleFeatureRemove_, this);
 
   this.features_.forEach(this.addFeature_, this);
 
 };
-ol.inherits(ngeo.interaction.ModifyRectangle, ol.interaction.Pointer);
+olBase.inherits(exports, olInteractionPointer);
 
 
 /**
  * @param {boolean} active Active.
  * @override
  */
-ngeo.interaction.ModifyRectangle.prototype.setActive = function(active) {
-  ol.interaction.Pointer.prototype.setActive.call(this, active);
+exports.prototype.setActive = function(active) {
+  olInteractionPointer.prototype.setActive.call(this, active);
   if (this.vectorPoints_) {
     this.vectorPoints_.setVisible(active);
   }
@@ -108,12 +108,12 @@ ngeo.interaction.ModifyRectangle.prototype.setActive = function(active) {
  * @param {ol.Feature} feature Feature.
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.addFeature_ = function(feature) {
+exports.prototype.addFeature_ = function(feature) {
   const featureGeom = feature.getGeometry();
-  if (featureGeom instanceof ol.geom.Polygon) {
+  if (featureGeom instanceof olGeomPolygon) {
 
     // If the feature's corners are already set, no need to set them again
-    const uid = ol.getUid(feature);
+    const uid = olBase.getUid(feature);
     let item = this.cache_[uid];
     if (item) {
       return;
@@ -137,8 +137,8 @@ ngeo.interaction.ModifyRectangle.prototype.addFeature_ = function(feature) {
     let cornerPoint;
     let cornerFeature;
     corners.forEach((corner) => {
-      cornerPoint = new ol.geom.Point(corner);
-      cornerFeature = new ol.Feature({
+      cornerPoint = new olGeomPoint(corner);
+      cornerFeature = new olFeature({
         'corner': true,
         'geometry': cornerPoint,
         'siblingX': null,
@@ -185,10 +185,10 @@ ngeo.interaction.ModifyRectangle.prototype.addFeature_ = function(feature) {
  * @param {ol.MapBrowserPointerEvent} evt Map browser event
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.willModifyFeatures_ = function(evt) {
+exports.prototype.willModifyFeatures_ = function(evt) {
   if (!this.modified_) {
     this.modified_ = true;
-    this.dispatchEvent(new ol.interaction.Modify.Event(
+    this.dispatchEvent(new olInteractionModify.Event(
       /** @type {ol.interaction.ModifyEventType} */ ('modifystart'), this.features_, evt));
     this.params_ = this.initializeParams_();
   }
@@ -199,26 +199,26 @@ ngeo.interaction.ModifyRectangle.prototype.willModifyFeatures_ = function(evt) {
  * @return {ngeo.interaction.ModifyRectangle.ModifyParams} The initialised params
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.initializeParams_ = function() {
+exports.prototype.initializeParams_ = function() {
   const feature = this.feature_;
 
   // 1. Find the origin (opposite) point for the modify operation
   // siblingY relative to the origin is siblingX relative to the opposite
   const siblingY = feature.get('siblingX');
-  goog.asserts.assertInstanceof(siblingY, ol.Feature);
+  googAsserts.assertInstanceof(siblingY, olFeature);
 
   const origin = siblingY.get('siblingY');
-  goog.asserts.assertInstanceof(origin, ol.Feature);
+  googAsserts.assertInstanceof(origin, olFeature);
   const originPoint = origin.getGeometry();
-  goog.asserts.assertInstanceof(originPoint, ol.geom.Point);
+  googAsserts.assertInstanceof(originPoint, olGeomPoint);
   const originCoordinate = originPoint.getCoordinates();
   const originPixel = this.getMap().getPixelFromCoordinate(originCoordinate);
 
   // 2. Find the origin's X sibling and the normal vector from the origin to it
   const siblingX = origin.get('siblingX');
-  goog.asserts.assertInstanceof(siblingX, ol.Feature);
+  googAsserts.assertInstanceof(siblingX, olFeature);
   const siblingXPoint = siblingX.getGeometry();
-  goog.asserts.assertInstanceof(siblingXPoint, ol.geom.Point);
+  googAsserts.assertInstanceof(siblingXPoint, olGeomPoint);
   const siblingXCoordinate = siblingXPoint.getCoordinates();
   const siblingXPixel = this.getMap().getPixelFromCoordinate(siblingXCoordinate);
   let vectorX = [
@@ -231,7 +231,7 @@ ngeo.interaction.ModifyRectangle.prototype.initializeParams_ = function() {
 
   // 3. Find the origin's Y sibling and the normal vector from the origin to it
   const siblingYPoint = siblingY.getGeometry();
-  goog.asserts.assertInstanceof(siblingYPoint, ol.geom.Point);
+  googAsserts.assertInstanceof(siblingYPoint, olGeomPoint);
   const siblingYCoordinate = siblingYPoint.getCoordinates();
   const siblingYPixel = this.getMap().getPixelFromCoordinate(siblingYCoordinate);
   let vectorY = [
@@ -268,8 +268,8 @@ ngeo.interaction.ModifyRectangle.prototype.initializeParams_ = function() {
  * @param {ol.Feature} feature Feature.
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.removeFeature_ = function(feature) {
-  const uid = ol.getUid(feature);
+exports.prototype.removeFeature_ = function(feature) {
+  const uid = olBase.getUid(feature);
   const item = this.cache_[uid];
   const corners = item.corners;
   for (let i = 0; i < corners.length; i++) {
@@ -284,9 +284,9 @@ ngeo.interaction.ModifyRectangle.prototype.removeFeature_ = function(feature) {
 /**
  * @inheritDoc
  */
-ngeo.interaction.ModifyRectangle.prototype.setMap = function(map) {
+exports.prototype.setMap = function(map) {
   this.vectorPoints_.setMap(map);
-  ol.interaction.Pointer.prototype.setMap.call(this, map);
+  olInteractionPointer.prototype.setMap.call(this, map);
 };
 
 
@@ -294,9 +294,9 @@ ngeo.interaction.ModifyRectangle.prototype.setMap = function(map) {
  * @param {ol.Collection.Event} evt Event.
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.handleFeatureAdd_ = function(evt) {
+exports.prototype.handleFeatureAdd_ = function(evt) {
   const feature = evt.element;
-  goog.asserts.assertInstanceof(feature, ol.Feature,
+  googAsserts.assertInstanceof(feature, olFeature,
     'feature should be an ol.Feature');
   this.addFeature_(feature);
 };
@@ -306,7 +306,7 @@ ngeo.interaction.ModifyRectangle.prototype.handleFeatureAdd_ = function(evt) {
  * @param {ol.Collection.Event} evt Event.
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.handleFeatureRemove_ = function(evt) {
+exports.prototype.handleFeatureRemove_ = function(evt) {
   const feature = /** @type {ol.Feature} */ (evt.element);
   this.removeFeature_(feature);
 };
@@ -318,7 +318,7 @@ ngeo.interaction.ModifyRectangle.prototype.handleFeatureRemove_ = function(evt) 
  * @this {ngeo.interaction.ModifyRectangle}
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.handleDown_ = function(evt) {
+exports.prototype.handleDown_ = function(evt) {
   const map = evt.map;
 
   const feature = map.forEachFeatureAtPixel(evt.pixel, feature =>
@@ -340,14 +340,14 @@ ngeo.interaction.ModifyRectangle.prototype.handleDown_ = function(evt) {
  * @this {ngeo.interaction.ModifyRectangle}
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.handleDrag_ = function(evt) {
+exports.prototype.handleDrag_ = function(evt) {
   this.willModifyFeatures_(evt);
   const feature = this.feature_;
 
   const geometry = /** @type {ol.geom.SimpleGeometry} */
       (feature.getGeometry());
 
-  if (geometry instanceof ol.geom.Point) {
+  if (geometry instanceof olGeomPoint) {
     geometry.setCoordinates(evt.coordinate);
 
     const destinationPixel = evt.pixel;
@@ -374,7 +374,7 @@ ngeo.interaction.ModifyRectangle.prototype.handleDrag_ = function(evt) {
     // Resize the box
     const boxFeature = feature.get('boxFeature');
     const geom = boxFeature.getGeometry();
-    goog.asserts.assertInstanceof(geom, ol.geom.Polygon);
+    googAsserts.assertInstanceof(geom, olGeomPolygon);
     geom.setCoordinates([[evt.coordinate, b2Coordinate, originCoordinate, c2Coordinate, evt.coordinate]]);
   }
 };
@@ -389,7 +389,7 @@ ngeo.interaction.ModifyRectangle.prototype.handleDrag_ = function(evt) {
  * @return {ol.Pixel} The new pixel of the point
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.calculateNewPixel_ = function(
+exports.prototype.calculateNewPixel_ = function(
   origin, destination, vector) {
 
   const aVector = [destination[0] - origin[0], destination[1] - origin[1]];
@@ -411,9 +411,9 @@ ngeo.interaction.ModifyRectangle.prototype.calculateNewPixel_ = function(
  * @this {ngeo.interaction.ModifyRectangle}
  * @private
  */
-ngeo.interaction.ModifyRectangle.prototype.handleUp_ = function(evt) {
+exports.prototype.handleUp_ = function(evt) {
   if (this.modified_) {
-    this.dispatchEvent(new ol.interaction.Modify.Event(
+    this.dispatchEvent(new olInteractionModify.Event(
       /** @type {ol.interaction.ModifyEventType} */ ('modifyend'), this.features_, evt));
     this.params_ = null;
     this.modified_ = false;
@@ -427,7 +427,7 @@ ngeo.interaction.ModifyRectangle.prototype.handleUp_ = function(evt) {
  *     corners: Array.<ol.Feature>
  * }}
  */
-ngeo.interaction.ModifyRectangle.CacheItem;
+exports.CacheItem;
 
 
 /**
@@ -440,4 +440,4 @@ ngeo.interaction.ModifyRectangle.CacheItem;
  *     vectorY: Array.<number>
  * }}
  */
-ngeo.interaction.ModifyRectangle.ModifyParams;
+exports.ModifyParams;

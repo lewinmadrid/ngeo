@@ -1,12 +1,12 @@
-goog.provide('ngeo.Download');
+goog.module('ngeo.Download');
 
-goog.require('ngeo');
-goog.require('ngeo.utils');
+const ngeoBase = goog.require('ngeo');
+const ngeoUtils = goog.require('ngeo.utils');
 
 /**
  * @typedef {function(string, string, string=)}
  */
-ngeo.Download;
+exports;
 
 /**
  * A service to start a download for a file.
@@ -16,7 +16,7 @@ ngeo.Download;
  * @ngdoc service
  * @ngname ngeoDownload
  */
-ngeo.downloadFactory_ = function() {
+ngeoBase.downloadFactory_ = function() {
   /**
    * @param {string} content The file content.
    * @param {string} fileName The file name.
@@ -29,7 +29,7 @@ ngeo.downloadFactory_ = function() {
     // do a manual download with "Save as".
     // See also: https://github.com/eligrey/FileSaver.js/issues/12
     /** @type {string} */
-    const fileType = opt_fileType !== undefined && !ngeo.utils.isSafari() ?
+    const fileType = opt_fileType !== undefined && !ngeoUtils.isSafari() ?
       opt_fileType : 'text/plain;charset=utf-8';
 
     const blob = new Blob([content], {type: fileType});
@@ -39,4 +39,4 @@ ngeo.downloadFactory_ = function() {
   return download;
 };
 
-ngeo.module.factory('ngeoDownload', ngeo.downloadFactory_);
+ngeoBase.module.factory('ngeoDownload', ngeoBase.downloadFactory_);

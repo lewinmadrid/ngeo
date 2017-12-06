@@ -1,11 +1,11 @@
-goog.provide('ngeo.datasource.File');
+goog.module('ngeo.datasource.File');
 
-goog.require('ngeo.datasource.DataSource');
-goog.require('ol.layer.Vector');
-goog.require('ol.source.Vector');
+const ngeoDatasourceDataSource = goog.require('ngeo.datasource.DataSource');
+const olLayerVector = goog.require('ol.layer.Vector');
+const olSourceVector = goog.require('ol.source.Vector');
 
 
-ngeo.datasource.File = class extends ngeo.datasource.DataSource {
+exports = class extends ngeoDatasourceDataSource {
 
   /**
    * A data source that contains vector features that were loaded from a file.
@@ -30,7 +30,7 @@ ngeo.datasource.File = class extends ngeo.datasource.DataSource {
      * @type {!ol.source.Vector}
      * @private
      */
-    this.source_ = new ol.source.Vector({
+    this.source_ = new olSourceVector({
       features: this.featuresCollection_,
       wrapX: false
     });
@@ -39,7 +39,7 @@ ngeo.datasource.File = class extends ngeo.datasource.DataSource {
      * @type {!ol.layer.Vector}
      * @private
      */
-    this.layer_ = new ol.layer.Vector({
+    this.layer_ = new olLayerVector({
       source: this.source_
     });
   }

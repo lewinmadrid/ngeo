@@ -1,6 +1,6 @@
-goog.provide('ngeo.filereaderDirective');
+goog.module('ngeo.filereaderDirective');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -25,7 +25,7 @@ goog.require('ngeo');
  * @ngdoc directive
  * @ngname ngeoFilereader
  */
-ngeo.filereaderDirective = function($window) {
+exports = function($window) {
   return {
     restrict: 'A',
     scope: {
@@ -62,4 +62,4 @@ ngeo.filereaderDirective = function($window) {
 };
 
 
-ngeo.module.directive('ngeoFilereader', ngeo.filereaderDirective);
+ngeoBase.module.directive('ngeoFilereader', exports);

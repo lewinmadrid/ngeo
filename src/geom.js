@@ -1,13 +1,13 @@
-goog.provide('ngeo.geom');
+goog.module('ngeo.geom');
 
-goog.require('ngeo.coordinate');
-goog.require('ol.geom.LineString');
-goog.require('ol.geom.MultiLineString');
-goog.require('ol.geom.MultiPoint');
-goog.require('ol.geom.MultiPolygon');
-goog.require('ol.geom.Point');
-goog.require('ol.geom.Polygon');
-goog.require('ol.geom.SimpleGeometry');
+const ngeoCoordinate = goog.require('ngeo.coordinate');
+const olGeomLineString = goog.require('ol.geom.LineString');
+const olGeomMultiLineString = goog.require('ol.geom.MultiLineString');
+const olGeomMultiPoint = goog.require('ol.geom.MultiPoint');
+const olGeomMultiPolygon = goog.require('ol.geom.MultiPolygon');
+const olGeomPoint = goog.require('ol.geom.Point');
+const olGeomPolygon = goog.require('ol.geom.Polygon');
+const olGeomSimpleGeometry = goog.require('ol.geom.SimpleGeometry');
 
 
 /**
@@ -20,9 +20,9 @@ goog.require('ol.geom.SimpleGeometry');
  * @return {boolean} Whether the given geometry is empty or not. A null or
  *     undefined geometry is considered empty.
  */
-ngeo.geom.isEmpty = function(geom) {
+exports.isEmpty = function(geom) {
   let isEmpty = true;
-  if (geom && geom instanceof ol.geom.SimpleGeometry) {
+  if (geom && geom instanceof olGeomSimpleGeometry) {
     isEmpty = geom.getFlatCoordinates().length === 0;
   }
   return isEmpty;
@@ -35,26 +35,26 @@ ngeo.geom.isEmpty = function(geom) {
  *
  * @param {ol.geom.Geometry} geom Geometry
  */
-ngeo.geom.toXY = function(geom) {
-  if (geom instanceof ol.geom.Point) {
+exports.toXY = function(geom) {
+  if (geom instanceof olGeomPoint) {
     geom.setCoordinates(
-      ngeo.coordinate.toXY(geom.getCoordinates(), 0)
+      ngeoCoordinate.toXY(geom.getCoordinates(), 0)
     );
-  } else if (geom instanceof ol.geom.MultiPoint ||
-             geom instanceof ol.geom.LineString
+  } else if (geom instanceof olGeomMultiPoint ||
+             geom instanceof olGeomLineString
   ) {
     geom.setCoordinates(
-      ngeo.coordinate.toXY(geom.getCoordinates(), 1)
+      ngeoCoordinate.toXY(geom.getCoordinates(), 1)
     );
-  } else if (geom instanceof ol.geom.MultiLineString ||
-             geom instanceof ol.geom.Polygon
+  } else if (geom instanceof olGeomMultiLineString ||
+             geom instanceof olGeomPolygon
   ) {
     geom.setCoordinates(
-      ngeo.coordinate.toXY(geom.getCoordinates(), 2)
+      ngeoCoordinate.toXY(geom.getCoordinates(), 2)
     );
-  } else if (geom instanceof ol.geom.MultiPolygon) {
+  } else if (geom instanceof olGeomMultiPolygon) {
     geom.setCoordinates(
-      ngeo.coordinate.toXY(geom.getCoordinates(), 3)
+      ngeoCoordinate.toXY(geom.getCoordinates(), 3)
     );
   } else {
     throw 'ngeo.geom.toXY - unsupported geometry type';

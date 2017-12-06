@@ -1,9 +1,8 @@
-goog.provide('ngeo.WfsPermalink');
+goog.module('ngeo.WfsPermalink');
 
-goog.require('ngeo');
-/** @suppress {extraRequire} - required for `ngeoQueryResult` */
-goog.require('ngeo.MapQuerent');
-goog.require('ol.format.WFS');
+const ngeoBase = goog.require('ngeo');
+const ngeoMapQuerent = goog.require('ngeo.MapQuerent');
+const olFormatWFS = goog.require('ol.format.WFS');
 
 
 /**
@@ -12,7 +11,7 @@ goog.require('ol.format.WFS');
  *     condition: (string|Array.<string>)
  * }}
  */
-ngeo.WfsPermalinkFilter;
+ngeoBase.WfsPermalinkFilter;
 
 
 /**
@@ -20,7 +19,7 @@ ngeo.WfsPermalinkFilter;
  *     filters: (Array.<ngeo.WfsPermalinkFilter>)
  * }}
  */
-ngeo.WfsPermalinkFilterGroup;
+ngeoBase.WfsPermalinkFilterGroup;
 
 
 /**
@@ -30,14 +29,14 @@ ngeo.WfsPermalinkFilterGroup;
  *     showFeatures: (boolean)
  * }}
  */
-ngeo.WfsPermalinkData;
+ngeoBase.WfsPermalinkData;
 
 
 /**
  * Value that is supposed to be set in applications to enable the WFS
  * permalink functionality.
  */
-ngeo.module.value('ngeoWfsPermalinkOptions',
+ngeoBase.module.value('ngeoWfsPermalinkOptions',
   /** @type {ngeox.WfsPermalinkOptions} */ ({
     url: '', wfsTypes: [], defaultFeatureNS: '', defaultFeaturePrefix: ''
   }));
@@ -86,7 +85,7 @@ ngeo.module.value('ngeoWfsPermalinkOptions',
  * @ngname ngeoWfsPermalink
  * @ngInject
  */
-ngeo.WfsPermalink = function($http, ngeoQueryResult, ngeoWfsPermalinkOptions) {
+exports = function($http, ngeoQueryResult, ngeoWfsPermalinkOptions) {
 
   const options = ngeoWfsPermalinkOptions;
 
@@ -149,7 +148,7 @@ ngeo.WfsPermalink = function($http, ngeoQueryResult, ngeoWfsPermalinkOptions) {
  * Clear the results.
  * @export
  */
-ngeo.WfsPermalink.prototype.clear = function() {
+exports.prototype.clear = function() {
   this.clearResult_();
 };
 
@@ -162,7 +161,7 @@ ngeo.WfsPermalink.prototype.clear = function() {
  * @param {ol.Map} map The ol3 map object to get the current projection from.
  * @export
  */
-ngeo.WfsPermalink.prototype.issue = function(queryData, map) {
+exports.prototype.issue = function(queryData, map) {
   goog.asserts.assert(this.url_,
     'url is not set. to use the wfs permalink service, ' +
       'set the value `ngeoWfsPermalinkOptions`');
@@ -190,8 +189,8 @@ ngeo.WfsPermalink.prototype.issue = function(queryData, map) {
  * @param {boolean} showFeatures Show features or only zoom to feature extent?
  * @private
  */
-ngeo.WfsPermalink.prototype.issueRequest_ = function(wfsType, filter, map, showFeatures) {
-  const wfsFormat = new ol.format.WFS();
+exports.prototype.issueRequest_ = function(wfsType, filter, map, showFeatures) {
+  const wfsFormat = new olFormatWFS();
   const featureRequestXml = wfsFormat.writeGetFeature({
     srsName: map.getView().getProjection().getCode(),
     featureNS: (wfsType.featureNS !== undefined) ?
@@ -241,7 +240,7 @@ ngeo.WfsPermalink.prototype.issueRequest_ = function(wfsType, filter, map, showF
  * @return {ol.Extent} The extent of all features.
  * @private
  */
-ngeo.WfsPermalink.prototype.getExtent_ = function(features) {
+exports.prototype.getExtent_ = function(features) {
   return features.reduce((extent, feature) => ol.extent.extend(extent, feature.getGeometry().getExtent()), ol.extent.createEmpty());
 };
 
@@ -252,7 +251,7 @@ ngeo.WfsPermalink.prototype.getExtent_ = function(features) {
  * @return {ol.format.filter.Filter} OGC filters.
  * @private
  */
-ngeo.WfsPermalink.prototype.createFilters_ = function(filterGroups) {
+exports.prototype.createFilters_ = function(filterGroups) {
   if (filterGroups.length == 0) {
     return null;
   }
@@ -261,14 +260,14 @@ ngeo.WfsPermalink.prototype.createFilters_ = function(filterGroups) {
     const filters = filterGroup.filters.map((filterDef) => {
       const condition = filterDef.condition;
       if (Array.isArray(condition)) {
-        return ngeo.WfsPermalink.or_(condition.map(cond => f.equalTo(filterDef.property, cond)));
+        return exports.or_(condition.map(cond => f.equalTo(filterDef.property, cond)));
       } else {
         return f.equalTo(filterDef.property, filterDef.condition);
       }
     });
-    return ngeo.WfsPermalink.and_(filters);
+    return exports.and_(filters);
   };
-  return ngeo.WfsPermalink.or_(filterGroups.map(createFiltersForGroup));
+  return exports.or_(filterGroups.map(createFiltersForGroup));
 };
 
 
@@ -279,8 +278,8 @@ ngeo.WfsPermalink.prototype.createFilters_ = function(filterGroups) {
  * @return {ol.format.filter.Filter} The joined filters.
  * @private
  */
-ngeo.WfsPermalink.and_ = function(filters) {
-  return ngeo.WfsPermalink.joinFilters_(filters, ol.format.filter.and);
+exports.and_ = function(filters) {
+  return exports.joinFilters_(filters, ol.format.filter.and);
 };
 
 
@@ -291,8 +290,8 @@ ngeo.WfsPermalink.and_ = function(filters) {
  * @return {ol.format.filter.Filter} The joined filters.
  * @private
  */
-ngeo.WfsPermalink.or_ = function(filters) {
-  return ngeo.WfsPermalink.joinFilters_(filters, ol.format.filter.or);
+exports.or_ = function(filters) {
+  return exports.joinFilters_(filters, ol.format.filter.or);
 };
 
 
@@ -305,7 +304,7 @@ ngeo.WfsPermalink.or_ = function(filters) {
  * @return {ol.format.filter.Filter} The joined filters.
  * @private
  */
-ngeo.WfsPermalink.joinFilters_ = function(filters, joinFn) {
+exports.joinFilters_ = function(filters, joinFn) {
   return filters.reduce((combinedFilters, currentFilter) => {
     if (combinedFilters === null) {
       return currentFilter;
@@ -322,11 +321,11 @@ ngeo.WfsPermalink.joinFilters_ = function(filters, joinFn) {
  * as well.
  * @private
  */
-ngeo.WfsPermalink.prototype.clearResult_ = function() {
+exports.prototype.clearResult_ = function() {
   this.result_.total = 0;
   this.result_.sources.forEach((source) => {
     source.features.length = 0;
   }, this);
 };
 
-ngeo.module.service('ngeoWfsPermalink', ngeo.WfsPermalink);
+ngeoBase.module.service('ngeoWfsPermalink', exports);

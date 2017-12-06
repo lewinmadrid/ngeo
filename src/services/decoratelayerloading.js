@@ -1,7 +1,7 @@
-goog.provide('ngeo.DecorateLayerLoading');
+goog.module('ngeo.DecorateLayerLoading');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -18,14 +18,14 @@ goog.require('ngeo');
  * @ngdoc service
  * @ngname ngeoDecorateLayerLoading
  */
-ngeo.DecorateLayerLoading;
+exports;
 
 
 /**
  * @param {ol.layer.Base} layer Layer to decorate.
  * @param {angular.Scope} $scope Scope.
  */
-ngeo.decorateLayerLoading = function(layer, $scope) {
+ngeoBase.decorateLayerLoading = function(layer, $scope) {
 
   let source;
 
@@ -71,7 +71,7 @@ ngeo.decorateLayerLoading = function(layer, $scope) {
       incrementEvents = ['imageloadstart'];
       decrementEvents = ['imageloadend', 'imageloaderror'];
     } else {
-      goog.asserts.fail('unsupported source type');
+      googAsserts.fail('unsupported source type');
     }
 
     source.on(incrementEvents, () => {
@@ -121,4 +121,4 @@ ngeo.decorateLayerLoading = function(layer, $scope) {
 };
 
 
-ngeo.module.value('ngeoDecorateLayerLoading', ngeo.decorateLayerLoading);
+ngeoBase.module.value('ngeoDecorateLayerLoading', ngeoBase.decorateLayerLoading);

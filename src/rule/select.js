@@ -1,9 +1,9 @@
-goog.provide('ngeo.rule.Select');
+goog.module('ngeo.rule.Select');
 
-goog.require('ngeo.rule.Rule');
+const ngeoRuleRule = goog.require('ngeo.rule.Rule');
 
 
-ngeo.rule.Select = class extends ngeo.rule.Rule {
+exports = class extends ngeoRuleRule {
 
   /**
    * A select rule, which allows the selection of multiple values among a list
@@ -17,7 +17,7 @@ ngeo.rule.Select = class extends ngeo.rule.Rule {
    */
   constructor(options) {
 
-    options.operator = ngeo.rule.Rule.OperatorType.EQUAL_TO;
+    options.operator = ngeoRuleRule.OperatorType.EQUAL_TO;
     options.type = ngeo.AttributeType.SELECT;
 
     super(options);

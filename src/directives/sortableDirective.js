@@ -1,8 +1,8 @@
-goog.provide('ngeo.sortableDirective');
+goog.module('ngeo.sortableDirective');
 
-goog.require('goog.fx.DragListDirection');
-goog.require('goog.fx.DragListGroup');
-goog.require('ngeo');
+const googFxDragListDirection = goog.require('goog.fx.DragListDirection');
+const googFxDragListGroup = goog.require('goog.fx.DragListGroup');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -47,7 +47,7 @@ goog.require('ngeo');
  * @ngdoc directive
  * @ngname ngeoSortable
  */
-ngeo.sortableDirective = function($timeout) {
+exports = function($timeout) {
   return {
     restrict: 'A',
     /**
@@ -95,8 +95,8 @@ ngeo.sortableDirective = function($timeout) {
           dragListGroup.dispose();
         }
 
-        dragListGroup = new goog.fx.DragListGroup();
-        dragListGroup.addDragList(element[0], goog.fx.DragListDirection.DOWN);
+        dragListGroup = new googFxDragListGroup();
+        dragListGroup.addDragList(element[0], googFxDragListDirection.DOWN);
         dragListGroup.setFunctionToGetHandleForDragItem(
           /**
            * @param {Element} dragItem Drag item.
@@ -197,4 +197,4 @@ ngeo.sortableDirective = function($timeout) {
   };
 };
 
-ngeo.module.directive('ngeoSortable', ngeo.sortableDirective);
+ngeoBase.module.directive('ngeoSortable', exports);

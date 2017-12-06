@@ -1,9 +1,9 @@
-goog.provide('ngeo.rule.Text');
+goog.module('ngeo.rule.Text');
 
-goog.require('ngeo.rule.Rule');
+const ngeoRuleRule = goog.require('ngeo.rule.Rule');
 
 
-ngeo.rule.Text = class extends ngeo.rule.Rule {
+exports = class extends ngeoRuleRule {
 
   /**
    * A text rule, which always compares the value with the LIKE operator, by
@@ -14,7 +14,7 @@ ngeo.rule.Text = class extends ngeo.rule.Rule {
    */
   constructor(options) {
 
-    options.operator = options.operator || ngeo.rule.Rule.OperatorType.LIKE;
+    options.operator = options.operator || ngeoRuleRule.OperatorType.LIKE;
     options.type = ngeo.AttributeType.TEXT;
 
     super(options);

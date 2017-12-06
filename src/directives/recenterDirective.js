@@ -1,6 +1,6 @@
-goog.provide('ngeo.recenterDirective');
+goog.module('ngeo.recenterDirective');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -30,7 +30,7 @@ goog.require('ngeo');
  * @ngdoc directive
  * @ngname ngeoRecenter
  */
-ngeo.recenterDirective = function() {
+exports = function() {
   return {
     restrict: 'A',
     link: ($scope, $element, $attrs) => {
@@ -63,4 +63,4 @@ ngeo.recenterDirective = function() {
     }
   };
 };
-ngeo.module.directive('ngeoRecenter', ngeo.recenterDirective);
+ngeoBase.module.directive('ngeoRecenter', exports);

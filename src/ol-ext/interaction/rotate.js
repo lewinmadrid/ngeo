@@ -1,17 +1,17 @@
-goog.provide('ngeo.interaction.Rotate');
+goog.module('ngeo.interaction.Rotate');
 
-goog.require('ngeo.CustomEvent');
-goog.require('goog.asserts');
-goog.require('ol');
-goog.require('ol.Collection');
-goog.require('ol.Feature');
-goog.require('ol.MapBrowserPointerEvent');
-goog.require('ol.events');
-goog.require('ol.interaction.Modify');
-goog.require('ol.interaction.Pointer');
-goog.require('ol.geom.Point');
-goog.require('ol.layer.Vector');
-goog.require('ol.source.Vector');
+const ngeoCustomEvent = goog.require('ngeo.CustomEvent');
+const googAsserts = goog.require('goog.asserts');
+const olBase = goog.require('ol');
+const olCollection = goog.require('ol.Collection');
+const olFeature = goog.require('ol.Feature');
+const olMapBrowserPointerEvent = goog.require('ol.MapBrowserPointerEvent');
+const olEvents = goog.require('ol.events');
+const olInteractionModify = goog.require('ol.interaction.Modify');
+const olInteractionPointer = goog.require('ol.interaction.Pointer');
+const olGeomPoint = goog.require('ol.geom.Point');
+const olLayerVector = goog.require('ol.layer.Vector');
+const olSourceVector = goog.require('ol.source.Vector');
 
 
 /**
@@ -26,9 +26,9 @@ goog.require('ol.source.Vector');
  * @export
  * @api
  */
-ngeo.interaction.Rotate = function(options) {
+exports = function(options) {
 
-  goog.asserts.assert(options.features);
+  googAsserts.assert(options.features);
 
   /**
    * @type {Array.<ol.EventsKey>}
@@ -88,15 +88,15 @@ ngeo.interaction.Rotate = function(options) {
    */
   this.centerCoordinate_ = null;
 
-  const style = options.style ? options.style : ol.interaction.Modify.getDefaultStyleFunction();
+  const style = options.style ? options.style : olInteractionModify.getDefaultStyleFunction();
 
   /**
    * Draw overlay where sketch features are drawn.
    * @type {ol.layer.Vector}
    * @private
    */
-  this.overlay_ = new ol.layer.Vector({
-    source: new ol.source.Vector({
+  this.overlay_ = new olLayerVector({
+    source: new olSourceVector({
       useSpatialIndex: false,
       wrapX: !!options.wrapX
     }),
@@ -111,14 +111,14 @@ ngeo.interaction.Rotate = function(options) {
    */
   this.centerFeatures_ = {};
 
-  ol.interaction.Pointer.call(this, {
+  olInteractionPointer.call(this, {
     handleDownEvent: this.handleDown_,
     handleDragEvent: this.handleDrag_,
     handleUpEvent: this.handleUp_
   });
 
 };
-ol.inherits(ngeo.interaction.Rotate, ol.interaction.Pointer);
+olBase.inherits(exports, olInteractionPointer);
 
 
 /**
@@ -127,17 +127,17 @@ ol.inherits(ngeo.interaction.Rotate, ol.interaction.Pointer);
  * @override
  * @export
  */
-ngeo.interaction.Rotate.prototype.setActive = function(active) {
+exports.prototype.setActive = function(active) {
 
   if (this.keyPressListenerKey_) {
-    ol.events.unlistenByKey(this.keyPressListenerKey_);
+    olEvents.unlistenByKey(this.keyPressListenerKey_);
     this.keyPressListenerKey_ = null;
   }
 
-  ol.interaction.Pointer.prototype.setActive.call(this, active);
+  olInteractionPointer.prototype.setActive.call(this, active);
 
   if (active) {
-    this.keyPressListenerKey_ = ol.events.listen(
+    this.keyPressListenerKey_ = olEvents.listen(
       document,
       'keyup',
       this.handleKeyUp_,
@@ -145,12 +145,12 @@ ngeo.interaction.Rotate.prototype.setActive = function(active) {
     );
     this.features_.forEach(this.addFeature_, this);
     this.listenerKeys_.push(
-      ol.events.listen(this.features_, 'add', this.handleFeatureAdd_, this),
-      ol.events.listen(this.features_, 'remove', this.handleFeatureRemove_, this)
+      olEvents.listen(this.features_, 'add', this.handleFeatureAdd_, this),
+      olEvents.listen(this.features_, 'remove', this.handleFeatureRemove_, this)
     );
 
   } else {
-    this.listenerKeys_.forEach(ol.events.unlistenByKey);
+    this.listenerKeys_.forEach(olEvents.unlistenByKey);
     this.listenerKeys_.length = 0;
     this.features_.forEach(this.removeFeature_, this);
   }
@@ -161,16 +161,16 @@ ngeo.interaction.Rotate.prototype.setActive = function(active) {
  * @param {ol.Feature} feature Feature.
  * @private
  */
-ngeo.interaction.Rotate.prototype.addFeature_ = function(feature) {
+exports.prototype.addFeature_ = function(feature) {
   const geometry = feature.getGeometry();
-  goog.asserts.assertInstanceof(geometry, ol.geom.Geometry);
+  googAsserts.assertInstanceof(geometry, olBase.geom.Geometry);
 
   feature.set('angle', 0);
 
   // Add the center icon to the overlay
-  const uid = ol.getUid(feature);
-  const point = new ol.geom.Point(this.getCenterCoordinate_(geometry));
-  const centerFeature = new ol.Feature(point);
+  const uid = olBase.getUid(feature);
+  const point = new olGeomPoint(this.getCenterCoordinate_(geometry));
+  const centerFeature = new olFeature(point);
   this.centerFeatures_[uid] = centerFeature;
   this.overlay_.getSource().addFeature(centerFeature);
 
@@ -181,10 +181,10 @@ ngeo.interaction.Rotate.prototype.addFeature_ = function(feature) {
  * @param {ol.MapBrowserPointerEvent} evt Map browser event
  * @private
  */
-ngeo.interaction.Rotate.prototype.willModifyFeatures_ = function(evt) {
+exports.prototype.willModifyFeatures_ = function(evt) {
   if (!this.modified_) {
     this.modified_ = true;
-    this.dispatchEvent(new ol.interaction.Modify.Event(
+    this.dispatchEvent(new olInteractionModify.Event(
       /** @type {ol.interaction.ModifyEventType} */ ('modifystart'), this.features_, evt));
   }
 };
@@ -194,12 +194,12 @@ ngeo.interaction.Rotate.prototype.willModifyFeatures_ = function(evt) {
  * @param {ol.Feature} feature Feature.
  * @private
  */
-ngeo.interaction.Rotate.prototype.removeFeature_ = function(feature) {
+exports.prototype.removeFeature_ = function(feature) {
   this.feature_ = null;
   //this.overlay_.getSource().removeFeature(feature);
 
   if (feature) {
-    const uid = ol.getUid(feature);
+    const uid = olBase.getUid(feature);
 
     if (this.centerFeatures_[uid]) {
       this.overlay_.getSource().removeFeature(this.centerFeatures_[uid]);
@@ -212,9 +212,9 @@ ngeo.interaction.Rotate.prototype.removeFeature_ = function(feature) {
 /**
  * @inheritDoc
  */
-ngeo.interaction.Rotate.prototype.setMap = function(map) {
+exports.prototype.setMap = function(map) {
   this.overlay_.setMap(map);
-  ol.interaction.Pointer.prototype.setMap.call(this, map);
+  olInteractionPointer.prototype.setMap.call(this, map);
 };
 
 
@@ -222,9 +222,9 @@ ngeo.interaction.Rotate.prototype.setMap = function(map) {
  * @param {ol.Collection.Event} evt Event.
  * @private
  */
-ngeo.interaction.Rotate.prototype.handleFeatureAdd_ = function(evt) {
+exports.prototype.handleFeatureAdd_ = function(evt) {
   const feature = evt.element;
-  goog.asserts.assertInstanceof(feature, ol.Feature,
+  googAsserts.assertInstanceof(feature, olFeature,
     'feature should be an ol.Feature');
   this.addFeature_(feature);
 };
@@ -234,7 +234,7 @@ ngeo.interaction.Rotate.prototype.handleFeatureAdd_ = function(evt) {
  * @param {ol.Collection.Event} evt Event.
  * @private
  */
-ngeo.interaction.Rotate.prototype.handleFeatureRemove_ = function(evt) {
+exports.prototype.handleFeatureRemove_ = function(evt) {
   const feature = /** @type {ol.Feature} */ (evt.element);
   this.removeFeature_(feature);
 };
@@ -245,7 +245,7 @@ ngeo.interaction.Rotate.prototype.handleFeatureRemove_ = function(evt) {
  * @return {boolean} Start drag sequence?
  * @private
  */
-ngeo.interaction.Rotate.prototype.handleDown_ = function(evt) {
+exports.prototype.handleDown_ = function(evt) {
   const map = evt.map;
 
   let feature = map.forEachFeatureAtPixel(evt.pixel,
@@ -254,7 +254,7 @@ ngeo.interaction.Rotate.prototype.handleDown_ = function(evt) {
   if (feature) {
     let found = false;
     this.features_.forEach((f) => {
-      if (ol.getUid(f) == ol.getUid(feature)) {
+      if (olBase.getUid(f) == olBase.getUid(feature)) {
         found = true;
       }
     });
@@ -283,18 +283,18 @@ ngeo.interaction.Rotate.prototype.handleDown_ = function(evt) {
  * @return {ol.Coordinate} The center coordinate of the geometry.
  * @private
  */
-ngeo.interaction.Rotate.prototype.getCenterCoordinate_ = function(
+exports.prototype.getCenterCoordinate_ = function(
   geometry) {
 
   let center;
 
-  if (geometry instanceof ol.geom.LineString) {
+  if (geometry instanceof olBase.geom.LineString) {
     center = geometry.getFlatMidpoint();
-  } else if (geometry instanceof ol.geom.Polygon) {
+  } else if (geometry instanceof olBase.geom.Polygon) {
     center = geometry.getFlatInteriorPoint();
   } else {
     const extent = geometry.getExtent();
-    center = ol.extent.getCenter(extent);
+    center = olBase.extent.getCenter(extent);
   }
 
   return center;
@@ -305,7 +305,7 @@ ngeo.interaction.Rotate.prototype.getCenterCoordinate_ = function(
  * @param {ol.MapBrowserPointerEvent} evt Event.
  * @private
  */
-ngeo.interaction.Rotate.prototype.handleDrag_ = function(evt) {
+exports.prototype.handleDrag_ = function(evt) {
   this.willModifyFeatures_(evt);
 
   const geometry = /** @type {ol.geom.SimpleGeometry} */
@@ -338,10 +338,10 @@ ngeo.interaction.Rotate.prototype.handleDrag_ = function(evt) {
  * @return {boolean} Stop drag sequence?
  * @private
  */
-ngeo.interaction.Rotate.prototype.handleUp_ = function(evt) {
+exports.prototype.handleUp_ = function(evt) {
   if (this.modified_) {
     /** @type {ngeox.RotateEvent} */
-    const event = new ngeo.CustomEvent('rotateend', {feature: this.feature_});
+    const event = new ngeoCustomEvent('rotateend', {feature: this.feature_});
     this.dispatchEvent(event);
     this.modified_ = false;
     this.setActive(false);
@@ -355,7 +355,7 @@ ngeo.interaction.Rotate.prototype.handleUp_ = function(evt) {
  * @param {KeyboardEvent} evt Event.
  * @private
  */
-ngeo.interaction.Rotate.prototype.handleKeyUp_ = function(evt) {
+exports.prototype.handleKeyUp_ = function(evt) {
   // 27 == ESC key
   if (evt.keyCode === 27) {
     this.setActive(false);

@@ -1,23 +1,16 @@
-goog.provide('ngeo.drawfeatureDirective');
+goog.module('ngeo.drawfeatureDirective');
 
-goog.require('ngeo');
-goog.require('ngeo.DecorateInteraction');
-goog.require('ngeo.FeatureHelper');
-/** @suppress {extraRequire} */
-goog.require('ngeo.btnDirective');
-/** @suppress {extraRequire} */
-goog.require('ngeo.drawpointDirective');
-/** @suppress {extraRequire} */
-goog.require('ngeo.drawrectangleDirective');
-/** @suppress {extraRequire} */
-goog.require('ngeo.drawtextDirective');
-/** @suppress {extraRequire} */
-goog.require('ngeo.measureareaDirective');
-/** @suppress {extraRequire} */
-goog.require('ngeo.measureazimutDirective');
-/** @suppress {extraRequire} */
-goog.require('ngeo.measurelengthDirective');
-goog.require('ol.Feature');
+const ngeoBase = goog.require('ngeo');
+const ngeoDecorateInteraction = goog.require('ngeo.DecorateInteraction');
+const ngeoFeatureHelper = goog.require('ngeo.FeatureHelper');
+const ngeoBtnDirective = goog.require('ngeo.btnDirective');
+const ngeoDrawpointDirective = goog.require('ngeo.drawpointDirective');
+const ngeoDrawrectangleDirective = goog.require('ngeo.drawrectangleDirective');
+const ngeoDrawtextDirective = goog.require('ngeo.drawtextDirective');
+const ngeoMeasureareaDirective = goog.require('ngeo.measureareaDirective');
+const ngeoMeasureazimutDirective = goog.require('ngeo.measureazimutDirective');
+const ngeoMeasurelengthDirective = goog.require('ngeo.measurelengthDirective');
+const olFeature = goog.require('ol.Feature');
 
 
 /**
@@ -93,7 +86,7 @@ goog.require('ol.Feature');
  * @ngdoc directive
  * @ngname ngeoDrawfeature
  */
-ngeo.drawfeatureDirective = function() {
+exports = function() {
   return {
     controller: 'ngeoDrawfeatureController as dfCtrl',
     scope: true,
@@ -106,7 +99,7 @@ ngeo.drawfeatureDirective = function() {
   };
 };
 
-ngeo.module.directive('ngeoDrawfeature', ngeo.drawfeatureDirective);
+ngeoBase.module.directive('ngeoDrawfeature', exports);
 
 
 /**
@@ -124,7 +117,7 @@ ngeo.module.directive('ngeoDrawfeature', ngeo.drawfeatureDirective);
  * @ngdoc controller
  * @ngname ngeoDrawfeatureController
  */
-ngeo.DrawfeatureController = function($scope, $sce, gettextCatalog,
+ngeoBase.DrawfeatureController = function($scope, $sce, gettextCatalog,
   ngeoDecorateInteraction, ngeoFeatureHelper, ngeoFeatures) {
 
   /**
@@ -253,7 +246,7 @@ ngeo.DrawfeatureController = function($scope, $sce, gettextCatalog,
  * @param {ol.interaction.Interaction} interaction Interaction to register.
  * @export
  */
-ngeo.DrawfeatureController.prototype.registerInteraction = function(
+ngeoBase.DrawfeatureController.prototype.registerInteraction = function(
   interaction) {
   this.interactions_.push(interaction);
   interaction.setActive(false);
@@ -269,7 +262,7 @@ ngeo.DrawfeatureController.prototype.registerInteraction = function(
  * @param {ol.Object.Event} event Event.
  * @export
  */
-ngeo.DrawfeatureController.prototype.handleActiveChange = function(event) {
+ngeoBase.DrawfeatureController.prototype.handleActiveChange = function(event) {
   this.active = this.interactions_.some(interaction => interaction.getActive(), this);
 };
 
@@ -281,7 +274,7 @@ ngeo.DrawfeatureController.prototype.handleActiveChange = function(event) {
  * @param {ol.interaction.Draw.Event|ngeox.MeasureEvent} event Event.
  * @export
  */
-ngeo.DrawfeatureController.prototype.handleDrawEnd = function(type, event) {
+ngeoBase.DrawfeatureController.prototype.handleDrawEnd = function(type, event) {
   let sketch;
   if (event.feature) {
     // ol.interaction.Draw.Event
@@ -296,21 +289,21 @@ ngeo.DrawfeatureController.prototype.handleDrawEnd = function(type, event) {
 
   const features = this.features || this.ngeoFeatures_;
 
-  const feature = new ol.Feature(sketch.getGeometry());
+  const feature = new olFeature(sketch.getGeometry());
 
-  const prop = ngeo.FeatureProperties;
+  const prop = ngeoBase.FeatureProperties;
 
   switch (type) {
-    case ngeo.GeometryType.CIRCLE:
+    case ngeoBase.GeometryType.CIRCLE:
       feature.set(prop.IS_CIRCLE, true);
       if (azimut !== undefined) {
         feature.set(prop.AZIMUT, azimut);
       }
       break;
-    case ngeo.GeometryType.TEXT:
+    case ngeoBase.GeometryType.TEXT:
       feature.set(prop.IS_TEXT, true);
       break;
-    case ngeo.GeometryType.RECTANGLE:
+    case ngeoBase.GeometryType.RECTANGLE:
       feature.set(prop.IS_RECTANGLE, true);
       break;
     default:
@@ -326,7 +319,7 @@ ngeo.DrawfeatureController.prototype.handleDrawEnd = function(type, event) {
   /**
    * @type {string}
    */
-  const color = type !== ngeo.GeometryType.TEXT ? '#DB4436' : '#000000';
+  const color = type !== ngeoBase.GeometryType.TEXT ? '#DB4436' : '#000000';
   feature.set(prop.COLOR, color);
 
   feature.set(prop.ANGLE, 0);
@@ -342,4 +335,4 @@ ngeo.DrawfeatureController.prototype.handleDrawEnd = function(type, event) {
   features.push(feature);
 };
 
-ngeo.module.controller('ngeoDrawfeatureController', ngeo.DrawfeatureController);
+ngeoBase.module.controller('ngeoDrawfeatureController', ngeoBase.DrawfeatureController);

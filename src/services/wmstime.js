@@ -1,8 +1,8 @@
-goog.provide('ngeo.WMSTime');
+goog.module('ngeo.WMSTime');
 
-goog.require('ngeo');
-goog.require('ngeo.Time');
-goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
+const ngeoTime = goog.require('ngeo.Time');
+const googAsserts = goog.require('goog.asserts');
 
 
 /**
@@ -15,7 +15,7 @@ goog.require('goog.asserts');
  * @ngdoc service
  * @ngname ngeoWMSTime
  */
-ngeo.WMSTime  = function($filter) {
+exports  = function($filter) {
 
   /**
    * @private
@@ -23,9 +23,9 @@ ngeo.WMSTime  = function($filter) {
    */
   this.$filter_ = $filter;
 
-  ngeo.Time.call(this);
+  ngeoTime.call(this);
 };
-ol.inherits(ngeo.WMSTime, ngeo.Time);
+ol.inherits(exports, ngeoTime);
 
 
 /**
@@ -38,7 +38,7 @@ ol.inherits(ngeo.WMSTime, ngeo.Time);
  * @return {string} ISO-8601 date string regarding the resolution
  * @private
  */
-ngeo.WMSTime.prototype.formatWMSTimeValue_ = function(time, resolution, opt_toUTC) {
+exports.prototype.formatWMSTimeValue_ = function(time, resolution, opt_toUTC) {
   const date = new Date(time);
   const utc = opt_toUTC ? 'UTC' : undefined;
   switch (resolution) {
@@ -66,10 +66,10 @@ ngeo.WMSTime.prototype.formatWMSTimeValue_ = function(time, resolution, opt_toUT
  * WMS request
  * @export
  */
-ngeo.WMSTime.prototype.formatWMSTimeParam = function(wmsTimeProperty, times, opt_toUTC) {
-  goog.asserts.assert(wmsTimeProperty.resolution !== undefined);
+exports.prototype.formatWMSTimeParam = function(wmsTimeProperty, times, opt_toUTC) {
+  googAsserts.assert(wmsTimeProperty.resolution !== undefined);
   if (wmsTimeProperty.mode === 'range') {
-    goog.asserts.assert(times.end !== undefined);
+    googAsserts.assert(times.end !== undefined);
     return (
       `${this.formatWMSTimeValue_(times.start, wmsTimeProperty.resolution, opt_toUTC)}/${
         this.formatWMSTimeValue_(times.end, wmsTimeProperty.resolution, opt_toUTC)}`
@@ -80,4 +80,4 @@ ngeo.WMSTime.prototype.formatWMSTimeParam = function(wmsTimeProperty, times, opt
 };
 
 
-ngeo.module.service('ngeoWMSTime', ngeo.WMSTime);
+ngeoBase.module.service('ngeoWMSTime', exports);

@@ -1,11 +1,11 @@
-goog.provide('ngeo.StateManager');
+goog.module('ngeo.StateManager');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
-goog.require('ngeo.Location');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
+const ngeoLocation = goog.require('ngeo.Location');
 
 
-ngeo.module.value('ngeoUsedKeyRegexp', [new RegExp('.*')]);
+ngeoBase.module.value('ngeoUsedKeyRegexp', [new RegExp('.*')]);
 
 
 /**
@@ -17,7 +17,7 @@ ngeo.module.value('ngeoUsedKeyRegexp', [new RegExp('.*')]);
  * @param {!Array.<!RegExp>} ngeoUsedKeyRegexp regexp used to identify the used keys.
  * @ngInject
  */
-ngeo.StateManager = function(ngeoLocation, ngeoUsedKeyRegexp) {
+exports = function(ngeoLocation, ngeoUsedKeyRegexp) {
 
   /**
    * Object representing the application's initial state.
@@ -62,7 +62,7 @@ ngeo.StateManager = function(ngeoLocation, ngeoUsedKeyRegexp) {
   if (paramKeys.length === 0) {
     if (this.useLocalStorage) {
       for (const key in window.localStorage) {
-        goog.asserts.assert(key);
+        googAsserts.assert(key);
 
         this.usedKeyRegexp.some((keyRegexp) => {
           if (key.match(keyRegexp)) {
@@ -98,7 +98,7 @@ ngeo.StateManager = function(ngeoLocation, ngeoUsedKeyRegexp) {
  * @param {string} key State key.
  * @return {string|undefined} State value.
  */
-ngeo.StateManager.prototype.getInitialValue = function(key) {
+exports.prototype.getInitialValue = function(key) {
   return this.initialState[key];
 };
 
@@ -108,7 +108,7 @@ ngeo.StateManager.prototype.getInitialValue = function(key) {
  * @param {string} key State key.
  * @return {string|undefined} State value.
  */
-ngeo.StateManager.prototype.getInitialStringValue = function(key) {
+exports.prototype.getInitialStringValue = function(key) {
   const value = this.initialState[key];
   if (value === undefined) {
     return undefined;
@@ -122,7 +122,7 @@ ngeo.StateManager.prototype.getInitialStringValue = function(key) {
  * @param {string} key State key.
  * @return {number|undefined} State value.
  */
-ngeo.StateManager.prototype.getInitialNumberValue = function(key) {
+exports.prototype.getInitialNumberValue = function(key) {
   const value = this.initialState[key];
   if (value === undefined) {
     return undefined;
@@ -136,7 +136,7 @@ ngeo.StateManager.prototype.getInitialNumberValue = function(key) {
  * @param {string} key State key.
  * @return {boolean|undefined} State value.
  */
-ngeo.StateManager.prototype.getInitialBooleanValue = function(key) {
+exports.prototype.getInitialBooleanValue = function(key) {
   const value = this.initialState[key];
   if (value === undefined) {
     return undefined;
@@ -149,13 +149,13 @@ ngeo.StateManager.prototype.getInitialBooleanValue = function(key) {
  * Update the application state with the values in `object`.
  * @param {!Object.<string, string>} object Object.
  */
-ngeo.StateManager.prototype.updateState = function(object) {
+exports.prototype.updateState = function(object) {
   this.ngeoLocation.updateParams(object);
   if (this.useLocalStorage) {
     for (const key in object) {
-      goog.asserts.assert(key);
+      googAsserts.assert(key);
       const value = object[key];
-      goog.asserts.assert(value !== undefined);
+      googAsserts.assert(value !== undefined);
       window.localStorage[key] = value;
     }
   }
@@ -166,11 +166,11 @@ ngeo.StateManager.prototype.updateState = function(object) {
  * Delete a parameter
  * @param {string} key Key.
  */
-ngeo.StateManager.prototype.deleteParam = function(key) {
+exports.prototype.deleteParam = function(key) {
   this.ngeoLocation.deleteParam(key);
   if (this.useLocalStorage) {
     delete window.localStorage[key];
   }
 };
 
-ngeo.module.service('ngeoStateManager', ngeo.StateManager);
+ngeoBase.module.service('ngeoStateManager', exports);

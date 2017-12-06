@@ -1,8 +1,8 @@
 goog.module('ngeo.utils.File');
 goog.module.declareLegacyNamespace();
 
-goog.require('ngeo');
-const ngeoModule = ngeo.module;
+const ngeoBase = goog.require('ngeo');
+const ngeoModule = ngeoBase.module;
 
 
 /**

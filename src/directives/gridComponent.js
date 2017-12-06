@@ -1,13 +1,12 @@
 goog.module('ngeo.gridComponent');
 goog.module.declareLegacyNamespace();
 
-goog.require('ngeo');
-goog.require('ol.has');
-goog.require('goog.asserts');
-/** @suppress {extraRequire} */
-goog.require('ngeo.filters');
+const ngeoBase = goog.require('ngeo');
+const olHas = goog.require('ol.has');
+const googAsserts = goog.require('goog.asserts');
+const ngeoFilters = goog.require('ngeo.filters');
 
-ngeo.module.value('ngeoGridTemplateUrl',
+ngeoBase.module.value('ngeoGridTemplateUrl',
   /**
      * @param {!angular.JQLite} $element Element.
      * @param {!angular.Attributes} $attrs Attributes.
@@ -16,7 +15,7 @@ ngeo.module.value('ngeoGridTemplateUrl',
   ($element, $attrs) => {
     const templateUrl = $attrs['ngeoGridTemplateurl'];
     return templateUrl !== undefined ? templateUrl :
-      `${ngeo.baseTemplateUrl}/grid.html`;
+      `${ngeoBase.baseTemplateUrl}/grid.html`;
   }
 );
 
@@ -58,7 +57,7 @@ const gridComponent = {
   templateUrl: ngeoGridTemplateUrl
 };
 
-ngeo.module.component('ngeoGrid', gridComponent);
+ngeoBase.module.component('ngeoGrid', gridComponent);
 
 
 /**
@@ -192,7 +191,7 @@ GridController.prototype.clickRow_ = function(
  * @private
  */
 GridController.prototype.selectRange_ = function(attributes) {
-  const targetUid = ngeo.GridConfig.getRowUid(attributes);
+  const targetUid = ngeoBase.GridConfig.getRowUid(attributes);
   const data = this.configuration.data;
 
   if (this.configuration.isRowSelected(attributes)) {
@@ -205,7 +204,7 @@ GridController.prototype.selectRange_ = function(attributes) {
   const posSelectedRows = [];
   for (let i = 0; i < data.length; i++) {
     const currentRow = data[i];
-    const currentUid = ngeo.GridConfig.getRowUid(currentRow);
+    const currentUid = ngeoBase.GridConfig.getRowUid(currentRow);
 
     if (targetUid === currentUid) {
       posClickedRow = i;
@@ -213,7 +212,7 @@ GridController.prototype.selectRange_ = function(attributes) {
       posSelectedRows.push(i);
     }
   }
-  goog.asserts.assert(posClickedRow !== undefined);
+  googAsserts.assert(posClickedRow !== undefined);
 
   if (posSelectedRows.length == 0) {
     // if no other row is selected, select the clicked one and stop
@@ -266,10 +265,9 @@ GridController.prototype.preventTextSelection = function(event) {
  * @private
  */
 GridController.prototype.isPlatformModifierKeyOnly_ = function(event) {
-  return (
-    !event.altKey &&
-      (ol.has.MAC ? event.metaKey : event.ctrlKey) &&
-      !event.shiftKey);
+  return !event.altKey &&
+    (olHas.MAC ? event.metaKey : event.ctrlKey) &&
+    !event.shiftKey;
 };
 
 
@@ -287,7 +285,7 @@ GridController.prototype.isShiftKeyOnly_ = function(event) {
 };
 
 
-ngeo.module.controller('ngeoGridController', GridController);
+ngeoBase.module.controller('ngeoGridController', GridController);
 
 
 exports = gridComponent;

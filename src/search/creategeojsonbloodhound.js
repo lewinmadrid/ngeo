@@ -1,11 +1,11 @@
 /**
  * @module ngeo search namespace
  */
-goog.provide('ngeo.search.createGeoJSONBloodhound');
+goog.module('ngeo.search.createGeoJSONBloodhound');
 
-goog.require('ol');
-goog.require('ol.format.GeoJSON');
-goog.require('ol.obj');
+const olBase = goog.require('ol');
+const olFormatGeoJSON = goog.require('ol.format.GeoJSON');
+const olObj = goog.require('ol.obj');
 
 
 /**
@@ -20,9 +20,9 @@ goog.require('ol.obj');
  * remote options. Effective only if `remote` is not defined in `opt_options`.
  * @return {Bloodhound} The Bloodhound object.
  */
-ngeo.search.createGeoJSONBloodhound = function(url, opt_filter, opt_featureProjection,
+exports = function(url, opt_filter, opt_featureProjection,
   opt_dataProjection, opt_options, opt_remoteOptions) {
-  const geojsonFormat = new ol.format.GeoJSON();
+  const geojsonFormat = new olFormatGeoJSON();
   const bloodhoundOptions = /** @type {BloodhoundOptions} */ ({
     remote: {
       url,
@@ -49,22 +49,22 @@ ngeo.search.createGeoJSONBloodhound = function(url, opt_filter, opt_featureProje
     },
     // datumTokenizer is required by the Bloodhound constructor but it
     // is not used when only a remote is passsed to Bloodhound.
-    datumTokenizer: ol.nullFunction,
+    datumTokenizer: olBase.nullFunction,
     queryTokenizer: Bloodhound.tokenizers.whitespace
   });
 
   // the options objects are cloned to avoid updating the passed object
-  const options = ol.obj.assign({}, opt_options || {});
-  const remoteOptions = ol.obj.assign({}, opt_remoteOptions || {});
+  const options = olObj.assign({}, opt_options || {});
+  const remoteOptions = olObj.assign({}, opt_remoteOptions || {});
 
   if (options.remote) {
     // move the remote options to opt_remoteOptions
-    ol.obj.assign(remoteOptions, options.remote);
+    olObj.assign(remoteOptions, options.remote);
     delete options.remote;
   }
 
-  ol.obj.assign(bloodhoundOptions, options);
-  ol.obj.assign(bloodhoundOptions.remote, remoteOptions);
+  olObj.assign(bloodhoundOptions, options);
+  olObj.assign(bloodhoundOptions.remote, remoteOptions);
 
   return new Bloodhound(bloodhoundOptions);
 };
@@ -73,11 +73,11 @@ ngeo.search.createGeoJSONBloodhound = function(url, opt_filter, opt_featureProje
 /**
  * @type {!angular.Module}
  */
-ngeo.search.createGeoJSONBloodhound.module = angular.module('ngeoSearchCreategeojsonbloodhound', []);
+exports.module = angular.module('ngeoSearchCreategeojsonbloodhound', []);
 
-ngeo.search.createGeoJSONBloodhound.module.value(
+exports.module.value(
   'ngeoSearchCreateGeoJSONBloodhound',
-  ngeo.search.createGeoJSONBloodhound);
+  exports);
 
 
 /**
@@ -117,4 +117,4 @@ ngeo.search.createGeoJSONBloodhound.module.value(
  * @ngdoc service
  * @ngname search.createGeoJSONBloodhound
  */
-ngeo.search.createGeoJSONBloodhound.Function;
+exports.Function;

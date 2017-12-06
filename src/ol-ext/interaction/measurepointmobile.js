@@ -1,8 +1,8 @@
-goog.provide('ngeo.interaction.MeasurePointMobile');
+goog.module('ngeo.interaction.MeasurePointMobile');
 
-goog.require('ngeo.interaction.Measure');
-goog.require('ngeo.interaction.MobileDraw');
-goog.require('ol.geom.Point');
+const ngeoInteractionMeasure = goog.require('ngeo.interaction.Measure');
+const ngeoInteractionMobileDraw = goog.require('ngeo.interaction.MobileDraw');
+const olGeomPoint = goog.require('ol.geom.Point');
 
 
 /**
@@ -16,13 +16,13 @@ goog.require('ol.geom.Point');
  * @param {ngeox.interaction.MeasureOptions=} opt_options Options
  * @export
  */
-ngeo.interaction.MeasurePointMobile = function(format, opt_options) {
+exports = function(format, opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
   ol.obj.assign(options, {displayHelpTooltip: false});
 
-  ngeo.interaction.Measure.call(this, options);
+  ngeoInteractionMeasure.call(this, options);
 
   /**
    * @type {ngeox.numberCoordinates}
@@ -30,14 +30,14 @@ ngeo.interaction.MeasurePointMobile = function(format, opt_options) {
   this.format_ = format;
 
 };
-ol.inherits(ngeo.interaction.MeasurePointMobile, ngeo.interaction.Measure);
+ol.inherits(exports, ngeoInteractionMeasure);
 
 
 /**
  * @inheritDoc
  */
-ngeo.interaction.MeasurePointMobile.prototype.createDrawInteraction = function(style, source) {
-  return new ngeo.interaction.MobileDraw({
+exports.prototype.createDrawInteraction = function(style, source) {
+  return new ngeoInteractionMobileDraw({
     type: /** @type {ol.geom.GeometryType} */ ('Point'),
     style: style,
     source: source
@@ -48,10 +48,10 @@ ngeo.interaction.MeasurePointMobile.prototype.createDrawInteraction = function(s
 /**
  * @inheritDoc
  */
-ngeo.interaction.MeasurePointMobile.prototype.handleMeasure = function(callback) {
-  const geom = goog.asserts.assertInstanceof(this.sketchFeature.getGeometry(), ol.geom.Point);
+exports.prototype.handleMeasure = function(callback) {
+  const geom = goog.asserts.assertInstanceof(this.sketchFeature.getGeometry(), olGeomPoint);
   const dec = this.decimals;
-  const output = ngeo.interaction.Measure.getFormattedPoint(geom, dec, this.format_);
+  const output = ngeoInteractionMeasure.getFormattedPoint(geom, dec, this.format_);
   const coord = geom.getLastCoordinate();
   callback(output, coord);
 };

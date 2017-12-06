@@ -1,4 +1,4 @@
-goog.provide('ngeo.Message');
+goog.module('ngeo.Message');
 
 
 /**
@@ -36,7 +36,7 @@ ngeo.MessageType = {
  * @struct
  * @abstract
  */
-ngeo.Message = function() {};
+exports = function() {};
 
 
 /**
@@ -46,7 +46,7 @@ ngeo.Message = function() {};
  * @param {ngeox.Message} message Message.
  * @protected
  */
-ngeo.Message.prototype.showMessage = function(message) {};
+exports.prototype.showMessage = function(message) {};
 
 
 /**
@@ -57,7 +57,7 @@ ngeo.Message.prototype.showMessage = function(message) {};
  *     object A message or list of messages as text or configuration objects.
  * @export
  */
-ngeo.Message.prototype.show = function(object) {
+exports.prototype.show = function(object) {
   const msgObjects = this.getMessageObjects(object);
   msgObjects.forEach(this.showMessage, this);
 };
@@ -69,7 +69,7 @@ ngeo.Message.prototype.show = function(object) {
  * @param {string|Array.<string>} message Message or list of messages.
  * @export
  */
-ngeo.Message.prototype.error = function(message) {
+exports.prototype.error = function(message) {
   this.show(this.getMessageObjects(message, ngeo.MessageType.ERROR));
 };
 
@@ -79,7 +79,7 @@ ngeo.Message.prototype.error = function(message) {
  * @param {string|Array.<string>} message Message or list of messages.
  * @export
  */
-ngeo.Message.prototype.info = function(message) {
+exports.prototype.info = function(message) {
   this.show(this.getMessageObjects(message, ngeo.MessageType.INFORMATION));
 };
 
@@ -89,7 +89,7 @@ ngeo.Message.prototype.info = function(message) {
  * @param {string|Array.<string>} message Message or list of messages.
  * @export
  */
-ngeo.Message.prototype.success = function(message) {
+exports.prototype.success = function(message) {
   this.show(this.getMessageObjects(message, ngeo.MessageType.SUCCESS));
 };
 
@@ -99,7 +99,7 @@ ngeo.Message.prototype.success = function(message) {
  * @param {string|Array.<string>} message Message or list of messages.
  * @export
  */
-ngeo.Message.prototype.warn = function(message) {
+exports.prototype.warn = function(message) {
   this.show(this.getMessageObjects(message, ngeo.MessageType.WARNING));
 };
 
@@ -115,7 +115,7 @@ ngeo.Message.prototype.warn = function(message) {
  * @return {Array.<ngeox.Message>} List of message objects.
  * @protected
  */
-ngeo.Message.prototype.getMessageObjects = function(object, opt_type) {
+exports.prototype.getMessageObjects = function(object, opt_type) {
   const msgObjects = [];
   let msgObject = null;
   const defaultType = ngeo.MessageType.INFORMATION;

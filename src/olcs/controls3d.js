@@ -1,9 +1,9 @@
 goog.module('ngeo.olcs.controls3d');
 goog.module.declareLegacyNamespace();
 
-goog.require('ol.easing');
-goog.require('ngeo');
-const ngeoModule = ngeo.module;
+const olEasing = goog.require('ol.easing');
+const ngeoBase = goog.require('ngeo');
+const ngeoModule = ngeoBase.module;
 
 
 function shouldUpdate(older, newer) {
@@ -207,7 +207,7 @@ const Controller = class {
     view.animate({
       resolution: newResolution,
       duration: 250,
-      easing: ol.easing.easeOut
+      easing: olEasing.easeOut
     });
   }
 };
@@ -224,7 +224,7 @@ function ngeoOlcsControls3dTemplateUrlInjectable($attrs, ngeoOlcsControls3dTempl
     return ngeoOlcsControls3dTemplateUrl;
   }
   const templateUrl = $attrs['ngeoOlcsControls3dTemplateUrl'];
-  return templateUrl ? templateUrl : `${ngeo.baseModuleTemplateUrl}/olcs/controls3d.html`;
+  return templateUrl ? templateUrl : `${ngeoBase.baseModuleTemplateUrl}/olcs/controls3d.html`;
 }
 
 /**

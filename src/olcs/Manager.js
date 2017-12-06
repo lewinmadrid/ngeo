@@ -1,9 +1,9 @@
 goog.module('ngeo.olcs.Manager');
 goog.module.declareLegacyNamespace();
 
-goog.require('olcs.contrib.Manager');
+const olcsContribManager = goog.require('olcs.contrib.Manager');
 
-const Manager = class extends olcs.contrib.Manager {
+const Manager = class extends olcsContribManager {
   /**
    * @param {string} url .
    * @param {angular.Scope} $rootScope .

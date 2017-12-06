@@ -1,14 +1,8 @@
-goog.provide('ngeo.Popup');
+goog.module('ngeo.Popup');
 
-goog.require('ngeo');
-goog.require('goog.asserts');
-
-/**
- * This goog.require is needed because of 'ngeo-popup' used in
- * the template.
- * @suppress {extraRequire}
- */
-goog.require('ngeo.popupDirective');
+const ngeoBase = goog.require('ngeo');
+const googAsserts = goog.require('goog.asserts');
+const ngeoPopupDirective = goog.require('ngeo.popupDirective');
 
 
 /**
@@ -31,7 +25,7 @@ goog.require('ngeo.popupDirective');
  * @ngdoc service
  * @ngname ngeoCreatePopup
  */
-ngeo.Popup = function($compile, $rootScope, $sce, $timeout) {
+exports = function($compile, $rootScope, $sce, $timeout) {
 
   /**
    * The scope the compiled element is link to.
@@ -89,7 +83,7 @@ ngeo.Popup = function($compile, $rootScope, $sce, $timeout) {
  * @return {boolean} `true` if the popup is currently, otherwise `false`.
  * @export
  */
-ngeo.Popup.prototype.getOpen = function() {
+exports.prototype.getOpen = function() {
   return this.scope['open'];
 };
 
@@ -99,7 +93,7 @@ ngeo.Popup.prototype.getOpen = function() {
  * @param {boolean} open `true` to show the popup, `false` to hide it.
  * @export
  */
-ngeo.Popup.prototype.setOpen = function(open) {
+exports.prototype.setOpen = function(open) {
   this.scope['open'] = open;
 };
 
@@ -108,7 +102,7 @@ ngeo.Popup.prototype.setOpen = function(open) {
  * Destroy the popup.
  * @export
  */
-ngeo.Popup.prototype.destroy = function() {
+exports.prototype.destroy = function() {
   this.scope.$destroy();
   this.element_.remove();
 };
@@ -119,7 +113,7 @@ ngeo.Popup.prototype.destroy = function() {
  * @param {string} title The title.
  * @export
  */
-ngeo.Popup.prototype.setTitle = function(title) {
+exports.prototype.setTitle = function(title) {
   const trustedTitle = this.sce_.trustAsHtml(title);
   this.scope['title'] = trustedTitle;
 };
@@ -134,7 +128,7 @@ ngeo.Popup.prototype.setTitle = function(title) {
  *     Default is false.
  * @export
  */
-ngeo.Popup.prototype.setContent = function(content, opt_trusted) {
+exports.prototype.setContent = function(content, opt_trusted) {
   this.scope['content'] = opt_trusted ? this.sce_.trustAsHtml(/** @type {string} */ (content)) : content;
 };
 
@@ -144,7 +138,7 @@ ngeo.Popup.prototype.setContent = function(content, opt_trusted) {
  * @param {string} url The url of the page.
  * @export
  */
-ngeo.Popup.prototype.setUrl = function(url) {
+exports.prototype.setUrl = function(url) {
   const content = this.sce_.trustAsHtml(
     `<iframe src="${url}" width="100%" height="100%"></iframe>`
   );
@@ -157,7 +151,7 @@ ngeo.Popup.prototype.setUrl = function(url) {
  * @param {string} width Width the popup should have.
  * @export
  */
-ngeo.Popup.prototype.setWidth = function(width) {
+exports.prototype.setWidth = function(width) {
   this.element_.width(width);
 };
 
@@ -167,7 +161,7 @@ ngeo.Popup.prototype.setWidth = function(width) {
  * @param {string} height Height the popup should have.
  * @export
  */
-ngeo.Popup.prototype.setHeight = function(height) {
+exports.prototype.setHeight = function(height) {
   this.element_.height(height);
 };
 
@@ -178,7 +172,7 @@ ngeo.Popup.prototype.setHeight = function(height) {
  * @param {string} height Height the popup should have.
  * @export
  */
-ngeo.Popup.prototype.setSize = function(width, height) {
+exports.prototype.setSize = function(width, height) {
   this.setWidth(width);
   this.setHeight(height);
 };
@@ -190,7 +184,7 @@ ngeo.Popup.prototype.setSize = function(width, height) {
  *     being closed or not.
  * @export
  */
-ngeo.Popup.prototype.setAutoDestroy = function(autoDestroy) {
+exports.prototype.setAutoDestroy = function(autoDestroy) {
   this.autoDestroy_ = autoDestroy;
 };
 
@@ -200,7 +194,7 @@ ngeo.Popup.prototype.setAutoDestroy = function(autoDestroy) {
  * @param {string} cls Class name to add to the popup element.
  * @export
  */
-ngeo.Popup.prototype.addClass = function(cls) {
+exports.prototype.addClass = function(cls) {
   this.element_.addClass(cls);
 };
 
@@ -210,14 +204,14 @@ ngeo.Popup.prototype.addClass = function(cls) {
  * @param {ngeox.PopupOptions} options Options.
  * @export
  */
-ngeo.Popup.prototype.open = function(options) {
+exports.prototype.open = function(options) {
 
   if (options.url) {
     this.setUrl(options.url);
   } else if (options.content) {
     this.setContent(options.content);
   } else {
-    goog.asserts.fail('ngeo.Popup options requirest "url" or "content".');
+    googAsserts.fail('ngeo.Popup options requirest "url" or "content".');
   }
 
   if (options.autoDestroy !== undefined) {
@@ -246,7 +240,7 @@ ngeo.Popup.prototype.open = function(options) {
 /**
  * @typedef {function():!ngeo.Popup}
  */
-ngeo.Popup.Factory;
+exports.Factory;
 
 /**
  * @param {angular.$compile} $compile Angular compile service.
@@ -256,14 +250,15 @@ ngeo.Popup.Factory;
  * @return {ngeo.Popup.Factory} The function to create a popup.
  * @ngInject
  */
-ngeo.createPopupServiceFactory = function($compile, $rootScope, $sce,
+ngeoBase.createPopupServiceFactory = function($compile, $rootScope, $sce,
   $timeout) {
   return (
-  /**
-       * @return {!ngeo.Popup} The popup instance.
-       */
+    /**
+         * @return {!ngeo.Popup} The popup instance.
+         */
     function() {
-      return new ngeo.Popup($compile, $rootScope, $sce, $timeout);
-    });
+      return new exports($compile, $rootScope, $sce, $timeout);
+    }
+  );
 };
-ngeo.module.factory('ngeoCreatePopup', ngeo.createPopupServiceFactory);
+ngeoBase.module.factory('ngeoCreatePopup', ngeoBase.createPopupServiceFactory);

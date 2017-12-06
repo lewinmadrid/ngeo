@@ -1,7 +1,7 @@
-goog.provide('ngeo.interaction.MeasureLengthMobile');
+goog.module('ngeo.interaction.MeasureLengthMobile');
 
-goog.require('ngeo.interaction.MeasureLength');
-goog.require('ngeo.interaction.MobileDraw');
+const ngeoInteractionMeasureLength = goog.require('ngeo.interaction.MeasureLength');
+const ngeoInteractionMobileDraw = goog.require('ngeo.interaction.MobileDraw');
 
 
 /**
@@ -15,24 +15,24 @@ goog.require('ngeo.interaction.MobileDraw');
  * @param {ngeox.interaction.MeasureOptions=} opt_options Options
  * @export
  */
-ngeo.interaction.MeasureLengthMobile = function(format, opt_options) {
+exports = function(format, opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
   ol.obj.assign(options, {displayHelpTooltip: false});
 
-  ngeo.interaction.MeasureLength.call(this, format, options);
+  ngeoInteractionMeasureLength.call(this, format, options);
 
 };
 ol.inherits(
-  ngeo.interaction.MeasureLengthMobile, ngeo.interaction.MeasureLength);
+  exports, ngeoInteractionMeasureLength);
 
 
 /**
  * @inheritDoc
  */
-ngeo.interaction.MeasureLengthMobile.prototype.createDrawInteraction = function(style, source) {
-  return new ngeo.interaction.MobileDraw({
+exports.prototype.createDrawInteraction = function(style, source) {
+  return new ngeoInteractionMobileDraw({
     type: /** @type {ol.geom.GeometryType} */ ('LineString'),
     style: style,
     source: source

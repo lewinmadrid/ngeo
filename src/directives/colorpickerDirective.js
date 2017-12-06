@@ -1,9 +1,9 @@
-goog.provide('ngeo.colorpickerDirective');
+goog.module('ngeo.colorpickerDirective');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 
-ngeo.module.value('ngeoColorpickerTemplateUrl',
+ngeoBase.module.value('ngeoColorpickerTemplateUrl',
   /**
      * @param {angular.JQLite} element Element.
      * @param {angular.Attributes} attrs Attributes.
@@ -12,7 +12,7 @@ ngeo.module.value('ngeoColorpickerTemplateUrl',
   (element, attrs) => {
     const templateUrl = attrs['ngeoColorpickerTemplateurl'];
     return templateUrl !== undefined ? templateUrl :
-      `${ngeo.baseTemplateUrl}/colorpicker.html`;
+      `${ngeoBase.baseTemplateUrl}/colorpicker.html`;
   });
 
 /**
@@ -32,7 +32,7 @@ ngeo.module.value('ngeoColorpickerTemplateUrl',
  * @ngdoc directive
  * @ngname ngeoColorpicker
  */
-ngeo.colorpickerDirective = function(ngeoColorpickerTemplateUrl) {
+exports = function(ngeoColorpickerTemplateUrl) {
   return {
     restrict: 'A',
     scope: {
@@ -46,7 +46,7 @@ ngeo.colorpickerDirective = function(ngeoColorpickerTemplateUrl) {
 };
 
 
-ngeo.module.directive('ngeoColorpicker', ngeo.colorpickerDirective);
+ngeoBase.module.directive('ngeoColorpicker', exports);
 
 /**
  * @type {Array.<Array.<string>>}
@@ -69,7 +69,7 @@ const defaultColors = [
  * @ngdoc controller
  * @ngname NgeoScaleselectorController
  */
-ngeo.ColorpickerController = function($scope, $element, $attrs) {
+ngeoBase.ColorpickerController = function($scope, $element, $attrs) {
 
   /**
    * The set of color
@@ -89,10 +89,10 @@ ngeo.ColorpickerController = function($scope, $element, $attrs) {
  * @param {string} color The color to select.
  * @export
  */
-ngeo.ColorpickerController.prototype.setColor = function(color) {
+ngeoBase.ColorpickerController.prototype.setColor = function(color) {
   this.color = color;
 };
 
 
-ngeo.module.controller('NgeoColorpickerController',
-  ngeo.ColorpickerController);
+ngeoBase.module.controller('NgeoColorpickerController',
+  ngeoBase.ColorpickerController);

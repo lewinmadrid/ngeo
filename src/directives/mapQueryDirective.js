@@ -1,8 +1,8 @@
-goog.provide('ngeo.mapQueryDirective');
+goog.module('ngeo.mapQueryDirective');
 
-goog.require('ngeo');
-goog.require('ngeo.MapQuerent');
-goog.require('ol.events');
+const ngeoBase = goog.require('ngeo');
+const ngeoMapQuerent = goog.require('ngeo.MapQuerent');
+const olEvents = goog.require('ol.events');
 
 
 /**
@@ -34,7 +34,7 @@ goog.require('ol.events');
  * @ngdoc directive
  * @ngname ngeoMapQuery
  */
-ngeo.mapQueryDirective = function(ngeoMapQuerent, $injector) {
+exports = function(ngeoMapQuerent, $injector) {
   return {
     restrict: 'A',
     scope: false,
@@ -79,12 +79,12 @@ ngeo.mapQueryDirective = function(ngeoMapQuerent, $injector) {
        * Listen to the map events.
        */
       const activate_ = function() {
-        clickEventKey_ = ol.events.listen(map, 'click', handleMapClick_);
+        clickEventKey_ = olEvents.listen(map, 'click', handleMapClick_);
         const queryOptions = /** @type {ngeox.QueryOptions} */ (
           $injector.has('ngeoQueryOptions') ? $injector.get('ngeoQueryOptions') : {}
         );
         if (queryOptions.cursorHover) {
-          pointerMoveEventKey_ = ol.events.listen(map, 'pointermove', handlePointerMove_);
+          pointerMoveEventKey_ = olEvents.listen(map, 'pointermove', handlePointerMove_);
         }
       };
 
@@ -93,11 +93,11 @@ ngeo.mapQueryDirective = function(ngeoMapQuerent, $injector) {
        */
       const deactivate_ = function() {
         if (clickEventKey_ !== null) {
-          ol.events.unlistenByKey(clickEventKey_);
+          olEvents.unlistenByKey(clickEventKey_);
           clickEventKey_ = null;
         }
         if (pointerMoveEventKey_ !== null) {
-          ol.events.unlistenByKey(pointerMoveEventKey_);
+          olEvents.unlistenByKey(pointerMoveEventKey_);
           pointerMoveEventKey_ = null;
         }
         if (scope.$eval(attrs['ngeoMapQueryAutoclear']) !== false) {
@@ -119,4 +119,4 @@ ngeo.mapQueryDirective = function(ngeoMapQuerent, $injector) {
   };
 };
 
-ngeo.module.directive('ngeoMapQuery', ngeo.mapQueryDirective);
+ngeoBase.module.directive('ngeoMapQuery', exports);

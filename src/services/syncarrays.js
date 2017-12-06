@@ -1,7 +1,7 @@
-goog.provide('ngeo.SyncArrays');
+goog.module('ngeo.SyncArrays');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -28,7 +28,7 @@ goog.require('ngeo');
  * @ngdoc service
  * @ngname ngeoSyncArrays
  */
-ngeo.SyncArrays;
+exports;
 
 
 /**
@@ -42,7 +42,7 @@ ngeo.SyncArrays;
  * @return {function()} Function to call to stop synchronization
  * @template T
  */
-ngeo.syncArrays = function(arr1, arr2, reverse, scope, filter) {
+ngeoBase.syncArrays = function(arr1, arr2, reverse, scope, filter) {
 
 
   // Update arr2 when elements are added to, or removed from, arr1.
@@ -76,14 +76,14 @@ ngeo.syncArrays = function(arr1, arr2, reverse, scope, filter) {
           arr1[i] = arr2[j--];
         }
       }
-      goog.asserts.assert(j == -1);
+      googAsserts.assert(j == -1);
     } else {
       for (i = 0, ii = arr1.length, j = 0; i < ii; ++i) {
         if (filter(arr1[i])) {
           arr1[i] = arr2[j++];
         }
       }
-      goog.asserts.assert(j == arr2.length);
+      googAsserts.assert(j == arr2.length);
     }
   });
 
@@ -94,4 +94,4 @@ ngeo.syncArrays = function(arr1, arr2, reverse, scope, filter) {
 };
 
 
-ngeo.module.value('ngeoSyncArrays', ngeo.syncArrays);
+ngeoBase.module.value('ngeoSyncArrays', ngeoBase.syncArrays);

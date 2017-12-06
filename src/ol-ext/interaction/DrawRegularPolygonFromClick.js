@@ -1,11 +1,11 @@
-goog.provide('ngeo.interaction.DrawRegularPolygonFromClick');
+goog.module('ngeo.interaction.DrawRegularPolygonFromClick');
 
-goog.require('ol.events');
-goog.require('ol.Feature');
-goog.require('ol.functions');
-goog.require('ol.geom.Circle');
-goog.require('ol.interaction.Draw');
-goog.require('ol.interaction.Interaction');
+const olEvents = goog.require('ol.events');
+const olFeature = goog.require('ol.Feature');
+const olFunctions = goog.require('ol.functions');
+const olGeomCircle = goog.require('ol.geom.Circle');
+const olInteractionDraw = goog.require('ol.interaction.Draw');
+const olInteractionInteraction = goog.require('ol.interaction.Interaction');
 
 
 /**
@@ -20,7 +20,7 @@ goog.require('ol.interaction.Interaction');
  * @param {ngeox.interaction.DrawRegularPolygonFromClickOptions} options Options
  * @export
  */
-ngeo.interaction.DrawRegularPolygonFromClick = function(options) {
+exports = function(options) {
 
   /**
    * @type {number}
@@ -46,13 +46,13 @@ ngeo.interaction.DrawRegularPolygonFromClick = function(options) {
    */
   this.listenerKeys_ = [];
 
-  ol.interaction.Interaction.call(this, {
-    handleEvent: ol.functions.TRUE
+  olInteractionInteraction.call(this, {
+    handleEvent: olFunctions.TRUE
   });
 
 };
 ol.inherits(
-  ngeo.interaction.DrawRegularPolygonFromClick, ol.interaction.Interaction);
+  exports, olInteractionInteraction);
 
 
 /**
@@ -61,8 +61,8 @@ ol.inherits(
  * @export
  * @override
  */
-ngeo.interaction.DrawRegularPolygonFromClick.prototype.setActive = function(active) {
-  ol.interaction.Interaction.prototype.setActive.call(this, active);
+exports.prototype.setActive = function(active) {
+  olInteractionInteraction.prototype.setActive.call(this, active);
 
   if (this.getMap()) {
     if (active) {
@@ -77,7 +77,7 @@ ngeo.interaction.DrawRegularPolygonFromClick.prototype.setActive = function(acti
 /**
  * @inheritDoc
  */
-ngeo.interaction.DrawRegularPolygonFromClick.prototype.setMap = function(map) {
+exports.prototype.setMap = function(map) {
 
   const active = this.getActive();
 
@@ -86,7 +86,7 @@ ngeo.interaction.DrawRegularPolygonFromClick.prototype.setMap = function(map) {
     this.disable_();
   }
 
-  ol.interaction.Interaction.prototype.setMap.call(this, map);
+  olInteractionInteraction.prototype.setMap.call(this, map);
 
   if (map && active) {
     this.enable_();
@@ -99,11 +99,11 @@ ngeo.interaction.DrawRegularPolygonFromClick.prototype.setMap = function(map) {
  * Enable the interaction. Called when added to a map AND active.
  * @private
  */
-ngeo.interaction.DrawRegularPolygonFromClick.prototype.enable_ = function() {
+exports.prototype.enable_ = function() {
   const map = this.getMap();
   goog.asserts.assert(map, 'Map should be set.');
   this.listenerKeys_.push(
-    ol.events.listen(map, 'click', this.handleMapClick_, this)
+    olEvents.listen(map, 'click', this.handleMapClick_, this)
   );
 };
 
@@ -112,10 +112,10 @@ ngeo.interaction.DrawRegularPolygonFromClick.prototype.enable_ = function() {
  * Disable the interaction. Called when removed from a map or deactivated.
  * @private
  */
-ngeo.interaction.DrawRegularPolygonFromClick.prototype.disable_ = function() {
+exports.prototype.disable_ = function() {
   const map = this.getMap();
   goog.asserts.assert(map, 'Map should be set.');
-  this.listenerKeys_.forEach(ol.events.unlistenByKey);
+  this.listenerKeys_.forEach(olEvents.unlistenByKey);
   this.listenerKeys_.length = 0;
 };
 
@@ -126,14 +126,14 @@ ngeo.interaction.DrawRegularPolygonFromClick.prototype.disable_ = function() {
  * @param {ol.MapBrowserEvent} evt Map browser event.
  * @private
  */
-ngeo.interaction.DrawRegularPolygonFromClick.prototype.handleMapClick_ = function(evt) {
+exports.prototype.handleMapClick_ = function(evt) {
   const center = evt.coordinate;
   const geometry = ol.geom.Polygon.fromCircle(
-    new ol.geom.Circle(center), this.sides_
+    new olGeomCircle(center), this.sides_
   );
 
   ol.geom.Polygon.makeRegular(geometry, center, this.radius_, this.angle_);
 
-  this.dispatchEvent(new ol.interaction.Draw.Event(
-    /** @type {ol.interaction.DrawEventType} */ ('drawend'), new ol.Feature(geometry)));
+  this.dispatchEvent(new olInteractionDraw.Event(
+    /** @type {ol.interaction.DrawEventType} */ ('drawend'), new olFeature(geometry)));
 };

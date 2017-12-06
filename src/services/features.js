@@ -1,7 +1,6 @@
-goog.provide('ngeo.Features');
-goog.require('ngeo');
+goog.module('ngeo.Features');
+const ngeoBase = goog.require('ngeo');
+const olCollection = goog.require('ol.Collection');
 
-goog.require('ol.Collection');
 
-
-ngeo.module.value('ngeoFeatures', new ol.Collection());
+ngeoBase.module.value('ngeoFeatures', new olCollection());

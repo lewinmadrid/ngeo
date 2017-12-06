@@ -1,11 +1,10 @@
 goog.module('ngeo.source.Swisstopo');
 goog.module.declareLegacyNamespace();
 
-goog.require('goog.asserts');
-
-goog.require('ol');
-goog.require('ol.source.WMTS');
-goog.require('ol.tilegrid.WMTS');
+const googAsserts = goog.require('goog.asserts');
+const olBase = goog.require('ol');
+const olSourceWMTS = goog.require('ol.source.WMTS');
+const olTilegridWMTS = goog.require('ol.tilegrid.WMTS');
 
 
 /**
@@ -27,7 +26,7 @@ const swisstopoResolutions = [
  * @return {!Array.<string>} matrix set.
  */
 const createSwisstopoMatrixSet = function(level) {
-  goog.asserts.assert(level < swisstopoResolutions.length);
+  googAsserts.assert(level < swisstopoResolutions.length);
   const matrixSet = new Array(level);
   for (let i = 0; i <= level; ++i) {
     matrixSet[i] = String(i);
@@ -44,12 +43,12 @@ const createSwisstopoMatrixSet = function(level) {
  * @const {!Object.<string, ol.tilegrid.WMTS>}
  */
 const swisstopoTileGrids = {
-  'EPSG:2056': new ol.tilegrid.WMTS({
+  'EPSG:2056': new olTilegridWMTS({
     extent: [2420000, 1030000, 2900000, 1350000],
     resolutions: swisstopoResolutions.slice(0, 27 + 1),
     matrixIds: createSwisstopoMatrixSet(27)
   }),
-  'EPSG:21781': new ol.tilegrid.WMTS({
+  'EPSG:21781': new olTilegridWMTS({
     extent: [420000, 30000, 900000, 350000],
     resolutions: swisstopoResolutions.slice(0, 27 + 1),
     matrixIds: createSwisstopoMatrixSet(27)
@@ -69,7 +68,7 @@ const swisstopoCreateUrl = function(projection, format) {
     return `${'https://wmts{5-9}.geo.admin.ch/1.0.0/{Layer}/default/{Time}' +
       '/21781/{TileMatrix}/{TileRow}/{TileCol}.'}${format}`;
   }
-  goog.asserts.fail(`Unsupported projection ${projection}`);
+  googAsserts.fail(`Unsupported projection ${projection}`);
 };
 
 /**
@@ -86,14 +85,14 @@ const swisstopoCreateUrl = function(projection, format) {
 exports = function(options) {
   const format = options.format || 'image/png';
   const projection = options.projection;
-  goog.asserts.assert(projection === 'EPSG:21781' || projection === 'EPSG:2056');
+  googAsserts.assert(projection === 'EPSG:21781' || projection === 'EPSG:2056');
   const tilegrid = swisstopoTileGrids[projection];
   const projectionCode = projection.split(':')[1];
   const extension = format.split('/')[1];
-  goog.asserts.assert(projectionCode);
-  goog.asserts.assert(extension);
+  googAsserts.assert(projectionCode);
+  googAsserts.assert(extension);
 
-  ol.source.WMTS.call(this, {
+  olSourceWMTS.call(this, {
     attributions: '&copy; <a href="http://www.swisstopo.admin.ch">swisstopo</a>',
     url: swisstopoCreateUrl(projection, extension),
     dimensions: {
@@ -109,4 +108,4 @@ exports = function(options) {
     crossOrigin: options.crossOrigin
   });
 };
-ol.inherits(exports, ol.source.WMTS);
+olBase.inherits(exports, olSourceWMTS);

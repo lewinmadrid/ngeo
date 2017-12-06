@@ -1,9 +1,9 @@
-goog.provide('ngeo.drawrectangleDirective');
+goog.module('ngeo.drawrectangleDirective');
 
-goog.require('ngeo');
-goog.require('ol.events');
-goog.require('ol.interaction.Draw');
-goog.require('ol.geom.Polygon');
+const ngeoBase = goog.require('ngeo');
+const olEvents = goog.require('ol.events');
+const olInteractionDraw = goog.require('ol.interaction.Draw');
+const olGeomPolygon = goog.require('ol.geom.Polygon');
 
 
 /**
@@ -12,7 +12,7 @@ goog.require('ol.geom.Polygon');
  * @ngdoc directive
  * @ngname ngeoDrawrectangle
  */
-ngeo.drawrectangleDirective = function() {
+exports = function() {
   return {
     restrict: 'A',
     require: '^^ngeoDrawfeature',
@@ -24,11 +24,11 @@ ngeo.drawrectangleDirective = function() {
      */
     link: ($scope, element, attrs, drawFeatureCtrl) => {
 
-      const drawRectangle = new ol.interaction.Draw({
+      const drawRectangle = new olInteractionDraw({
         type: /** @type {ol.geom.GeometryType} */ ('LineString'),
         geometryFunction: (coordinates, geometry) => {
           if (!geometry) {
-            geometry = new ol.geom.Polygon(null);
+            geometry = new olGeomPolygon(null);
           }
           const start = coordinates[0];
           const end = coordinates[1];
@@ -43,14 +43,14 @@ ngeo.drawrectangleDirective = function() {
       drawFeatureCtrl.registerInteraction(drawRectangle);
       drawFeatureCtrl.drawRectangle = drawRectangle;
 
-      ol.events.listen(
+      olEvents.listen(
         drawRectangle,
         'drawend',
         drawFeatureCtrl.handleDrawEnd.bind(
-          drawFeatureCtrl, ngeo.GeometryType.RECTANGLE),
+          drawFeatureCtrl, ngeoBase.GeometryType.RECTANGLE),
         drawFeatureCtrl
       );
-      ol.events.listen(
+      olEvents.listen(
         drawRectangle,
         'change:active',
         drawFeatureCtrl.handleActiveChange,
@@ -61,4 +61,4 @@ ngeo.drawrectangleDirective = function() {
 };
 
 
-ngeo.module.directive('ngeoDrawrectangle', ngeo.drawrectangleDirective);
+ngeoBase.module.directive('ngeoDrawrectangle', exports);

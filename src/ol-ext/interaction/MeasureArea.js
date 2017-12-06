@@ -1,8 +1,8 @@
-goog.provide('ngeo.interaction.MeasureArea');
+goog.module('ngeo.interaction.MeasureArea');
 
-goog.require('ngeo.interaction.Measure');
-goog.require('ol.geom.Polygon');
-goog.require('ol.interaction.Draw');
+const ngeoInteractionMeasure = goog.require('ngeo.interaction.Measure');
+const olGeomPolygon = goog.require('ol.geom.Polygon');
+const olInteractionDraw = goog.require('ol.interaction.Draw');
 
 
 /**
@@ -18,11 +18,11 @@ goog.require('ol.interaction.Draw');
  * @param {ngeox.interaction.MeasureOptions=} opt_options Options
  * @export
  */
-ngeo.interaction.MeasureArea = function(format, opt_options) {
+exports = function(format, opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
-  ngeo.interaction.Measure.call(this, options);
+  ngeoInteractionMeasure.call(this, options);
 
 
   /**
@@ -47,14 +47,14 @@ ngeo.interaction.MeasureArea = function(format, opt_options) {
   this.format = format;
 
 };
-ol.inherits(ngeo.interaction.MeasureArea, ngeo.interaction.Measure);
+ol.inherits(exports, ngeoInteractionMeasure);
 
 
 /**
  * @inheritDoc
  */
-ngeo.interaction.MeasureArea.prototype.createDrawInteraction = function(style, source) {
-  return new ol.interaction.Draw({
+exports.prototype.createDrawInteraction = function(style, source) {
+  return new olInteractionDraw({
     type: /** @type {ol.geom.GeometryType} */ ('Polygon'),
     source: source,
     style: style
@@ -65,11 +65,11 @@ ngeo.interaction.MeasureArea.prototype.createDrawInteraction = function(style, s
 /**
  * @inheritDoc
  */
-ngeo.interaction.MeasureArea.prototype.handleMeasure = function(callback) {
-  const geom = goog.asserts.assertInstanceof(this.sketchFeature.getGeometry(), ol.geom.Polygon);
+exports.prototype.handleMeasure = function(callback) {
+  const geom = goog.asserts.assertInstanceof(this.sketchFeature.getGeometry(), olGeomPolygon);
   const proj = this.getMap().getView().getProjection();
   goog.asserts.assert(proj);
-  const output = ngeo.interaction.Measure.getFormattedArea(geom, proj, this.precision, this.format);
+  const output = ngeoInteractionMeasure.getFormattedArea(geom, proj, this.precision, this.format);
   const verticesCount = geom.getCoordinates()[0].length;
   let coord = null;
   if (verticesCount > 3) {

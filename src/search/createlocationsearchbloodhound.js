@@ -1,26 +1,24 @@
 /**
  * @module ngeo location search namespace
  */
-goog.provide('ngeo.search.createLocationSearchBloodhound');
+goog.module('ngeo.search.createLocationSearchBloodhound');
 
-goog.require('ol');
-goog.require('ol.obj');
-goog.require('ol.proj');
-/** @suppress {extraRequire} */
-goog.require('ngeo.proj.EPSG21781');
-
-goog.require('ol.geom.Point');
-goog.require('ol.Feature');
+const olBase = goog.require('ol');
+const olObj = goog.require('ol.obj');
+const olProj = goog.require('ol.proj');
+const ngeoProjEPSG21781 = goog.require('ngeo.proj.EPSG21781');
+const olGeomPoint = goog.require('ol.geom.Point');
+const olFeature = goog.require('ol.Feature');
 
 
 /**
  * @param {ngeox.search.LocationSearchOptions=} opt_options Options.
  * @return {Bloodhound} The Bloodhound object.
  */
-ngeo.search.createLocationSearchBloodhound = function(opt_options) {
+exports = function(opt_options) {
   const options = opt_options || {};
 
-  const sourceProjection = ol.proj.get(ngeo.proj.EPSG21781);
+  const sourceProjection = olProj.get(ngeoProjEPSG21781);
   const targetProjection = options.targetProjection;
 
   /**
@@ -76,12 +74,12 @@ ngeo.search.createLocationSearchBloodhound = function(opt_options) {
           const attrs = result.attrs;
 
           // note that x and y are switched!
-          const point = new ol.geom.Point([attrs.y, attrs.x]);
+          const point = new olGeomPoint([attrs.y, attrs.x]);
           let bbox = parseBbox(attrs.geom_st_box2d);
           if (targetProjection !== undefined) {
             point.transform(sourceProjection, targetProjection);
             if (bbox !== null) {
-              bbox = ol.proj.transformExtent(bbox, sourceProjection, targetProjection);
+              bbox = olProj.transformExtent(bbox, sourceProjection, targetProjection);
             }
           }
 
@@ -93,7 +91,7 @@ ngeo.search.createLocationSearchBloodhound = function(opt_options) {
           attrs['label_no_html'] = removeHtmlTags(label);
           attrs['label_simple'] = extractName(label);
 
-          const feature = new ol.Feature(attrs);
+          const feature = new olFeature(attrs);
           feature.setId(attrs.featureId);
 
           return feature;
@@ -104,22 +102,22 @@ ngeo.search.createLocationSearchBloodhound = function(opt_options) {
     },
     // datumTokenizer is required by the Bloodhound constructor but it
     // is not used when only a remote is passsed to Bloodhound.
-    datumTokenizer: ol.nullFunction,
+    datumTokenizer: olBase.nullFunction,
     queryTokenizer: Bloodhound.tokenizers.whitespace
   });
 
   // the options objects are cloned to avoid updating the passed object
-  const bhOptions = ol.obj.assign({}, options.options || {});
-  const remoteOptions = ol.obj.assign({}, options.remoteOptions || {});
+  const bhOptions = olObj.assign({}, options.options || {});
+  const remoteOptions = olObj.assign({}, options.remoteOptions || {});
 
   if (bhOptions.remote) {
     // move the remote options to opt_remoteOptions
-    ol.obj.assign(remoteOptions, bhOptions.remote);
+    olObj.assign(remoteOptions, bhOptions.remote);
     delete bhOptions.remote;
   }
 
-  ol.obj.assign(bloodhoundOptions, bhOptions);
-  ol.obj.assign(bloodhoundOptions.remote, remoteOptions);
+  olObj.assign(bloodhoundOptions, bhOptions);
+  olObj.assign(bloodhoundOptions.remote, remoteOptions);
 
   return new Bloodhound(bloodhoundOptions);
 };
@@ -128,11 +126,11 @@ ngeo.search.createLocationSearchBloodhound = function(opt_options) {
 /**
  * @type {!angular.Module}
  */
-ngeo.search.createLocationSearchBloodhound.module = angular.module('ngeoCreateLocationSearchBloodhound', []);
+exports.module = angular.module('ngeoCreateLocationSearchBloodhound', []);
 
-ngeo.search.createLocationSearchBloodhound.module.value(
+exports.module.value(
   'ngeoCreateLocationSearchBloodhound',
-  ngeo.search.createLocationSearchBloodhound);
+  exports);
 
 
 /**
@@ -154,4 +152,4 @@ ngeo.search.createLocationSearchBloodhound.module.value(
  * @ngdoc service
  * @ngname search.createLocationSearchBloodhound
  */
-ngeo.search.createLocationSearchBloodhound.Function;
+exports.Function;

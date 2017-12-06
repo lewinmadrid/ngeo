@@ -1,7 +1,7 @@
-goog.provide('ngeo.DecorateInteraction');
+goog.module('ngeo.DecorateInteraction');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -19,14 +19,14 @@ goog.require('ngeo');
  * @ngdoc service
  * @ngname ngeoDecorateInteraction
  */
-ngeo.DecorateInteraction;
+exports;
 
 
 /**
  * @param {ol.interaction.Interaction} interaction Interaction to decorate.
  */
-ngeo.decorateInteraction = function(interaction) {
-  goog.asserts.assertInstanceof(interaction, ol.interaction.Interaction);
+ngeoBase.decorateInteraction = function(interaction) {
+  googAsserts.assertInstanceof(interaction, ol.interaction.Interaction);
 
   Object.defineProperty(interaction, 'active', {
     get: () => interaction.getActive(),
@@ -37,4 +37,4 @@ ngeo.decorateInteraction = function(interaction) {
 };
 
 
-ngeo.module.value('ngeoDecorateInteraction', ngeo.decorateInteraction);
+ngeoBase.module.value('ngeoDecorateInteraction', ngeoBase.decorateInteraction);

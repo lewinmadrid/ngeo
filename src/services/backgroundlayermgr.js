@@ -1,12 +1,12 @@
-goog.provide('ngeo.BackgroundLayerMgr');
+goog.module('ngeo.BackgroundLayerMgr');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
-goog.require('ngeo.CustomEvent');
-goog.require('ol.Observable');
-goog.require('ol.source.ImageWMS');
-goog.require('ol.source.TileWMS');
-goog.require('ol.source.WMTS');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
+const ngeoCustomEvent = goog.require('ngeo.CustomEvent');
+const olObservable = goog.require('ol.Observable');
+const olSourceImageWMS = goog.require('ol.source.ImageWMS');
+const olSourceTileWMS = goog.require('ol.source.TileWMS');
+const olSourceWMTS = goog.require('ol.source.WMTS');
 
 
 /**
@@ -53,9 +53,9 @@ goog.require('ol.source.WMTS');
  * @ngdoc service
  * @ngname ngeoBackgroundLayerMgr
  */
-ngeo.BackgroundLayerMgr = function() {
+exports = function() {
 
-  ol.Observable.call(this);
+  olObservable.call(this);
 
   /**
    * Object used to track if maps have background layers.
@@ -64,7 +64,7 @@ ngeo.BackgroundLayerMgr = function() {
    */
   this.mapUids_ = {};
 };
-ol.inherits(ngeo.BackgroundLayerMgr, ol.Observable);
+ol.inherits(exports, olObservable);
 
 
 /**
@@ -74,7 +74,7 @@ ol.inherits(ngeo.BackgroundLayerMgr, ol.Observable);
  * @return {ol.layer.Base} layer The background layer.
  * @export
  */
-ngeo.BackgroundLayerMgr.prototype.get = function(map) {
+exports.prototype.get = function(map) {
   const mapUid = ol.getUid(map).toString();
   return mapUid in this.mapUids_ ? map.getLayers().item(0) : null;
 };
@@ -88,11 +88,11 @@ ngeo.BackgroundLayerMgr.prototype.get = function(map) {
  * @return {ol.layer.Base} The previous background layer.
  * @export
  */
-ngeo.BackgroundLayerMgr.prototype.set = function(map, layer) {
+exports.prototype.set = function(map, layer) {
   const mapUid = ol.getUid(map).toString();
   const previous = this.get(map);
   if (previous !== null) {
-    goog.asserts.assert(mapUid in this.mapUids_);
+    googAsserts.assert(mapUid in this.mapUids_);
     if (layer !== null) {
       map.getLayers().setAt(0, layer);
     } else {
@@ -104,7 +104,7 @@ ngeo.BackgroundLayerMgr.prototype.set = function(map, layer) {
     this.mapUids_[mapUid] = true;
   }
   /** @type {ngeox.BackgroundEvent} */
-  const event = new ngeo.CustomEvent('change', {
+  const event = new ngeoCustomEvent('change', {
     current: layer,
     previous: previous
   });
@@ -118,7 +118,7 @@ ngeo.BackgroundLayerMgr.prototype.set = function(map, layer) {
  * @param {Object.<string, string>} dimensions The global dimensions object.
  * @export
  */
-ngeo.BackgroundLayerMgr.prototype.updateDimensions = function(map, dimensions) {
+exports.prototype.updateDimensions = function(map, dimensions) {
   const baseBgLayer = this.get(map);
   if (baseBgLayer) {
     let layers = [baseBgLayer];
@@ -128,7 +128,7 @@ ngeo.BackgroundLayerMgr.prototype.updateDimensions = function(map, dimensions) {
     }
 
     layers.forEach((layer) => {
-      goog.asserts.assertInstanceof(layer, ol.layer.Layer);
+      googAsserts.assertInstanceof(layer, ol.layer.Layer);
       if (layer) {
         let hasUpdates = false;
         const updatedDimensions = {};
@@ -141,10 +141,10 @@ ngeo.BackgroundLayerMgr.prototype.updateDimensions = function(map, dimensions) {
         }
         if (hasUpdates) {
           const source = layer.getSource();
-          if (source instanceof ol.source.WMTS) {
+          if (source instanceof olSourceWMTS) {
             source.updateDimensions(updatedDimensions);
             source.refresh();
-          } else if (source instanceof ol.source.TileWMS || source instanceof ol.source.ImageWMS) {
+          } else if (source instanceof olSourceTileWMS || source instanceof olSourceImageWMS) {
             source.updateParams(updatedDimensions);
             source.refresh();
           }
@@ -154,4 +154,4 @@ ngeo.BackgroundLayerMgr.prototype.updateDimensions = function(map, dimensions) {
   }
 };
 
-ngeo.module.service('ngeoBackgroundLayerMgr', ngeo.BackgroundLayerMgr);
+ngeoBase.module.service('ngeoBackgroundLayerMgr', exports);

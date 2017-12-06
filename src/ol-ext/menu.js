@@ -1,9 +1,9 @@
-goog.provide('ngeo.Menu');
+goog.module('ngeo.Menu');
 
-goog.require('ngeo.CustomEvent');
-goog.require('ol.events');
-goog.require('ol.Overlay');
-goog.require('ol.OverlayPositioning');
+const ngeoCustomEvent = goog.require('ngeo.CustomEvent');
+const olEvents = goog.require('ol.events');
+const olOverlay = goog.require('ol.Overlay');
+const olOverlayPositioning = goog.require('ol.OverlayPositioning');
 
 
 /**
@@ -17,11 +17,11 @@ goog.require('ol.OverlayPositioning');
  * @param {ngeox.MenuOptions=} menuOptions Menu options.
  * @param {olx.OverlayOptions=} opt_overlayOptions Overlay options.
  */
-ngeo.Menu = function(menuOptions, opt_overlayOptions) {
+exports = function(menuOptions, opt_overlayOptions) {
 
   const options = opt_overlayOptions !== undefined ? opt_overlayOptions : {};
 
-  options.positioning = ol.OverlayPositioning.TOP_LEFT;
+  options.positioning = olOverlayPositioning.TOP_LEFT;
 
   /**
    * @type {Array.<ol.EventsKey>}
@@ -87,10 +87,10 @@ ngeo.Menu = function(menuOptions, opt_overlayOptions) {
 
   options.element = contentEl[0];
 
-  ol.Overlay.call(this, options);
+  olOverlay.call(this, options);
 
 };
-ol.inherits(ngeo.Menu, ol.Overlay);
+ol.inherits(exports, olOverlay);
 
 
 /**
@@ -98,21 +98,21 @@ ol.inherits(ngeo.Menu, ol.Overlay);
  * @export
  * @override
  */
-ngeo.Menu.prototype.setMap = function(map) {
+exports.prototype.setMap = function(map) {
 
   const currentMap = this.getMap();
   if (currentMap) {
-    this.listenerKeys_.forEach(ol.events.unlistenByKey);
+    this.listenerKeys_.forEach(olEvents.unlistenByKey);
     this.listenerKeys_.length = 0;
   }
 
-  ol.Overlay.prototype.setMap.call(this, map);
+  olOverlay.prototype.setMap.call(this, map);
 
   if (map) {
     this.actions_.forEach((action) => {
       const data = action.data();
       this.listenerKeys_.push(
-        ol.events.listen(
+        olEvents.listen(
           action[0],
           'click',
           this.handleActionClick_.bind(this, data.name)
@@ -122,7 +122,7 @@ ngeo.Menu.prototype.setMap = function(map) {
 
     // Autoclose the menu when clicking anywhere else than the menu
     this.listenerKeys_.push(
-      ol.events.listen(
+      olEvents.listen(
         map,
         'pointermove',
         this.handleMapPointerMove_,
@@ -140,10 +140,10 @@ ngeo.Menu.prototype.setMap = function(map) {
  * @param {ol.Coordinate} coordinate Where to open the menu.
  * @export
  */
-ngeo.Menu.prototype.open = function(coordinate) {
+exports.prototype.open = function(coordinate) {
   this.setPosition(coordinate);
   if (this.autoClose_) {
-    this.clickOutListenerKey_ = ol.events.listen(
+    this.clickOutListenerKey_ = olEvents.listen(
       document.documentElement,
       'mousedown',
       this.handleClickOut_,
@@ -157,11 +157,11 @@ ngeo.Menu.prototype.open = function(coordinate) {
 /**
  * @export
  */
-ngeo.Menu.prototype.close = function() {
+exports.prototype.close = function() {
   this.setPosition(undefined);
 
   if (this.clickOutListenerKey_ !== null) {
-    ol.events.unlistenByKey(this.clickOutListenerKey_);
+    olEvents.unlistenByKey(this.clickOutListenerKey_);
   }
 };
 
@@ -171,9 +171,9 @@ ngeo.Menu.prototype.close = function() {
  * @param {Event} evt Event.
  * @private
  */
-ngeo.Menu.prototype.handleActionClick_ = function(action, evt) {
+exports.prototype.handleActionClick_ = function(action, evt) {
 
-  this.dispatchEvent(new ngeo.CustomEvent('actionclick', action));
+  this.dispatchEvent(new ngeoCustomEvent('actionclick', action));
 
   if (this.autoClose_) {
     this.close();
@@ -188,7 +188,7 @@ ngeo.Menu.prototype.handleActionClick_ = function(action, evt) {
  * @param {Event} evt Event.
  * @private
  */
-ngeo.Menu.prototype.handleClickOut_ = function(evt) {
+exports.prototype.handleClickOut_ = function(evt) {
   const element = this.getElement();
   if (element && $(evt.target).closest(element).length === 0) {
     this.close();
@@ -205,7 +205,7 @@ ngeo.Menu.prototype.handleClickOut_ = function(evt) {
  * @param {ol.MapBrowserEvent} evt Event.
  * @private
  */
-ngeo.Menu.prototype.handleMapPointerMove_ = function(evt) {
+exports.prototype.handleMapPointerMove_ = function(evt) {
   const target = evt.originalEvent.target;
   goog.asserts.assertInstanceof(target, Element);
 

@@ -1,8 +1,8 @@
-goog.provide('ngeo.attributesComponent');
+goog.module('ngeo.attributesComponent');
 
-goog.require('ol.events');
-goog.require('ngeo');
-goog.require('ngeo.EventHelper');
+const olEvents = goog.require('ol.events');
+const ngeoBase = goog.require('ngeo');
+const ngeoEventHelper = goog.require('ngeo.EventHelper');
 
 
 /**
@@ -24,7 +24,7 @@ goog.require('ngeo.EventHelper');
  * @ngdoc component
  * @ngname ngeoAttributes
  */
-ngeo.attributesComponent = {
+exports = {
   controller: 'ngeoAttributesController as attrCtrl',
   bindings: {
     'attributes': '=ngeoAttributesAttributes',
@@ -34,10 +34,10 @@ ngeo.attributesComponent = {
   require: {
     'form': '^'
   },
-  templateUrl: () => `${ngeo.baseTemplateUrl}/attributes.html`
+  templateUrl: () => `${ngeoBase.baseTemplateUrl}/attributes.html`
 };
 
-ngeo.module.component('ngeoAttributes', ngeo.attributesComponent);
+ngeoBase.module.component('ngeoAttributes', exports);
 
 
 /**
@@ -51,7 +51,7 @@ ngeo.module.component('ngeoAttributes', ngeo.attributesComponent);
  * @ngdoc controller
  * @ngname ngeoAttributesController
  */
-ngeo.AttributesController = function($scope, ngeoEventHelper, gettextCatalog) {
+ngeoBase.AttributesController = function($scope, ngeoEventHelper, gettextCatalog) {
 
   /**
    * The list of attributes to create the form with.
@@ -128,14 +128,14 @@ ngeo.AttributesController = function($scope, ngeoEventHelper, gettextCatalog) {
 /**
  * Initialise the component.
  */
-ngeo.AttributesController.prototype.$onInit = function() {
+ngeoBase.AttributesController.prototype.$onInit = function() {
   this.properties = this.feature.getProperties();
 
   // Listen to the feature inner properties change and apply them to the form
   const uid = ol.getUid(this);
   this.ngeoEventHelper_.addListenerKey(
     uid,
-    ol.events.listen(this.feature, 'propertychange', this.handleFeaturePropertyChange_, this)
+    olEvents.listen(this.feature, 'propertychange', this.handleFeaturePropertyChange_, this)
   );
 
   const lang = this.gettextCatalog_.getCurrentLanguage();
@@ -148,7 +148,7 @@ ngeo.AttributesController.prototype.$onInit = function() {
  * @param {string} name Attribute name
  * @export
  */
-ngeo.AttributesController.prototype.handleInputChange = function(name) {
+ngeoBase.AttributesController.prototype.handleInputChange = function(name) {
   this.updating_ = true;
   const value = this.properties[name];
   this.feature.set(name, value);
@@ -159,7 +159,7 @@ ngeo.AttributesController.prototype.handleInputChange = function(name) {
 /**
  * Cleanup event listeners.
  */
-ngeo.AttributesController.prototype.$onDestroy = function() {
+ngeoBase.AttributesController.prototype.$onDestroy = function() {
   const uid = ol.getUid(this);
   this.ngeoEventHelper_.clearListenerKey(uid);
 };
@@ -169,7 +169,7 @@ ngeo.AttributesController.prototype.$onDestroy = function() {
  * @param {ol.Object.Event} evt Event.
  * @private
  */
-ngeo.AttributesController.prototype.handleFeaturePropertyChange_ = function(evt) {
+ngeoBase.AttributesController.prototype.handleFeaturePropertyChange_ = function(evt) {
   if (this.updating_) {
     return;
   }
@@ -178,4 +178,4 @@ ngeo.AttributesController.prototype.handleFeaturePropertyChange_ = function(evt)
 };
 
 
-ngeo.module.controller('ngeoAttributesController', ngeo.AttributesController);
+ngeoBase.module.controller('ngeoAttributesController', ngeoBase.AttributesController);

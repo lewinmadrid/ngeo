@@ -1,108 +1,108 @@
-goog.provide('ngeo.jstsExports');
+goog.module('ngeo.jstsExports');
 
-goog.require('ol.geom.Geometry');
-goog.require('ol.geom.GeometryCollection');
-goog.require('ol.geom.LineString');
-goog.require('ol.geom.LinearRing');
-goog.require('ol.geom.MultiLineString');
-goog.require('ol.geom.MultiPoint');
-goog.require('ol.geom.MultiPolygon');
-goog.require('ol.geom.Point');
-goog.require('ol.geom.Polygon');
+const olGeomGeometry = goog.require('ol.geom.Geometry');
+const olGeomGeometryCollection = goog.require('ol.geom.GeometryCollection');
+const olGeomLineString = goog.require('ol.geom.LineString');
+const olGeomLinearRing = goog.require('ol.geom.LinearRing');
+const olGeomMultiLineString = goog.require('ol.geom.MultiLineString');
+const olGeomMultiPoint = goog.require('ol.geom.MultiPoint');
+const olGeomMultiPolygon = goog.require('ol.geom.MultiPolygon');
+const olGeomPoint = goog.require('ol.geom.Point');
+const olGeomPolygon = goog.require('ol.geom.Polygon');
 
 
 goog.exportSymbol(
   'ol.geom.Geometry',
-  ol.geom.Geometry);
+  olGeomGeometry);
 
 goog.exportSymbol(
   'ol.geom.GeometryCollection',
-  ol.geom.GeometryCollection);
+  olGeomGeometryCollection);
 
 goog.exportProperty(
-  ol.geom.GeometryCollection.prototype,
+  olGeomGeometryCollection.prototype,
   'getGeometries',
-  ol.geom.GeometryCollection.prototype.getGeometries);
+  olGeomGeometryCollection.prototype.getGeometries);
 
 goog.exportSymbol(
   'ol.geom.LineString',
-  ol.geom.LineString);
+  olGeomLineString);
 
 goog.exportProperty(
-  ol.geom.LineString.prototype,
+  olGeomLineString.prototype,
   'getCoordinates',
-  ol.geom.LineString.prototype.getCoordinates);
+  olGeomLineString.prototype.getCoordinates);
 
 goog.exportSymbol(
   'ol.geom.LinearRing',
-  ol.geom.LinearRing);
+  olGeomLinearRing);
 
 goog.exportProperty(
-  ol.geom.LinearRing.prototype,
+  olGeomLinearRing.prototype,
   'getCoordinates',
-  ol.geom.LinearRing.prototype.getCoordinates);
+  olGeomLinearRing.prototype.getCoordinates);
 
 goog.exportSymbol(
   'ol.geom.MultiLineString',
-  ol.geom.MultiLineString);
+  olGeomMultiLineString);
 
 goog.exportProperty(
-  ol.geom.MultiLineString.prototype,
+  olGeomMultiLineString.prototype,
   'getCoordinates',
-  ol.geom.MultiLineString.prototype.getCoordinates);
+  olGeomMultiLineString.prototype.getCoordinates);
 
 goog.exportProperty(
-  ol.geom.MultiLineString.prototype,
+  olGeomMultiLineString.prototype,
   'getLineStrings',
-  ol.geom.MultiLineString.prototype.getLineStrings);
+  olGeomMultiLineString.prototype.getLineStrings);
 
 goog.exportSymbol(
   'ol.geom.MultiPoint',
-  ol.geom.MultiPoint);
+  olGeomMultiPoint);
 
 goog.exportProperty(
-  ol.geom.MultiPoint.prototype,
+  olGeomMultiPoint.prototype,
   'getCoordinates',
-  ol.geom.MultiPoint.prototype.getCoordinates);
+  olGeomMultiPoint.prototype.getCoordinates);
 
 goog.exportProperty(
-  ol.geom.MultiPoint.prototype,
+  olGeomMultiPoint.prototype,
   'getPoints',
-  ol.geom.MultiPoint.prototype.getPoints);
+  olGeomMultiPoint.prototype.getPoints);
 
 goog.exportSymbol(
   'ol.geom.MultiPolygon',
-  ol.geom.MultiPolygon);
+  olGeomMultiPolygon);
 
 goog.exportProperty(
-  ol.geom.MultiPolygon.prototype,
+  olGeomMultiPolygon.prototype,
   'getCoordinates',
-  ol.geom.MultiPolygon.prototype.getCoordinates);
+  olGeomMultiPolygon.prototype.getCoordinates);
 
 goog.exportProperty(
-  ol.geom.MultiPolygon.prototype,
+  olGeomMultiPolygon.prototype,
   'getPolygons',
-  ol.geom.MultiPolygon.prototype.getPolygons);
+  olGeomMultiPolygon.prototype.getPolygons);
 
 goog.exportSymbol(
   'ol.geom.Point',
-  ol.geom.Point);
+  olGeomPoint);
 
 goog.exportProperty(
-  ol.geom.Point.prototype,
+  olGeomPoint.prototype,
   'getCoordinates',
-  ol.geom.Point.prototype.getCoordinates);
+  olGeomPoint.prototype.getCoordinates);
 
 goog.exportSymbol(
   'ol.geom.Polygon',
-  ol.geom.Polygon);
+  olGeomPolygon);
 
 goog.exportProperty(
-  ol.geom.Polygon.prototype,
+  olGeomPolygon.prototype,
   'getLinearRings',
-  ol.geom.Polygon.prototype.getLinearRings);
+  olGeomPolygon.prototype.getLinearRings);
 
 goog.exportProperty(
-  ol.geom.Polygon.prototype,
+  olGeomPolygon.prototype,
   'getCoordinates',
-  ol.geom.Polygon.prototype.getCoordinates);
+  olGeomPolygon.prototype.getCoordinates);

@@ -1,9 +1,9 @@
 /**
  * @module ngeo search.directive namespace
  */
-goog.provide('ngeo.search.searchDirective');
+goog.module('ngeo.search.searchDirective');
 
-goog.require('ol');
+const olBase = goog.require('ol');
 
 
 /**
@@ -27,7 +27,7 @@ goog.require('ol');
  * @ngdoc directive
  * @ngname ngeoSearch
  */
-ngeo.search.searchDirective = function() {
+exports = function() {
   return {
     restrict: 'A',
     /**
@@ -58,7 +58,7 @@ ngeo.search.searchDirective = function() {
           /**
            * @type {ngeox.SearchDirectiveListeners}
            */
-      const typeaheadListeners = ngeo.search.searchDirective.adaptListeners_(
+      const typeaheadListeners = exports.adaptListeners_(
         typeaheadListeners_);
 
       element.on('typeahead:open', () => {
@@ -134,32 +134,32 @@ ngeo.search.searchDirective = function() {
  * @return {ngeox.SearchDirectiveListeners} The listeners object.
  * @private
  */
-ngeo.search.searchDirective.adaptListeners_ = function(object) {
+exports.adaptListeners_ = function(object) {
   /** @type {ngeox.SearchDirectiveListeners} */
   let typeaheadListeners;
   if (object === undefined) {
     typeaheadListeners = {
-      open: ol.nullFunction,
-      close: ol.nullFunction,
-      cursorchange: ol.nullFunction,
-      datasetsempty: ol.nullFunction,
-      select: ol.nullFunction,
-      autocomplete: ol.nullFunction
+      open: olBase.nullFunction,
+      close: olBase.nullFunction,
+      cursorchange: olBase.nullFunction,
+      datasetsempty: olBase.nullFunction,
+      select: olBase.nullFunction,
+      autocomplete: olBase.nullFunction
     };
   } else {
     typeaheadListeners = {
       open: object.open !== undefined ?
-        object.open : ol.nullFunction,
+        object.open : olBase.nullFunction,
       close: object.close !== undefined ?
-        object.close : ol.nullFunction,
+        object.close : olBase.nullFunction,
       cursorchange: object.cursorchange !== undefined ?
-        object.cursorchange : ol.nullFunction,
+        object.cursorchange : olBase.nullFunction,
       datasetsempty: object.datasetsempty !== undefined ?
-        object.datasetsempty : ol.nullFunction,
+        object.datasetsempty : olBase.nullFunction,
       select: object.select !== undefined ?
-        object.select : ol.nullFunction,
+        object.select : olBase.nullFunction,
       autocomplete: object.autocomplete !== undefined ?
-        object.autocomplete : ol.nullFunction
+        object.autocomplete : olBase.nullFunction
     };
   }
   return typeaheadListeners;
@@ -169,8 +169,8 @@ ngeo.search.searchDirective.adaptListeners_ = function(object) {
 /**
  * @type {!angular.Module}
  */
-ngeo.search.searchDirective.module = angular.module('ngeoSearchDirective', []);
+exports.module = angular.module('ngeoSearchDirective', []);
 
 
 // Register the directive in the module
-ngeo.search.searchDirective.module.directive('ngeoSearch', ngeo.search.searchDirective);
+exports.module.directive('ngeoSearch', exports);

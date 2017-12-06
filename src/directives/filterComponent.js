@@ -1,17 +1,16 @@
-goog.provide('ngeo.filterComponent');
+goog.module('ngeo.filterComponent');
 
-goog.require('ngeo');
-goog.require('ngeo.MapQuerent');
-/** @suppress {extraRequire} */
-goog.require('ngeo.ruleComponent');
-goog.require('ngeo.RuleHelper');
-goog.require('ngeo.rule.Geometry');
+const ngeoBase = goog.require('ngeo');
+const ngeoMapQuerent = goog.require('ngeo.MapQuerent');
+const ngeoRuleComponent = goog.require('ngeo.ruleComponent');
+const ngeoRuleHelper = goog.require('ngeo.RuleHelper');
+const ngeoRuleGeometry = goog.require('ngeo.rule.Geometry');
 
 
 /**
  * @private
  */
-ngeo.FilterController = class {
+ngeoBase.FilterController = class {
 
   /**
    * @param {!angularGettext.Catalog} gettextCatalog Gettext service.
@@ -115,15 +114,15 @@ ngeo.FilterController = class {
     this.conditions = [
       {
         text: gettextCatalog.getString('All'),
-        value: ngeo.FilterCondition.AND
+        value: ngeoBase.FilterCondition.AND
       },
       {
         text: gettextCatalog.getString('At least one'),
-        value: ngeo.FilterCondition.OR
+        value: ngeoBase.FilterCondition.OR
       },
       {
         text: gettextCatalog.getString('None'),
-        value: ngeo.FilterCondition.NOT
+        value: ngeoBase.FilterCondition.NOT
       }
     ];
 
@@ -165,7 +164,7 @@ ngeo.FilterController = class {
     // (1) Separate the attributes in 2: geometry and the others.
     const attributes = goog.asserts.assert(this.datasource.attributes);
     for (const attribute of attributes) {
-      if (attribute.type === ngeo.AttributeType.GEOMETRY) {
+      if (attribute.type === ngeoBase.AttributeType.GEOMETRY) {
         this.geometryAttributes.push(attribute);
       } else {
         this.otherAttributes.push(attribute);
@@ -323,7 +322,7 @@ ngeo.FilterController = class {
       this.handleRuleActiveChange_.bind(this)
     );
 
-    if (rule instanceof ngeo.rule.Geometry) {
+    if (rule instanceof ngeoRuleGeometry) {
       this.featureOverlay.addFeature(rule.feature);
     }
   }
@@ -339,7 +338,7 @@ ngeo.FilterController = class {
     unlistener();
     delete this.ruleUnlisteners_[uid];
 
-    if (rule instanceof ngeo.rule.Geometry) {
+    if (rule instanceof ngeoRuleGeometry) {
       this.featureOverlay.removeFeature(rule.feature);
     }
   }
@@ -388,10 +387,10 @@ ngeo.FilterController = class {
  *     value: (string)
  * }}
  */
-ngeo.FilterController.Condition;
+ngeoBase.FilterController.Condition;
 
 
-ngeo.module.component('ngeoFilter', {
+ngeoBase.module.component('ngeoFilter', {
   bindings: {
     'aRuleIsActive': '=',
     'customRules': '<',
@@ -403,6 +402,6 @@ ngeo.module.component('ngeoFilter', {
     'map': '<',
     'toolGroup': '<'
   },
-  controller: ngeo.FilterController,
-  templateUrl: () => `${ngeo.baseTemplateUrl}/filter.html`
+  controller: ngeoBase.FilterController,
+  templateUrl: () => `${ngeoBase.baseTemplateUrl}/filter.html`
 });

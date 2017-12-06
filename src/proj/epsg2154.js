@@ -1,11 +1,11 @@
 goog.module('ngeo.proj.EPSG2154');
 goog.module.declareLegacyNamespace();
 
-goog.require('ol.proj');
-goog.require('ol.proj.proj4');
+const olProj = goog.require('ol.proj');
+const olProjProj4 = goog.require('ol.proj.proj4');
 
-if (typeof ol.proj.proj4.get() !== 'function' && typeof proj4 === 'function') {
-  ol.proj.setProj4(proj4);
+if (typeof olProjProj4.get() !== 'function' && typeof proj4 === 'function') {
+  olProj.setProj4(proj4);
 }
 
 if (typeof proj4 == 'function') {
@@ -24,8 +24,8 @@ if (typeof proj4 == 'function') {
   ].join(' ');
   const epsg2154extent = [-378305.81, 6093283.21, 1212610.74, 7186901.68];
 
-  ol.proj.proj4.defs('EPSG:2154', epsg2154def);
-  ol.proj.get('EPSG:2154').setExtent(epsg2154extent);
+  olProjProj4.defs('EPSG:2154', epsg2154def);
+  olProj.get('EPSG:2154').setExtent(epsg2154extent);
 }
 
 exports = 'EPSG:2154';

@@ -1,11 +1,11 @@
-goog.provide('ngeo.utils');
+goog.module('ngeo.utils');
 
-goog.require('ol.geom.LineString');
-goog.require('ol.geom.MultiPoint');
-goog.require('ol.geom.MultiLineString');
-goog.require('ol.geom.MultiPolygon');
-goog.require('ol.geom.Point');
-goog.require('ol.geom.Polygon');
+const olGeomLineString = goog.require('ol.geom.LineString');
+const olGeomMultiPoint = goog.require('ol.geom.MultiPoint');
+const olGeomMultiLineString = goog.require('ol.geom.MultiLineString');
+const olGeomMultiPolygon = goog.require('ol.geom.MultiPolygon');
+const olGeomPoint = goog.require('ol.geom.Point');
+const olGeomPolygon = goog.require('ol.geom.Polygon');
 
 
 /**
@@ -14,16 +14,16 @@ goog.require('ol.geom.Polygon');
  * @param {ol.geom.Geometry} geometry A geometry
  * @return {ol.geom.Geometry} A multi geometry
  */
-ngeo.utils.toMulti = function(geometry) {
+exports.toMulti = function(geometry) {
   let multiGeom;
-  if (geometry instanceof ol.geom.Point) {
-    multiGeom = new ol.geom.MultiPoint([]);
+  if (geometry instanceof olGeomPoint) {
+    multiGeom = new olGeomMultiPoint([]);
     multiGeom.appendPoint(geometry);
-  } else if (geometry instanceof ol.geom.LineString) {
-    multiGeom = new ol.geom.MultiLineString([]);
+  } else if (geometry instanceof olGeomLineString) {
+    multiGeom = new olGeomMultiLineString([]);
     multiGeom.appendLineString(geometry);
-  } else if (geometry instanceof ol.geom.Polygon) {
-    multiGeom = new ol.geom.MultiPolygon([]);
+  } else if (geometry instanceof olGeomPolygon) {
+    multiGeom = new olGeomMultiPolygon([]);
     multiGeom.appendPolygon(geometry);
   } else {
     multiGeom = geometry;
@@ -35,7 +35,7 @@ ngeo.utils.toMulti = function(geometry) {
  * Checks if on Safari.
  * @return {boolean} True if on Safari.
  */
-ngeo.utils.isSafari = function() {
+exports.isSafari = function() {
   return navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1;
 };
 
@@ -45,7 +45,7 @@ ngeo.utils.isSafari = function() {
  * @return {string} hex value prepended with zero if it was single digit,
  *     otherwise the same value that was passed in.
  */
-ngeo.utils.colorZeroPadding = function(hex) {
+exports.colorZeroPadding = function(hex) {
   return hex.length == 1 ? `0${hex}` : hex;
 };
 
@@ -54,16 +54,16 @@ ngeo.utils.colorZeroPadding = function(hex) {
  * @param {!Array.<number>} rgb rgb representation of the color.
  * @return {string} hex representation of the color.
  */
-ngeo.utils.rgbArrayToHex = function(rgb) {
+exports.rgbArrayToHex = function(rgb) {
   const r = rgb[0];
   const g = rgb[1];
   const b = rgb[2];
   if (r != (r & 255) || g != (g & 255) || b != (b & 255)) {
     throw Error(`"(${r},${g},${b})" is not a valid RGB color`);
   }
-  const hexR = ngeo.utils.colorZeroPadding(r.toString(16));
-  const hexG = ngeo.utils.colorZeroPadding(g.toString(16));
-  const hexB = ngeo.utils.colorZeroPadding(b.toString(16));
+  const hexR = exports.colorZeroPadding(r.toString(16));
+  const hexG = exports.colorZeroPadding(g.toString(16));
+  const hexB = exports.colorZeroPadding(b.toString(16));
   return `#${hexR}${hexG}${hexB}`;
 };
 
@@ -72,7 +72,7 @@ ngeo.utils.rgbArrayToHex = function(rgb) {
  * @param {string|undefined} queryString The queryString.
  * @return {!Object.<string, string>} The result.
  */
-ngeo.utils.decodeQueryString = function(queryString) {
+exports.decodeQueryString = function(queryString) {
   const queryData = {};
   if (queryString) {
     const pairs = queryString.substring(1).split('&');
@@ -95,7 +95,7 @@ ngeo.utils.decodeQueryString = function(queryString) {
  * @param {!Object.<string, string>} queryData The queryData,
  * @return {string} The result.
  */
-ngeo.utils.encodeQueryString = function(queryData) {
+exports.encodeQueryString = function(queryData) {
   const queryItem = [];
   for (const key in queryData) {
     const value = queryData[key];

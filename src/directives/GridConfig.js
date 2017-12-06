@@ -1,4 +1,4 @@
-goog.provide('ngeo.GridConfig');
+goog.module('ngeo.GridConfig');
 
 
 /**
@@ -8,7 +8,7 @@ goog.provide('ngeo.GridConfig');
  * @struct
  * @export
  */
-ngeo.GridConfig = function(data, columnDefs) {
+exports = function(data, columnDefs) {
   /**
    * @type {Array.<Object>|undefined}
    * @export
@@ -35,7 +35,7 @@ ngeo.GridConfig = function(data, columnDefs) {
  * @return {string} Unique id for this object.
  * @export
  */
-ngeo.GridConfig.getRowUid = function(attributes) {
+exports.getRowUid = function(attributes) {
   return `${ol.getUid(attributes)}`;
 };
 
@@ -46,8 +46,8 @@ ngeo.GridConfig.getRowUid = function(attributes) {
  * @return {boolean} True if already selected. False otherwise.
  * @export
  */
-ngeo.GridConfig.prototype.isRowSelected = function(attributes) {
-  return !!this.selectedRows[ngeo.GridConfig.getRowUid(attributes)];
+exports.prototype.isRowSelected = function(attributes) {
+  return !!this.selectedRows[exports.getRowUid(attributes)];
 };
 
 
@@ -56,7 +56,7 @@ ngeo.GridConfig.prototype.isRowSelected = function(attributes) {
  * @return {number} Number of selected rows.
  * @export
  */
-ngeo.GridConfig.prototype.getSelectedCount = function() {
+exports.prototype.getSelectedCount = function() {
   return Object.keys(this.selectedRows).length;
 };
 
@@ -66,7 +66,7 @@ ngeo.GridConfig.prototype.getSelectedCount = function() {
  * @return {Array.<Object>} Selected rows in the current ordering.
  * @export
  */
-ngeo.GridConfig.prototype.getSelectedRows = function() {
+exports.prototype.getSelectedRows = function() {
   return this.data.filter(row => this.isRowSelected(row));
 };
 
@@ -75,8 +75,8 @@ ngeo.GridConfig.prototype.getSelectedRows = function() {
  * @param {Object} attributes An entry/row.
  * @public
  */
-ngeo.GridConfig.prototype.selectRow = function(attributes) {
-  const uid = ngeo.GridConfig.getRowUid(attributes);
+exports.prototype.selectRow = function(attributes) {
+  const uid = exports.getRowUid(attributes);
   this.selectedRows[uid] = attributes;
 };
 
@@ -85,8 +85,8 @@ ngeo.GridConfig.prototype.selectRow = function(attributes) {
  * @param {Object} attributes An entry/row.
  * @public
  */
-ngeo.GridConfig.prototype.toggleRow = function(attributes) {
-  const uid = ngeo.GridConfig.getRowUid(attributes);
+exports.prototype.toggleRow = function(attributes) {
+  const uid = exports.getRowUid(attributes);
   const isSelected = this.isRowSelected(attributes);
   if (isSelected) {
     delete this.selectedRows[uid];
@@ -100,7 +100,7 @@ ngeo.GridConfig.prototype.toggleRow = function(attributes) {
  * Select all rows.
  * @export
  */
-ngeo.GridConfig.prototype.selectAll = function() {
+exports.prototype.selectAll = function() {
   this.data.forEach((attributes) => {
     this.selectRow(attributes);
   });
@@ -111,7 +111,7 @@ ngeo.GridConfig.prototype.selectAll = function() {
  * Unselect all rows.
  * @export
  */
-ngeo.GridConfig.prototype.unselectAll = function() {
+exports.prototype.unselectAll = function() {
   for (const rowId in this.selectedRows) {
     delete this.selectedRows[rowId];
   }
@@ -122,7 +122,7 @@ ngeo.GridConfig.prototype.unselectAll = function() {
  * Invert selection.
  * @export
  */
-ngeo.GridConfig.prototype.invertSelection = function() {
+exports.prototype.invertSelection = function() {
   this.data.forEach((attributes) => {
     this.toggleRow(attributes);
   });

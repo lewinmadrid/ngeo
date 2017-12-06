@@ -1,6 +1,6 @@
-goog.provide('ngeo.Debounce');
+goog.module('ngeo.Debounce');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 /* eslint-disable valid-jsdoc */
 // FIXME: eslint can't detect that the function returns a function
@@ -15,7 +15,7 @@ goog.require('ngeo');
  * @ngdoc service
  * @ngname ngeoDebounce
  */
-ngeo.Debounce;
+exports;
 
 
 /**
@@ -23,7 +23,7 @@ ngeo.Debounce;
  * @return {ngeo.Debounce} The debounce function.
  * @ngInject
  */
-ngeo.debounceServiceFactory = function($timeout) {
+ngeoBase.debounceServiceFactory = function($timeout) {
   return (
   /**
        * @param {function(?)} func The function to debounce.
@@ -53,4 +53,4 @@ ngeo.debounceServiceFactory = function($timeout) {
 };
 
 
-ngeo.module.factory('ngeoDebounce', ngeo.debounceServiceFactory);
+ngeoBase.module.factory('ngeoDebounce', ngeoBase.debounceServiceFactory);

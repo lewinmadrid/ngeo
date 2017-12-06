@@ -1,6 +1,6 @@
-goog.provide('ngeo.popoverDirective');
+goog.module('ngeo.popoverDirective');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 /**
  * Provides a directive used to display a Bootstrap popover.
@@ -20,7 +20,7 @@ goog.require('ngeo');
  * @ngname ngeoPopover
  * @return {angular.Directive} The Directive Definition Object.
  */
-ngeo.popoverDirective = function() {
+exports = function() {
   return {
     restrict: 'A',
     scope: true,
@@ -67,7 +67,7 @@ ngeo.popoverDirective = function() {
  * @ngname ngeoPopoverAnchor
  * @return {angular.Directive} The Directive Definition Object
  */
-ngeo.popoverAnchorDirective = function() {
+ngeoBase.popoverAnchorDirective = function() {
   return {
     restrict: 'A',
     require: '^^ngeoPopover',
@@ -83,7 +83,7 @@ ngeo.popoverAnchorDirective = function() {
  * @ngname ngeoPopoverContent
  * @return {angular.Directive} The Directive Definition Object
  */
-ngeo.popoverContentDirective = function() {
+ngeoBase.popoverContentDirective = function() {
   return {
     restrict: 'A',
     require: '^^ngeoPopover',
@@ -104,7 +104,7 @@ ngeo.popoverContentDirective = function() {
  * @ngname NgeoPopoverController
  * @param {angular.Scope} $scope Scope.
  */
-ngeo.PopoverController = function($scope) {
+ngeoBase.PopoverController = function($scope) {
   /**
    * The state of the popover (displayed or not)
    * @type {boolean}
@@ -144,12 +144,12 @@ ngeo.PopoverController = function($scope) {
  * Dissmiss popover function
  * @export
  */
-ngeo.PopoverController.prototype.dismissPopover = function() {
+ngeoBase.PopoverController.prototype.dismissPopover = function() {
   this.shown = false;
   this.anchorElm.popover('hide');
 };
 
-ngeo.module.controller('NgeoPopoverController', ngeo.PopoverController);
-ngeo.module.directive('ngeoPopover', ngeo.popoverDirective);
-ngeo.module.directive('ngeoPopoverAnchor', ngeo.popoverAnchorDirective);
-ngeo.module.directive('ngeoPopoverContent', ngeo.popoverContentDirective);
+ngeoBase.module.controller('NgeoPopoverController', ngeoBase.PopoverController);
+ngeoBase.module.directive('ngeoPopover', exports);
+ngeoBase.module.directive('ngeoPopoverAnchor', ngeoBase.popoverAnchorDirective);
+ngeoBase.module.directive('ngeoPopoverContent', ngeoBase.popoverContentDirective);

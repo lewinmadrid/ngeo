@@ -1,9 +1,9 @@
-goog.provide('ngeo.controlDirective');
+goog.module('ngeo.controlDirective');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
-goog.require('ol.Map');
-goog.require('ol.control.Control');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
+const olMap = goog.require('ol.Map');
+const olControlControl = goog.require('ol.control.Control');
 
 
 /**
@@ -26,7 +26,7 @@ goog.require('ol.control.Control');
  * @ngdoc directive
  * @ngname ngeoControl
  */
-ngeo.controlDirective = function() {
+exports = function() {
   return {
     restrict: 'A',
     /**
@@ -38,11 +38,11 @@ ngeo.controlDirective = function() {
 
       const control = /** @type {ol.control.Control} */
               (scope.$eval(attrs['ngeoControl']));
-      goog.asserts.assertInstanceof(control, ol.control.Control);
+      googAsserts.assertInstanceof(control, olControlControl);
 
       const map = /** @type {ol.Map} */
               (scope.$eval(attrs['ngeoControlMap']));
-      goog.asserts.assertInstanceof(map, ol.Map);
+      googAsserts.assertInstanceof(map, olMap);
 
       control.setTarget(element[0]);
       map.addControl(control);
@@ -51,4 +51,4 @@ ngeo.controlDirective = function() {
 };
 
 
-ngeo.module.directive('ngeoControl', ngeo.controlDirective);
+ngeoBase.module.directive('ngeoControl', exports);

@@ -1,12 +1,12 @@
-goog.provide('ngeo.datasource.DataSource');
+goog.module('ngeo.datasource.DataSource');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
  * @implements {ngeox.datasource.DataSource}
  */
-ngeo.datasource.DataSource = class {
+exports = class {
 
   /**
    * A `ngeo.datasource.DataSource` represents a single source of data, which

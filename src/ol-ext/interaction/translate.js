@@ -1,13 +1,13 @@
-goog.provide('ngeo.interaction.Translate');
+goog.module('ngeo.interaction.Translate');
 
-goog.require('ol.Feature');
-goog.require('ol.events');
-goog.require('ol.geom.LineString');
-goog.require('ol.geom.Point');
-goog.require('ol.geom.Polygon');
-goog.require('ol.interaction.Translate');
-goog.require('ol.layer.Vector');
-goog.require('ol.source.Vector');
+const olFeature = goog.require('ol.Feature');
+const olEvents = goog.require('ol.events');
+const olGeomLineString = goog.require('ol.geom.LineString');
+const olGeomPoint = goog.require('ol.geom.Point');
+const olGeomPolygon = goog.require('ol.geom.Polygon');
+const olInteractionTranslate = goog.require('ol.interaction.Translate');
+const olLayerVector = goog.require('ol.layer.Vector');
+const olSourceVector = goog.require('ol.source.Vector');
 
 
 /**
@@ -24,7 +24,7 @@ goog.require('ol.source.Vector');
  * @param {ngeox.interaction.TranslateOptions} options Options.
  * @export
  */
-ngeo.interaction.Translate = function(options) {
+exports = function(options) {
 
   /**
    * @type {!Array.<ol.EventsKey>}
@@ -54,7 +54,7 @@ ngeo.interaction.Translate = function(options) {
    * @type {ol.source.Vector}
    * @private
    */
-  this.vectorSource_ = new ol.source.Vector({
+  this.vectorSource_ = new olSourceVector({
     useSpatialIndex: false
   });
 
@@ -62,7 +62,7 @@ ngeo.interaction.Translate = function(options) {
    * @type {ol.layer.Vector}
    * @private
    */
-  this.vectorLayer_ = new ol.layer.Vector({
+  this.vectorLayer_ = new olLayerVector({
     source: this.vectorSource_,
     style: options.style,
     updateWhileAnimating: true,
@@ -75,10 +75,10 @@ ngeo.interaction.Translate = function(options) {
    */
   this.centerFeatures_ = {};
 
-  ol.interaction.Translate.call(
+  olInteractionTranslate.call(
     this, /** @type {olx.interaction.TranslateOptions} */ (options));
 };
-ol.inherits(ngeo.interaction.Translate, ol.interaction.Translate);
+ol.inherits(exports, olInteractionTranslate);
 
 
 /**
@@ -87,17 +87,17 @@ ol.inherits(ngeo.interaction.Translate, ol.interaction.Translate);
  * @export
  * @override
  */
-ngeo.interaction.Translate.prototype.setActive = function(active) {
+exports.prototype.setActive = function(active) {
 
   if (this.keyPressListenerKey_) {
-    ol.events.unlistenByKey(this.keyPressListenerKey_);
+    olEvents.unlistenByKey(this.keyPressListenerKey_);
     this.keyPressListenerKey_ = null;
   }
 
-  ol.interaction.Translate.prototype.setActive.call(this, active);
+  olInteractionTranslate.prototype.setActive.call(this, active);
 
   if (active) {
-    this.keyPressListenerKey_ = ol.events.listen(
+    this.keyPressListenerKey_ = olEvents.listen(
       document,
       'keyup',
       this.handleKeyUp_,
@@ -116,14 +116,14 @@ ngeo.interaction.Translate.prototype.setActive = function(active) {
  * @param {ol.PluggableMap} map Map.
  * @override
  */
-ngeo.interaction.Translate.prototype.setMap = function(map) {
+exports.prototype.setMap = function(map) {
 
   const currentMap = this.getMap();
   if (currentMap) {
     this.vectorLayer_.setMap(null);
   }
 
-  ol.interaction.Translate.prototype.setMap.call(this, map);
+  olInteractionTranslate.prototype.setMap.call(this, map);
 
   if (map) {
     this.vectorLayer_.setMap(map);
@@ -136,7 +136,7 @@ ngeo.interaction.Translate.prototype.setMap = function(map) {
 /**
  * @private
  */
-ngeo.interaction.Translate.prototype.setState_ = function() {
+exports.prototype.setState_ = function() {
   const map = this.getMap();
   const active = this.getActive();
   const features = this.myFeatures_;
@@ -145,8 +145,8 @@ ngeo.interaction.Translate.prototype.setState_ = function() {
   if (map && active && features) {
     features.forEach(this.addFeature_, this);
     keys.push(
-      ol.events.listen(features, 'add', this.handleFeaturesAdd_, this),
-      ol.events.listen(features, 'remove', this.handleFeaturesRemove_, this)
+      olEvents.listen(features, 'add', this.handleFeaturesAdd_, this),
+      olEvents.listen(features, 'remove', this.handleFeaturesRemove_, this)
     );
   } else {
 
@@ -155,7 +155,7 @@ ngeo.interaction.Translate.prototype.setState_ = function() {
       elem.style.cursor = 'default';
     }
 
-    keys.forEach(ol.events.unlistenByKey);
+    keys.forEach(olEvents.unlistenByKey);
     keys.length = 0;
     features.forEach(this.removeFeature_, this);
   }
@@ -166,9 +166,9 @@ ngeo.interaction.Translate.prototype.setState_ = function() {
  * @param {ol.Collection.Event} evt Event.
  * @private
  */
-ngeo.interaction.Translate.prototype.handleFeaturesAdd_ = function(evt) {
+exports.prototype.handleFeaturesAdd_ = function(evt) {
   const feature = evt.element;
-  goog.asserts.assertInstanceof(feature, ol.Feature,
+  goog.asserts.assertInstanceof(feature, olFeature,
     'feature should be an ol.Feature');
   this.addFeature_(feature);
 };
@@ -178,7 +178,7 @@ ngeo.interaction.Translate.prototype.handleFeaturesAdd_ = function(evt) {
  * @param {ol.Collection.Event} evt Event.
  * @private
  */
-ngeo.interaction.Translate.prototype.handleFeaturesRemove_ = function(evt) {
+exports.prototype.handleFeaturesRemove_ = function(evt) {
   const feature = /** @type {ol.Feature} */ (evt.element);
   this.removeFeature_(feature);
 };
@@ -188,12 +188,12 @@ ngeo.interaction.Translate.prototype.handleFeaturesRemove_ = function(evt) {
  * @param {ol.Feature} feature Feature.
  * @private
  */
-ngeo.interaction.Translate.prototype.addFeature_ = function(feature) {
+exports.prototype.addFeature_ = function(feature) {
   const uid = ol.getUid(feature);
   const geometry = feature.getGeometry();
   goog.asserts.assertInstanceof(geometry, ol.geom.Geometry);
 
-  this.featureListenerKeys_[uid] = ol.events.listen(
+  this.featureListenerKeys_[uid] = olEvents.listen(
     geometry,
     'change',
     this.handleGeometryChange_.bind(this, feature),
@@ -201,7 +201,7 @@ ngeo.interaction.Translate.prototype.addFeature_ = function(feature) {
   );
 
   const point = this.getGeometryCenterPoint_(geometry);
-  const centerFeature = new ol.Feature(point);
+  const centerFeature = new olFeature(point);
   this.centerFeatures_[uid] = centerFeature;
   this.vectorSource_.addFeature(centerFeature);
 };
@@ -211,10 +211,10 @@ ngeo.interaction.Translate.prototype.addFeature_ = function(feature) {
  * @param {ol.Feature} feature Feature.
  * @private
  */
-ngeo.interaction.Translate.prototype.removeFeature_ = function(feature) {
+exports.prototype.removeFeature_ = function(feature) {
   const uid = ol.getUid(feature);
   if (this.featureListenerKeys_[uid]) {
-    ol.events.unlistenByKey(this.featureListenerKeys_[uid]);
+    olEvents.unlistenByKey(this.featureListenerKeys_[uid]);
     delete this.featureListenerKeys_[uid];
 
     this.vectorSource_.removeFeature(this.centerFeatures_[uid]);
@@ -228,7 +228,7 @@ ngeo.interaction.Translate.prototype.removeFeature_ = function(feature) {
  * @param {ol.events.Event} evt Event.
  * @private
  */
-ngeo.interaction.Translate.prototype.handleGeometryChange_ = function(feature,
+exports.prototype.handleGeometryChange_ = function(feature,
   evt) {
   const geometry = evt.target;
   goog.asserts.assertInstanceof(geometry, ol.geom.Geometry);
@@ -244,15 +244,15 @@ ngeo.interaction.Translate.prototype.handleGeometryChange_ = function(feature,
  * @return {ol.geom.Point} The center point of the geometry.
  * @private
  */
-ngeo.interaction.Translate.prototype.getGeometryCenterPoint_ = function(
+exports.prototype.getGeometryCenterPoint_ = function(
   geometry) {
 
   let center;
   let point;
 
-  if (geometry instanceof ol.geom.Polygon) {
+  if (geometry instanceof olGeomPolygon) {
     point = geometry.getInteriorPoint();
-  } else if (geometry instanceof ol.geom.LineString) {
+  } else if (geometry instanceof olGeomLineString) {
     center = geometry.getCoordinateAt(0.5);
   } else {
     const extent = geometry.getExtent();
@@ -260,7 +260,7 @@ ngeo.interaction.Translate.prototype.getGeometryCenterPoint_ = function(
   }
 
   if (!point && center) {
-    point = new ol.geom.Point(center);
+    point = new olGeomPoint(center);
   }
 
   goog.asserts.assert(point, 'Point should be thruthy');
@@ -274,7 +274,7 @@ ngeo.interaction.Translate.prototype.getGeometryCenterPoint_ = function(
  * @param {KeyboardEvent} evt Event.
  * @private
  */
-ngeo.interaction.Translate.prototype.handleKeyUp_ = function(evt) {
+exports.prototype.handleKeyUp_ = function(evt) {
   // 27 == ESC key
   if (evt.keyCode === 27) {
     this.setActive(false);

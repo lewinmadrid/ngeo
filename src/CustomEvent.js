@@ -1,5 +1,5 @@
-goog.provide('ngeo.CustomEvent');
-goog.require('ol.events.Event');
+goog.module('ngeo.CustomEvent');
+const olEventsEvent = goog.require('ol.events.Event');
 
 
 /**
@@ -9,9 +9,9 @@ goog.require('ol.events.Event');
  * @param {T} detail Event Detail.
  * @template T
  */
-ngeo.CustomEvent = function(type, detail = {}) {
+exports = function(type, detail = {}) {
 
-  ol.events.Event.call(this, type);
+  olEventsEvent.call(this, type);
 
   /**
    * @type {T}
@@ -19,4 +19,4 @@ ngeo.CustomEvent = function(type, detail = {}) {
   this.detail = detail;
 
 };
-ol.inherits(ngeo.CustomEvent, ol.events.Event);
+ol.inherits(exports, olEventsEvent);

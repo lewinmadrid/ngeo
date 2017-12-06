@@ -1,21 +1,21 @@
-goog.provide('ngeo.interaction.Measure');
+goog.module('ngeo.interaction.Measure');
 
-goog.require('ngeo.CustomEvent');
-goog.require('goog.asserts');
-goog.require('ol.dom');
-goog.require('ol.events');
-goog.require('ol.Feature');
-goog.require('ol.MapBrowserEvent');
-goog.require('ol.Overlay');
-goog.require('ol.Sphere');
-goog.require('ol.events');
-goog.require('ol.interaction.Interaction');
-goog.require('ol.layer.Vector');
-goog.require('ol.proj.EPSG4326');
-goog.require('ol.source.Vector');
-goog.require('ol.style.Fill');
-goog.require('ol.style.Stroke');
-goog.require('ol.style.Style');
+const ngeoCustomEvent = goog.require('ngeo.CustomEvent');
+const googAsserts = goog.require('goog.asserts');
+const olDom = goog.require('ol.dom');
+const olEvents = goog.require('ol.events');
+const olFeature = goog.require('ol.Feature');
+const olMapBrowserEvent = goog.require('ol.MapBrowserEvent');
+const olOverlay = goog.require('ol.Overlay');
+const olSphere = goog.require('ol.Sphere');
+const olEvents = goog.require('ol.events');
+const olInteractionInteraction = goog.require('ol.interaction.Interaction');
+const olLayerVector = goog.require('ol.layer.Vector');
+const olProjEPSG4326 = goog.require('ol.proj.EPSG4326');
+const olSourceVector = goog.require('ol.source.Vector');
+const olStyleFill = goog.require('ol.style.Fill');
+const olStyleStroke = goog.require('ol.style.Stroke');
+const olStyleStyle = goog.require('ol.style.Style');
 
 
 /**
@@ -41,12 +41,12 @@ ngeo.interaction.MeasureBaseOptions;
  * @extends {ol.interaction.Interaction}
  * @param {ngeo.interaction.MeasureBaseOptions=} opt_options Options
  */
-ngeo.interaction.Measure = function(opt_options) {
+exports = function(opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
-  ol.interaction.Interaction.call(this, {
-    handleEvent: ngeo.interaction.Measure.handleEvent_
+  olInteractionInteraction.call(this, {
+    handleEvent: exports.handleEvent_
   });
 
   /**
@@ -153,19 +153,19 @@ ngeo.interaction.Measure = function(opt_options) {
   this.postcomposeEventKey_ = null;
 
   const style = options.style !== undefined ? options.style : [
-    new ol.style.Style({
-      fill: new ol.style.Fill({
+    new olStyleStyle({
+      fill: new olStyleFill({
         color: 'rgba(255, 255, 255, 0.2)'
       })
     }),
-    new ol.style.Style({
-      stroke: new ol.style.Stroke({
+    new olStyleStyle({
+      stroke: new olStyleStroke({
         color: 'white',
         width: 5
       })
     }),
-    new ol.style.Style({
-      stroke: new ol.style.Stroke({
+    new olStyleStyle({
+      stroke: new olStyleStroke({
         color: '#ffcc33',
         width: 3
       })
@@ -177,8 +177,8 @@ ngeo.interaction.Measure = function(opt_options) {
    * @type {ol.layer.Vector}
    * @private
    */
-  this.vectorLayer_ = new ol.layer.Vector({
-    source: new ol.source.Vector(),
+  this.vectorLayer_ = new olLayerVector({
+    source: new olSourceVector(),
     style: style
   });
 
@@ -196,20 +196,20 @@ ngeo.interaction.Measure = function(opt_options) {
    */
   this.shouldHandleDrawInteractionActiveChange_ = true;
 
-  ol.events.listen(this.drawInteraction_, 'change:active', this.handleDrawInteractionActiveChange_, this);
-  ol.events.listen(this.drawInteraction_, 'drawstart', this.onDrawStart_, this);
-  ol.events.listen(this.drawInteraction_, 'drawend', this.onDrawEnd_, this);
+  olEvents.listen(this.drawInteraction_, 'change:active', this.handleDrawInteractionActiveChange_, this);
+  olEvents.listen(this.drawInteraction_, 'drawstart', this.onDrawStart_, this);
+  olEvents.listen(this.drawInteraction_, 'drawend', this.onDrawEnd_, this);
 
-  ol.events.listen(this, 'change:active', this.updateState_, this);
+  olEvents.listen(this, 'change:active', this.updateState_, this);
 };
-ol.inherits(ngeo.interaction.Measure, ol.interaction.Interaction);
+ol.inherits(exports, olInteractionInteraction);
 
 
 /**
  * @const
  * @type {ol.Sphere}
  */
-ngeo.interaction.Measure.SPHERE_WGS84 = new ol.Sphere(ol.proj.EPSG4326.RADIUS);
+exports.SPHERE_WGS84 = new olSphere(olProjEPSG4326.RADIUS);
 
 
 /**
@@ -223,12 +223,12 @@ ngeo.interaction.Measure.SPHERE_WGS84 = new ol.Sphere(ol.proj.EPSG4326.RADIUS);
  * @export
  * @this {ngeo.interaction.Measure}
  */
-ngeo.interaction.Measure.getFormattedArea = function(
+exports.getFormattedArea = function(
   polygon, projection, precision, format) {
   const geom = /** @type {ol.geom.Polygon} */ (
     polygon.clone().transform(projection, 'EPSG:4326'));
   const coordinates = geom.getLinearRing(0).getCoordinates();
-  const area = Math.abs(ngeo.interaction.Measure.SPHERE_WGS84.geodesicArea(coordinates));
+  const area = Math.abs(exports.SPHERE_WGS84.geodesicArea(coordinates));
   return format(area, 'm²', 'square', precision);
 };
 
@@ -242,7 +242,7 @@ ngeo.interaction.Measure.getFormattedArea = function(
  * @return {string} Formatted string of the area.
  * @export
  */
-ngeo.interaction.Measure.getFormattedCircleArea = function(
+exports.getFormattedCircleArea = function(
   circle, precision, format) {
   const area = Math.PI * Math.pow(circle.getRadius(), 2);
   return format(area, 'm²', 'square', precision);
@@ -259,14 +259,14 @@ ngeo.interaction.Measure.getFormattedCircleArea = function(
  * @return {string} Formatted string of length.
  * @export
  */
-ngeo.interaction.Measure.getFormattedLength = function(lineString, projection,
+exports.getFormattedLength = function(lineString, projection,
   precision, format) {
   let length = 0;
   const coordinates = lineString.getCoordinates();
   for (let i = 0, ii = coordinates.length - 1; i < ii; ++i) {
     const c1 = ol.proj.transform(coordinates[i], projection, 'EPSG:4326');
     const c2 = ol.proj.transform(coordinates[i + 1], projection, 'EPSG:4326');
-    length += ngeo.interaction.Measure.SPHERE_WGS84.haversineDistance(c1, c2);
+    length += exports.SPHERE_WGS84.haversineDistance(c1, c2);
   }
   return format(length, 'm', 'unit', precision);
 };
@@ -280,7 +280,7 @@ ngeo.interaction.Measure.getFormattedLength = function(lineString, projection,
  * @param {string=} opt_template The template.
  * @return {string} Formatted string of coordinate.
  */
-ngeo.interaction.Measure.getFormattedPoint = function(
+exports.getFormattedPoint = function(
   point, decimals, format, opt_template) {
   return format(point.getCoordinates(), decimals, opt_template);
 };
@@ -293,7 +293,7 @@ ngeo.interaction.Measure.getFormattedPoint = function(
  * @this {ngeo.interaction.Measure}
  * @private
  */
-ngeo.interaction.Measure.handleEvent_ = function(evt) {
+exports.handleEvent_ = function(evt) {
   if (evt.type != 'pointermove' || evt.dragging) {
     return true;
   }
@@ -304,7 +304,7 @@ ngeo.interaction.Measure.handleEvent_ = function(evt) {
   }
 
   if (this.displayHelpTooltip_) {
-    ol.dom.removeChildren(this.helpTooltipElement_);
+    olDom.removeChildren(this.helpTooltipElement_);
     this.helpTooltipElement_.appendChild(helpMsg);
     this.helpTooltipOverlay_.setPosition(evt.coordinate);
   }
@@ -317,7 +317,7 @@ ngeo.interaction.Measure.handleEvent_ = function(evt) {
  * @return {ol.interaction.Draw|ngeo.interaction.DrawAzimut|ngeo.interaction.MobileDraw} The draw interaction.
  * @export
  */
-ngeo.interaction.Measure.prototype.getDrawInteraction = function() {
+exports.prototype.getDrawInteraction = function() {
   return this.drawInteraction_;
 };
 
@@ -332,15 +332,15 @@ ngeo.interaction.Measure.prototype.getDrawInteraction = function() {
  * @return {ol.interaction.Draw|ngeo.interaction.DrawAzimut|ngeo.interaction.MobileDraw} The interaction
  * @protected
  */
-ngeo.interaction.Measure.prototype.createDrawInteraction = function(style, source) {};
+exports.prototype.createDrawInteraction = function(style, source) {};
 
 
 /**
  * @inheritDoc
  */
-ngeo.interaction.Measure.prototype.setMap = function(map) {
+exports.prototype.setMap = function(map) {
 
-  ol.interaction.Interaction.prototype.setMap.call(this, map);
+  olInteractionInteraction.prototype.setMap.call(this, map);
 
   this.vectorLayer_.setMap(map);
 
@@ -360,15 +360,15 @@ ngeo.interaction.Measure.prototype.setMap = function(map) {
  * @param {ol.interaction.Draw.Event} evt Event.
  * @private
  */
-ngeo.interaction.Measure.prototype.onDrawStart_ = function(evt) {
+exports.prototype.onDrawStart_ = function(evt) {
   this.sketchFeature = evt.feature;
   this.vectorLayer_.getSource().clear(true);
   this.createMeasureTooltip_();
 
   const geometry = this.sketchFeature.getGeometry();
 
-  goog.asserts.assert(geometry !== undefined);
-  this.changeEventKey_ = ol.events.listen(geometry, 'change', () => {
+  googAsserts.assert(geometry !== undefined);
+  this.changeEventKey_ = olEvents.listen(geometry, 'change', () => {
     this.handleMeasure((measure, coord) => {
       if (coord !== null) {
         this.measureTooltipElement_.innerHTML = measure;
@@ -377,7 +377,7 @@ ngeo.interaction.Measure.prototype.onDrawStart_ = function(evt) {
     });
   });
 
-  this.postcomposeEventKey_ = ol.events.listen(this.getMap(), 'postcompose', () => {
+  this.postcomposeEventKey_ = olEvents.listen(this.getMap(), 'postcompose', () => {
     this.measureTooltipOverlay_.setPosition(this.measureTooltipOverlayCoord_);
   });
 };
@@ -388,17 +388,17 @@ ngeo.interaction.Measure.prototype.onDrawStart_ = function(evt) {
  * @param {ol.interaction.Draw.Event} evt Event.
  * @private
  */
-ngeo.interaction.Measure.prototype.onDrawEnd_ = function(evt) {
+exports.prototype.onDrawEnd_ = function(evt) {
   this.measureTooltipElement_.classList.add('ngeo-tooltip-static');
   this.measureTooltipOverlay_.setOffset([0, -7]);
   /** @type {ngeox.MeasureEvent} */
-  const event = new ngeo.CustomEvent('measureend', {feature: this.sketchFeature});
+  const event = new ngeoCustomEvent('measureend', {feature: this.sketchFeature});
   this.dispatchEvent(event);
   this.sketchFeature = null;
-  goog.asserts.assert(this.changeEventKey_ !== null);
-  goog.asserts.assert(this.postcomposeEventKey_ !== null);
-  ol.events.unlistenByKey(this.changeEventKey_);
-  ol.events.unlistenByKey(this.postcomposeEventKey_);
+  googAsserts.assert(this.changeEventKey_ !== null);
+  googAsserts.assert(this.postcomposeEventKey_ !== null);
+  olEvents.unlistenByKey(this.changeEventKey_);
+  olEvents.unlistenByKey(this.postcomposeEventKey_);
   this.changeEventKey_ = null;
   this.postcomposeEventKey_ = null;
 };
@@ -408,12 +408,12 @@ ngeo.interaction.Measure.prototype.onDrawEnd_ = function(evt) {
  * Creates a new help tooltip
  * @private
  */
-ngeo.interaction.Measure.prototype.createHelpTooltip_ = function() {
+exports.prototype.createHelpTooltip_ = function() {
   this.removeHelpTooltip_();
   if (this.displayHelpTooltip_) {
     this.helpTooltipElement_ = document.createElement('div');
     this.helpTooltipElement_.classList.add('tooltip');
-    this.helpTooltipOverlay_ = new ol.Overlay({
+    this.helpTooltipOverlay_ = new olOverlay({
       element: this.helpTooltipElement_,
       offset: [15, 0],
       positioning: 'center-left'
@@ -427,7 +427,7 @@ ngeo.interaction.Measure.prototype.createHelpTooltip_ = function() {
  * Destroy the help tooltip
  * @private
  */
-ngeo.interaction.Measure.prototype.removeHelpTooltip_ = function() {
+exports.prototype.removeHelpTooltip_ = function() {
   if (this.displayHelpTooltip_) {
     this.getMap().removeOverlay(this.helpTooltipOverlay_);
     if (this.helpTooltipElement_ !== null) {
@@ -443,12 +443,12 @@ ngeo.interaction.Measure.prototype.removeHelpTooltip_ = function() {
  * Creates a new measure tooltip
  * @private
  */
-ngeo.interaction.Measure.prototype.createMeasureTooltip_ = function() {
+exports.prototype.createMeasureTooltip_ = function() {
   this.removeMeasureTooltip_();
   this.measureTooltipElement_ = document.createElement('div');
   this.measureTooltipElement_.classList.add('tooltip');
   this.measureTooltipElement_.classList.add('ngeo-tooltip-measure');
-  this.measureTooltipOverlay_ = new ol.Overlay({
+  this.measureTooltipOverlay_ = new olOverlay({
     element: this.measureTooltipElement_,
     offset: [0, -15],
     positioning: 'bottom-center',
@@ -462,7 +462,7 @@ ngeo.interaction.Measure.prototype.createMeasureTooltip_ = function() {
  * Destroy the help tooltip
  * @private
  */
-ngeo.interaction.Measure.prototype.removeMeasureTooltip_ = function() {
+exports.prototype.removeMeasureTooltip_ = function() {
   if (this.measureTooltipElement_ !== null) {
     this.measureTooltipElement_.parentNode.removeChild(this.measureTooltipElement_);
     this.measureTooltipElement_ = null;
@@ -475,7 +475,7 @@ ngeo.interaction.Measure.prototype.removeMeasureTooltip_ = function() {
 /**
  * @private
  */
-ngeo.interaction.Measure.prototype.updateState_ = function() {
+exports.prototype.updateState_ = function() {
   const active = this.getActive();
   this.shouldHandleDrawInteractionActiveChange_ = false;
   this.drawInteraction_.setActive(active);
@@ -506,7 +506,7 @@ ngeo.interaction.Measure.prototype.updateState_ = function() {
  *     to be called.
  * @protected
  */
-ngeo.interaction.Measure.prototype.handleMeasure = function(callback) {};
+exports.prototype.handleMeasure = function(callback) {};
 
 
 /**
@@ -514,7 +514,7 @@ ngeo.interaction.Measure.prototype.handleMeasure = function(callback) {};
  * @return {Element} Tooltip Element.
  * @export
  */
-ngeo.interaction.Measure.prototype.getTooltipElement = function() {
+exports.prototype.getTooltipElement = function() {
   return this.measureTooltipElement_;
 };
 
@@ -526,7 +526,7 @@ ngeo.interaction.Measure.prototype.getTooltipElement = function() {
  *
  * @private
  */
-ngeo.interaction.Measure.prototype.handleDrawInteractionActiveChange_ = function() {
+exports.prototype.handleDrawInteractionActiveChange_ = function() {
   if (this.shouldHandleDrawInteractionActiveChange_) {
     this.setActive(this.drawInteraction_.getActive());
   }

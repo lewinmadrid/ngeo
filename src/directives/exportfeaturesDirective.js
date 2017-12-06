@@ -1,6 +1,6 @@
-goog.provide('ngeo.exportfeaturesDirective');
+goog.module('ngeo.exportfeaturesDirective');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -27,7 +27,7 @@ goog.require('ngeo');
  * @ngdoc directive
  * @ngname ngeoExportfeatures
  */
-ngeo.exportfeaturesDirective = function() {
+exports = function() {
   return {
     controller: 'ngeoExportfeaturesController as efCtrl',
     scope: true,
@@ -38,7 +38,7 @@ ngeo.exportfeaturesDirective = function() {
 };
 
 
-ngeo.module.directive('ngeoExportfeatures', ngeo.exportfeaturesDirective);
+ngeoBase.module.directive('ngeoExportfeatures', exports);
 
 
 /**
@@ -53,7 +53,7 @@ ngeo.module.directive('ngeoExportfeatures', ngeo.exportfeaturesDirective);
  * @ngdoc controller
  * @ngname ngeoExportfeaturesController
  */
-ngeo.ExportfeaturesController = function($element, $injector, $scope,
+ngeoBase.ExportfeaturesController = function($element, $injector, $scope,
   ngeoFeatureHelper) {
 
   /**
@@ -87,7 +87,7 @@ ngeo.ExportfeaturesController = function($element, $injector, $scope,
   if ($injector.has('ngeoExportFeatureFormats')) {
     formats = $injector.get('ngeoExportFeatureFormats');
   } else {
-    formats = [ngeo.FeatureHelper.FormatType.KML];
+    formats = [ngeoBase.FeatureHelper.FormatType.KML];
   }
 
   /**
@@ -152,7 +152,7 @@ ngeo.ExportfeaturesController = function($element, $injector, $scope,
  * that doesn't support the type of geometry.
  * @private
  */
-ngeo.ExportfeaturesController.prototype.handleElementClick_ = function() {
+ngeoBase.ExportfeaturesController.prototype.handleElementClick_ = function() {
 
   const features = this.features.getArray();
 
@@ -164,7 +164,7 @@ ngeo.ExportfeaturesController.prototype.handleElementClick_ = function() {
     let $item;
     this.formats_.forEach((format, i) => {
       $item = this.items_[i];
-      if (format === ngeo.FeatureHelper.FormatType.GPX) {
+      if (format === ngeoBase.FeatureHelper.FormatType.GPX) {
         if (geom instanceof ol.geom.Point ||
             geom instanceof ol.geom.LineString) {
           $item.removeClass('disabled');
@@ -184,7 +184,7 @@ ngeo.ExportfeaturesController.prototype.handleElementClick_ = function() {
  * @param {jQuery.Event} event Event.
  * @private
  */
-ngeo.ExportfeaturesController.prototype.handleMenuItemClick_ = function(format, event) {
+ngeoBase.ExportfeaturesController.prototype.handleMenuItemClick_ = function(format, event) {
   if (!$(event.target.parentElement).hasClass('disabled')) {
     const features = this.features.getArray();
     this.featureHelper_.export(features, format);
@@ -196,7 +196,7 @@ ngeo.ExportfeaturesController.prototype.handleMenuItemClick_ = function(format, 
  * Cleanup event listeners and remove the menu from DOM, if any.
  * @private
  */
-ngeo.ExportfeaturesController.prototype.handleDestroy_ = function() {
+ngeoBase.ExportfeaturesController.prototype.handleDestroy_ = function() {
   const id = this.id_;
 
   this.element_.off(['click', id].join('.'));
@@ -212,5 +212,5 @@ ngeo.ExportfeaturesController.prototype.handleDestroy_ = function() {
 };
 
 
-ngeo.module.controller(
-  'ngeoExportfeaturesController', ngeo.ExportfeaturesController);
+ngeoBase.module.controller(
+  'ngeoExportfeaturesController', ngeoBase.ExportfeaturesController);

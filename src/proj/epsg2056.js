@@ -1,14 +1,14 @@
 goog.module('ngeo.proj.EPSG2056');
 goog.module.declareLegacyNamespace();
 
-goog.require('ol.proj');
-goog.require('ol.proj.proj4');
+const olProj = goog.require('ol.proj');
+const olProjProj4 = goog.require('ol.proj.proj4');
 
-if (typeof ol.proj.proj4.get() !== 'function' && typeof proj4 === 'function') {
-  ol.proj.setProj4(proj4);
+if (typeof olProjProj4.get() !== 'function' && typeof proj4 === 'function') {
+  olProj.setProj4(proj4);
 }
 
-if (typeof ol.proj.proj4.get() == 'function') {
+if (typeof olProjProj4.get() == 'function') {
   const epsg2056def = [
     '+proj=somerc',
     '+lat_0=46.95240555555556',
@@ -23,8 +23,8 @@ if (typeof ol.proj.proj4.get() == 'function') {
   ].join(' ');
   const epsg2056extent = [2420000, 1030000, 2900000, 1350000];
 
-  ol.proj.proj4.get().defs('EPSG:2056', epsg2056def);
-  ol.proj.get('EPSG:2056').setExtent(epsg2056extent);
+  olProjProj4.get().defs('EPSG:2056', epsg2056def);
+  olProj.get('EPSG:2056').setExtent(epsg2056extent);
 }
 
 exports = 'EPSG:2056';

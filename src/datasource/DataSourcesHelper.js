@@ -1,14 +1,14 @@
-goog.provide('ngeo.datasource.DataSourcesHelper');
+goog.module('ngeo.datasource.DataSourcesHelper');
 
-goog.require('ngeo');
-goog.require('ngeo.datasource.DataSource');
-goog.require('ngeo.datasource.DataSources');
-goog.require('ngeo.Querent');
-goog.require('ngeo.format.WFSAttribute');
-goog.require('ol.events');
+const ngeoBase = goog.require('ngeo');
+const ngeoDatasourceDataSource = goog.require('ngeo.datasource.DataSource');
+const ngeoDatasourceDataSources = goog.require('ngeo.datasource.DataSources');
+const ngeoQuerent = goog.require('ngeo.Querent');
+const ngeoFormatWFSAttribute = goog.require('ngeo.format.WFSAttribute');
+const olEvents = goog.require('ol.events');
 
 
-ngeo.datasource.DataSourcesHelper = class {
+exports = class {
 
   /**
    * A service that provides utility methods to manipulate or get data sources.
@@ -55,8 +55,8 @@ ngeo.datasource.DataSourcesHelper = class {
 
     // Events
 
-    ol.events.listen(ngeoDataSources, 'add', this.handleDataSourcesAdd_, this);
-    ol.events.listen(ngeoDataSources, 'remove', this.handleDataSourcesRemove_, this);
+    olEvents.listen(ngeoDataSources, 'add', this.handleDataSourcesAdd_, this);
+    olEvents.listen(ngeoDataSources, 'remove', this.handleDataSourcesRemove_, this);
   }
 
   /**
@@ -110,7 +110,7 @@ ngeo.datasource.DataSourcesHelper = class {
           featureType.complexType[0].name === element.type);
 
         const complexContent = featureType['complexType'][0]['complexContent'];
-        const attributes = new ngeo.format.WFSAttribute().read(complexContent);
+        const attributes = new ngeoFormatWFSAttribute().read(complexContent);
 
         // Set the attributes in the data source
         dataSource.setAttributes(attributes);
@@ -130,7 +130,7 @@ ngeo.datasource.DataSourcesHelper = class {
    */
   handleDataSourcesAdd_(evt) {
     const dataSource = goog.asserts.assertInstanceof(
-      evt.element, ngeo.datasource.DataSource);
+      evt.element, ngeoDatasourceDataSource);
     this.cache_[dataSource.id] = dataSource;
   }
 
@@ -142,11 +142,11 @@ ngeo.datasource.DataSourcesHelper = class {
    */
   handleDataSourcesRemove_(evt) {
     const dataSource = goog.asserts.assertInstanceof(
-      evt.element, ngeo.datasource.DataSource);
+      evt.element, ngeoDatasourceDataSource);
     delete this.cache_[dataSource.id];
   }
 
 };
 
 
-ngeo.module.service('ngeoDataSourcesHelper', ngeo.datasource.DataSourcesHelper);
+ngeoBase.module.service('ngeoDataSourcesHelper', exports);

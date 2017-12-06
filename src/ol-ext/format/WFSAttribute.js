@@ -1,9 +1,9 @@
-goog.provide('ngeo.format.WFSAttribute');
+goog.module('ngeo.format.WFSAttribute');
 
-goog.require('ngeo.Attribute');
+const ngeoAttribute = goog.require('ngeo.Attribute');
 
 
-ngeo.format.WFSAttribute = class {
+exports = class {
 
 
   /**
@@ -40,7 +40,7 @@ ngeo.format.WFSAttribute = class {
 
     const type = goog.asserts.assertString(object['type']);
 
-    if (!ngeo.Attribute.setGeometryType(attribute, type)) {
+    if (!ngeoAttribute.setGeometryType(attribute, type)) {
       if (type === 'gml:TimeInstantType') {
         attribute.type = ngeo.AttributeType.DATETIME;
       } else if (type === 'double') {

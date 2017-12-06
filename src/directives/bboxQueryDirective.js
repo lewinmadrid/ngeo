@@ -1,8 +1,8 @@
-goog.provide('ngeo.bboxQueryDirective');
+goog.module('ngeo.bboxQueryDirective');
 
-goog.require('ngeo');
-goog.require('ngeo.MapQuerent');
-goog.require('ol.interaction.DragBox');
+const ngeoBase = goog.require('ngeo');
+const ngeoMapQuerent = goog.require('ngeo.MapQuerent');
+const olInteractionDragBox = goog.require('ol.interaction.DragBox');
 
 
 /**
@@ -34,7 +34,7 @@ goog.require('ol.interaction.DragBox');
  * @ngdoc directive
  * @ngname ngeoBboxQuery
  */
-ngeo.bboxQueryDirective = function(ngeoMapQuerent) {
+exports = function(ngeoMapQuerent) {
   return {
     restrict: 'A',
     scope: false,
@@ -44,7 +44,7 @@ ngeo.bboxQueryDirective = function(ngeoMapQuerent) {
        */
       const map = scope.$eval(attrs['ngeoBboxQueryMap']);
 
-      const interaction = new ol.interaction.DragBox({
+      const interaction = new olInteractionDragBox({
         condition: ol.events.condition.platformModifierKeyOnly
       });
 
@@ -82,4 +82,4 @@ ngeo.bboxQueryDirective = function(ngeoMapQuerent) {
   };
 };
 
-ngeo.module.directive('ngeoBboxQuery', ngeo.bboxQueryDirective);
+ngeoBase.module.directive('ngeoBboxQuery', exports);

@@ -1,10 +1,10 @@
-goog.provide('ngeo.profileDirective');
+goog.module('ngeo.profileDirective');
 
-goog.require('goog.asserts');
-goog.require('ol.events');
-goog.require('ngeo');
-goog.require('ngeo.profile');
-goog.require('ngeo.Debounce');
+const googAsserts = goog.require('goog.asserts');
+const olEvents = goog.require('ol.events');
+const ngeoBase = goog.require('ngeo');
+const ngeoProfile = goog.require('ngeo.profile');
+const ngeoDebounce = goog.require('ngeo.Debounce');
 
 
 /**
@@ -36,7 +36,7 @@ goog.require('ngeo.Debounce');
  * @ngdoc directive
  * @ngname ngeoProfile
  */
-ngeo.profileDirective = function(ngeoDebounce) {
+exports = function(ngeoDebounce) {
   return {
     restrict: 'A',
     /**
@@ -47,7 +47,7 @@ ngeo.profileDirective = function(ngeoDebounce) {
     link: (scope, element, attrs) => {
 
       const optionsAttr = attrs['ngeoProfileOptions'];
-      goog.asserts.assert(optionsAttr !== undefined);
+      googAsserts.assert(optionsAttr !== undefined);
 
       const selection = d3.select(element[0]);
       let profile, elevationData, poiData;
@@ -84,7 +84,7 @@ ngeo.profileDirective = function(ngeoDebounce) {
             };
           }
 
-          profile = ngeo.profile(options);
+          profile = ngeoProfile(options);
           refreshData();
         }
       });
@@ -111,7 +111,7 @@ ngeo.profileDirective = function(ngeoDebounce) {
           }
         });
 
-      ol.events.listen(window, 'resize', ngeoDebounce(refreshData, 50, true));
+      olEvents.listen(window, 'resize', ngeoDebounce(refreshData, 50, true));
 
       function refreshData() {
         if (profile !== undefined) {
@@ -125,4 +125,4 @@ ngeo.profileDirective = function(ngeoDebounce) {
   };
 };
 
-ngeo.module.directive('ngeoProfile', ngeo.profileDirective);
+ngeoBase.module.directive('ngeoProfile', exports);

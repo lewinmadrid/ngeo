@@ -1,8 +1,8 @@
-goog.provide('ngeo.filters');
+goog.module('ngeo.filters');
 
-goog.require('ngeo');
-goog.require('ol.math');
-goog.require('ol.string');
+const ngeoBase = goog.require('ngeo');
+const olMath = goog.require('ol.math');
+const olString = goog.require('ol.string');
 
 /**
  * Format a number as a localized scale.
@@ -22,7 +22,7 @@ goog.require('ol.string');
  * @ngdoc filter
  * @ngname ngeoScalify
  */
-ngeo.Scalify = function($filter) {
+ngeoBase.Scalify = function($filter) {
   const numberFilter = $filter('number');
   const filterFn = function(scale) {
     const text = numberFilter(scale, 0);
@@ -32,7 +32,7 @@ ngeo.Scalify = function($filter) {
   return filterFn;
 };
 
-ngeo.module.filter('ngeoScalify', ngeo.Scalify);
+ngeoBase.module.filter('ngeoScalify', ngeoBase.Scalify);
 
 /**
  * A filter used to format a number with a precision, using the locale.
@@ -54,7 +54,7 @@ ngeo.module.filter('ngeoScalify', ngeo.Scalify);
  * @ngdoc filter
  * @ngname ngeoNumber
  */
-ngeo.Number = function($locale) {
+ngeoBase.Number = function($locale) {
   const formats = $locale.NUMBER_FORMATS;
 
   /**
@@ -114,7 +114,7 @@ ngeo.Number = function($locale) {
   return result;
 };
 
-ngeo.module.filter('ngeoNumber', ngeo.Number);
+ngeoBase.module.filter('ngeoNumber', ngeoBase.Number);
 
 /**
  * A filter used to format a number with the prefix and unit
@@ -138,7 +138,7 @@ ngeo.module.filter('ngeoNumber', ngeo.Number);
  * @ngdoc filter
  * @ngname ngeoUnitPrefix
  */
-ngeo.UnitPrefix = function($filter) {
+ngeoBase.UnitPrefix = function($filter) {
   const numberFilter = $filter('ngeoNumber');
   const standardPrefix = ['', 'k', 'M', 'G', 'T', 'P'];
   const binaryPrefix = ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi'];
@@ -176,7 +176,7 @@ ngeo.UnitPrefix = function($filter) {
   return result;
 };
 
-ngeo.module.filter('ngeoUnitPrefix', ngeo.UnitPrefix);
+ngeoBase.module.filter('ngeoUnitPrefix', ngeoBase.UnitPrefix);
 
 /**
  * Format a couple of numbers as number coordinates.
@@ -211,7 +211,7 @@ ngeo.module.filter('ngeoUnitPrefix', ngeo.UnitPrefix);
  * @ngdoc filter
  * @ngname ngeoNumberCoordinates
  */
-ngeo.NumberCoordinates = function($filter) {
+ngeoBase.NumberCoordinates = function($filter) {
   /**
    * @param {ol.Coordinate} coordinates Array of two numbers.
    * @param {(number|string)=} opt_fractionDigits Optional number of digit.
@@ -234,7 +234,7 @@ ngeo.NumberCoordinates = function($filter) {
   return filterFn;
 };
 
-ngeo.module.filter('ngeoNumberCoordinates', ngeo.NumberCoordinates);
+ngeoBase.module.filter('ngeoNumberCoordinates', ngeoBase.NumberCoordinates);
 
 
 /**
@@ -255,16 +255,16 @@ ngeo.module.filter('ngeoNumberCoordinates', ngeo.NumberCoordinates);
  * @ngdoc filter
  * @ngname ngeoDMSCoordinates
  */
-ngeo.DMSCoordinates = function() {
+ngeoBase.DMSCoordinates = function() {
   const degreesToStringHDMS = function(degrees, hemispheres, fractionDigits) {
-    const normalizedDegrees = ol.math.modulo(degrees + 180, 360) - 180;
+    const normalizedDegrees = olMath.modulo(degrees + 180, 360) - 180;
     const dms = Math.abs(3600 * normalizedDegrees);
     const d = Math.floor(dms / 3600);
     const m = Math.floor((dms / 60) % 60);
     const s = (dms % 60);
     return `${d}\u00b0 ${
-      ol.string.padNumber(m, 2)}\u2032 ${
-      ol.string.padNumber(s, 2, fractionDigits)}\u2033 ${
+      olString.padNumber(m, 2)}\u2032 ${
+      olString.padNumber(s, 2, fractionDigits)}\u2033 ${
       hemispheres.charAt(normalizedDegrees < 0 ? 1 : 0)}`;
   };
 
@@ -292,7 +292,7 @@ ngeo.DMSCoordinates = function() {
   return filterFn;
 };
 
-ngeo.module.filter('ngeoDMSCoordinates', ngeo.DMSCoordinates);
+ngeoBase.module.filter('ngeoDMSCoordinates', ngeoBase.DMSCoordinates);
 
 
 /**
@@ -308,7 +308,7 @@ ngeo.module.filter('ngeoDMSCoordinates', ngeo.DMSCoordinates);
  * @param {angular.$sce} $sce Angular sce service.
  * @ngname ngeoTrustHtml
  */
-ngeo.trustHtmlFilter = function($sce) {
+ngeoBase.trustHtmlFilter = function($sce) {
   return function(input) {
     if (input !== undefined && input !== null) {
       return $sce.trustAsHtml(`${input}`);
@@ -318,4 +318,4 @@ ngeo.trustHtmlFilter = function($sce) {
   };
 };
 
-ngeo.module.filter('ngeoTrustHtml', ngeo.trustHtmlFilter);
+ngeoBase.module.filter('ngeoTrustHtml', ngeoBase.trustHtmlFilter);

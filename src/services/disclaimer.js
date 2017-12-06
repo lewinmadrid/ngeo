@@ -1,9 +1,9 @@
-goog.provide('ngeo.Disclaimer');
+goog.module('ngeo.Disclaimer');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
-goog.require('ngeo.Popup');
-goog.require('ngeo.Message');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
+const ngeoPopup = goog.require('ngeo.Popup');
+const ngeoMessage = goog.require('ngeo.Message');
 
 
 /**
@@ -21,7 +21,7 @@ goog.require('ngeo.Message');
  * @ngname ngeoDisclaimer
  * @ngInject
  */
-ngeo.Disclaimer = function($sce, gettextCatalog, ngeoCreatePopup) {
+exports = function($sce, gettextCatalog, ngeoCreatePopup) {
 
   /**
    * @private
@@ -41,7 +41,7 @@ ngeo.Disclaimer = function($sce, gettextCatalog, ngeoCreatePopup) {
    */
   this.createPopup_ = ngeoCreatePopup;
 
-  ngeo.Message.call(this);
+  ngeoMessage.call(this);
 
   const container = angular.element('<div class="ngeo-disclaimer"></div>');
   angular.element(document.body).append(container);
@@ -60,7 +60,7 @@ ngeo.Disclaimer = function($sce, gettextCatalog, ngeoCreatePopup) {
   this.messages_ = {};
 
 };
-ol.inherits(ngeo.Disclaimer, ngeo.Message);
+ol.inherits(exports, ngeoMessage);
 
 
 /**
@@ -70,7 +70,7 @@ ol.inherits(ngeo.Disclaimer, ngeo.Message);
  *     object A message or list of messages as text or configuration objects.
  * @export
  */
-ngeo.Disclaimer.prototype.alert = function(object) {
+exports.prototype.alert = function(object) {
   this.show(object);
 };
 
@@ -82,7 +82,7 @@ ngeo.Disclaimer.prototype.alert = function(object) {
  *     object A message or list of messages as text or configuration objects.
  * @export
  */
-ngeo.Disclaimer.prototype.close = function(object) {
+exports.prototype.close = function(object) {
   const msgObjects = this.getMessageObjects(object);
   msgObjects.forEach(this.closeMessage_, this);
 };
@@ -94,10 +94,10 @@ ngeo.Disclaimer.prototype.close = function(object) {
  * @protected
  * @override
  */
-ngeo.Disclaimer.prototype.showMessage = function(message) {
+exports.prototype.showMessage = function(message) {
   const gettextCatalog = this.gettextCatalog_;
   const type = message.type;
-  goog.asserts.assertString(type, 'Type should be set.');
+  googAsserts.assertString(type, 'Type should be set.');
 
   // No need to do anything if message already exist.
   const uid = this.getMessageUid_(message);
@@ -130,16 +130,16 @@ ngeo.Disclaimer.prototype.showMessage = function(message) {
     // display the message using a boostrap dismissible alert
     const classNames = ['alert', 'fade', 'alert-dismissible'];
     switch (type) {
-      case ngeo.MessageType.ERROR:
+      case ngeoBase.MessageType.ERROR:
         classNames.push('alert-danger');
         break;
-      case ngeo.MessageType.INFORMATION:
+      case ngeoBase.MessageType.INFORMATION:
         classNames.push('alert-info');
         break;
-      case ngeo.MessageType.SUCCESS:
+      case ngeoBase.MessageType.SUCCESS:
         classNames.push('alert-success');
         break;
-      case ngeo.MessageType.WARNING:
+      case ngeoBase.MessageType.WARNING:
         classNames.push('alert-warning');
         break;
       default:
@@ -181,7 +181,7 @@ ngeo.Disclaimer.prototype.showMessage = function(message) {
  * @return {string} The uid.
  * @private
  */
-ngeo.Disclaimer.prototype.getMessageUid_ = function(message) {
+exports.prototype.getMessageUid_ = function(message) {
   return `${message.msg}-${message.type}`;
 };
 
@@ -191,7 +191,7 @@ ngeo.Disclaimer.prototype.getMessageUid_ = function(message) {
  * @param {ngeox.Message} message Message.
  * @protected
  */
-ngeo.Disclaimer.prototype.closeMessage_ = function(message) {
+exports.prototype.closeMessage_ = function(message) {
   const uid = this.getMessageUid_(message);
   const obj = this.messages_[uid];
 
@@ -201,7 +201,7 @@ ngeo.Disclaimer.prototype.closeMessage_ = function(message) {
   }
 
   // (2) Close message (popup or alert)
-  if (obj instanceof ngeo.Popup) {
+  if (obj instanceof ngeoPopup) {
     // (2.1) Close popup, if not already closed
     if (obj.getOpen()) {
       obj.setOpen(false);
@@ -219,4 +219,4 @@ ngeo.Disclaimer.prototype.closeMessage_ = function(message) {
 };
 
 
-ngeo.module.service('ngeoDisclaimer', ngeo.Disclaimer);
+ngeoBase.module.service('ngeoDisclaimer', exports);

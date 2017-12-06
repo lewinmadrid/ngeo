@@ -1,9 +1,9 @@
-goog.provide('ngeo.rule.Date');
+goog.module('ngeo.rule.Date');
 
-goog.require('ngeo.rule.Rule');
+const ngeoRuleRule = goog.require('ngeo.rule.Rule');
 
 
-ngeo.rule.Date = class extends ngeo.rule.Rule {
+exports = class extends ngeoRuleRule {
 
   /**
    * A date rule.

@@ -1,12 +1,12 @@
-goog.provide('ngeo.interaction.Modify');
+goog.module('ngeo.interaction.Modify');
 
-goog.require('ngeo.interaction.ModifyCircle');
-goog.require('ngeo.interaction.ModifyRectangle');
-goog.require('ol.events');
-goog.require('ol.functions');
-goog.require('ol.interaction.Interaction');
-goog.require('ol.Collection');
-goog.require('ol.interaction.Modify');
+const ngeoInteractionModifyCircle = goog.require('ngeo.interaction.ModifyCircle');
+const ngeoInteractionModifyRectangle = goog.require('ngeo.interaction.ModifyRectangle');
+const olEvents = goog.require('ol.events');
+const olFunctions = goog.require('ol.functions');
+const olInteractionInteraction = goog.require('ol.interaction.Interaction');
+const olCollection = goog.require('ol.Collection');
+const olInteractionModify = goog.require('ol.interaction.Modify');
 
 
 /**
@@ -31,7 +31,7 @@ goog.require('ol.interaction.Modify');
  * @param {olx.interaction.ModifyOptions} options Options.
  * @export
  */
-ngeo.interaction.Modify = function(options) {
+exports = function(options) {
 
   goog.asserts.assert(options.features);
 
@@ -57,9 +57,9 @@ ngeo.interaction.Modify = function(options) {
    * @type {ol.Collection.<ol.Feature>}
    * @private
    */
-  this.otherFeatures_ = new ol.Collection();
+  this.otherFeatures_ = new olCollection();
 
-  this.interactions_.push(new ol.interaction.Modify({
+  this.interactions_.push(new olInteractionModify({
     features: this.otherFeatures_,
     pixelTolerance: options.pixelTolerance,
     style: options.style,
@@ -70,9 +70,9 @@ ngeo.interaction.Modify = function(options) {
    * @type {ol.Collection.<ol.Feature>}
    * @private
    */
-  this.circleFeatures_ = new ol.Collection();
+  this.circleFeatures_ = new olCollection();
 
-  this.interactions_.push(new ngeo.interaction.ModifyCircle({
+  this.interactions_.push(new ngeoInteractionModifyCircle({
     features: this.circleFeatures_,
     pixelTolerance: options.pixelTolerance,
     style: options.style,
@@ -83,9 +83,9 @@ ngeo.interaction.Modify = function(options) {
    * @type {ol.Collection.<ol.Feature>}
    * @private
    */
-  this.rectangleFeatures_ = new ol.Collection();
+  this.rectangleFeatures_ = new olCollection();
 
-  this.interactions_.push(new ngeo.interaction.ModifyRectangle({
+  this.interactions_.push(new ngeoInteractionModifyRectangle({
     features: this.rectangleFeatures_,
     pixelTolerance: options.pixelTolerance,
     style: options.style,
@@ -93,12 +93,12 @@ ngeo.interaction.Modify = function(options) {
   }));
 
 
-  ol.interaction.Interaction.call(this, {
-    handleEvent: ol.functions.TRUE
+  olInteractionInteraction.call(this, {
+    handleEvent: olFunctions.TRUE
   });
 
 };
-ol.inherits(ngeo.interaction.Modify, ol.interaction.Interaction);
+ol.inherits(exports, olInteractionInteraction);
 
 
 /**
@@ -107,8 +107,8 @@ ol.inherits(ngeo.interaction.Modify, ol.interaction.Interaction);
  * @export
  * @override
  */
-ngeo.interaction.Modify.prototype.setActive = function(active) {
-  ol.interaction.Interaction.prototype.setActive.call(this, active);
+exports.prototype.setActive = function(active) {
+  olInteractionInteraction.prototype.setActive.call(this, active);
   this.setState_();
 };
 
@@ -120,7 +120,7 @@ ngeo.interaction.Modify.prototype.setActive = function(active) {
  * @param {ol.PluggableMap} map Map.
  * @override
  */
-ngeo.interaction.Modify.prototype.setMap = function(map) {
+exports.prototype.setMap = function(map) {
 
   const interactions = this.interactions_;
 
@@ -131,7 +131,7 @@ ngeo.interaction.Modify.prototype.setMap = function(map) {
     }, this);
   }
 
-  ol.interaction.Interaction.prototype.setMap.call(this, map);
+  olInteractionInteraction.prototype.setMap.call(this, map);
 
   if (map) {
     interactions.forEach((interaction) => {
@@ -147,7 +147,7 @@ ngeo.interaction.Modify.prototype.setMap = function(map) {
  * Toggle interactions.
  * @private
  */
-ngeo.interaction.Modify.prototype.setState_ = function() {
+exports.prototype.setState_ = function() {
   const map = this.getMap();
   const active = this.getActive();
   const interactions = this.interactions_;
@@ -160,11 +160,11 @@ ngeo.interaction.Modify.prototype.setState_ = function() {
   if (active && map) {
     this.features_.forEach(this.addFeature_, this);
     keys.push(
-      ol.events.listen(this.features_, 'add', this.handleFeaturesAdd_, this),
-      ol.events.listen(this.features_, 'remove', this.handleFeaturesRemove_, this)
+      olEvents.listen(this.features_, 'add', this.handleFeaturesAdd_, this),
+      olEvents.listen(this.features_, 'remove', this.handleFeaturesRemove_, this)
     );
   } else {
-    keys.forEach(ol.events.unlistenByKey);
+    keys.forEach(olEvents.unlistenByKey);
     keys.length = 0;
     this.features_.forEach(this.removeFeature_, this);
   }
@@ -175,7 +175,7 @@ ngeo.interaction.Modify.prototype.setState_ = function() {
  * @param {ol.Collection.Event} evt Event.
  * @private
  */
-ngeo.interaction.Modify.prototype.handleFeaturesAdd_ = function(evt) {
+exports.prototype.handleFeaturesAdd_ = function(evt) {
   const feature = evt.element;
   goog.asserts.assertInstanceof(feature, ol.Feature,
     'feature should be an ol.Feature');
@@ -187,7 +187,7 @@ ngeo.interaction.Modify.prototype.handleFeaturesAdd_ = function(evt) {
  * @param {ol.Collection.Event} evt Event.
  * @private
  */
-ngeo.interaction.Modify.prototype.handleFeaturesRemove_ = function(evt) {
+exports.prototype.handleFeaturesRemove_ = function(evt) {
   const feature = /** @type {ol.Feature} */ (evt.element);
   this.removeFeature_(feature);
 };
@@ -197,7 +197,7 @@ ngeo.interaction.Modify.prototype.handleFeaturesRemove_ = function(evt) {
  * @param {ol.Feature} feature Feature.
  * @private
  */
-ngeo.interaction.Modify.prototype.addFeature_ = function(feature) {
+exports.prototype.addFeature_ = function(feature) {
   const collection = this.getFeatureCollection_(feature);
   collection.push(feature);
 };
@@ -207,7 +207,7 @@ ngeo.interaction.Modify.prototype.addFeature_ = function(feature) {
  * @param {ol.Feature} feature Feature.
  * @private
  */
-ngeo.interaction.Modify.prototype.removeFeature_ = function(feature) {
+exports.prototype.removeFeature_ = function(feature) {
   const collection = this.getFeatureCollection_(feature);
   collection.remove(feature);
 };
@@ -218,7 +218,7 @@ ngeo.interaction.Modify.prototype.removeFeature_ = function(feature) {
  * @return {ol.Collection.<ol.Feature>} Collection of features for this feature.
  * @private
  */
-ngeo.interaction.Modify.prototype.getFeatureCollection_ = function(feature) {
+exports.prototype.getFeatureCollection_ = function(feature) {
   let features;
   const isCircle = feature.get(ngeo.FeatureProperties.IS_CIRCLE);
   const isRectangle = feature.get(ngeo.FeatureProperties.IS_RECTANGLE);

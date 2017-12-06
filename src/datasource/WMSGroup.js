@@ -1,12 +1,12 @@
-goog.provide('ngeo.datasource.WMSGroup');
+goog.module('ngeo.datasource.WMSGroup');
 
-goog.require('ngeo');
-goog.require('ngeo.LayerHelper');
-goog.require('ngeo.datasource.OGCGroup');
-goog.require('ngeo.datasource.OGC');
+const ngeoBase = goog.require('ngeo');
+const ngeoLayerHelper = goog.require('ngeo.LayerHelper');
+const ngeoDatasourceOGCGroup = goog.require('ngeo.datasource.OGCGroup');
+const ngeoDatasourceOGC = goog.require('ngeo.datasource.OGC');
 
 
-ngeo.datasource.WMSGroup = class extends ngeo.datasource.OGCGroup {
+exports = class extends ngeoDatasourceOGCGroup {
 
   /**
    * A WMSGroup data source combines multiple `ngeo.datasource.OGC` objects
@@ -66,7 +66,7 @@ ngeo.datasource.WMSGroup = class extends ngeo.datasource.OGCGroup {
       this.dataSources.length, 'At least one data source is required.');
 
     for (const dataSource of this.dataSources) {
-      goog.asserts.assertInstanceof(dataSource, ngeo.datasource.OGC);
+      goog.asserts.assertInstanceof(dataSource, ngeoDatasourceOGC);
       this.registerDataSource_(dataSource);
     }
   }
@@ -76,7 +76,7 @@ ngeo.datasource.WMSGroup = class extends ngeo.datasource.OGCGroup {
    */
   destroy() {
     for (const dataSource of this.dataSources) {
-      goog.asserts.assertInstanceof(dataSource, ngeo.datasource.OGC);
+      goog.asserts.assertInstanceof(dataSource, ngeoDatasourceOGC);
       this.unregisterDataSource_(dataSource);
     }
     super.destroy();
@@ -105,7 +105,7 @@ ngeo.datasource.WMSGroup = class extends ngeo.datasource.OGCGroup {
    */
   addDataSource(dataSource) {
     super.addDataSource(dataSource);
-    goog.asserts.assertInstanceof(dataSource, ngeo.datasource.OGC);
+    goog.asserts.assertInstanceof(dataSource, ngeoDatasourceOGC);
     this.registerDataSource_(dataSource);
   }
 
@@ -152,7 +152,7 @@ ngeo.datasource.WMSGroup = class extends ngeo.datasource.OGCGroup {
 
     // (1) Collect layer names from data sources in the group
     for (const dataSource of this.dataSources) {
-      goog.asserts.assertInstanceof(dataSource, ngeo.datasource.OGC);
+      goog.asserts.assertInstanceof(dataSource, ngeoDatasourceOGC);
       if (dataSource.visible) {
         layerNames = layerNames.concat(dataSource.getOGCLayerNames());
       }
@@ -167,7 +167,7 @@ ngeo.datasource.WMSGroup = class extends ngeo.datasource.OGCGroup {
    */
   removeDataSource(dataSource) {
     super.removeDataSource(dataSource);
-    goog.asserts.assertInstanceof(dataSource, ngeo.datasource.OGC);
+    goog.asserts.assertInstanceof(dataSource, ngeoDatasourceOGC);
     this.unregisterDataSource_(dataSource);
   }
 

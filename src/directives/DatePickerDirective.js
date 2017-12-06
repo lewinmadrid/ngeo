@@ -1,10 +1,10 @@
-goog.provide('ngeo.DatePickerDirective');
+goog.module('ngeo.DatePickerDirective');
 
-goog.require('goog.asserts');
-goog.require('ngeo');
-goog.require('ngeo.Time');
+const googAsserts = goog.require('goog.asserts');
+const ngeoBase = goog.require('ngeo');
+const ngeoTime = goog.require('ngeo.Time');
 
-ngeo.module.value('ngeoDatePickerTemplateUrl',
+ngeoBase.module.value('ngeoDatePickerTemplateUrl',
   /**
      * @param {angular.JQLite} element Element.
      * @param {angular.Attributes} attrs Attributes.
@@ -13,7 +13,7 @@ ngeo.module.value('ngeoDatePickerTemplateUrl',
   (element, attrs) => {
     const templateUrl = attrs['ngeoDatePickerTemplateUrl'];
     return templateUrl !== undefined ? templateUrl :
-      `${ngeo.baseTemplateUrl}/datepicker.html`;
+      `${ngeoBase.baseTemplateUrl}/datepicker.html`;
   });
 
 
@@ -29,7 +29,7 @@ ngeo.module.value('ngeoDatePickerTemplateUrl',
  * @ngdoc directive
  * @ngname ngeoDatePicker
  */
-ngeo.DatePicker = function(ngeoDatePickerTemplateUrl,  $timeout) {
+ngeoBase.DatePicker = function(ngeoDatePickerTemplateUrl,  $timeout) {
   return {
     scope: {
       onDateSelected: '&',
@@ -77,7 +77,7 @@ ngeo.DatePicker = function(ngeoDatePickerTemplateUrl,  $timeout) {
   };
 };
 
-ngeo.module.directive('ngeoDatePicker', ngeo.DatePicker);
+ngeoBase.module.directive('ngeoDatePicker', ngeoBase.DatePicker);
 
 
 /**
@@ -93,7 +93,7 @@ ngeo.module.directive('ngeoDatePicker', ngeo.DatePicker);
  * @ngdoc controller
  * @ngname ngeoDatePickerController
  */
-ngeo.DatePickerController = function($scope, $injector, ngeoTime, gettextCatalog) {
+ngeoBase.DatePickerController = function($scope, $injector, ngeoTime, gettextCatalog) {
 
   /**
    * @type {!ngeo.Time}
@@ -199,7 +199,7 @@ ngeo.DatePickerController = function($scope, $injector, ngeoTime, gettextCatalog
 /**
  * Initialise the controller.
  */
-ngeo.DatePickerController.prototype.init = function() {
+ngeoBase.DatePickerController.prototype.init = function() {
   //fetch the initial options for the component
   const initialOptions_ = this.ngeoTime_.getOptions(this.time);
   this.initialMinDate = new Date(initialOptions_.minDate);
@@ -207,13 +207,13 @@ ngeo.DatePickerController.prototype.init = function() {
   this.isModeRange = this.time.mode === 'range';
 
   if (this.isModeRange) {
-    goog.asserts.assertArray(initialOptions_.values);
+    googAsserts.assertArray(initialOptions_.values);
     this.sdate = new Date(initialOptions_.values[0]);
     this.edate = new Date(initialOptions_.values[1]);
   } else {
-    goog.asserts.assertNumber(initialOptions_.values);
+    googAsserts.assertNumber(initialOptions_.values);
     this.sdate = new Date(initialOptions_.values);
   }
 };
 
-ngeo.module.controller('ngeoDatePickerController', ngeo.DatePickerController);
+ngeoBase.module.controller('ngeoDatePickerController', ngeoBase.DatePickerController);

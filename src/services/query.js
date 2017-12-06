@@ -1,20 +1,20 @@
 // DEPRECATED
 
-goog.provide('ngeo.Query');
+goog.module('ngeo.Query');
 
-goog.require('ngeo');
-goog.require('ngeo.LayerHelper');
-goog.require('ol.format.WFS');
-goog.require('ol.format.WMSGetFeatureInfo');
-goog.require('ol.obj');
-goog.require('ol.source.ImageWMS');
-goog.require('ol.source.TileWMS');
+const ngeoBase = goog.require('ngeo');
+const ngeoLayerHelper = goog.require('ngeo.LayerHelper');
+const olFormatWFS = goog.require('ol.format.WFS');
+const olFormatWMSGetFeatureInfo = goog.require('ol.format.WMSGetFeatureInfo');
+const olObj = goog.require('ol.obj');
+const olSourceImageWMS = goog.require('ol.source.ImageWMS');
+const olSourceTileWMS = goog.require('ol.source.TileWMS');
 
 
 /**
  * @enum {string}
  */
-ngeo.QueryInfoFormatType = {
+ngeoBase.QueryInfoFormatType = {
   GML: 'application/vnd.ogc.gml'
 };
 
@@ -25,7 +25,7 @@ ngeo.QueryInfoFormatType = {
  *     source: (ngeox.QuerySource)
  * }}
  */
-ngeo.QueryCacheItem;
+ngeoBase.QueryCacheItem;
 
 
 /**
@@ -34,7 +34,7 @@ ngeo.QueryCacheItem;
  *     wfs: (Object.<string, Array.<ngeo.QueryCacheItem>>)
  * }}
  */
-ngeo.QueryableSources;
+ngeoBase.QueryableSources;
 
 
 // Moved to mapquerent.js
@@ -70,7 +70,7 @@ ngeo.QueryableSources;
  * @ngname ngeoQuery
  * @ngInject
  */
-ngeo.Query = function($http, $q, ngeoQueryResult, ngeoQueryOptions,
+exports = function($http, $q, ngeoQueryResult, ngeoQueryOptions,
   ngeoLayerHelper) {
 
   const options = ngeoQueryOptions !== undefined ? ngeoQueryOptions : {};
@@ -99,7 +99,7 @@ ngeo.Query = function($http, $q, ngeoQueryResult, ngeoQueryOptions,
    * @private
    */
   this.sourceIdsProperty_ = options.sourceIdsProperty !== undefined ?
-    options.sourceIdsProperty : ngeo.Query.DEFAULT_SOURCE_IDS_PROPERTY_;
+    options.sourceIdsProperty : exports.DEFAULT_SOURCE_IDS_PROPERTY_;
 
   /**
    * @type {number}
@@ -178,7 +178,7 @@ ngeo.Query = function($http, $q, ngeoQueryResult, ngeoQueryOptions,
  * @const
  * @private
  */
-ngeo.Query.DEFAULT_SOURCE_IDS_PROPERTY_ = 'querySourceIds';
+exports.DEFAULT_SOURCE_IDS_PROPERTY_ = 'querySourceIds';
 
 
 /**
@@ -201,7 +201,7 @@ ngeo.Query.DEFAULT_SOURCE_IDS_PROPERTY_ = 'querySourceIds';
  * @param {ngeox.QuerySource} source The source to add to the query service.
  * @export
  */
-ngeo.Query.prototype.addSource = function(source) {
+exports.prototype.addSource = function(source) {
   const sourceId = source.id;
 
   goog.asserts.assert(sourceId, 'source.id should be thruthy');
@@ -218,14 +218,14 @@ ngeo.Query.prototype.addSource = function(source) {
          source.layer instanceof ol.layer.Tile)) {
       const wmsSource = source.layer.getSource();
       if (wmsSource &&
-          (wmsSource instanceof ol.source.ImageWMS ||
-           wmsSource instanceof ol.source.TileWMS)) {
+          (wmsSource instanceof olSourceImageWMS ||
+           wmsSource instanceof olSourceTileWMS)) {
         source.wmsSource = wmsSource;
       }
     } else {
       goog.asserts.assert(source.url,
         'url must be set when no layer or wmsSource is set in the source');
-      source.wmsSource = new ol.source.ImageWMS({
+      source.wmsSource = new olSourceImageWMS({
         url: source.url,
         params: {'LAYERS': source.layers}
       });
@@ -238,19 +238,19 @@ ngeo.Query.prototype.addSource = function(source) {
   if (!source.format) {
     // GML is the default infoFormat if the source doesn't have one defined
     if (!source.infoFormat) {
-      source.infoFormat = ngeo.QueryInfoFormatType.GML;
+      source.infoFormat = ngeoBase.QueryInfoFormatType.GML;
     }
 
-    if (source.infoFormat === ngeo.QueryInfoFormatType.GML && source.layers) {
-      source.format = new ol.format.WMSGetFeatureInfo({
+    if (source.infoFormat === ngeoBase.QueryInfoFormatType.GML && source.layers) {
+      source.format = new olFormatWMSGetFeatureInfo({
         layers: source.layers
       });
     }
   } else if (!source.infoFormat) {
     // == infoFormat ==
     const format = source.format;
-    if (format instanceof ol.format.WMSGetFeatureInfo) {
-      source.infoFormat = ngeo.QueryInfoFormatType.GML;
+    if (format instanceof olFormatWMSGetFeatureInfo) {
+      source.infoFormat = ngeoBase.QueryInfoFormatType.GML;
     }
   }
   goog.asserts.assert(source.format, 'format should be thruthy');
@@ -288,7 +288,7 @@ ngeo.Query.prototype.addSource = function(source) {
  *     service.
  * @export
  */
-ngeo.Query.prototype.addSources = function(sources) {
+exports.prototype.addSources = function(sources) {
   sources.forEach((source) => {
     this.addSource(source);
   });
@@ -299,7 +299,7 @@ ngeo.Query.prototype.addSources = function(sources) {
  * Clear the results.
  * @export
  */
-ngeo.Query.prototype.clear = function() {
+exports.prototype.clear = function() {
   this.clearResult_();
 };
 
@@ -308,7 +308,7 @@ ngeo.Query.prototype.clear = function() {
  * Remove all sources.
  * @export
  */
-ngeo.Query.prototype.removeAllSources = function() {
+exports.prototype.removeAllSources = function() {
   this.result_.sources.length = 0;
   this.sources_.length = 0;
   this.cache_ = {};
@@ -330,7 +330,7 @@ ngeo.Query.prototype.removeAllSources = function() {
  *     the request with.
  * @export
  */
-ngeo.Query.prototype.issue = function(map, object) {
+exports.prototype.issue = function(map, object) {
   this.cancelStillRunningRequests_();
   this.clearResult_();
 
@@ -359,7 +359,7 @@ ngeo.Query.prototype.issue = function(map, object) {
  * @param {ol.Coordinate} coordinate The coordinate to issue the request with.
  * @private
  */
-ngeo.Query.prototype.issueIdentifyFeaturesRequests_ = function(map, coordinate) {
+exports.prototype.issueIdentifyFeaturesRequests_ = function(map, coordinate) {
   const sources = this.getQueryableSources_(map, false);
 
   this.doGetFeatureInfoRequests_(sources.wms, coordinate, map);
@@ -376,7 +376,7 @@ ngeo.Query.prototype.issueIdentifyFeaturesRequests_ = function(map, coordinate) 
  * @param {ol.Extent} extent The coordinate to issue the request with.
  * @private
  */
-ngeo.Query.prototype.issueGetFeatureRequests_ = function(map, extent) {
+exports.prototype.issueGetFeatureRequests_ = function(map, extent) {
   const sources = this.getQueryableSources_(map, true);
   this.doGetFeatureRequests_(sources.wfs, extent, map);
   this.updatePendingState_();
@@ -389,7 +389,7 @@ ngeo.Query.prototype.issueGetFeatureRequests_ = function(map, extent) {
  * @return {ngeo.QueryableSources} Queryable sources.
  * @private
  */
-ngeo.Query.prototype.getQueryableSources_ = function(map, wfsOnly) {
+exports.prototype.getQueryableSources_ = function(map, wfsOnly) {
 
   const wmsItemsByUrl =
       /** @type {!Object.<string, !Array.<!ngeo.QueryCacheItem>>} */ ({});
@@ -433,8 +433,8 @@ ngeo.Query.prototype.getQueryableSources_ = function(map, wfsOnly) {
         );
         const layerSource = layer.getSource();
         goog.asserts.assert(
-          layerSource instanceof ol.source.ImageWMS ||
-            layerSource instanceof ol.source.TileWMS,
+          layerSource instanceof olSourceImageWMS ||
+            layerSource instanceof olSourceTileWMS,
           'The layer source should be a WMS one when using the ' +
             'validateLayerParams option.'
         );
@@ -467,7 +467,7 @@ ngeo.Query.prototype.getQueryableSources_ = function(map, wfsOnly) {
 
         // Sources that use GML as info format are combined together if they
         // share the same server url
-        if (infoFormat === ngeo.QueryInfoFormatType.GML) {
+        if (infoFormat === ngeoBase.QueryInfoFormatType.GML) {
           url = item.source.wmsSource.getUrl();
           goog.asserts.assertString(url);
           if (!wmsItemsByUrl[url]) {
@@ -501,7 +501,7 @@ ngeo.Query.prototype.getQueryableSources_ = function(map, wfsOnly) {
  * @return {boolean} true if the item has been added, false otherwise.
  * @private
  */
-ngeo.Query.prototype.pushSourceIfUnique_ = function(item, array) {
+exports.prototype.pushSourceIfUnique_ = function(item, array) {
   const isUnique = array.indexOf(item) < 0;
   if (isUnique) {
     array.push(item);
@@ -516,7 +516,7 @@ ngeo.Query.prototype.pushSourceIfUnique_ = function(item, array) {
  * @param {ol.Map} map Map
  * @private
  */
-ngeo.Query.prototype.doGetFeatureInfoRequests_ = function(
+exports.prototype.doGetFeatureInfoRequests_ = function(
   wmsItemsByUrl, coordinate, map) {
   const view = map.getView();
   const projCode = view.getProjection().getCode();
@@ -567,7 +567,7 @@ ngeo.Query.prototype.doGetFeatureInfoRequests_ = function(
  * @return {Object.<string, string>} Url parameters
  * @private
  */
-ngeo.Query.prototype.getDimensionsParams_ = function(dimensions) {
+exports.prototype.getDimensionsParams_ = function(dimensions) {
   const params = {};
   if (dimensions) {
     for (const key in dimensions) {
@@ -593,7 +593,7 @@ ngeo.Query.prototype.getDimensionsParams_ = function(dimensions) {
  * @param {ol.Map} map Map
  * @private
  */
-ngeo.Query.prototype.doGetFeatureRequestsWithCoordinate_ = function(
+exports.prototype.doGetFeatureRequestsWithCoordinate_ = function(
   wfsItemsByUrl, coordinate, map) {
   const view = map.getView();
   const bbox = this.getQueryBbox_(coordinate, view);
@@ -608,11 +608,11 @@ ngeo.Query.prototype.doGetFeatureRequestsWithCoordinate_ = function(
  * @param {ol.Map} map Map
  * @private
  */
-ngeo.Query.prototype.doGetFeatureRequests_ = function(
+exports.prototype.doGetFeatureRequests_ = function(
   wfsItemsByUrl, bbox, map) {
   const view = map.getView();
   const projCode = view.getProjection().getCode();
-  const wfsFormat = new ol.format.WFS();
+  const wfsFormat = new olFormatWFS();
   const xmlSerializer = new XMLSerializer();
 
   angular.forEach(wfsItemsByUrl, (items, url) => {
@@ -640,7 +640,7 @@ ngeo.Query.prototype.doGetFeatureRequests_ = function(
         geometryName: this.geometryName_
       };
 
-      const sourceFormat = new ol.format.WFS({
+      const sourceFormat = new olFormatWFS({
         featureType: layers,
         featureNS: this.featureNS_
       });
@@ -649,7 +649,7 @@ ngeo.Query.prototype.doGetFeatureRequests_ = function(
 
       const getFeatures = function() {
         /** @type {olx.format.WFSWriteGetFeatureOptions} */
-        const options = /** @type {olx.format.WFSWriteGetFeatureOptions} */ (ol.obj.assign({
+        const options = /** @type {olx.format.WFSWriteGetFeatureOptions} */ (olObj.assign({
           maxFeatures: this.limit_
         }, getFeatureOptions));
         const featureRequestXml = wfsFormat.writeGetFeature(options);
@@ -672,7 +672,7 @@ ngeo.Query.prototype.doGetFeatureRequests_ = function(
       }.bind(this);
 
       if (this.queryCountFirst_) {
-        const getCountOptions = /** @type {olx.format.WFSWriteGetFeatureOptions} */ (ol.obj.assign({
+        const getCountOptions = /** @type {olx.format.WFSWriteGetFeatureOptions} */ (olObj.assign({
           resultType: 'hits'
         }, getFeatureOptions));
         const featureCountXml = wfsFormat.writeGetFeature(getCountOptions);
@@ -704,7 +704,7 @@ ngeo.Query.prototype.doGetFeatureRequests_ = function(
  * as well.
  * @private
  */
-ngeo.Query.prototype.clearResult_ = function() {
+exports.prototype.clearResult_ = function() {
   this.result_.total = 0;
   this.result_.sources.forEach((source) => {
     source.features.length = 0;
@@ -724,7 +724,7 @@ ngeo.Query.prototype.clearResult_ = function() {
  *     layer.
  * @private
  */
-ngeo.Query.prototype.getLayerSourceIds_ = function(layer) {
+exports.prototype.getLayerSourceIds_ = function(layer) {
   const ids = layer.get(this.sourceIdsProperty_) || [];
   goog.asserts.assertArray(ids);
   const clone = ids.slice();
@@ -738,7 +738,7 @@ ngeo.Query.prototype.getLayerSourceIds_ = function(layer) {
  * @return {!Array.<string>} Layer names
  * @private
  */
-ngeo.Query.prototype.getLayersForItem_ = function(item, resolution) {
+exports.prototype.getLayersForItem_ = function(item, resolution) {
   if (item.source.getLayers) {
     return item.source.getLayers(resolution);
   } else {
@@ -754,7 +754,7 @@ ngeo.Query.prototype.getLayersForItem_ = function(item, resolution) {
  * @return {!Array.<string>} Layer names
  * @private
  */
-ngeo.Query.prototype.getLayersForItems_ = function(items, resolution) {
+exports.prototype.getLayersForItems_ = function(items, resolution) {
   let layers = this.getLayersForItem_(items[0], resolution);
   for (let i = 1, len = items.length; i < len; i++) {
     layers = layers.concat(this.getLayersForItem_(items[i], resolution));
@@ -770,7 +770,7 @@ ngeo.Query.prototype.getLayersForItems_ = function(items, resolution) {
  * @param {string|number} sourceId Source id.
  * @private
  */
-ngeo.Query.prototype.setUniqueIds_ = function(features, sourceId) {
+exports.prototype.setUniqueIds_ = function(features, sourceId) {
   features.forEach((feature) => {
     if (feature.getId() !== undefined) {
       const id = `${sourceId}_${feature.getId()}`;
@@ -788,7 +788,7 @@ ngeo.Query.prototype.setUniqueIds_ = function(features, sourceId) {
  * @return {ol.Extent} Bbox
  * @private
  */
-ngeo.Query.prototype.getQueryBbox_ = function(coordinate, view) {
+exports.prototype.getQueryBbox_ = function(coordinate, view) {
   const tolerance = this.tolerancePx_ * view.getResolution() * ol.has.DEVICE_PIXEL_RATIO;
 
   return ol.extent.buffer(
@@ -802,7 +802,7 @@ ngeo.Query.prototype.getQueryBbox_ = function(coordinate, view) {
  *    HTTP request.
  * @private
  */
-ngeo.Query.prototype.registerCanceler_ = function() {
+exports.prototype.registerCanceler_ = function() {
   const canceler = this.$q_.defer();
   this.requestCancelers_.push(canceler);
   return canceler;
@@ -812,7 +812,7 @@ ngeo.Query.prototype.registerCanceler_ = function() {
 /**
  * @private
  */
-ngeo.Query.prototype.cancelStillRunningRequests_ = function() {
+exports.prototype.cancelStillRunningRequests_ = function() {
   this.requestCancelers_.forEach((canceler) => {
     canceler.resolve();
   });
@@ -820,7 +820,7 @@ ngeo.Query.prototype.cancelStillRunningRequests_ = function() {
 };
 
 
-ngeo.Query.prototype.updatePendingState_ = function() {
+exports.prototype.updatePendingState_ = function() {
   let pendingSources = 0;
   this.result_.sources.forEach((source) => {
     if (source.pending) {
@@ -835,9 +835,9 @@ ngeo.Query.prototype.updatePendingState_ = function() {
  * @returns {number} The maximum number of features that are requested.
  * @public
  */
-ngeo.Query.prototype.getLimit = function() {
+exports.prototype.getLimit = function() {
   return this.limit_;
 };
 
 
-ngeo.module.service('ngeoQuery', ngeo.Query);
+ngeoBase.module.service('ngeoQuery', exports);

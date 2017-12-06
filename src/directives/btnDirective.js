@@ -1,6 +1,6 @@
-goog.provide('ngeo.btnDirective');
+goog.module('ngeo.btnDirective');
 
-goog.require('ngeo');
+const ngeoBase = goog.require('ngeo');
 
 
 /**
@@ -36,7 +36,7 @@ goog.require('ngeo');
  * @ngdoc directive
  * @ngname ngeoBtnGroup
  */
-ngeo.btngroupDirective = function($parse) {
+ngeoBase.btngroupDirective = function($parse) {
   return {
     restrict: 'A',
     controller: 'ngeoBtnGroupController',
@@ -63,7 +63,7 @@ ngeo.btngroupDirective = function($parse) {
 };
 
 
-ngeo.module.directive('ngeoBtnGroup', ngeo.btngroupDirective);
+ngeoBase.module.directive('ngeoBtnGroup', ngeoBase.btngroupDirective);
 
 
 /**
@@ -75,7 +75,7 @@ ngeo.module.directive('ngeoBtnGroup', ngeo.btngroupDirective);
  * @ngdoc controller
  * @ngname ngeoBtnGroupController
  */
-ngeo.BtnGroupController = function($scope) {
+ngeoBase.BtnGroupController = function($scope) {
   /**
    * @type {!Array.<!angular.parse.Expression>}
    * @private
@@ -93,7 +93,7 @@ ngeo.BtnGroupController = function($scope) {
 /**
  * @param {number} index Index of the button in buttons array.
  */
-ngeo.BtnGroupController.prototype.activate = function(index) {
+ngeoBase.BtnGroupController.prototype.activate = function(index) {
   this.buttons_.forEach(function(expressionFn, i) {
     if (i != index) {
       expressionFn.assign(this.scope_, false);
@@ -106,13 +106,13 @@ ngeo.BtnGroupController.prototype.activate = function(index) {
  * @param {angular.parse.Expression} expressionFn Expression function.
  * @return {number} Index of the pushed setter.
  */
-ngeo.BtnGroupController.prototype.addButton = function(expressionFn) {
+ngeoBase.BtnGroupController.prototype.addButton = function(expressionFn) {
   this.buttons_.push(expressionFn);
   return this.buttons_.length - 1;
 };
 
 
-ngeo.module.controller('ngeoBtnGroupController', ngeo.BtnGroupController);
+ngeoBase.module.controller('ngeoBtnGroupController', ngeoBase.BtnGroupController);
 
 
 /**
@@ -133,7 +133,7 @@ ngeo.module.controller('ngeoBtnGroupController', ngeo.BtnGroupController);
  * @ngdoc directive
  * @ngname ngeoBtn
  */
-ngeo.btnDirective = function($parse) {
+exports = function($parse) {
   return {
     require: ['?^ngeoBtnGroup', 'ngModel'],
     restrict: 'A',
@@ -179,4 +179,4 @@ ngeo.btnDirective = function($parse) {
 };
 
 
-ngeo.module.directive('ngeoBtn', ngeo.btnDirective);
+ngeoBase.module.directive('ngeoBtn', exports);

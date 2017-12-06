@@ -1,17 +1,17 @@
-goog.provide('ngeo.Querent');
+goog.module('ngeo.Querent');
 
-goog.require('ngeo');
-goog.require('ngeo.RuleHelper');
-goog.require('ngeo.WMSTime');
-goog.require('ol.format.WFS');
-goog.require('ol.format.WFSDescribeFeatureType');
-goog.require('ol.format.WMSCapabilities');
-goog.require('ol.format.WMTSCapabilities');
-goog.require('ol.obj');
-goog.require('ol.source.ImageWMS');
+const ngeoBase = goog.require('ngeo');
+const ngeoRuleHelper = goog.require('ngeo.RuleHelper');
+const ngeoWMSTime = goog.require('ngeo.WMSTime');
+const olFormatWFS = goog.require('ol.format.WFS');
+const olFormatWFSDescribeFeatureType = goog.require('ol.format.WFSDescribeFeatureType');
+const olFormatWMSCapabilities = goog.require('ol.format.WMSCapabilities');
+const olFormatWMTSCapabilities = goog.require('ol.format.WMTSCapabilities');
+const olObj = goog.require('ol.obj');
+const olSourceImageWMS = goog.require('ol.source.ImageWMS');
 
 
-ngeo.Querent = class {
+exports = class {
 
   /**
    * The ngeo Querent is a service that issues all sorts of queries using
@@ -168,7 +168,7 @@ ngeo.Querent = class {
         continue;
       }
 
-      if (dataSource instanceof ngeo.datasource.OGC) {
+      if (dataSource instanceof ngeoBase.datasource.OGC) {
         // (2) Split data sources
         if (dataSource.supportsWFS) {
           queryableDataSources.wfs.push(dataSource);
@@ -207,7 +207,7 @@ ngeo.Querent = class {
     );
 
     return this.http_.get(url).then((response) => {
-      const format = new ol.format.WFSDescribeFeatureType();
+      const format = new olFormatWFSDescribeFeatureType();
       return format.read(response.data);
     });
   }
@@ -261,7 +261,7 @@ ngeo.Querent = class {
 
     if (!cache || !this.wmsGetCapabilitiesPromises_[baseUrl]) {
       promise = this.http_.get(url).then((response) => {
-        const format = new ol.format.WMSCapabilities();
+        const format = new olFormatWMSCapabilities();
         return format.read(response.data);
       });
     } else if (cache && this.wmsGetCapabilitiesPromises_[baseUrl]) {
@@ -310,7 +310,7 @@ ngeo.Querent = class {
 
     if (!cache || !this.wmtsGetCapabilitiesPromises_[url]) {
       promise = this.http_.get(url).then((response) => {
-        const format = new ol.format.WMTSCapabilities();
+        const format = new olFormatWMTSCapabilities();
         return format.read(response.data);
       });
     } else if (cache && this.wmtsGetCapabilitiesPromises_[url]) {
@@ -382,7 +382,7 @@ ngeo.Querent = class {
         tooManyFeatures = true;
         totalFeatureCount = response;
       } else {
-        if (dataSource instanceof ngeo.datasource.OGC) {
+        if (dataSource instanceof ngeoBase.datasource.OGC) {
           features = this.readAndTypeFeatures_(dataSource, response.data, wfs);
         } else {
           features = [];
@@ -506,7 +506,7 @@ ngeo.Querent = class {
     }
 
     // (2) Launch one request per combinaison of data sources
-    const wfsFormat = new ol.format.WFS();
+    const wfsFormat = new olFormatWFS();
     const xmlSerializer = new XMLSerializer();
     for (const dataSources of combinedDataSources) {
 
@@ -538,7 +538,7 @@ ngeo.Querent = class {
           url = dataSource.wfsUrl;
 
           // All data sources combined share the same active dimensions
-          ol.obj.assign(params, dataSource.activeDimensions);
+          olObj.assign(params, dataSource.activeDimensions);
         }
 
         // (b) Add queryable layer names in featureTypes array
@@ -601,7 +601,7 @@ ngeo.Querent = class {
       if (wfsCount) {
         const getCountOptions =
             /** @type {olx.format.WFSWriteGetFeatureOptions} */ (
-            ol.obj.assign(
+            olObj.assign(
               {
                 resultType: 'hits'
               },
@@ -637,7 +637,7 @@ ngeo.Querent = class {
 
           const getFeatureOptions =
               /** @type {olx.format.WFSWriteGetFeatureOptions} */ (
-              ol.obj.assign(
+              olObj.assign(
                 {
                   maxFeatures
                 },
@@ -729,7 +729,7 @@ ngeo.Querent = class {
         //     been combined together, therefore they share the same active
         //     dimensions.
         if (!activeDimensionsSet) {
-          ol.obj.assign(params, dataSource.activeDimensions);
+          olObj.assign(params, dataSource.activeDimensions);
           activeDimensionsSet = true;
         }
 
@@ -785,7 +785,7 @@ ngeo.Querent = class {
       }
 
       goog.asserts.assert(url);
-      const wmsSource = new ol.source.ImageWMS({
+      const wmsSource = new olSourceImageWMS({
         params,
         url
       });
@@ -893,7 +893,7 @@ ngeo.Querent = class {
    */
   isDataSourceQueryable_(ds, res) {
     let queryable = ds.visible && ds.inRange && ds.queryable;
-    if (queryable && ds instanceof ngeo.datasource.OGC) {
+    if (queryable && ds instanceof ngeoBase.datasource.OGC) {
       const ogcDS = /** @type {!ngeo.datasource.OGC} */ (ds);
       queryable = ogcDS.isAnyOGCLayerInRange(res, true);
     }
@@ -942,7 +942,7 @@ ngeo.Querent = class {
 /**
  * @typedef {!Array.<!Array.<!ngeo.datasource.OGC>>}
  */
-ngeo.Querent.CombinedDataSources;
+exports.CombinedDataSources;
 
 
-ngeo.module.service('ngeoQuerent', ngeo.Querent);
+ngeoBase.module.service('ngeoQuerent', exports);

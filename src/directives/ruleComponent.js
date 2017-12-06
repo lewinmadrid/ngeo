@@ -1,27 +1,25 @@
-goog.provide('ngeo.ruleComponent');
+goog.module('ngeo.ruleComponent');
 
-goog.require('ngeo');
-/** @suppress {extraRequire} */
-goog.require('ngeo.DatePickerDirective');
-goog.require('ngeo.DecorateInteraction');
-/** @suppress {extraRequire} */
-goog.require('ngeo.drawfeatureDirective');
-goog.require('ngeo.Menu');
-goog.require('ngeo.RuleHelper');
-goog.require('ngeo.ToolActivate');
-goog.require('ngeo.interaction.Modify');
-goog.require('ngeo.interaction.Rotate');
-goog.require('ngeo.interaction.Translate');
-goog.require('ngeo.rule.Geometry');
-goog.require('ngeo.rule.Select');
-goog.require('ol.Collection');
-goog.require('ol.events');
+const ngeoBase = goog.require('ngeo');
+const ngeoDatePickerDirective = goog.require('ngeo.DatePickerDirective');
+const ngeoDecorateInteraction = goog.require('ngeo.DecorateInteraction');
+const ngeoDrawfeatureDirective = goog.require('ngeo.drawfeatureDirective');
+const ngeoMenu = goog.require('ngeo.Menu');
+const ngeoRuleHelper = goog.require('ngeo.RuleHelper');
+const ngeoToolActivate = goog.require('ngeo.ToolActivate');
+const ngeoInteractionModify = goog.require('ngeo.interaction.Modify');
+const ngeoInteractionRotate = goog.require('ngeo.interaction.Rotate');
+const ngeoInteractionTranslate = goog.require('ngeo.interaction.Translate');
+const ngeoRuleGeometry = goog.require('ngeo.rule.Geometry');
+const ngeoRuleSelect = goog.require('ngeo.rule.Select');
+const olCollection = goog.require('ol.Collection');
+const olEvents = goog.require('ol.events');
 
 
 /**
  * @private
  */
-ngeo.RuleController = class {
+ngeoBase.RuleController = class {
 
   /**
    * @param {!angularGettext.Catalog} gettextCatalog Gettext service.
@@ -127,9 +125,9 @@ ngeo.RuleController = class {
      */
     this.clone;
 
-    const ot = ngeo.rule.Rule.OperatorType;
-    const sot = ngeo.rule.Rule.SpatialOperatorType;
-    const tot = ngeo.rule.Rule.TemporalOperatorType;
+    const ot = ngeoBase.rule.Rule.OperatorType;
+    const sot = ngeoBase.rule.Rule.SpatialOperatorType;
+    const tot = ngeoBase.rule.Rule.TemporalOperatorType;
 
     /**
      * @type {Object.<string, string>}
@@ -211,13 +209,13 @@ ngeo.RuleController = class {
      * @type {!ngeo.ToolActivate}
      * @export
      */
-    this.drawToolActivate = new ngeo.ToolActivate(this, 'drawActive');
+    this.drawToolActivate = new ngeoToolActivate(this, 'drawActive');
 
     /**
      * @type {!ol.Collection.<!ol.Feature>}
      * @export
      */
-    this.drawnFeatures = new ol.Collection();
+    this.drawnFeatures = new olCollection();
 
     /**
      * @type {?ngeo.Menu}
@@ -229,19 +227,19 @@ ngeo.RuleController = class {
      * @type {!ol.Collection.<!ol.Feature>}
      * @export
      */
-    this.selectedFeatures = new ol.Collection();
+    this.selectedFeatures = new olCollection();
 
     /**
      * @type {!ol.Collection.<!ol.interaction.Interaction>}
      * @private
      */
-    this.interactions_ = new ol.Collection();
+    this.interactions_ = new olCollection();
 
     /**
      * @type {!ngeo.interaction.Modify}
      * @private
      */
-    this.modify_ = new ngeo.interaction.Modify({
+    this.modify_ = new ngeoInteractionModify({
       features: this.selectedFeatures,
       style: ngeoFeatureHelper.getVertexStyle(false)
     });
@@ -251,7 +249,7 @@ ngeo.RuleController = class {
      * @type {ngeo.interaction.Rotate}
      * @private
      */
-    this.rotate_ = new ngeo.interaction.Rotate({
+    this.rotate_ = new ngeoInteractionRotate({
       features: this.selectedFeatures,
       style: new ol.style.Style({
         text: new ol.style.Text({
@@ -269,7 +267,7 @@ ngeo.RuleController = class {
      * @type {ngeo.interaction.Translate}
      * @private
      */
-    this.translate_ = new ngeo.interaction.Translate({
+    this.translate_ = new ngeoInteractionTranslate({
       features: this.selectedFeatures,
       style: new ol.style.Style({
         text: new ol.style.Text({
@@ -295,7 +293,7 @@ ngeo.RuleController = class {
      * @type {!ngeo.ToolActivate}
      * @export
      */
-    this.modifyToolActivate = new ngeo.ToolActivate(
+    this.modifyToolActivate = new ngeoToolActivate(
       this.modify_,
       'active'
     );
@@ -304,7 +302,7 @@ ngeo.RuleController = class {
      * @type {ngeo.ToolActivate}
      * @export
      */
-    this.rotateToolActivate = new ngeo.ToolActivate(
+    this.rotateToolActivate = new ngeoToolActivate(
       this.rotate_,
       'active'
     );
@@ -313,7 +311,7 @@ ngeo.RuleController = class {
      * @type {ngeo.ToolActivate}
      * @export
      */
-    this.translateToolActivate = new ngeo.ToolActivate(
+    this.translateToolActivate = new ngeoToolActivate(
       this.translate_,
       'active'
     );
@@ -334,7 +332,7 @@ ngeo.RuleController = class {
   $onInit() {
     this.clone = this.ngeoRuleHelper_.cloneRule(this.rule);
 
-    this.toolActivate_ = new ngeo.ToolActivate(this.rule, 'active');
+    this.toolActivate_ = new ngeoToolActivate(this.rule, 'active');
 
     this.ngeoToolActivateMgr_.registerTool(
       this.toolGroup, this.toolActivate_);
@@ -351,8 +349,8 @@ ngeo.RuleController = class {
     //
     // This chunk of code ensures that the rule properties are synchronized
     // with the TimeProperty objects required to build the datepickers.
-    if (this.clone.type === ngeo.AttributeType.DATE ||
-        this.clone.type === ngeo.AttributeType.DATETIME
+    if (this.clone.type === ngeoBase.AttributeType.DATE ||
+        this.clone.type === ngeoBase.AttributeType.DATETIME
     ) {
       // Watch 'expression'
       this.unlisteners_.push(this.scope_.$watch(
@@ -378,7 +376,7 @@ ngeo.RuleController = class {
           this.timeRangeMode.maxValue = value;
         }
       ));
-    } else if (this.clone.type === ngeo.AttributeType.GEOMETRY) {
+    } else if (this.clone.type === ngeoBase.AttributeType.GEOMETRY) {
 
       // Watch 'operator' of clone. Make sure any existing geometry is
       // supported by the newly selected operator. If it doesn't, reset
@@ -387,17 +385,17 @@ ngeo.RuleController = class {
         () => this.clone.operator,
         (newVal) => {
           if (newVal &&
-              newVal === ngeo.rule.Rule.SpatialOperatorType.CONTAINS
+              newVal === ngeoBase.rule.Rule.SpatialOperatorType.CONTAINS
           ) {
             const clone = goog.asserts.assertInstanceof(
-              this.clone, ngeo.rule.Geometry);
+              this.clone, ngeoRuleGeometry);
             const geometry = clone.feature.getGeometry();
             if (geometry) {
               const geomType = this.ngeoFeatureHelper_.getType(clone.feature);
               const supportedTypes = [
-                ngeo.GeometryType.CIRCLE,
-                ngeo.GeometryType.POLYGON,
-                ngeo.GeometryType.RECTANGLE
+                ngeoBase.GeometryType.CIRCLE,
+                ngeoBase.GeometryType.POLYGON,
+                ngeoBase.GeometryType.RECTANGLE
               ];
               if (!ol.array.includes(supportedTypes, geomType)) {
                 this.clone.setExpression(null);
@@ -413,7 +411,7 @@ ngeo.RuleController = class {
         (newVal) => {
           if (newVal) {
             const clone = goog.asserts.assertInstanceof(
-              this.clone, ngeo.rule.Geometry);
+              this.clone, ngeoRuleGeometry);
             this.geomType = this.ngeoFeatureHelper_.getType(clone.feature);
           } else {
             this.geomType = null;
@@ -436,7 +434,7 @@ ngeo.RuleController = class {
         (newVal) => {
           if (newVal) {
             const clone = goog.asserts.assertInstanceof(
-              this.clone, ngeo.rule.Geometry);
+              this.clone, ngeoRuleGeometry);
             this.selectedFeatures.push(clone.feature);
           } else {
             this.selectedFeatures.clear();
@@ -510,7 +508,7 @@ ngeo.RuleController = class {
    * @export
    */
   toggleChoiceSelection(choice) {
-    const rule = goog.asserts.assertInstanceof(this.clone, ngeo.rule.Select);
+    const rule = goog.asserts.assertInstanceof(this.clone, ngeoRuleSelect);
     const choices = rule.getExpression() ? rule.getExpression().split(',') : [];
     const idx = choices.indexOf(choice);
     if (idx > -1) {
@@ -590,8 +588,8 @@ ngeo.RuleController = class {
    */
   handleActiveChange_(active, oldActive) {
 
-    if (!(this.rule instanceof ngeo.rule.Geometry) ||
-        !(this.clone instanceof ngeo.rule.Geometry) ||
+    if (!(this.rule instanceof ngeoRuleGeometry) ||
+        !(this.clone instanceof ngeoRuleGeometry) ||
         active === oldActive
     ) {
       return;
@@ -609,7 +607,7 @@ ngeo.RuleController = class {
 
     if (active) {
       keys.push(
-        ol.events.listen(
+        olEvents.listen(
           this.drawnFeatures,
           'add',
           this.handleFeaturesAdd_,
@@ -618,7 +616,7 @@ ngeo.RuleController = class {
       );
 
       keys.push(
-        ol.events.listen(
+        olEvents.listen(
           mapDiv,
           'contextmenu',
           this.handleMapContextMenu_,
@@ -627,7 +625,7 @@ ngeo.RuleController = class {
       );
 
       keys.push(
-        ol.events.listen(
+        olEvents.listen(
           this.translate_,
           'translateend',
           this.handleTranslateEnd_,
@@ -636,7 +634,7 @@ ngeo.RuleController = class {
       );
 
       keys.push(
-        ol.events.listen(
+        olEvents.listen(
           this.rotate_,
           'rotateend',
           this.handleRotateEnd_,
@@ -725,7 +723,7 @@ ngeo.RuleController = class {
     this.timeout_(() => {
 
       const clone = goog.asserts.assertInstanceof(
-        this.clone, ngeo.rule.Geometry);
+        this.clone, ngeoRuleGeometry);
       const feature = clone.feature;
 
       // (1) Apply geometry
@@ -759,7 +757,7 @@ ngeo.RuleController = class {
    * @export
    */
   getRuleGeometryType() {
-    const rule = goog.asserts.assertInstanceof(this.rule, ngeo.rule.Geometry);
+    const rule = goog.asserts.assertInstanceof(this.rule, ngeoRuleGeometry);
     return this.ngeoFeatureHelper_.getType(rule.feature);
   }
 
@@ -797,19 +795,19 @@ ngeo.RuleController = class {
       const type = this.ngeoFeatureHelper_.getType(feature);
       const  gettextCatalog = this.gettextCatalog_;
 
-      if (type == ngeo.GeometryType.CIRCLE ||
-          type == ngeo.GeometryType.LINE_STRING ||
-          type == ngeo.GeometryType.POLYGON ||
-          type == ngeo.GeometryType.RECTANGLE) {
+      if (type == ngeoBase.GeometryType.CIRCLE ||
+          type == ngeoBase.GeometryType.LINE_STRING ||
+          type == ngeoBase.GeometryType.POLYGON ||
+          type == ngeoBase.GeometryType.RECTANGLE) {
         actions.push({
           cls: 'fa fa-arrows',
           label: gettextCatalog.getString('Move'),
           name: 'move'
         });
       }
-      if (type == ngeo.GeometryType.LINE_STRING ||
-          type == ngeo.GeometryType.POLYGON ||
-          type == ngeo.GeometryType.RECTANGLE) {
+      if (type == ngeoBase.GeometryType.LINE_STRING ||
+          type == ngeoBase.GeometryType.POLYGON ||
+          type == ngeoBase.GeometryType.RECTANGLE) {
         actions.push({
           cls: 'fa fa-rotate-right',
           label: gettextCatalog.getString('Rotate'),
@@ -820,11 +818,11 @@ ngeo.RuleController = class {
 
     if (actions.length) {
       // (4) Create and show menu
-      this.menu_ = new ngeo.Menu({
+      this.menu_ = new ngeoMenu({
         actions
       });
 
-      ol.events.listen(
+      olEvents.listen(
         this.menu_,
         'actionclick',
         this.handleMenuActionClick_,
@@ -847,7 +845,7 @@ ngeo.RuleController = class {
    */
   removeMenu_() {
     if (this.menu_) {
-      ol.events.unlisten(
+      olEvents.unlisten(
         this.menu_,
         'actionclick',
         this.handleMenuActionClick_,
@@ -909,13 +907,13 @@ ngeo.RuleController = class {
  * Also, changes are not made on-the-fly. A button must be clicked for the
  * changes to be applied to the rule.
  */
-ngeo.module.component('ngeoRule', {
+ngeoBase.module.component('ngeoRule', {
   bindings: {
     'featureOverlay': '<',
     'map': '<',
     'rule': '<',
     'toolGroup': '<'
   },
-  controller: ngeo.RuleController,
-  templateUrl: () => `${ngeo.baseTemplateUrl}/rule.html`
+  controller: ngeoBase.RuleController,
+  templateUrl: () => `${ngeoBase.baseTemplateUrl}/rule.html`
 });

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: EnumerateAttribute <small>service:gmfEnumerateAttribute</small></title>
+    <title>JSDoc: Class: BackgroundLayerMgr <small>service:ngeoBackgroundLayerMgr</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: EnumerateAttribute <small>service:gmfEnumerateAttribute</small></h1>
+    <h1 class="page-title">Class: BackgroundLayerMgr <small>service:ngeoBackgroundLayerMgr</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="EnumerateAttribute">
-            <span class="ancestors">gmf~gmf.</span>EnumerateAttribute
+        <h2 id="BackgroundLayerMgr">
+            <span class="ancestors">ngeo.map.</span>BackgroundLayerMgr
         </h2>
         
     
@@ -42,15 +42,210 @@
 
     
 
-    <h4 class="name" id="EnumerateAttribute"><span class="type-signature"></span>new EnumerateAttribute<span class="signature">($http, gmfLayersUrl)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="BackgroundLayerMgr"><span class="type-signature"></span>new BackgroundLayerMgr<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>The EnumerateAttribute is responsible of fetching all possible of a given
-attribute of a given data source (gmf layer).</p>
+    <p>Provides a service for setting/unsetting background layers
+in maps.</p>
+<p>The notion of background/base layers doesn't exist in OpenLayers. This
+service adds that notion.</p>
+<p>Setting a background layer to map is done with the <code>set</code> function:</p>
+<pre class="prettyprint source"><code>ngeoBackgroundLayerMgr.set(map, layer);</code></pre><p>To unset the background layer pass <code>null</code> as the <code>layer</code> argument:</p>
+<pre class="prettyprint source"><code>ngeoBackgroundLayerMgr.set(map, null);</code></pre><p>The <code>get</code> function returns the current background layer of the map passed
+as an argument. <code>null</code> is returned if the map doesn't have a background
+layer.</p>
+<p>The background layer is always added at index 0 in the map's layers
+collection. When a background layer is set it is inserted (at index 0)
+if the map does not already have a background layer, otherwise the
+new background layer replaces the previous one at index 0.</p>
+<p>Users can subscribe to a 'change' event to get notified when the background
+layer changes:</p>
+<pre class="prettyprint source"><code>ngeoBackgroundLayerMgr.on('change', function(e) {
+  // do something with the layer
+  let layer = ngeoBackgroundLayerMgr.get();
+  // know which layer was used before
+  let previous = e.previous
+});</code></pre><p>See our live examples:
+<a href="../examples/backgroundlayer.html">../examples/backgroundlayer.html</a>
+<a href="../examples/backgroundlayerdropdown.html">../examples/backgroundlayerdropdown.html</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/Backgroundlayermgr.js#L59">src/map/Backgroundlayermgr.js:59</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="http://openlayers.org/en/master/apidoc/ol.Observable.html">ol.Observable</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".module"><span class="type-signature">(static, non-null) </span>module<span class="type-signature">: angular.Module</span> </h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/Backgroundlayermgr.js#L163">src/map/Backgroundlayermgr.js:163</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(map)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Return the current background layer of a given map. <code>null</code> is returned if
+the map does not have a background layer.</p>
 </div>
 
 
@@ -86,12 +281,12 @@ attribute of a given data source (gmf layer).</p>
 
         <tr>
             
-                <td class="name"><code>$http</code></td>
+                <td class="name"><code>map</code></td>
             
 
             <td class="type">
             
-                <a href="angular.$http.html">angular.$http</a>
+                <a href="ol.Map.html">ol.Map</a>
             
             </td>
 
@@ -99,27 +294,7 @@ attribute of a given data source (gmf layer).</p>
 
             
 
-            <td class="description last"><p>Angular $http service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gmfLayersUrl</code></td>
-            
-
-            <td class="type">
-            
-                string
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Url to the GeoMapFish layers service.</p></td>
+            <td class="description last"><p>Map.</p></td>
         </tr>
 
     
@@ -162,7 +337,330 @@ attribute of a given data source (gmf layer).</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/enumerateattribute.js#L19">contribs/gmf/src/services/enumerateattribute.js:19</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/Backgroundlayermgr.js#L80">src/map/Backgroundlayermgr.js:80</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="ol.layer.Base.html">ol.layer.Base</a>
+
+
+    <p>layer The background layer.</p>
+
+</div>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="set"><span class="type-signature"></span>set<span class="signature">(map, layer)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set the background layer of a map. If <code>layer</code> is <code>null</code> the background layer
+is removed.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>map</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Map.html">ol.Map</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The map.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>layer</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.layer.Base.html">ol.layer.Base</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new background layer.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/Backgroundlayermgr.js#L94">src/map/Backgroundlayermgr.js:94</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="ol.layer.Base.html">ol.layer.Base</a>
+
+
+    <p>The previous background layer.</p>
+
+</div>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateDimensions"><span class="type-signature"></span>updateDimensions<span class="signature">(map, dimensions)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>map</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Map.html">ol.Map</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The map.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dimensions</code></td>
+            
+
+            <td class="type">
+            
+                <a href="Object.<string, string>.html">Object.<string, string></a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The global dimensions object.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/Backgroundlayermgr.js#L124">src/map/Backgroundlayermgr.js:124</a>
     </div>
     
 
@@ -188,21 +686,7 @@ attribute of a given data source (gmf layer).</p>
 
 
 
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
+        
     
 
     

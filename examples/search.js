@@ -1,4 +1,4 @@
-goog.provide('app.search');
+goog.module('app.search');
 
 import './search.css'
 import 'jquery/dist/jquery.js'
@@ -11,27 +11,24 @@ import 'corejs-typeahead/dist/typeahead.bundle.js'
 import 'proj4/dist/proj4.js'
 import '../utils/watchwatchers.js'
 
-/** @suppress {extraRequire} */
-goog.require('ngeo.proj.EPSG21781');
-/** @suppress {extraRequire} */
-goog.require('ngeo.mapDirective');
-goog.require('ngeo');
-goog.require('ol.Map');
-goog.require('ol.View');
-goog.require('ol.layer.Tile');
-goog.require('ol.layer.Vector');
-goog.require('ol.proj');
-goog.require('ol.source.OSM');
-goog.require('ol.source.Vector');
-goog.require('goog.asserts');
-
-goog.require('ngeo.search.module');
+const ngeoProjEPSG21781 = goog.require('ngeo.proj.EPSG21781');
+const ngeoMapDirective = goog.require('ngeo.mapDirective');
+const ngeoBase = goog.require('ngeo');
+const olMap = goog.require('ol.Map');
+const olView = goog.require('ol.View');
+const olLayerTile = goog.require('ol.layer.Tile');
+const olLayerVector = goog.require('ol.layer.Vector');
+const olProj = goog.require('ol.proj');
+const olSourceOSM = goog.require('ol.source.OSM');
+const olSourceVector = goog.require('ol.source.Vector');
+const googAsserts = goog.require('goog.asserts');
+const ngeoSearchModule = goog.require('ngeo.search.module');
 
 
 /** @type {!angular.Module} **/
 app.module = angular.module('app', [
-  ngeo.module.name,
-  ngeo.search.module.name
+  ngeoBase.module.name,
+  ngeoSearchModule.name
 ]);
 
 
@@ -155,8 +152,8 @@ app.SearchController.prototype.$onInit = function() {
  * @private
  */
 app.SearchController.prototype.createVectorLayer_ = function() {
-  const vectorLayer = new ol.layer.Vector({
-    source: new ol.source.Vector()
+  const vectorLayer = new olLayerVector({
+    source: new olSourceVector()
   });
   // Use vectorLayer.setMap(map) rather than map.addLayer(vectorLayer). This
   // makes the vector layer "unmanaged", meaning that it is always on top.
@@ -174,7 +171,7 @@ app.SearchController.prototype.createVectorLayer_ = function() {
 app.SearchController.prototype.createAndInitBloodhound_ = function(ngeoSearchCreateGeoJSONBloodhound) {
   const url = 'https://geomapfish-demo.camptocamp.net/2.2/wsgi/fulltextsearch?query=%QUERY';
   const bloodhound = ngeoSearchCreateGeoJSONBloodhound(
-    url, undefined, ol.proj.get('EPSG:3857'), ol.proj.get('EPSG:21781'));
+    url, undefined, olProj.get('EPSG:3857'), olProj.get('EPSG:21781'));
   bloodhound.initialize();
   return bloodhound;
 };
@@ -192,7 +189,7 @@ app.SearchController.select_ = function(event, suggestion, dataset) {
   const featureGeometry = /** @type {ol.geom.SimpleGeometry} */
       (feature.getGeometry());
   const size = this.map.getSize();
-  goog.asserts.assert(size !== undefined);
+  googAsserts.assert(size !== undefined);
   const source = this.vectorLayer_.getSource();
   source.clear(true);
   source.addFeature(feature);
@@ -215,13 +212,13 @@ app.MainController = function() {
    * @type {ol.Map}
    * @export
    */
-  this.map = new ol.Map({
+  this.map = new olMap({
     layers: [
-      new ol.layer.Tile({
-        source: new ol.source.OSM()
+      new olLayerTile({
+        source: new olSourceOSM()
       })
     ],
-    view: new ol.View({
+    view: new olView({
       center: [0, 0],
       zoom: 4
     })

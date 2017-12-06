@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: GmfOgcServer</title>
+    <title>JSDoc: Class: directive_ <small>directive:ngeoResizemap</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: GmfOgcServer</h1>
+    <h1 class="page-title">Class: directive_ <small>directive:ngeoResizemap</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="GmfOgcServer">
-            <span class="ancestors">gmfThemes.</span>GmfOgcServer
+        <h2 id="directive_">
+            <span class="ancestors">ngeo.map.resizemap.</span>directive_
         </h2>
         
     
@@ -42,11 +42,23 @@
 
     
 
-    <h4 class="name" id="GmfOgcServer"><span class="type-signature"></span>new GmfOgcServer<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="directive_"><span class="type-signature"></span>new directive_<span class="signature">($window)</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    <p>Provides a directive that resizes the map in an animation loop
+during 1 second when the value of &quot;state&quot; changes. This is especially useful
+when changing the size of other elements with a transition leads to a change
+of the map size.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code> &lt;div ng-class=&quot;ctrl.open ? 'open' : 'close' ngeo-resizemap=&quot;ctrl.map&quot;
+   ngeo-resizemap-state=&quot;open&quot;>
+ &lt;div>
+ &lt;input type=&quot;checkbox&quot; ng-model=&quot;ctrl.open&quot; /></code></pre><p>See our live example: <a href="../examples/animation.html">../examples/animation.html</a></p>
+</div>
 
 
 
@@ -91,7 +103,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L319">contribs/gmf/externs/gmf-themes.js:319</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/resizemap.js#L35">src/map/resizemap.js:35</a>
     </div>
     
 
@@ -114,6 +126,19 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="angular.Directive.html">angular.Directive</a>
+
+
+    <p>The directive specs.</p>
+
+</div>
+
+    
 
 
 
@@ -135,7 +160,7 @@
 
         
             
-<h4 class="name" id="credential"><span class="type-signature"></span>credential<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> </h4>
+<h4 class="name" id="~duration"><span class="type-signature">(inner, constant) </span>duration<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> </h4>
 
 
 
@@ -173,355 +198,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L325">contribs/gmf/externs/gmf-themes.js:325</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="imageType"><span class="type-signature"></span>imageType<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> </h4>
-
-
-
-
-<div class="description">
-    <p>'image/png' or 'image/jpeg'.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L331">contribs/gmf/externs/gmf-themes.js:331</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="isSingleTile"><span class="type-signature"></span>isSingleTile<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L337">contribs/gmf/externs/gmf-themes.js:337</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="type"><span class="type-signature"></span>type<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> </h4>
-
-
-
-
-<div class="description">
-    <p>'mapserver', 'qgisserver', 'geoserver' or 'other'.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L344">contribs/gmf/externs/gmf-themes.js:344</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="url"><span class="type-signature"></span>url<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L350">contribs/gmf/externs/gmf-themes.js:350</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="urlWfs"><span class="type-signature"></span>urlWfs<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> </h4>
-
-
-
-
-<div class="description">
-    <p>The WFS URL.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L357">contribs/gmf/externs/gmf-themes.js:357</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="wfsSupport"><span class="type-signature"></span>wfsSupport<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/externs/gmf-themes.js#L363">contribs/gmf/externs/gmf-themes.js:363</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/resizemap.js#L36">src/map/resizemap.js:36</a>
     </div>
     
 

@@ -1,64 +1,10 @@
-goog.module('ngeo.profile');
-
-const googAsserts = goog.require('goog.asserts');
-const olObj = goog.require('ol.obj');
-
-
 /**
- * Provides a D3js component to be used to draw an elevation
- * profile chart.
- *
- *     let selection = d3.select('#element_id');
- *     let profile = ngeo.profile({
- *       distanceExtractor: function (item) {return item['dist'];},
- *       linesConfiguration: {
- *         'lineZ1': {
- *           zExtractor: function (item) {return item['values']['z1'];}
- *         },
- *         'lineZ2': {
- *           color: '#00F',
- *           zExtractor: function (item) {return item['values']['z2'];}
- *         }
- *       },
- *       hoverCallback: function(point, dist, xUnits, elevations, yUnits) {
- *         console.log(point.x, point.y);
- *       },
- *       outCallback: function() {
- *         console.log("out");
- *       }
- *     });
- *     selection.datum(data).call(profile);
- *
- * The selection data must be an array.
- * The layout for the items of this array is unconstrained: the distance values
- * is extracted using the distanceExtractor config option and multiples z values
- * can be displayed by providing multiple linesConfiguration with its specific
- * zExtractor.
- * Optionally you can provide a color in your linesConfiguration. A line without
- * color will be red. Each linesConfiguration name is used as class for its
- * respective line. So you can pass a styleDefs config option (inline css) to
- * customize the line or all the chart.
- * Optionally, POIs can be displayed and depend on a poiExtractor
- * config option.
- *
- * The data below will work for the above example:
- *
- *     [
- *         {
- *             "y": 199340,
- *             "values": {"z1": 788.7, "z2": 774.2},
- *             "dist": 0.0,
- *             "x": 541620
- *         }, ...
- *     ]
- *
- * @constructor
- * @struct
- * @return {Object} D3js component.
- * @param {ngeox.profile.ProfileOptions} options Profile options.
- * @export
+ * @module
  */
-exports = function(options) {
+import googAsserts from 'goog/asserts';
+import olObj from 'ol/obj';
+
+const exports = function(options) {
   /**
    * Whether the simplified profile should be shown.
    * @type {boolean}
@@ -618,3 +564,5 @@ exports = function(options) {
 
   return profile;
 };
+
+export default exports;

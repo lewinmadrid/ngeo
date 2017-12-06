@@ -1,22 +1,10 @@
-goog.module('ngeo.CsvDownload');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoDownload = goog.require('ngeo.Download');
-
-
 /**
- * Service to generate and download a CSV file from tabular data.
- * Column headers are translated using {@link angularGettext.Catalog}.
- *
- * @param {angular.$injector} $injector Main injector.
- * @param {angularGettext.Catalog} gettextCatalog Gettext service.
- * @constructor
- * @struct
- * @ngdoc service
- * @ngname ngeoCsvDownload
- * @ngInject
+ * @module
  */
-exports = function($injector, gettextCatalog) {
+import ngeoBase from './index.js';
+import ngeoDownload from './Download.js';
+
+const exports = function($injector, gettextCatalog) {
 
   /**
    * @type {angularGettext.Catalog}
@@ -136,3 +124,4 @@ exports.prototype.startDownload = function(data, columnDefs, fileName) {
 };
 
 ngeoBase.module.service('ngeoCsvDownload', exports);
+export default exports;

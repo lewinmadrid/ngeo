@@ -1,10 +1,10 @@
-goog.module('ngeo.datasource.FileGroup');
+/**
+ * @module
+ */
+import ngeoBase from '../index.js';
+import ngeoDatasourceGroup from '../datasource/Group.js';
 
-const ngeoBase = goog.require('ngeo');
-const ngeoDatasourceGroup = goog.require('ngeo.datasource.Group');
-
-
-exports = class extends ngeoDatasourceGroup {
+const exports = class extends ngeoDatasourceGroup {
 
   /**
    * A FileGroup data source combines multiple `ngeo.datasource.File` objects.
@@ -88,3 +88,5 @@ exports = class extends ngeoDatasourceGroup {
     delete this.unregister_[dataSource.id];
   }
 };
+
+export default exports;

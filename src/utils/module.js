@@ -1,8 +1,10 @@
-goog.module('ngeo.utils.module');
-goog.module.declareLegacyNamespace();
-
-const fileService = goog.require('ngeo.utils.File');
+/**
+ * @module
+ */
+let exports = {};
+import fileService from '../utils/File.js';
 
 exports.module = angular.module('ngeo.utils', [
   fileService.module.name
 ]);
+export default exports;

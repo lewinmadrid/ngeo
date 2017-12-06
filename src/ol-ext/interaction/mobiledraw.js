@@ -1,15 +1,16 @@
-goog.module('ngeo.interaction.MobileDraw');
-
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-const olFunctions = goog.require('ol.functions');
-const olGeomLineString = goog.require('ol.geom.LineString');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olGeomSimpleGeometry = goog.require('ol.geom.SimpleGeometry');
-const olInteractionDraw = goog.require('ol.interaction.Draw');
-const olInteractionInteraction = goog.require('ol.interaction.Interaction');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olSourceVector = goog.require('ol.source.Vector');
+/**
+ * @module
+ */
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+import olFunctions from 'ol/functions';
+import olGeomLineString from 'ol/geom/LineString';
+import olGeomPoint from 'ol/geom/Point';
+import olGeomSimpleGeometry from 'ol/geom/SimpleGeometry';
+import olInteractionDraw from 'ol/interaction/Draw';
+import olInteractionInteraction from 'ol/interaction/Interaction';
+import olLayerVector from 'ol/layer/Vector';
+import olSourceVector from 'ol/source/Vector';
 
 
 /**
@@ -22,23 +23,7 @@ ngeo.interaction.MobileDrawProperty = {
 };
 
 
-/**
- * @classdesc
- * Interaction for drawing feature geometries from a mobile device using the
- * center of the map view as entry for points added.
- *
- * Supports:
- * - point
- * - line string
- *
- * @constructor
- * @struct
- * @fires ol.interaction.Draw.Event
- * @extends {ol.interaction.Interaction}
- * @param {ngeox.interaction.MobileDrawOptions} options Options
- * @export
- */
-exports = function(options) {
+const exports = function(options) {
 
   olInteractionInteraction.call(this, {
     handleEvent: olFunctions.TRUE
@@ -113,6 +98,7 @@ exports = function(options) {
   this.set(ngeo.interaction.MobileDrawProperty.VALID, false);
 
 };
+
 ol.inherits(exports, olInteractionInteraction);
 
 
@@ -472,3 +458,4 @@ exports.prototype.getCenter_ = function() {
   goog.asserts.assertArray(center);
   return center;
 };
+export default exports;

@@ -1,9 +1,9 @@
-goog.module('ngeo.rule.Date');
+/**
+ * @module
+ */
+import ngeoRuleRule from '../rule/Rule.js';
 
-const ngeoRuleRule = goog.require('ngeo.rule.Rule');
-
-
-exports = class extends ngeoRuleRule {
+const exports = class extends ngeoRuleRule {
 
   /**
    * A date rule.
@@ -18,3 +18,5 @@ exports = class extends ngeoRuleRule {
     super(options);
   }
 };
+
+export default exports;

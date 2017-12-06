@@ -1,21 +1,11 @@
-goog.module('ngeo.WMSTime');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoTime = goog.require('ngeo.Time');
-const googAsserts = goog.require('goog.asserts');
-
-
 /**
- * ngeo - WMS time service
- * @extends {ngeo.Time}
- * @param {angular.$filter} $filter angular filter service.
- * @constructor
- * @struct
- * @ngInject
- * @ngdoc service
- * @ngname ngeoWMSTime
+ * @module
  */
-exports  = function($filter) {
+import ngeoBase from './index.js';
+import ngeoTime from './Time.js';
+import googAsserts from 'goog/asserts';
+
+const exports = function($filter) {
 
   /**
    * @private
@@ -25,6 +15,7 @@ exports  = function($filter) {
 
   ngeoTime.call(this);
 };
+
 ol.inherits(exports, ngeoTime);
 
 
@@ -81,3 +72,4 @@ exports.prototype.formatWMSTimeParam = function(wmsTimeProperty, times, opt_toUT
 
 
 ngeoBase.module.service('ngeoWMSTime', exports);
+export default exports;

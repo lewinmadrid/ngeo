@@ -1,33 +1,9 @@
-goog.module('ngeo.exportfeaturesDirective');
-
-const ngeoBase = goog.require('ngeo');
-
-
 /**
- * Directive used to export vector features in different types of format.
- * To configure which formats to use, define the `ngeoExportFeatureFormats`
- * value, as such:
- *
- *     app.module.value('ngeoExportFeatureFormats', [
- *         ngeo.FeatureHelper.FormatType.KML,
- *         ngeo.FeatureHelper.FormatType.GPX
- *     ]);
- *
- * Example:
- *
- *     <button
- *       ngeo-exportfeatures
- *       ngeo-exportfeatures-features="ctrl.features"
- *       class="btn btn-link">Export</button>
- *
- * @htmlAttribute {ol.Collection.<ol.Feature>} ngeo-exportfeatures-features The
- *     features to export
- * @return {angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoExportfeatures
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+
+const exports = function() {
   return {
     controller: 'ngeoExportfeaturesController as efCtrl',
     scope: true,
@@ -214,3 +190,4 @@ ngeoBase.ExportfeaturesController.prototype.handleDestroy_ = function() {
 
 ngeoBase.module.controller(
   'ngeoExportfeaturesController', ngeoBase.ExportfeaturesController);
+export default exports;

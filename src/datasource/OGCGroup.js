@@ -1,10 +1,10 @@
-goog.module('ngeo.datasource.OGCGroup');
+/**
+ * @module
+ */
+import ngeoBase from '../index.js';
+import ngeoDatasourceGroup from '../datasource/Group.js';
 
-const ngeoBase = goog.require('ngeo');
-const ngeoDatasourceGroup = goog.require('ngeo.datasource.Group');
-
-
-exports = class extends ngeoDatasourceGroup {
+const exports = class extends ngeoDatasourceGroup {
 
   /**
    * A OGCGroup data source combines multiple `ngeo.datasource.OGC` objects.
@@ -31,3 +31,5 @@ exports = class extends ngeoDatasourceGroup {
     return this.url_;
   }
 };
+
+export default exports;

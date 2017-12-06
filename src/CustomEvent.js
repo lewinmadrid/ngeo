@@ -1,15 +1,9 @@
-goog.module('ngeo.CustomEvent');
-const olEventsEvent = goog.require('ol.events.Event');
-
-
 /**
- * @constructor
- * @extends {ol.events.Event}
- * @param {string} type Event type.
- * @param {T} detail Event Detail.
- * @template T
+ * @module
  */
-exports = function(type, detail = {}) {
+import olEventsEvent from 'ol/events/Event';
+
+const exports = function(type, detail = {}) {
 
   olEventsEvent.call(this, type);
 
@@ -19,4 +13,6 @@ exports = function(type, detail = {}) {
   this.detail = detail;
 
 };
+
 ol.inherits(exports, olEventsEvent);
+export default exports;

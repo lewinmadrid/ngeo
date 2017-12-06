@@ -1,3 +1,6 @@
+/**
+ * @module
+ */
 goog.provide('ngeo.interaction.DrawAzimut');
 goog.provide('ngeo.interaction.MeasureAzimut');
 

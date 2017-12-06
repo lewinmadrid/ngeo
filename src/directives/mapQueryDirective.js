@@ -1,40 +1,11 @@
-goog.module('ngeo.mapQueryDirective');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoMapQuerent = goog.require('ngeo.MapQuerent');
-const olEvents = goog.require('ol.events');
-
-
 /**
- * Provides a "map query" directive.
- *
- * This directive is responsible of binding a map and the ngeo query service
- * together. While active, clicks made on the map are listened by the directive
- * and a request gets issued to the query service.
- *
- * This directive doesn't require to be rendered in a visible DOM element, but
- * it could be used with a ngeo-btn to manage the activation of the directive.
- * See below an example without any use of UI:
- *
- * Example:
- *
- *      <span
- *        ngeo-map-query=""
- *        ngeo-map-query-map="::ctrl.map"
- *        ngeo-map-query-active="ctrl.queryActive"
- *        ngeo-map-query-autoclear="ctrl.queryAutoClear">
- *      </span>
- *
- * See our live example: [../examples/mapquery.html](../examples/mapquery.html)
- *
- * @param {ngeo.MapQuerent} ngeoMapQuerent The ngeo map querent service.
- * @param {angular.$injector} $injector Main injector.
- * @return {angular.Directive} The Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoMapQuery
+ * @module
  */
-exports = function(ngeoMapQuerent, $injector) {
+import ngeoBase from './index.js';
+import ngeoMapQuerent from './MapQuerent.js';
+import olEvents from 'ol/events';
+
+const exports = function(ngeoMapQuerent, $injector) {
   return {
     restrict: 'A',
     scope: false,
@@ -120,3 +91,4 @@ exports = function(ngeoMapQuerent, $injector) {
 };
 
 ngeoBase.module.directive('ngeoMapQuery', exports);
+export default exports;

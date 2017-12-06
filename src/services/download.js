@@ -1,7 +1,9 @@
-goog.module('ngeo.Download');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoUtils = goog.require('ngeo.utils');
+/**
+ * @module
+ */
+let exports = {};
+import ngeoBase from './index.js';
+import ngeoUtils from './utils.js';
 
 /**
  * @typedef {function(string, string, string=)}
@@ -40,3 +42,4 @@ ngeoBase.downloadFactory_ = function() {
 };
 
 ngeoBase.module.factory('ngeoDownload', ngeoBase.downloadFactory_);
+export default exports;

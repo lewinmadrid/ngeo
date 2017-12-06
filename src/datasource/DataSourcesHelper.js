@@ -1,14 +1,14 @@
-goog.module('ngeo.datasource.DataSourcesHelper');
+/**
+ * @module
+ */
+import ngeoBase from '../index.js';
+import ngeoDatasourceDataSource from '../datasource/DataSource.js';
+import ngeoDatasourceDataSources from '../datasource/DataSources.js';
+import ngeoQuerent from '../Querent.js';
+import ngeoFormatWFSAttribute from '../format/WFSAttribute.js';
+import olEvents from 'ol/events';
 
-const ngeoBase = goog.require('ngeo');
-const ngeoDatasourceDataSource = goog.require('ngeo.datasource.DataSource');
-const ngeoDatasourceDataSources = goog.require('ngeo.datasource.DataSources');
-const ngeoQuerent = goog.require('ngeo.Querent');
-const ngeoFormatWFSAttribute = goog.require('ngeo.format.WFSAttribute');
-const olEvents = goog.require('ol.events');
-
-
-exports = class {
+const exports = class {
 
   /**
    * A service that provides utility methods to manipulate or get data sources.
@@ -150,3 +150,4 @@ exports = class {
 
 
 ngeoBase.module.service('ngeoDataSourcesHelper', exports);
+export default exports;

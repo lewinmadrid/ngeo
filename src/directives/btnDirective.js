@@ -1,6 +1,7 @@
-goog.module('ngeo.btnDirective');
-
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
 
 
 /**
@@ -115,25 +116,7 @@ ngeoBase.BtnGroupController.prototype.addButton = function(expressionFn) {
 ngeoBase.module.controller('ngeoBtnGroupController', ngeoBase.BtnGroupController);
 
 
-/**
- * The ngeo-btn allows creating toggle buttons working with ng-model. It is
- * typically used with Bootstrap buttons (`btn`).
- *
- * Example:
- *
- *     <button ngeo-btn class="btn" ng-model="ctrl.interaction.active"></button>
- *
- * This example is about creating a Bootstrap button that can pressed/depressed
- * to activate/deactivate an OpenLayers interaction.
- *
- * @htmlAttribute {*} ng-model Any property on the scope. Ideally a boolean.
- * @param {angular.$parse} $parse Angular parse service.
- * @return {angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoBtn
- */
-exports = function($parse) {
+const exports = function($parse) {
   return {
     require: ['?^ngeoBtnGroup', 'ngModel'],
     restrict: 'A',
@@ -180,3 +163,4 @@ exports = function($parse) {
 
 
 ngeoBase.module.directive('ngeoBtn', exports);
+export default exports;

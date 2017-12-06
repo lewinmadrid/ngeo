@@ -1,12 +1,14 @@
-goog.module('ngeo.datasource.OGC');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoDatasourceDataSource = goog.require('ngeo.datasource.DataSource');
-const ngeoDatasourceOGC = goog.require('ngeo.datasource.OGC');
-const olFormatGML2 = goog.require('ol.format.GML2');
-const olFormatGML3 = goog.require('ol.format.GML3');
-const olFormatWFS = goog.require('ol.format.WFS');
-const olFormatWMSGetFeatureInfo = goog.require('ol.format.WMSGetFeatureInfo');
+/**
+ * @module
+ */
+let exports = {};
+import googAsserts from 'goog/asserts';
+import ngeoDatasourceDataSource from '../datasource/DataSource.js';
+import ngeoDatasourceOGC from '../datasource/OGC.js';
+import olFormatGML2 from 'ol/format/GML2';
+import olFormatGML3 from 'ol/format/GML3';
+import olFormatWFS from 'ol/format/WFS';
+import olFormatWMSGetFeatureInfo from 'ol/format/WMSGetFeatureInfo';
 
 
 /**
@@ -1024,3 +1026,4 @@ ngeoDatasourceOGC.WFSOutputFormat = {
 ngeoDatasourceOGC.WMSInfoFormat = {
   GML: 'application/vnd.ogc.gml'
 };
+export default exports;

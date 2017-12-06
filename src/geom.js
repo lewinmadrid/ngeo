@@ -1,13 +1,15 @@
-goog.module('ngeo.geom');
-
-const ngeoCoordinate = goog.require('ngeo.coordinate');
-const olGeomLineString = goog.require('ol.geom.LineString');
-const olGeomMultiLineString = goog.require('ol.geom.MultiLineString');
-const olGeomMultiPoint = goog.require('ol.geom.MultiPoint');
-const olGeomMultiPolygon = goog.require('ol.geom.MultiPolygon');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
-const olGeomSimpleGeometry = goog.require('ol.geom.SimpleGeometry');
+/**
+ * @module
+ */
+let exports = {};
+import ngeoCoordinate from './coordinate.js';
+import olGeomLineString from 'ol/geom/LineString';
+import olGeomMultiLineString from 'ol/geom/MultiLineString';
+import olGeomMultiPoint from 'ol/geom/MultiPoint';
+import olGeomMultiPolygon from 'ol/geom/MultiPolygon';
+import olGeomPoint from 'ol/geom/Point';
+import olGeomPolygon from 'ol/geom/Polygon';
+import olGeomSimpleGeometry from 'ol/geom/SimpleGeometry';
 
 
 /**
@@ -60,3 +62,4 @@ exports.toXY = function(geom) {
     throw 'ngeo.geom.toXY - unsupported geometry type';
   }
 };
+export default exports;

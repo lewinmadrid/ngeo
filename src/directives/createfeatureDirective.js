@@ -1,56 +1,18 @@
-goog.module('ngeo.createfeatureDirective');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoEventHelper = goog.require('ngeo.EventHelper');
-const ngeoFilters = goog.require('ngeo.filters');
-const ngeoInteractionMeasureArea = goog.require('ngeo.interaction.MeasureArea');
-const ngeoInteractionMeasureLength = goog.require('ngeo.interaction.MeasureLength');
-const ngeoUtils = goog.require('ngeo.utils');
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-const olInteractionDraw = goog.require('ol.interaction.Draw');
-const olStyleStyle = goog.require('ol.style.Style');
-
-
 /**
- * A directive used to draw vector features of a single geometry type using
- * either a 'draw' or 'measure' interaction. Once a feature is finished being
- * drawn, it is added to a collection of features.
- *
- * The geometry types supported are:
- *  - Point
- *  - LineString
- *  - Polygon
- *
- * Example:
- *
- *     <a
- *       href
- *       translate
- *       ngeo-btn
- *       ngeo-createfeature
- *       ngeo-createfeature-active="ctrl.createPointActive"
- *       ngeo-createfeature-features="ctrl.features"
- *       ngeo-createfeature-geom-type="ctrl.pointGeomType"
- *       ngeo-createfeature-map="::ctrl.map"
- *       class="btn btn-default ngeo-createfeature-point"
- *       ng-class="{active: ctrl.createPointActive}"
- *       ng-model="ctrl.createPointActive">
- *     </a>
- *
- * @htmlAttribute {boolean} ngeo-createfeature-active Whether the directive is
- *     active or not.
- * @htmlAttribute {ol.Collection} ngeo-createfeature-features The collection of
- *     features where to add those created by this directive.
- * @htmlAttribute {string} ngeo-createfeature-geom-type Determines the type
- *     of geometry this directive should draw.
- * @htmlAttribute {ol.Map} ngeo-createfeature-map The map.
- *
- * @return {angular.Directive} The directive specs.
- * @ngdoc directive
- * @ngname ngeoCreatefeature
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+import ngeoEventHelper from './EventHelper.js';
+import ngeoFilters from './filters.js';
+import ngeoInteractionMeasureArea from './interaction/MeasureArea.js';
+import ngeoInteractionMeasureLength from './interaction/MeasureLength.js';
+import ngeoUtils from './utils.js';
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+import olInteractionDraw from 'ol/interaction/Draw';
+import olStyleStyle from 'ol/style/Style';
+
+const exports = function() {
   return {
     controller: ngeoBase.CreatefeatureController,
     bindToController: true,
@@ -288,3 +250,4 @@ ngeoBase.CreatefeatureController.prototype.$onDestroy = function() {
     this.map.removeInteraction(this.interaction_);
   }, 0);
 };
+export default exports;

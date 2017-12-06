@@ -1,32 +1,11 @@
-goog.module('ngeo.resizemapDirective');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
-const olMap = goog.require('ol.Map');
-
-
 /**
- * Provides a directive that resizes the map in an animation loop
- * during 1 second when the value of "state" changes. This is especially useful
- * when changing the size of other elements with a transition leads to a change
- * of the map size.
- *
- * Example:
- *
- *      <div ng-class="ctrl.open ? 'open' : 'close' ngeo-resizemap="ctrl.map"
- *        ngeo-resizemap-state="open">
- *      <div>
- *      <input type="checkbox" ng-model="ctrl.open" />
- *
- * See our live example: [../examples/animation.html](../examples/animation.html)
- *
- * @param {angular.$window} $window Angular window service.
- * @return {angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoResizemap
+ * @module
  */
-exports = function($window) {
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
+import olMap from 'ol/Map';
+
+const exports = function($window) {
   const /** @type {number} */ duration = 1000;
 
   return {
@@ -77,3 +56,4 @@ exports = function($window) {
 
 
 ngeoBase.module.directive('ngeoResizemap', exports);
+export default exports;

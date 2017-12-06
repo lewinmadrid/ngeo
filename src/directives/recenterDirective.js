@@ -1,36 +1,9 @@
-goog.module('ngeo.recenterDirective');
-
-const ngeoBase = goog.require('ngeo');
-
-
 /**
- * Provides the "ngeoRecenter" directive, a widget for recentering a map
- * to a specific extent (by using `ngeo-extent`) or a specific zoom level
- * (by using `ngeo-zoom`).
- *
- * Example:
- *
- *      <div ngeo-recenter ngeo-recenter-map="::ctrl.map">
- *        <a href="#" ngeo-extent="[-1898084, 4676723, 3972279, 8590299]">A</a>
- *        <a href="#" ngeo-extent="[727681, 5784754, 1094579, 6029353]">B</a>
- *        <a href="#" ngeo-zoom="1">Zoom to level 1</a>
- *      </div>
- *
- * Or with a select:
- *
- *      <select ngeo-recenter ngeo-recenter-map="::ctrl.map">
- *        <option ngeo-extent="[-1898084, 4676723, 3972279, 8590299]">A</option>
- *        <option ngeo-extent="[727681, 5784754, 1094579, 6029353]">B</option>
- *      </select>
- *
- * See our live example: [../examples/locationchooser.html](../examples/locationchooser.html)
- *
- * @htmlAttribute {ol.Map} ngeo-recenter-map The map.
- * @return {angular.Directive} Directive Definition Object.
- * @ngdoc directive
- * @ngname ngeoRecenter
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+
+const exports = function() {
   return {
     restrict: 'A',
     link: ($scope, $element, $attrs) => {
@@ -63,4 +36,6 @@ exports = function() {
     }
   };
 };
+
 ngeoBase.module.directive('ngeoRecenter', exports);
+export default exports;

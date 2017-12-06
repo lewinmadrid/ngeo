@@ -1,6 +1,6 @@
-goog.module('ngeo.Message');
-
-
+/**
+ * @module
+ */
 /**
  * @enum {string}
  * @export
@@ -29,14 +29,7 @@ ngeo.MessageType = {
 };
 
 
-/**
- * Abstract class for services that display messages.
- *
- * @constructor
- * @struct
- * @abstract
- */
-exports = function() {};
+const exports = function() {};
 
 
 /**
@@ -153,3 +146,4 @@ exports.prototype.getMessageObjects = function(object, opt_type) {
 
   return msgObjects;
 };
+export default exports;

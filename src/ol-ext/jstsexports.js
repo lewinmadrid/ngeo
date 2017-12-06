@@ -1,14 +1,16 @@
-goog.module('ngeo.jstsExports');
-
-const olGeomGeometry = goog.require('ol.geom.Geometry');
-const olGeomGeometryCollection = goog.require('ol.geom.GeometryCollection');
-const olGeomLineString = goog.require('ol.geom.LineString');
-const olGeomLinearRing = goog.require('ol.geom.LinearRing');
-const olGeomMultiLineString = goog.require('ol.geom.MultiLineString');
-const olGeomMultiPoint = goog.require('ol.geom.MultiPoint');
-const olGeomMultiPolygon = goog.require('ol.geom.MultiPolygon');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
+/**
+ * @module
+ */
+let exports = {};
+import olGeomGeometry from 'ol/geom/Geometry';
+import olGeomGeometryCollection from 'ol/geom/GeometryCollection';
+import olGeomLineString from 'ol/geom/LineString';
+import olGeomLinearRing from 'ol/geom/LinearRing';
+import olGeomMultiLineString from 'ol/geom/MultiLineString';
+import olGeomMultiPoint from 'ol/geom/MultiPoint';
+import olGeomMultiPolygon from 'ol/geom/MultiPolygon';
+import olGeomPoint from 'ol/geom/Point';
+import olGeomPolygon from 'ol/geom/Polygon';
 
 
 goog.exportSymbol(
@@ -106,3 +108,4 @@ goog.exportProperty(
   olGeomPolygon.prototype,
   'getCoordinates',
   olGeomPolygon.prototype.getCoordinates);
+export default exports;

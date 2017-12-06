@@ -1,21 +1,17 @@
 /**
+ * @module
+ */
+/**
  * @module ngeo location search namespace
  */
-goog.module('ngeo.search.createLocationSearchBloodhound');
+import olBase from 'ol';
+import olObj from 'ol/obj';
+import olProj from 'ol/proj';
+import ngeoProjEPSG21781 from '../proj/EPSG21781.js';
+import olGeomPoint from 'ol/geom/Point';
+import olFeature from 'ol/Feature';
 
-const olBase = goog.require('ol');
-const olObj = goog.require('ol.obj');
-const olProj = goog.require('ol.proj');
-const ngeoProjEPSG21781 = goog.require('ngeo.proj.EPSG21781');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olFeature = goog.require('ol.Feature');
-
-
-/**
- * @param {ngeox.search.LocationSearchOptions=} opt_options Options.
- * @return {Bloodhound} The Bloodhound object.
- */
-exports = function(opt_options) {
+const exports = function(opt_options) {
   const options = opt_options || {};
 
   const sourceProjection = olProj.get(ngeoProjEPSG21781);
@@ -153,3 +149,4 @@ exports.module.value(
  * @ngname search.createLocationSearchBloodhound
  */
 exports.Function;
+export default exports;

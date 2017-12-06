@@ -1,15 +1,9 @@
-goog.module('ngeo.AutoProjection');
-
-const ngeoBase = goog.require('ngeo');
-const olProj = goog.require('ol.proj');
-
 /**
- * @constructor
- * @struct
- * @ngdoc service
- * @ngname ngeoAutoProjection
+ * @module
  */
-exports = function() {};
+import ngeoBase from './index.js';
+import olProj from 'ol/proj';
+const exports = function() {};
 
 
 /**
@@ -120,3 +114,4 @@ exports.prototype.tryProjectionsWithInversion = function(
 
 
 ngeoBase.module.service('ngeoAutoProjection', exports);
+export default exports;

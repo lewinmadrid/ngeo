@@ -1,21 +1,10 @@
-goog.module('ngeo.interaction.MeasureLengthMobile');
-
-const ngeoInteractionMeasureLength = goog.require('ngeo.interaction.MeasureLength');
-const ngeoInteractionMobileDraw = goog.require('ngeo.interaction.MobileDraw');
-
-
 /**
- * @classdesc
- * Interaction dedicated to measure length on mobile devices.
- *
- * @constructor
- * @struct
- * @extends {ngeo.interaction.MeasureLength}
- * @param {ngeox.unitPrefix} format The format function
- * @param {ngeox.interaction.MeasureOptions=} opt_options Options
- * @export
+ * @module
  */
-exports = function(format, opt_options) {
+import ngeoInteractionMeasureLength from '../interaction/MeasureLength.js';
+import ngeoInteractionMobileDraw from '../interaction/MobileDraw.js';
+
+const exports = function(format, opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
@@ -24,6 +13,7 @@ exports = function(format, opt_options) {
   ngeoInteractionMeasureLength.call(this, format, options);
 
 };
+
 ol.inherits(
   exports, ngeoInteractionMeasureLength);
 
@@ -38,3 +28,4 @@ exports.prototype.createDrawInteraction = function(style, source) {
     source: source
   });
 };
+export default exports;

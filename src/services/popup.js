@@ -1,31 +1,11 @@
-goog.module('ngeo.Popup');
-
-const ngeoBase = goog.require('ngeo');
-const googAsserts = goog.require('goog.asserts');
-const ngeoPopupDirective = goog.require('ngeo.popupDirective');
-
-
 /**
- * Provides a factory to create a popup in the page.
- * The factory returns a ngeo.Popup object.
- *
- * Example:
- *
- *     let popup = ngeoCreatePopup();
- *     popup.setTitle("A title");
- *     popup.setContent("Some content");
- *     popup.setOpen(true);
- *
- * @constructor
- * @struct
- * @param {angular.$compile} $compile The compile provider.
- * @param {angular.Scope} $rootScope The rootScope provider.
- * @param {angular.$sce} $sce Angular sce service.
- * @param {angular.$timeout} $timeout Angular timeout service.
- * @ngdoc service
- * @ngname ngeoCreatePopup
+ * @module
  */
-exports = function($compile, $rootScope, $sce, $timeout) {
+import ngeoBase from './index.js';
+import googAsserts from 'goog/asserts';
+import ngeoPopupDirective from './popupDirective.js';
+
+const exports = function($compile, $rootScope, $sce, $timeout) {
 
   /**
    * The scope the compiled element is link to.
@@ -262,3 +242,4 @@ ngeoBase.createPopupServiceFactory = function($compile, $rootScope, $sce,
   );
 };
 ngeoBase.module.factory('ngeoCreatePopup', ngeoBase.createPopupServiceFactory);
+export default exports;

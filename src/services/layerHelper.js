@@ -1,31 +1,21 @@
-goog.module('ngeo.LayerHelper');
-
-const ngeoBase = goog.require('ngeo');
-const googAsserts = goog.require('goog.asserts');
-const olCollection = goog.require('ol.Collection');
-const olArray = goog.require('ol.array');
-const olFormatWMTSCapabilities = goog.require('ol.format.WMTSCapabilities');
-const olLayerGroup = goog.require('ol.layer.Group');
-const olLayerImage = goog.require('ol.layer.Image');
-const olLayerTile = goog.require('ol.layer.Tile');
-const olObj = goog.require('ol.obj');
-const olSourceImageWMS = goog.require('ol.source.ImageWMS');
-const olSourceTileWMS = goog.require('ol.source.TileWMS');
-const olSourceWMTS = goog.require('ol.source.WMTS');
-const olUri = goog.require('ol.uri');
-
-
 /**
- * Provides help functions that helps you to create and manage layers.
- * @param {angular.$q} $q Angular promises/deferred service.
- * @param {angular.$http} $http Angular http service.
- * @constructor
- * @struct
- * @ngdoc service
- * @ngname ngeoLayerHelper
- * @ngInject
+ * @module
  */
-exports = function($q, $http) {
+import ngeoBase from './index.js';
+import googAsserts from 'goog/asserts';
+import olCollection from 'ol/Collection';
+import olArray from 'ol/array';
+import olFormatWMTSCapabilities from 'ol/format/WMTSCapabilities';
+import olLayerGroup from 'ol/layer/Group';
+import olLayerImage from 'ol/layer/Image';
+import olLayerTile from 'ol/layer/Tile';
+import olObj from 'ol/obj';
+import olSourceImageWMS from 'ol/source/ImageWMS';
+import olSourceTileWMS from 'ol/source/TileWMS';
+import olSourceWMTS from 'ol/source/WMTS';
+import olUri from 'ol/uri';
+
+const exports = function($q, $http) {
 
   /**
    * @type {angular.$q}
@@ -455,3 +445,4 @@ exports.prototype.getQuerySourceIds = function(layer) {
 
 
 ngeoBase.module.service('ngeoLayerHelper', exports);
+export default exports;

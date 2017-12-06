@@ -1,18 +1,12 @@
-goog.module('ngeo.drawrectangleDirective');
-
-const ngeoBase = goog.require('ngeo');
-const olEvents = goog.require('ol.events');
-const olInteractionDraw = goog.require('ol.interaction.Draw');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
-
-
 /**
- * @return {angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoDrawrectangle
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+import olEvents from 'ol/events';
+import olInteractionDraw from 'ol/interaction/Draw';
+import olGeomPolygon from 'ol/geom/Polygon';
+
+const exports = function() {
   return {
     restrict: 'A',
     require: '^^ngeoDrawfeature',
@@ -62,3 +56,4 @@ exports = function() {
 
 
 ngeoBase.module.directive('ngeoDrawrectangle', exports);
+export default exports;

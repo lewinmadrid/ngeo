@@ -1,14 +1,15 @@
-goog.module('ngeo.desktopGeolocationDirective');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoFeatureOverlay = goog.require('ngeo.FeatureOverlay');
-const ngeoFeatureOverlayMgr = goog.require('ngeo.FeatureOverlayMgr');
-const ngeoNotification = goog.require('ngeo.Notification');
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-const olGeolocation = goog.require('ol.Geolocation');
-const olMap = goog.require('ol.Map');
-const olGeomPoint = goog.require('ol.geom.Point');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import ngeoFeatureOverlay from './FeatureOverlay.js';
+import ngeoFeatureOverlayMgr from './FeatureOverlayMgr.js';
+import ngeoNotification from './Notification.js';
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+import olGeolocation from 'ol/Geolocation';
+import olMap from 'ol/Map';
+import olGeomPoint from 'ol/geom/Point';
 
 
 /**
@@ -22,26 +23,7 @@ ngeoBase.DesktopGeolocationEventType = {
 };
 
 
-/**
- * Provide a "desktop geolocation" directive.
- *
- * Example:
- *
- *      <button ngeo-desktop-geolocation=""
- *        ngeo-desktop-geolocation-map="ctrl.map"
- *        ngeo-desktop-geolocation-options="ctrl.desktopGeolocationOptions">
- *      </button>
- *
- * See our live example: [../examples/desktopgeolocation.html](../examples/desktopgeolocation.html)
- *
- * @htmlAttribute {ol.Map} gmf-geolocation-map The map.
- * @htmlAttribute {ngeox.DesktopGeolocationDirectiveOptions} gmf-geolocation-options The options.
- * @return {angular.Directive} The Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoDesktopGeolocation
- */
-exports = function() {
+const exports = function() {
   return {
     restrict: 'A',
     scope: {
@@ -213,3 +195,4 @@ ngeoBase.DesktopGeolocationController.prototype.setPosition_ = function(event) {
 
   this.geolocation_.setTracking(false);
 };
+export default exports;

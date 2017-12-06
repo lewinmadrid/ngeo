@@ -1,7 +1,9 @@
-goog.module('ngeo.DecorateLayerLoading');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+let exports = {};
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
 
 
 /**
@@ -122,3 +124,4 @@ ngeoBase.decorateLayerLoading = function(layer, $scope) {
 
 
 ngeoBase.module.value('ngeoDecorateLayerLoading', ngeoBase.decorateLayerLoading);
+export default exports;

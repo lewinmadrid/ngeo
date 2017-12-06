@@ -1,10 +1,12 @@
-goog.module('ngeo.filterComponent');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoMapQuerent = goog.require('ngeo.MapQuerent');
-const ngeoRuleComponent = goog.require('ngeo.ruleComponent');
-const ngeoRuleHelper = goog.require('ngeo.RuleHelper');
-const ngeoRuleGeometry = goog.require('ngeo.rule.Geometry');
+/**
+ * @module
+ */
+let exports = {};
+import ngeoBase from './index.js';
+import ngeoMapQuerent from './MapQuerent.js';
+import ngeoRuleComponent from './ruleComponent.js';
+import ngeoRuleHelper from './RuleHelper.js';
+import ngeoRuleGeometry from './rule/Geometry.js';
 
 
 /**
@@ -405,3 +407,4 @@ ngeoBase.module.component('ngeoFilter', {
   controller: ngeoBase.FilterController,
   templateUrl: () => `${ngeoBase.baseTemplateUrl}/filter.html`
 });
+export default exports;

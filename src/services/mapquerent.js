@@ -1,8 +1,9 @@
-goog.module('ngeo.MapQuerent');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoQuerent = goog.require('ngeo.Querent');
-const ngeoDatasourceDataSourcesHelper = goog.require('ngeo.datasource.DataSourcesHelper');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import ngeoQuerent from './Querent.js';
+import ngeoDatasourceDataSourcesHelper from './datasource/DataSourcesHelper.js';
 
 
 /**
@@ -16,7 +17,7 @@ ngeoBase.module.value('ngeoQueryResult', /** @type {ngeox.QueryResult} */ ({
 }));
 
 
-exports = class {
+const exports = class {
 
   /**
    * The ngeo Map Querent is the service bound to a map that issues
@@ -209,3 +210,4 @@ exports = class {
 
 
 ngeoBase.module.service('ngeoMapQuerent', exports);
+export default exports;

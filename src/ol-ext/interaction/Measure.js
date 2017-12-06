@@ -1,21 +1,22 @@
-goog.module('ngeo.interaction.Measure');
-
-const ngeoCustomEvent = goog.require('ngeo.CustomEvent');
-const googAsserts = goog.require('goog.asserts');
-const olDom = goog.require('ol.dom');
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-const olMapBrowserEvent = goog.require('ol.MapBrowserEvent');
-const olOverlay = goog.require('ol.Overlay');
-const olSphere = goog.require('ol.Sphere');
-const olEvents = goog.require('ol.events');
-const olInteractionInteraction = goog.require('ol.interaction.Interaction');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olProjEPSG4326 = goog.require('ol.proj.EPSG4326');
-const olSourceVector = goog.require('ol.source.Vector');
-const olStyleFill = goog.require('ol.style.Fill');
-const olStyleStroke = goog.require('ol.style.Stroke');
-const olStyleStyle = goog.require('ol.style.Style');
+/**
+ * @module
+ */
+import ngeoCustomEvent from '../CustomEvent.js';
+import googAsserts from 'goog/asserts';
+import olDom from 'ol/dom';
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+import olMapBrowserEvent from 'ol/MapBrowserEvent';
+import olOverlay from 'ol/Overlay';
+import olSphere from 'ol/Sphere';
+import olEvents from 'ol/events';
+import olInteractionInteraction from 'ol/interaction/Interaction';
+import olLayerVector from 'ol/layer/Vector';
+import olProjEPSG4326 from 'ol/proj/EPSG4326';
+import olSourceVector from 'ol/source/Vector';
+import olStyleFill from 'ol/style/Fill';
+import olStyleStroke from 'ol/style/Stroke';
+import olStyleStyle from 'ol/style/Style';
 
 
 /**
@@ -32,16 +33,7 @@ const olStyleStyle = goog.require('ol.style.Style');
 ngeo.interaction.MeasureBaseOptions;
 
 
-/**
- * Interaction that allows measuring (length, area, ...).
- *
- * @constructor
- * @struct
- * @abstract
- * @extends {ol.interaction.Interaction}
- * @param {ngeo.interaction.MeasureBaseOptions=} opt_options Options
- */
-exports = function(opt_options) {
+const exports = function(opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
@@ -202,6 +194,7 @@ exports = function(opt_options) {
 
   olEvents.listen(this, 'change:active', this.updateState_, this);
 };
+
 ol.inherits(exports, olInteractionInteraction);
 
 
@@ -531,3 +524,4 @@ exports.prototype.handleDrawInteractionActiveChange_ = function() {
     this.setActive(this.drawInteraction_.getActive());
   }
 };
+export default exports;

@@ -1,32 +1,20 @@
-goog.module('ngeo.interaction.Rotate');
-
-const ngeoCustomEvent = goog.require('ngeo.CustomEvent');
-const googAsserts = goog.require('goog.asserts');
-const olBase = goog.require('ol');
-const olCollection = goog.require('ol.Collection');
-const olFeature = goog.require('ol.Feature');
-const olMapBrowserPointerEvent = goog.require('ol.MapBrowserPointerEvent');
-const olEvents = goog.require('ol.events');
-const olInteractionModify = goog.require('ol.interaction.Modify');
-const olInteractionPointer = goog.require('ol.interaction.Pointer');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olSourceVector = goog.require('ol.source.Vector');
-
-
 /**
- * @classdesc
- * Interaction to rotate features.
- *
- * @constructor
- * @struct
- * @extends {ol.interaction.Pointer}
- * @param {olx.interaction.ModifyOptions} options Options.
- * @fires ngeo.interaction.ModifyCircleEvent
- * @export
- * @api
+ * @module
  */
-exports = function(options) {
+import ngeoCustomEvent from '../CustomEvent.js';
+import googAsserts from 'goog/asserts';
+import olBase from 'ol';
+import olCollection from 'ol/Collection';
+import olFeature from 'ol/Feature';
+import olMapBrowserPointerEvent from 'ol/MapBrowserPointerEvent';
+import olEvents from 'ol/events';
+import olInteractionModify from 'ol/interaction/Modify';
+import olInteractionPointer from 'ol/interaction/Pointer';
+import olGeomPoint from 'ol/geom/Point';
+import olLayerVector from 'ol/layer/Vector';
+import olSourceVector from 'ol/source/Vector';
+
+const exports = function(options) {
 
   googAsserts.assert(options.features);
 
@@ -118,6 +106,7 @@ exports = function(options) {
   });
 
 };
+
 olBase.inherits(exports, olInteractionPointer);
 
 
@@ -361,3 +350,4 @@ exports.prototype.handleKeyUp_ = function(evt) {
     this.setActive(false);
   }
 };
+export default exports;

@@ -1,23 +1,24 @@
-goog.module('ngeo.format.FeatureHash');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoUtils = goog.require('ngeo.utils');
-const olFeature = goog.require('ol.Feature');
-const olColor = goog.require('ol.color');
-const olFormatTextFeature = goog.require('ol.format.TextFeature');
-const olGeomGeometryLayout = goog.require('ol.geom.GeometryLayout');
-const olGeomGeometryType = goog.require('ol.geom.GeometryType');
-const olGeomLineString = goog.require('ol.geom.LineString');
-const olGeomMultiLineString = goog.require('ol.geom.MultiLineString');
-const olGeomMultiPoint = goog.require('ol.geom.MultiPoint');
-const olGeomMultiPolygon = goog.require('ol.geom.MultiPolygon');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
-const olStyleCircle = goog.require('ol.style.Circle');
-const olStyleFill = goog.require('ol.style.Fill');
-const olStyleStroke = goog.require('ol.style.Stroke');
-const olStyleStyle = goog.require('ol.style.Style');
-const olStyleText = goog.require('ol.style.Text');
+/**
+ * @module
+ */
+import googAsserts from 'goog/asserts';
+import ngeoUtils from '../utils.js';
+import olFeature from 'ol/Feature';
+import olColor from 'ol/color';
+import olFormatTextFeature from 'ol/format/TextFeature';
+import olGeomGeometryLayout from 'ol/geom/GeometryLayout';
+import olGeomGeometryType from 'ol/geom/GeometryType';
+import olGeomLineString from 'ol/geom/LineString';
+import olGeomMultiLineString from 'ol/geom/MultiLineString';
+import olGeomMultiPoint from 'ol/geom/MultiPoint';
+import olGeomMultiPolygon from 'ol/geom/MultiPolygon';
+import olGeomPoint from 'ol/geom/Point';
+import olGeomPolygon from 'ol/geom/Polygon';
+import olStyleCircle from 'ol/style/Circle';
+import olStyleFill from 'ol/style/Fill';
+import olStyleStroke from 'ol/style/Stroke';
+import olStyleStyle from 'ol/style/Style';
+import olStyleText from 'ol/style/Text';
 
 
 /**
@@ -50,32 +51,7 @@ ngeo.format.FeatureHashStyleTypes_ = {
 ngeo.format.FeatureHashLegacyProperties_ = {};
 
 
-/**
- * @classdesc
- * Provide an OpenLayers format for encoding and decoding features for use
- * in permalinks.
- *
- * The code is based on Stéphane Brunner's URLCompressed format.
- *
- * TODOs:
- *
- * - The OpenLayers-URLCompressed format has options where the user
- *   can define attribute and style transformers. This is currently
- *   not supported by this format.
- * - The OpenLayers-URLCompressed format has a "simplify" option.
- *   This format does not have it.
- * - ol.style.Icon styles are not supported.
- * - Transformation of coordinates during encoding and decoding is
- *   not supported.
- *
- * @see https://github.com/sbrunner/OpenLayers-URLCompressed
- * @constructor
- * @struct
- * @extends {ol.format.TextFeature}
- * @param {ngeox.format.FeatureHashOptions=} opt_options Options.
- * @export
- */
-exports = function(opt_options) {
+const exports = function(opt_options) {
 
   olFormatTextFeature.call(this);
 
@@ -127,6 +103,7 @@ exports = function(opt_options) {
   ngeo.format.FeatureHashLegacyProperties_ = (options.propertiesType !== undefined) &&  options.propertiesType;
 
 };
+
 ol.inherits(exports, olFormatTextFeature);
 
 
@@ -1215,3 +1192,4 @@ exports.prototype.writeGeometryText = function(geometry, opt_options) {
   this.prevY_ = 0;
   return geometryWriter.call(this, transformedGeometry);
 };
+export default exports;

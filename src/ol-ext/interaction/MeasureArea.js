@@ -1,24 +1,11 @@
-goog.module('ngeo.interaction.MeasureArea');
-
-const ngeoInteractionMeasure = goog.require('ngeo.interaction.Measure');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
-const olInteractionDraw = goog.require('ol.interaction.Draw');
-
-
 /**
- * @classdesc
- * Interaction dedicated to measure length.
- *
- * See our live example: [../examples/measure.html](../examples/measure.html)
- *
- * @constructor
- * @struct
- * @extends {ngeo.interaction.Measure}
- * @param {ngeox.unitPrefix} format The format function
- * @param {ngeox.interaction.MeasureOptions=} opt_options Options
- * @export
+ * @module
  */
-exports = function(format, opt_options) {
+import ngeoInteractionMeasure from '../interaction/Measure.js';
+import olGeomPolygon from 'ol/geom/Polygon';
+import olInteractionDraw from 'ol/interaction/Draw';
+
+const exports = function(format, opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
@@ -47,6 +34,7 @@ exports = function(format, opt_options) {
   this.format = format;
 
 };
+
 ol.inherits(exports, ngeoInteractionMeasure);
 
 
@@ -77,3 +65,4 @@ exports.prototype.handleMeasure = function(callback) {
   }
   callback(output, coord);
 };
+export default exports;

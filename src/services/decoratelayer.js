@@ -1,7 +1,9 @@
-goog.module('ngeo.DecorateLayer');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+let exports = {};
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
 
 
 /**
@@ -61,3 +63,4 @@ ngeoBase.decorateLayer = function(layer) {
 
 
 ngeoBase.module.value('ngeoDecorateLayer', ngeoBase.decorateLayer);
+export default exports;

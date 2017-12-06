@@ -1,4 +1,7 @@
-goog.module('ngeo.Attribute');
+/**
+ * @module
+ */
+let exports = {};
 
 
 /**
@@ -30,3 +33,4 @@ exports.setGeometryType = function(attribute, type) {
   }
   return !!attribute.type && !!attribute.geomType;
 };
+export default exports;

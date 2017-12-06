@@ -1,23 +1,16 @@
-goog.module('ol.format.WFSDescribeFeatureType');
-
-const olBase = goog.require('ol');
-const olFormatXML = goog.require('ol.format.XML');
-const olXml = goog.require('ol.xml');
-
-
 /**
- * @classdesc
- * Format for reading WFS DescribeFeatureType data.
- *
- * @constructor
- * @extends {ol.format.XML}
- * @api
+ * @module
  */
-exports = function() {
+import olBase from '../index.js';
+import olFormatXML from '../format/XML.js';
+import olXml from '../xml.js';
+
+const exports = function() {
 
   olFormatXML.call(this);
 
 };
+
 olBase.inherits(exports, olFormatXML);
 
 
@@ -227,3 +220,4 @@ exports.SEQUENCE_PARSERS_ = goog.asserts.assert(olXml.makeStructureNS(
       exports.readElement_
     )
   }));
+export default exports;

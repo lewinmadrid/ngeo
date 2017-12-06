@@ -1,22 +1,14 @@
-goog.module('ngeo.format.XSDAttribute');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoAttribute = goog.require('ngeo.Attribute');
-const olFormatXML = goog.require('ol.format.XML');
-
-
 /**
- * @classdesc
- * Reads attributes that are defined in XSD format and return them as a list.
- *
- * @constructor
- * @struct
- * @extends {ol.format.XML}
- * @export
+ * @module
  */
-exports = function() {
+import ngeoBase from '../index.js';
+import ngeoAttribute from '../Attribute.js';
+import olFormatXML from 'ol/format/XML';
+
+const exports = function() {
   olFormatXML.call(this);
 };
+
 ol.inherits(exports, olFormatXML);
 
 
@@ -196,3 +188,4 @@ exports.getGeometryAttribute = function(attributes) {
   }
   return geomAttribute;
 };
+export default exports;

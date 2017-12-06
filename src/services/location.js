@@ -1,37 +1,10 @@
-goog.module('ngeo.Location');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoUtils = goog.require('ngeo.utils');
-
-
 /**
- * Provides a service for interacting with the URL in the
- * browser address bar.
- *
- * WARNING: because of a bug in Angular this service is not compatible with
- * the $location service. This further means that service is not compatible
- * with the $anchorScroll and $route services, and with the ng-include and
- * ng-view directives (which are based on the $anchorScroll and $route
- * services). See <https://github.com/angular/angular.js/issues/1417>.
- *
- * This file also provides an ngeo.Location.MockProvider function that you can
- * use to mock Angular's $location provider and make it possible to use both
- * ngeoLocation and ng-include.
- *
- *     app.module.config(ngeo.Location.MockProvider);
- *
- * The ngeo Location type.
- *
- * See our live example: [../examples/permalink.html](../examples/permalink.html)
- *
- * @param {Location} location Location.
- * @param {History} history History.
- * @constructor
- * @struct
- * @ngdoc service
- * @ngname ngeoLocation
+ * @module
  */
-exports = function(location, history) {
+import ngeoBase from './index.js';
+import ngeoUtils from './utils.js';
+
+const exports = function(location, history) {
   /**
    * @type {History}
    * @private
@@ -477,3 +450,4 @@ exports.MockProvider = function($locationProvider) {
     return locationMock;
   };
 };
+export default exports;

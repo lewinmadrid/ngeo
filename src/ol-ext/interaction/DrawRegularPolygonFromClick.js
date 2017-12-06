@@ -1,26 +1,14 @@
-goog.module('ngeo.interaction.DrawRegularPolygonFromClick');
-
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-const olFunctions = goog.require('ol.functions');
-const olGeomCircle = goog.require('ol.geom.Circle');
-const olInteractionDraw = goog.require('ol.interaction.Draw');
-const olInteractionInteraction = goog.require('ol.interaction.Interaction');
-
-
 /**
- * @classdesc
- * This interactions allows drawing regular polygons of a pre-determined number
- * of sides and size a a clicked location on the map.
- *
- * @constructor
- * @struct
- * @fires ol.interaction.Draw.Event
- * @extends {ol.interaction.Interaction}
- * @param {ngeox.interaction.DrawRegularPolygonFromClickOptions} options Options
- * @export
+ * @module
  */
-exports = function(options) {
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+import olFunctions from 'ol/functions';
+import olGeomCircle from 'ol/geom/Circle';
+import olInteractionDraw from 'ol/interaction/Draw';
+import olInteractionInteraction from 'ol/interaction/Interaction';
+
+const exports = function(options) {
 
   /**
    * @type {number}
@@ -51,6 +39,7 @@ exports = function(options) {
   });
 
 };
+
 ol.inherits(
   exports, olInteractionInteraction);
 
@@ -137,3 +126,4 @@ exports.prototype.handleMapClick_ = function(evt) {
   this.dispatchEvent(new olInteractionDraw.Event(
     /** @type {ol.interaction.DrawEventType} */ ('drawend'), new olFeature(geometry)));
 };
+export default exports;

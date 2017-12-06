@@ -1,19 +1,10 @@
-goog.module('ngeo.EventHelper');
-
-const ngeoBase = goog.require('ngeo');
-const olEvents = goog.require('ol.events');
-
-
 /**
- * Provides methods to manage the listening/unlistening of OpenLayers events
- *
- * @constructor
- * @struct
- * @ngdoc service
- * @ngname ngeoEventHelper
- * @ngInject
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+import olEvents from 'ol/events';
+
+const exports = function() {
 
   /**
    * @type {Object.<number|string, Array.<ol.EventsKey>>}
@@ -70,3 +61,4 @@ exports.prototype.initListenerKey_ = function(uid) {
 };
 
 ngeoBase.module.service('ngeoEventHelper', exports);
+export default exports;

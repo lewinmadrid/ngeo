@@ -1,12 +1,12 @@
-goog.module('ngeo.rule.Geometry');
+/**
+ * @module
+ */
+import ngeoRuleRule from '../rule/Rule.js';
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+import olFormatGeoJSON from 'ol/format/GeoJSON';
 
-const ngeoRuleRule = goog.require('ngeo.rule.Rule');
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-const olFormatGeoJSON = goog.require('ol.format.GeoJSON');
-
-
-exports = class extends ngeoRuleRule {
+const exports = class extends ngeoRuleRule {
 
   /**
    * A rule bound to the geometry of a `ol.Feature` object. Changes made
@@ -193,3 +193,5 @@ exports = class extends ngeoRuleRule {
   }
 
 };
+
+export default exports;

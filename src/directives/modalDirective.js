@@ -1,7 +1,9 @@
-goog.module('ngeo.modalDirective');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+let exports = {};
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
 
 
 /**
@@ -189,3 +191,4 @@ exports.Component = {
 };
 
 ngeoBase.module.component('ngeoModal', exports.Component);
+export default exports;

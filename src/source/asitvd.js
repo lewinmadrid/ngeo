@@ -1,9 +1,9 @@
-goog.module('ngeo.source.AsitVD');
-goog.module.declareLegacyNamespace();
-
-const olBase = goog.require('ol');
-const olSourceWMTS = goog.require('ol.source.WMTS');
-const olTilegridWMTS = goog.require('ol.tilegrid.WMTS');
+/**
+ * @module
+ */
+import olBase from 'ol';
+import olSourceWMTS from 'ol/source/WMTS';
+import olTilegridWMTS from 'ol/tilegrid/WMTS';
 
 
 /**
@@ -25,16 +25,7 @@ const asitVDTileGrid = new olTilegridWMTS({
 });
 
 
-/**
- * Layer source for the ASIT VD tile server.
- * @see https://www.asitvd.ch/chercher/geoservices/fond-de-plan-asit-vd.html
- *
- * @constructor
- * @extends {ol.source.WMTS}
- * @param {ngeox.source.AsitVDOptions} options WMTS options.
- * @export
- */
-exports = function(options) {
+const exports = function(options) {
 
   olSourceWMTS.call(this, {
     attributions: 'géodonnées &copy; Etat de Vaud & &copy; contributeurs OpenStreetMap',
@@ -49,4 +40,6 @@ exports = function(options) {
     tileGrid: asitVDTileGrid
   });
 };
+
 olBase.inherits(exports, olSourceWMTS);
+export default exports;

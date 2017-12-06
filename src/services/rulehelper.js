@@ -1,18 +1,18 @@
-goog.module('ngeo.RuleHelper');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import ngeoFeatureHelper from './FeatureHelper.js';
+import ngeoWMSTime from './WMSTime.js';
+import ngeoRuleDate from './rule/Date.js';
+import ngeoRuleGeometry from './rule/Geometry.js';
+import ngeoRuleRule from './rule/Rule.js';
+import ngeoRuleSelect from './rule/Select.js';
+import ngeoRuleText from './rule/Text.js';
+import olFormatWFS from 'ol/format/WFS';
+import olFormatFilter from 'ol/format/filter';
 
-const ngeoBase = goog.require('ngeo');
-const ngeoFeatureHelper = goog.require('ngeo.FeatureHelper');
-const ngeoWMSTime = goog.require('ngeo.WMSTime');
-const ngeoRuleDate = goog.require('ngeo.rule.Date');
-const ngeoRuleGeometry = goog.require('ngeo.rule.Geometry');
-const ngeoRuleRule = goog.require('ngeo.rule.Rule');
-const ngeoRuleSelect = goog.require('ngeo.rule.Select');
-const ngeoRuleText = goog.require('ngeo.rule.Text');
-const olFormatWFS = goog.require('ol.format.WFS');
-const olFormatFilter = goog.require('ol.format.filter');
-
-
-exports = class {
+const exports = class {
 
   /**
    * A service that provides utility methods to create `ngeo.rule.Rule`
@@ -712,3 +712,4 @@ exports = class {
 
 
 ngeoBase.module.service('ngeoRuleHelper', exports);
+export default exports;

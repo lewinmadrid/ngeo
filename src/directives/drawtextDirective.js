@@ -1,17 +1,11 @@
-goog.module('ngeo.drawtextDirective');
-
-const ngeoBase = goog.require('ngeo');
-const olEvents = goog.require('ol.events');
-const olInteractionDraw = goog.require('ol.interaction.Draw');
-
-
 /**
- * @return {angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoDrawtext
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+import olEvents from 'ol/events';
+import olInteractionDraw from 'ol/interaction/Draw';
+
+const exports = function() {
   return {
     restrict: 'A',
     require: '^^ngeoDrawfeature',
@@ -49,3 +43,4 @@ exports = function() {
 
 
 ngeoBase.module.directive('ngeoDrawtext', exports);
+export default exports;

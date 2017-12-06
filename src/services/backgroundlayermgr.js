@@ -1,59 +1,15 @@
-goog.module('ngeo.BackgroundLayerMgr');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
-const ngeoCustomEvent = goog.require('ngeo.CustomEvent');
-const olObservable = goog.require('ol.Observable');
-const olSourceImageWMS = goog.require('ol.source.ImageWMS');
-const olSourceTileWMS = goog.require('ol.source.TileWMS');
-const olSourceWMTS = goog.require('ol.source.WMTS');
-
-
 /**
- * Provides a service for setting/unsetting background layers
- * in maps.
- *
- * The notion of background/base layers doesn't exist in OpenLayers. This
- * service adds that notion.
- *
- * Setting a background layer to map is done with the `set` function:
- *
- *     ngeoBackgroundLayerMgr.set(map, layer);
- *
- * To unset the background layer pass `null` as the `layer` argument:
- *
- *     ngeoBackgroundLayerMgr.set(map, null);
- *
- * The `get` function returns the current background layer of the map passed
- * as an argument. `null` is returned if the map doesn't have a background
- * layer.
- *
- * The background layer is always added at index 0 in the map's layers
- * collection. When a background layer is set it is inserted (at index 0)
- * if the map does not already have a background layer, otherwise the
- * new background layer replaces the previous one at index 0.
- *
- * Users can subscribe to a 'change' event to get notified when the background
- * layer changes:
- *
- *     ngeoBackgroundLayerMgr.on('change', function(e) {
- *       // do something with the layer
- *       let layer = ngeoBackgroundLayerMgr.get();
- *       // know which layer was used before
- *       let previous = e.previous
- *     });
- *
- * See our live examples:
- * [../examples/backgroundlayer.html](../examples/backgroundlayer.html)
- * [../examples/backgroundlayerdropdown.html](../examples/backgroundlayerdropdown.html)
- *
- * @extends {ol.Observable}
- * @constructor
- * @struct
- * @ngdoc service
- * @ngname ngeoBackgroundLayerMgr
+ * @module
  */
-exports = function() {
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
+import ngeoCustomEvent from './CustomEvent.js';
+import olObservable from 'ol/Observable';
+import olSourceImageWMS from 'ol/source/ImageWMS';
+import olSourceTileWMS from 'ol/source/TileWMS';
+import olSourceWMTS from 'ol/source/WMTS';
+
+const exports = function() {
 
   olObservable.call(this);
 
@@ -64,6 +20,7 @@ exports = function() {
    */
   this.mapUids_ = {};
 };
+
 ol.inherits(exports, olObservable);
 
 
@@ -155,3 +112,4 @@ exports.prototype.updateDimensions = function(map, dimensions) {
 };
 
 ngeoBase.module.service('ngeoBackgroundLayerMgr', exports);
+export default exports;

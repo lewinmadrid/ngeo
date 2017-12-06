@@ -1,42 +1,28 @@
-goog.module('ngeo.FeatureHelper');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoFilters = goog.require('ngeo.filters');
-const ngeoInteractionMeasure = goog.require('ngeo.interaction.Measure');
-const ngeoInteractionMeasureAzimut = goog.require('ngeo.interaction.MeasureAzimut');
-const ngeoDownload = goog.require('ngeo.Download');
-const olFeature = goog.require('ol.Feature');
-const olGeomLineString = goog.require('ol.geom.LineString');
-const olGeomMultiLineString = goog.require('ol.geom.MultiLineString');
-const olGeomMultiPoint = goog.require('ol.geom.MultiPoint');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
-const olGeomMultiPolygon = goog.require('ol.geom.MultiPolygon');
-const olFormatGPX = goog.require('ol.format.GPX');
-const olFormatKML = goog.require('ol.format.KML');
-const olStyleCircle = goog.require('ol.style.Circle');
-const olStyleFill = goog.require('ol.style.Fill');
-const olStyleRegularShape = goog.require('ol.style.RegularShape');
-const olStyleStroke = goog.require('ol.style.Stroke');
-const olStyleStyle = goog.require('ol.style.Style');
-const olStyleText = goog.require('ol.style.Text');
-
-
 /**
- * Provides methods for features, such as:
- *  - style setting / getting
- *  - measurement
- *  - export
- *
- * @constructor
- * @struct
- * @param {!angular.$injector} $injector Main injector.
- * @param {!angular.$filter} $filter Angular filter.
- * @ngdoc service
- * @ngname ngeoFeatureHelper
- * @ngInject
+ * @module
  */
-exports = function($injector, $filter) {
+import ngeoBase from './index.js';
+import ngeoFilters from './filters.js';
+import ngeoInteractionMeasure from './interaction/Measure.js';
+import ngeoInteractionMeasureAzimut from './interaction/MeasureAzimut.js';
+import ngeoDownload from './Download.js';
+import olFeature from 'ol/Feature';
+import olGeomLineString from 'ol/geom/LineString';
+import olGeomMultiLineString from 'ol/geom/MultiLineString';
+import olGeomMultiPoint from 'ol/geom/MultiPoint';
+import olGeomPoint from 'ol/geom/Point';
+import olGeomPolygon from 'ol/geom/Polygon';
+import olGeomMultiPolygon from 'ol/geom/MultiPolygon';
+import olFormatGPX from 'ol/format/GPX';
+import olFormatKML from 'ol/format/KML';
+import olStyleCircle from 'ol/style/Circle';
+import olStyleFill from 'ol/style/Fill';
+import olStyleRegularShape from 'ol/style/RegularShape';
+import olStyleStroke from 'ol/style/Stroke';
+import olStyleStyle from 'ol/style/Style';
+import olStyleText from 'ol/style/Text';
+
+const exports = function($injector, $filter) {
 
   /**
    * @type {!angular.$filter}
@@ -1044,3 +1030,4 @@ exports.FormatType = {
    */
   KML: 'KML'
 };
+export default exports;

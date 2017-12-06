@@ -1,8 +1,10 @@
-goog.module('ngeo.filters');
-
-const ngeoBase = goog.require('ngeo');
-const olMath = goog.require('ol.math');
-const olString = goog.require('ol.string');
+/**
+ * @module
+ */
+let exports = {};
+import ngeoBase from './index.js';
+import olMath from 'ol/math';
+import olString from 'ol/string';
 
 /**
  * Format a number as a localized scale.
@@ -319,3 +321,4 @@ ngeoBase.trustHtmlFilter = function($sce) {
 };
 
 ngeoBase.module.filter('ngeoTrustHtml', ngeoBase.trustHtmlFilter);
+export default exports;

@@ -1,7 +1,7 @@
-goog.module('ngeo.utils.File');
-goog.module.declareLegacyNamespace();
-
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+import ngeoBase from '../index.js';
 const ngeoModule = ngeoBase.module;
 
 
@@ -98,4 +98,5 @@ const name = 'ngeoFile';
 NgeoFile.module = angular.module(name, []).service(name, NgeoFile);
 ngeoModule.requires.push(name);
 
-exports = NgeoFile;
+const exports = NgeoFile;
+export default exports;

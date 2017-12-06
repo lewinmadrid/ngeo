@@ -1,23 +1,13 @@
-goog.module('ngeo.measurelengthDirective');
-
-const ngeoBase = goog.require('ngeo');
-const olEvents = goog.require('ol.events');
-const ngeoFilters = goog.require('ngeo.filters');
-const ngeoInteractionMeasureLength = goog.require('ngeo.interaction.MeasureLength');
-const olStyleStyle = goog.require('ol.style.Style');
-
-
 /**
- * @param {!angular.$compile} $compile Angular compile service.
- * @param {!angularGettext.Catalog} gettextCatalog Gettext catalog.
- * @param {!angular.$filter} $filter Angular filter.
- * @param {!angular.$injector} $injector Main injector.
- * @return {!angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoDrawpoint
+ * @module
  */
-exports = function($compile, gettextCatalog, $filter, $injector) {
+import ngeoBase from './index.js';
+import olEvents from 'ol/events';
+import ngeoFilters from './filters.js';
+import ngeoInteractionMeasureLength from './interaction/MeasureLength.js';
+import olStyleStyle from 'ol/style/Style';
+
+const exports = function($compile, gettextCatalog, $filter, $injector) {
   return {
     restrict: 'A',
     require: '^^ngeoDrawfeature',
@@ -62,3 +52,4 @@ exports = function($compile, gettextCatalog, $filter, $injector) {
 
 
 ngeoBase.module.directive('ngeoMeasurelength', exports);
+export default exports;

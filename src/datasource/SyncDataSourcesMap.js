@@ -1,15 +1,15 @@
-goog.module('ngeo.datasource.SyncDataSourcesMap');
+/**
+ * @module
+ */
+import ngeoBase from '../index.js';
+import ngeoDatasourceDataSource from '../datasource/DataSource.js';
+import ngeoDatasourceDataSources from '../datasource/DataSources.js';
+import olEvents from 'ol/events';
+import olObservable from 'ol/Observable';
+import olView from 'ol/View';
+import googAsserts from 'goog/asserts';
 
-const ngeoBase = goog.require('ngeo');
-const ngeoDatasourceDataSource = goog.require('ngeo.datasource.DataSource');
-const ngeoDatasourceDataSources = goog.require('ngeo.datasource.DataSources');
-const olEvents = goog.require('ol.events');
-const olObservable = goog.require('ol.Observable');
-const olView = goog.require('ol.View');
-const googAsserts = goog.require('goog.asserts');
-
-
-exports = class {
+const exports = class {
 
   /**
    * This service is responsible of the synchronization between the ngeo
@@ -171,3 +171,4 @@ exports = class {
 
 ngeoBase.module.service(
   'ngeoSyncDataSourcesMap', exports);
+export default exports;

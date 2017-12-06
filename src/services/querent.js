@@ -1,17 +1,17 @@
-goog.module('ngeo.Querent');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import ngeoRuleHelper from './RuleHelper.js';
+import ngeoWMSTime from './WMSTime.js';
+import olFormatWFS from 'ol/format/WFS';
+import olFormatWFSDescribeFeatureType from 'ol/format/WFSDescribeFeatureType';
+import olFormatWMSCapabilities from 'ol/format/WMSCapabilities';
+import olFormatWMTSCapabilities from 'ol/format/WMTSCapabilities';
+import olObj from 'ol/obj';
+import olSourceImageWMS from 'ol/source/ImageWMS';
 
-const ngeoBase = goog.require('ngeo');
-const ngeoRuleHelper = goog.require('ngeo.RuleHelper');
-const ngeoWMSTime = goog.require('ngeo.WMSTime');
-const olFormatWFS = goog.require('ol.format.WFS');
-const olFormatWFSDescribeFeatureType = goog.require('ol.format.WFSDescribeFeatureType');
-const olFormatWMSCapabilities = goog.require('ol.format.WMSCapabilities');
-const olFormatWMTSCapabilities = goog.require('ol.format.WMTSCapabilities');
-const olObj = goog.require('ol.obj');
-const olSourceImageWMS = goog.require('ol.source.ImageWMS');
-
-
-exports = class {
+const exports = class {
 
   /**
    * The ngeo Querent is a service that issues all sorts of queries using
@@ -946,3 +946,4 @@ exports.CombinedDataSources;
 
 
 ngeoBase.module.service('ngeoQuerent', exports);
+export default exports;

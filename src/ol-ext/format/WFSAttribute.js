@@ -1,9 +1,9 @@
-goog.module('ngeo.format.WFSAttribute');
+/**
+ * @module
+ */
+import ngeoAttribute from '../Attribute.js';
 
-const ngeoAttribute = goog.require('ngeo.Attribute');
-
-
-exports = class {
+const exports = class {
 
 
   /**
@@ -54,3 +54,5 @@ exports = class {
   }
 
 };
+
+export default exports;

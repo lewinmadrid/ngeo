@@ -1,26 +1,9 @@
-goog.module('ngeo.popoverDirective');
-
-const ngeoBase = goog.require('ngeo');
-
 /**
- * Provides a directive used to display a Bootstrap popover.
- *
- *<div ngeo-popover>
- *  <a ngeo-popover-anchor class="btn btn-info">anchor 1</a>
- *  <div ngeo-popover-content>
- *    <ul>
- *      <li>action 1:
- *        <input type="range"/>
- *      </li>
- *    </ul>
- *  </div>
- *</div>
- * @ngdoc directive
- * @ngInject
- * @ngname ngeoPopover
- * @return {angular.Directive} The Directive Definition Object.
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+
+const exports = function() {
   return {
     restrict: 'A',
     scope: true,
@@ -153,3 +136,4 @@ ngeoBase.module.controller('NgeoPopoverController', ngeoBase.PopoverController);
 ngeoBase.module.directive('ngeoPopover', exports);
 ngeoBase.module.directive('ngeoPopoverAnchor', ngeoBase.popoverAnchorDirective);
 ngeoBase.module.directive('ngeoPopoverContent', ngeoBase.popoverContentDirective);
+export default exports;

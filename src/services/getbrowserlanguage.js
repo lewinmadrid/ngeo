@@ -1,6 +1,8 @@
-goog.module('ngeo.GetBrowserLanguage');
-
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+let exports = {};
+import ngeoBase from './index.js';
 
 
 /**
@@ -45,3 +47,4 @@ ngeoBase.getBrowserLanguageFactory = function($window) {
 
 
 ngeoBase.module.factory('ngeoGetBrowserLanguage', ngeoBase.getBrowserLanguageFactory);
+export default exports;

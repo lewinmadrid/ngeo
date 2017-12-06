@@ -1,12 +1,9 @@
-goog.module('ngeo.rule.Rule');
-
-const ngeoBase = goog.require('ngeo');
-
-
 /**
- * @implements {ngeox.rule.Rule}
+ * @module
  */
-exports = class {
+import ngeoBase from '../index.js';
+
+const exports = class {
 
   /**
    * The abstract class for all filter rules.
@@ -367,3 +364,4 @@ exports.TemporalOperatorType = {
   ENDS: '<=',
   EQUALS: '='
 };
+export default exports;

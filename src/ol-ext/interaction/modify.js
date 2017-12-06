@@ -1,37 +1,15 @@
-goog.module('ngeo.interaction.Modify');
-
-const ngeoInteractionModifyCircle = goog.require('ngeo.interaction.ModifyCircle');
-const ngeoInteractionModifyRectangle = goog.require('ngeo.interaction.ModifyRectangle');
-const olEvents = goog.require('ol.events');
-const olFunctions = goog.require('ol.functions');
-const olInteractionInteraction = goog.require('ol.interaction.Interaction');
-const olCollection = goog.require('ol.Collection');
-const olInteractionModify = goog.require('ol.interaction.Modify');
-
-
 /**
- * This interaction combines multiple kind of feature modification interactions
- * in order to be able to modify vector features depending on their geometry
- * type. The different kind of interactions supported are:
- *
- * - `ol.interaction.Modify`
- * - `ngeo.interaction.ModifyCircle`
- * - `ngeo.interaction.ModifyRectangle`
- *
- * This interaction receives a collection of features. Its job is to listen
- * to added/removed features to and from it and add them in the proper
- * collection that is uniquely used for each inner interaction. Those inner
- * interactions follow the `active` property of this interaction, i.e. when
- * this interaction is activated, so do the inner interactions. Since they will
- * never share the same feature, they don't collide with one an other.
- *
- * @constructor
- * @struct
- * @extends {ol.interaction.Interaction}
- * @param {olx.interaction.ModifyOptions} options Options.
- * @export
+ * @module
  */
-exports = function(options) {
+import ngeoInteractionModifyCircle from '../interaction/ModifyCircle.js';
+import ngeoInteractionModifyRectangle from '../interaction/ModifyRectangle.js';
+import olEvents from 'ol/events';
+import olFunctions from 'ol/functions';
+import olInteractionInteraction from 'ol/interaction/Interaction';
+import olCollection from 'ol/Collection';
+import olInteractionModify from 'ol/interaction/Modify';
+
+const exports = function(options) {
 
   goog.asserts.assert(options.features);
 
@@ -98,6 +76,7 @@ exports = function(options) {
   });
 
 };
+
 ol.inherits(exports, olInteractionInteraction);
 
 
@@ -231,3 +210,4 @@ exports.prototype.getFeatureCollection_ = function(feature) {
   }
   return features;
 };
+export default exports;

@@ -1,9 +1,9 @@
-goog.module('ngeo.rule.Text');
+/**
+ * @module
+ */
+import ngeoRuleRule from '../rule/Rule.js';
 
-const ngeoRuleRule = goog.require('ngeo.rule.Rule');
-
-
-exports = class extends ngeoRuleRule {
+const exports = class extends ngeoRuleRule {
 
   /**
    * A text rule, which always compares the value with the LIKE operator, by
@@ -21,3 +21,5 @@ exports = class extends ngeoRuleRule {
 
   }
 };
+
+export default exports;

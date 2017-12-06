@@ -1,29 +1,29 @@
-goog.module('ngeo.Print');
-
-
-const ngeoBase = goog.require('ngeo');
-const ngeoLayerHelper = goog.require('ngeo.LayerHelper');
-const ngeoUtils = goog.require('ngeo.utils');
-const olColor = goog.require('ol.color');
-const olFormatGeoJSON = goog.require('ol.format.GeoJSON');
-const olGeomGeometryType = goog.require('ol.geom.GeometryType');
-const olLayerImage = goog.require('ol.layer.Image');
-const olLayerTile = goog.require('ol.layer.Tile');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olMath = goog.require('ol.math');
-const olSize = goog.require('ol.size');
-const olSourceImageWMS = goog.require('ol.source.ImageWMS');
-const olSourceTileWMS = goog.require('ol.source.TileWMS');
-const olSourceVector = goog.require('ol.source.Vector');
-const olSourceWMTS = goog.require('ol.source.WMTS');
-const olStyleCircle = goog.require('ol.style.Circle');
-const olStyleFill = goog.require('ol.style.Fill');
-const olStyleImage = goog.require('ol.style.Image');
-const olStyleStroke = goog.require('ol.style.Stroke');
-const olStyleStyle = goog.require('ol.style.Style');
-const olStyleText = goog.require('ol.style.Text');
-const olStyleRegularShape = goog.require('ol.style.RegularShape');
-const olTilegridWMTS = goog.require('ol.tilegrid.WMTS');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import ngeoLayerHelper from './LayerHelper.js';
+import ngeoUtils from './utils.js';
+import olColor from 'ol/color';
+import olFormatGeoJSON from 'ol/format/GeoJSON';
+import olGeomGeometryType from 'ol/geom/GeometryType';
+import olLayerImage from 'ol/layer/Image';
+import olLayerTile from 'ol/layer/Tile';
+import olLayerVector from 'ol/layer/Vector';
+import olMath from 'ol/math';
+import olSize from 'ol/size';
+import olSourceImageWMS from 'ol/source/ImageWMS';
+import olSourceTileWMS from 'ol/source/TileWMS';
+import olSourceVector from 'ol/source/Vector';
+import olSourceWMTS from 'ol/source/WMTS';
+import olStyleCircle from 'ol/style/Circle';
+import olStyleFill from 'ol/style/Fill';
+import olStyleImage from 'ol/style/Image';
+import olStyleStroke from 'ol/style/Stroke';
+import olStyleStyle from 'ol/style/Style';
+import olStyleText from 'ol/style/Text';
+import olStyleRegularShape from 'ol/style/RegularShape';
+import olTilegridWMTS from 'ol/tilegrid/WMTS';
 
 
 /**
@@ -55,50 +55,7 @@ ngeoBase.PrintStyleTypes_ = {
   'MultiPolygon': ngeoBase.PrintStyleType.POLYGON
 };
 
-/**
- * Provides a function to create ngeo.Print objects used to
- * interact with MapFish Print v3 services.
- *
- * ngeo.Print objects expose the following methods:
- *
- * - createSpec: create a report specification object
- * - createReport: send a create report request
- * - getStatus: get the status of a report
- * - getReportUrl: get the URL of a report
- * - getCapabilities: get the capabilities of the server
- *
- *
- *     let printBaseUrl = 'http://example.com/print';
- *     let print = new ngeo.Print(printBaseUrl);
- *
- *     let scale = 5000;
- *     let dpi = 72;
- *     let layout = 'A4 portrait';
- *     let format = 'pdf';
- *     let reportSpec = print.createSpec(map, scale, dpi, layout, format, {
- *       'title': 'A title for my report',
- *       'rotation': 45 // degree
- *     });
- *
- * See our live example: [../examples/mapfishprint.html](../examples/mapfishprint.html)
- *
- * TODO and limitations:
- *
- * - createSpec should also accept a bbox instead of a center and a scale.
- * - Add support for ol.style.RegularShape. MapFish Print supports symbols
- *   like crosses, stars and squares, so printing regular shapes should be
- *   possible.
- * - ol.style.Icon may use a sprite image, and offsets to define to rectangle
- *   to use within the sprite. This type of icons won't be printed correctly
- *   as MapFish Print does not support sprite icons.
- *
- * @constructor
- * @struct
- * @param {string} url URL to MapFish print web service.
- * @param {angular.$http} $http Angular $http service.
- * @param {ngeo.LayerHelper} ngeoLayerHelper Ngeo Layer Helper service.
- */
-exports = function(url, $http, ngeoLayerHelper) {
+const exports = function(url, $http, ngeoLayerHelper) {
   /**
    * @type {string}
    * @private
@@ -917,3 +874,4 @@ ngeoBase.createPrintServiceFactory = function($http, ngeoLayerHelper) {
 
 
 ngeoBase.module.factory('ngeoCreatePrint', ngeoBase.createPrintServiceFactory);
+export default exports;

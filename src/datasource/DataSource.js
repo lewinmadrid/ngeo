@@ -1,12 +1,9 @@
-goog.module('ngeo.datasource.DataSource');
-
-const ngeoBase = goog.require('ngeo');
-
-
 /**
- * @implements {ngeox.datasource.DataSource}
+ * @module
  */
-exports = class {
+import ngeoBase from '../index.js';
+
+const exports = class {
 
   /**
    * A `ngeo.datasource.DataSource` represents a single source of data, which
@@ -222,3 +219,5 @@ exports = class {
     return this.maxResolution !== null || this.minResolution !== null;
   }
 };
+
+export default exports;

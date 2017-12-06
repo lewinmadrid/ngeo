@@ -1,11 +1,12 @@
-goog.module('ngeo.FeatureOverlay');
-
-const ngeoBase = goog.require('ngeo');
-const olBase = goog.require('ol');
-const olEvents = goog.require('ol.events');
-const olCollection = goog.require('ol.Collection');
-const olFeature = goog.require('ol.Feature');
-const olStyleStyle = goog.require('ol.style.Style');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import olBase from 'ol';
+import olEvents from 'ol/events';
+import olCollection from 'ol/Collection';
+import olFeature from 'ol/Feature';
+import olStyleStyle from 'ol/style/Style';
 
 
 /**
@@ -17,12 +18,7 @@ const olStyleStyle = goog.require('ol.style.Style');
 ngeoBase.FeatureOverlayGroup;
 
 
-/**
- * @constructor
- * @param {ngeo.FeatureOverlayMgr} manager The feature overlay manager.
- * @param {number} index This feature overlay's index.
- */
-exports = function(manager, index) {
+const exports = function(manager, index) {
 
   /**
    * @type {ngeo.FeatureOverlayMgr}
@@ -128,3 +124,4 @@ exports.prototype.handleFeatureRemove_ = function(evt) {
   const feature = /** @type {ol.Feature} */ (evt.element);
   this.removeFeature(feature);
 };
+export default exports;

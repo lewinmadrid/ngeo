@@ -1,18 +1,9 @@
-goog.module('ngeo.Popover');
-
-const olOverlay = goog.require('ol.Overlay');
-
-
 /**
- * @classdesc
- * An openlayers overlay that uses bootstrap popover to produce a popup
- * for maps.
- *
- * @constructor
- * @extends {ol.Overlay}
- * @param {olx.OverlayOptions=} opt_options Overlay options.
+ * @module
  */
-exports = function(opt_options) {
+import olOverlay from 'ol/Overlay';
+
+const exports = function(opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
@@ -46,6 +37,7 @@ exports = function(opt_options) {
   olOverlay.call(this, options);
 
 };
+
 ol.inherits(exports, olOverlay);
 
 
@@ -91,3 +83,4 @@ exports.prototype.setMap = function(map) {
     });
   }
 };
+export default exports;

@@ -1,8 +1,10 @@
-goog.module('ngeo.DatePickerDirective');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
-const ngeoTime = goog.require('ngeo.Time');
+/**
+ * @module
+ */
+let exports = {};
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
+import ngeoTime from './Time.js';
 
 ngeoBase.module.value('ngeoDatePickerTemplateUrl',
   /**
@@ -217,3 +219,4 @@ ngeoBase.DatePickerController.prototype.init = function() {
 };
 
 ngeoBase.module.controller('ngeoDatePickerController', ngeoBase.DatePickerController);
+export default exports;

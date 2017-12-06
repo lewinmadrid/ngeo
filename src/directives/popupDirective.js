@@ -1,6 +1,7 @@
-goog.module('ngeo.popupDirective');
-
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
 
 
 ngeoBase.module.value('ngeoPopupTemplateUrl',
@@ -16,29 +17,7 @@ ngeoBase.module.value('ngeoPopupTemplateUrl',
   });
 
 
-/**
- * Provides a directive used to show a popup over the page with
- * a title and content.
- *
- *
- * Things to know about this directive:
- *
- * - This directive is intented to be used along with the popup service.
- *
- * - By default the directive uses "popup.html" as its templateUrl. This can be
- *   changed by redefining the "ngeoPopupTemplateUrl" value.
- *
- * - The directive doesn't create any scope but relies on its parent scope.
- *   Properties like 'content', 'title' or 'open' come from the parent scope.
- *
- * @private
- * @param {string} ngeoPopupTemplateUrl URL to popup template.
- * @return {angular.Directive} Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoPopup
- */
-exports = function(ngeoPopupTemplateUrl) {
+const exports = function(ngeoPopupTemplateUrl) {
   return {
     restrict: 'A',
     templateUrl: ngeoPopupTemplateUrl,
@@ -70,3 +49,4 @@ exports = function(ngeoPopupTemplateUrl) {
 };
 
 ngeoBase.module.directive('ngeoPopup', exports);
+export default exports;

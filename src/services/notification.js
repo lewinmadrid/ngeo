@@ -1,25 +1,11 @@
-goog.module('ngeo.Notification');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
-const ngeoMessage = goog.require('ngeo.Message');
-
-
 /**
- * Provides methods to display any sort of messages, notifications, errors,
- * etc. Requires Bootstrap library (both CSS and JS) to display the alerts
- * properly.
- *
- * @constructor
- * @struct
- * @extends {ngeo.Message}
- * @param {angular.$timeout} $timeout Angular timeout service.
- * @ngdoc service
- * @ngname ngeoNotification
- * @abstract
- * @ngInject
+ * @module
  */
-exports = function($timeout) {
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
+import ngeoMessage from './Message.js';
+
+const exports = function($timeout) {
 
   ngeoMessage.call(this);
 
@@ -45,6 +31,7 @@ exports = function($timeout) {
   this.cache_ = {};
 
 };
+
 ol.inherits(exports, ngeoMessage);
 
 
@@ -170,3 +157,4 @@ exports.CacheItem;
 
 
 ngeoBase.module.service('ngeoNotification', exports);
+export default exports;

@@ -1,16 +1,9 @@
-goog.module('ngeo.Time');
-
-const ngeoBase = goog.require('ngeo');
-
 /**
- * ngeo - Time service
- * @constructor
- * @struct
- * @ngInject
- * @ngdoc service
- * @ngname ngeoTime
+ * @module
  */
-exports  = function() {
+import ngeoBase from './index.js';
+
+const exports = function() {
 
 };
 
@@ -64,3 +57,4 @@ exports.prototype.getUTCDate = function(localDate) {
 
 
 ngeoBase.module.service('ngeoTime', exports);
+export default exports;

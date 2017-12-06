@@ -1,57 +1,12 @@
-goog.module('ngeo.createregularpolygonfromclickDirective');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoInteractionDrawRegularPolygonFromClick = goog.require('ngeo.interaction.DrawRegularPolygonFromClick');
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-
-
 /**
- * A directive used to draw vector features of a single geometry type using
- * either a 'draw' or 'measure' interaction. Once a feature is finished being
- * drawn, it is added to a collection of features.
- *
- * The geometry types supported are:
- *  - Point
- *  - LineString
- *  - Polygon
- *
- * Example:
- *
- *     <a
- *       href
- *       translate
- *       ngeo-btn
- *       ngeo-createregularpolygonfromclick
- *       ngeo-createregularpolygonfromclick-active="ctrl.active"
- *       ngeo-createregularpolygonfromclick-angle="::ctrl.angle"
- *       ngeo-createregularpolygonfromclick-features="ctrl.features"
- *       ngeo-createregularpolygonfromclick-map="::ctrl.map"
- *       ngeo-createregularpolygonfromclick-radius="::ctrl.radius"
- *       ngeo-createregularpolygonfromclick-sides="::ctrl.sides"
- *       class="btn btn-default ngeo-createregularpolygonfromclick"
- *       ng-class="{active: ctrl.active}"
- *       ng-model="ctrl.active">
- *     </a>
- *
- * @htmlAttribute {boolean} ngeo-createregularpolygonfromclick-active Whether
- *     the directive is active or not.
- * @htmlAttribute {number|undefined} ngeo-createregularpolygonfromclick-angle
- *     Angle in radians. A value of 0 will have one of the shape's point
- *     facing up. Default value is 0.
- * @htmlAttribute {ol.Collection} ngeo-createregularpolygonfromclick-features
- *     The collection of features where to add those created by this directive.
- * @htmlAttribute {ol.Map} ngeo-createregularpolygonfromclick-map The map.
- * @htmlAttribute {number} ngeo-createregularpolygonfromclick-radius Radius
- *     size in map units.
- * @htmlAttribute {number|undefined} ngeo-createregularpolygonfromclick-sides
- *     The number of sides for the regular polygon. Default value is 3.
- *
- * @return {angular.Directive} The directive specs.
- * @ngdoc directive
- * @ngname ngeoCreateregularpolygonfromclick
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+import ngeoInteractionDrawRegularPolygonFromClick from './interaction/DrawRegularPolygonFromClick.js';
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+
+const exports = function() {
   return {
     controller: ngeoBase.CreateregularpolygonfromclickController,
     bindToController: true,
@@ -190,3 +145,4 @@ ngeoBase.CreateregularpolygonfromclickController.prototype.handleDestroy_ = func
   this.interaction_.setActive(false);
   this.map.removeInteraction(this.interaction_);
 };
+export default exports;

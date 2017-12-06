@@ -1,11 +1,11 @@
-goog.module('ngeo.datasource.File');
+/**
+ * @module
+ */
+import ngeoDatasourceDataSource from '../datasource/DataSource.js';
+import olLayerVector from 'ol/layer/Vector';
+import olSourceVector from 'ol/source/Vector';
 
-const ngeoDatasourceDataSource = goog.require('ngeo.datasource.DataSource');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olSourceVector = goog.require('ol.source.Vector');
-
-
-exports = class extends ngeoDatasourceDataSource {
+const exports = class extends ngeoDatasourceDataSource {
 
   /**
    * A data source that contains vector features that were loaded from a file.
@@ -91,3 +91,5 @@ exports = class extends ngeoDatasourceDataSource {
     return this.source_.getExtent();
   }
 };
+
+export default exports;

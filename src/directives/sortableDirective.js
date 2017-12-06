@@ -1,53 +1,11 @@
-goog.module('ngeo.sortableDirective');
-
-const googFxDragListDirection = goog.require('goog.fx.DragListDirection');
-const googFxDragListGroup = goog.require('goog.fx.DragListGroup');
-const ngeoBase = goog.require('ngeo');
-
-
 /**
- * Provides a directive that allows drag-and-dropping DOM items between them.
- * It also changes the order of elements in the given array.
- *
- * It is typically used together with `ng-repeat`, for example for re-ordering
- * layers in a map.
- *
- * Example:
- *
- *     <ul ngeo-sortable="ctrl.layers"
- *         ngeo-sortable-options="{handleClassName: 'ngeo-sortable-handle'}">
- *       <li ng-repeat="layer in ctrl.layers">
- *         <span class="ngeo-sortable-handle">handle</span>{{layer.get('name')}}
- *       </li>
- *     </ul>
- *
- * The value of the "ngeo-sortable" attribute is an expression which evaluates
- * to an array (an array of layers in the above example). This is the array
- * that is re-ordered after a drag-and-drop.
- *
- * The element with the class "ngeo-sortable-handle" is the "drag handle".
- * It is required.
- *
- * This directives uses `$watchCollection` to watch the "sortable" array. So
- * if some outside code adds/removes elements to/from the "sortable" array,
- * the "ngeoSortable" directive will pick it up.
- *
- * See our live example: [../examples/layerorder.html](../examples/layerorder.html)
- *
- * @htmlAttribute {Array.<ol.layer.Base>} ngeo-sortable The layers to sort.
- * @htmlAttribute {!ngeox.SortableOptions} ngeo-sortable-options The options.
- * @htmlAttribute {Function(angular.JQLite, Array)?} ngeo-sortable-callback
- *     Callback function called after the move end. The Function will be called
- *     with the element and the sort array as arguments.
- * @htmlAttribute {Object?} ngeo-sortable-callback-ctx Context to apply at
- *     the call of the callback function.
- * @param {angular.$timeout} $timeout Angular timeout service.
- * @return {angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoSortable
+ * @module
  */
-exports = function($timeout) {
+import googFxDragListDirection from 'goog/fx/DragListDirection';
+import googFxDragListGroup from 'goog/fx/DragListGroup';
+import ngeoBase from './index.js';
+
+const exports = function($timeout) {
   return {
     restrict: 'A',
     /**
@@ -198,3 +156,4 @@ exports = function($timeout) {
 };
 
 ngeoBase.module.directive('ngeoSortable', exports);
+export default exports;

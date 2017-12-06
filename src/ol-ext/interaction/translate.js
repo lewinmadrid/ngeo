@@ -1,30 +1,16 @@
-goog.module('ngeo.interaction.Translate');
-
-const olFeature = goog.require('ol.Feature');
-const olEvents = goog.require('ol.events');
-const olGeomLineString = goog.require('ol.geom.LineString');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
-const olInteractionTranslate = goog.require('ol.interaction.Translate');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olSourceVector = goog.require('ol.source.Vector');
-
-
 /**
- * An extension of the OpenLayers Translate interaction that adds the following
- * features to it:
- *
- * - show a small arrow icon in the middle of the features allowing a visual
- *   aspect that tells the user "this feature can be moved"
- * - pressing the ESC key automatically deactivate the interaction.
- *
- * @constructor
- * @struct
- * @extends {ol.interaction.Translate}
- * @param {ngeox.interaction.TranslateOptions} options Options.
- * @export
+ * @module
  */
-exports = function(options) {
+import olFeature from 'ol/Feature';
+import olEvents from 'ol/events';
+import olGeomLineString from 'ol/geom/LineString';
+import olGeomPoint from 'ol/geom/Point';
+import olGeomPolygon from 'ol/geom/Polygon';
+import olInteractionTranslate from 'ol/interaction/Translate';
+import olLayerVector from 'ol/layer/Vector';
+import olSourceVector from 'ol/source/Vector';
+
+const exports = function(options) {
 
   /**
    * @type {!Array.<ol.EventsKey>}
@@ -78,6 +64,7 @@ exports = function(options) {
   olInteractionTranslate.call(
     this, /** @type {olx.interaction.TranslateOptions} */ (options));
 };
+
 ol.inherits(exports, olInteractionTranslate);
 
 
@@ -280,3 +267,4 @@ exports.prototype.handleKeyUp_ = function(evt) {
     this.setActive(false);
   }
 };
+export default exports;

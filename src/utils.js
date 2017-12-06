@@ -1,11 +1,13 @@
-goog.module('ngeo.utils');
-
-const olGeomLineString = goog.require('ol.geom.LineString');
-const olGeomMultiPoint = goog.require('ol.geom.MultiPoint');
-const olGeomMultiLineString = goog.require('ol.geom.MultiLineString');
-const olGeomMultiPolygon = goog.require('ol.geom.MultiPolygon');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
+/**
+ * @module
+ */
+let exports = {};
+import olGeomLineString from 'ol/geom/LineString';
+import olGeomMultiPoint from 'ol/geom/MultiPoint';
+import olGeomMultiLineString from 'ol/geom/MultiLineString';
+import olGeomMultiPolygon from 'ol/geom/MultiPolygon';
+import olGeomPoint from 'ol/geom/Point';
+import olGeomPolygon from 'ol/geom/Polygon';
 
 
 /**
@@ -107,3 +109,4 @@ exports.encodeQueryString = function(queryData) {
   }
   return queryItem.join('&');
 };
+export default exports;

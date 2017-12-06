@@ -1,3 +1,6 @@
+/**
+ * @module
+ */
 /*
  * FIXME: a file needing splitting into:
  * - a "virtual" angular module root used to automatically register finely included ngeo dependencies;
@@ -11,22 +14,20 @@
 /**
  * @module ngeo
  */
-goog.module('ngeo');
-
-
-const olFormatIGC = goog.require('ol.format.IGC');
-const olSourceRaster = goog.require('ol.source.Raster');
-const olVectorTile = goog.require('ol.VectorTile');
-const olOverlay = goog.require('ol.Overlay');
-const olControlScaleLine = goog.require('ol.control.ScaleLine');
-const olSourceWMTS = goog.require('ol.source.WMTS');
-const olStyleIcon = goog.require('ol.style.Icon');
-const olLayerVectorTile = goog.require('ol.layer.VectorTile');
-const olMap = goog.require('ol.Map');
-const olSourceVector = goog.require('ol.source.Vector');
-const olRenderFeature = goog.require('ol.render.Feature');
-const olSourceVectorTile = goog.require('ol.source.VectorTile');
-const olStyleAtlasManager = goog.require('ol.style.AtlasManager');
+let exports = {};
+import olFormatIGC from 'ol/format/IGC';
+import olSourceRaster from 'ol/source/Raster';
+import olVectorTile from 'ol/VectorTile';
+import olOverlay from 'ol/Overlay';
+import olControlScaleLine from 'ol/control/ScaleLine';
+import olSourceWMTS from 'ol/source/WMTS';
+import olStyleIcon from 'ol/style/Icon';
+import olLayerVectorTile from 'ol/layer/VectorTile';
+import olMap from 'ol/Map';
+import olSourceVector from 'ol/source/Vector';
+import olRenderFeature from 'ol/render/Feature';
+import olSourceVectorTile from 'ol/source/VectorTile';
+import olStyleAtlasManager from 'ol/style/AtlasManager';
 
 
 /** @type {!angular.Module} */
@@ -241,3 +242,4 @@ exports.NumberType = {
    */
   INTEGER: 'integer'
 };
+export default exports;

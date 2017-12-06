@@ -1,23 +1,12 @@
-goog.module('ngeo.Menu');
-
-const ngeoCustomEvent = goog.require('ngeo.CustomEvent');
-const olEvents = goog.require('ol.events');
-const olOverlay = goog.require('ol.Overlay');
-const olOverlayPositioning = goog.require('ol.OverlayPositioning');
-
-
 /**
- * @classdesc
- * An OpenLayers overlay that shows a contextual menu with configurable actions
- * anchored from its top left to a specific location. An event is fired when
- * any of the action is clicked.
- *
- * @constructor
- * @extends {ol.Overlay}
- * @param {ngeox.MenuOptions=} menuOptions Menu options.
- * @param {olx.OverlayOptions=} opt_overlayOptions Overlay options.
+ * @module
  */
-exports = function(menuOptions, opt_overlayOptions) {
+import ngeoCustomEvent from './CustomEvent.js';
+import olEvents from 'ol/events';
+import olOverlay from 'ol/Overlay';
+import olOverlayPositioning from 'ol/OverlayPositioning';
+
+const exports = function(menuOptions, opt_overlayOptions) {
 
   const options = opt_overlayOptions !== undefined ? opt_overlayOptions : {};
 
@@ -90,6 +79,7 @@ exports = function(menuOptions, opt_overlayOptions) {
   olOverlay.call(this, options);
 
 };
+
 ol.inherits(exports, olOverlay);
 
 
@@ -217,3 +207,4 @@ exports.prototype.handleMapPointerMove_ = function(evt) {
     evt.pixel = [Infinity, Infinity];
   }
 };
+export default exports;

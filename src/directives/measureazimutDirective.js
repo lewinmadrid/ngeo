@@ -1,25 +1,15 @@
-goog.module('ngeo.measureazimutDirective');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoFilters = goog.require('ngeo.filters');
-const ngeoInteractionMeasureAzimut = goog.require('ngeo.interaction.MeasureAzimut');
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
-const olStyleStyle = goog.require('ol.style.Style');
-
-
 /**
- * @param {!angular.$compile} $compile Angular compile service.
- * @param {!angularGettext.Catalog} gettextCatalog Gettext catalog.
- * @param {!angular.$filter} $filter Angular filter
- * @param {!angular.$injector} $injector Main injector.
- * @return {!angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoDrawpoint
+ * @module
  */
-exports = function($compile, gettextCatalog, $filter, $injector) {
+import ngeoBase from './index.js';
+import ngeoFilters from './filters.js';
+import ngeoInteractionMeasureAzimut from './interaction/MeasureAzimut.js';
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+import olGeomPolygon from 'ol/geom/Polygon';
+import olStyleStyle from 'ol/style/Style';
+
+const exports = function($compile, gettextCatalog, $filter, $injector) {
   return {
     restrict: 'A',
     require: '^^ngeoDrawfeature',
@@ -85,3 +75,4 @@ exports = function($compile, gettextCatalog, $filter, $injector) {
 
 
 ngeoBase.module.directive('ngeoMeasureazimut', exports);
+export default exports;

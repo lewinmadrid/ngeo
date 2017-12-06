@@ -1,6 +1,8 @@
-goog.module('ngeo.Debounce');
-
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+let exports = {};
+import ngeoBase from './index.js';
 
 /* eslint-disable valid-jsdoc */
 // FIXME: eslint can't detect that the function returns a function
@@ -54,3 +56,4 @@ ngeoBase.debounceServiceFactory = function($timeout) {
 
 
 ngeoBase.module.factory('ngeoDebounce', ngeoBase.debounceServiceFactory);
+export default exports;

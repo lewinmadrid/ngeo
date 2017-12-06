@@ -1,44 +1,13 @@
-goog.module('ngeo.mapDirective');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
-const ngeoDatasourceSyncDataSourcesMap = goog.require('ngeo.datasource.SyncDataSourcesMap');
-const olEvents = goog.require('ol.events');
-const olMap = goog.require('ol.Map');
-
-
 /**
- * Provides a directive used to insert a user-defined OpenLayers
- * map in the DOM. The directive does not create an isolate scope.
- *
- * Examples:
- *
- *   Simple:
- *
- *      <div ngeo-map="ctrl.map"></div>
- *
- *   Manage window resizing:
- *
- *      <div
- *        ngeo-map="ctrl.map"
- *        ngeo-map-manage-resize="ctrl.manageResize"
- *        ngeo-map-resize-transition="ctrl.resizeTransition">
- *      </div>
- *
- * See our live examples:
- * [../examples/permalink.html](../examples/permalink.html)
- * [../examples/simple.html](../examples/simple.html)
- *
- * @htmlAttribute {ol.Map} ngeo-map The map.
- * @param {angular.$window} $window The Angular $window service.
- * @param {ngeo.datasource.SyncDataSourcesMap} ngeoSyncDataSourcesMap Ngeo sync
- *     data sources map service.
- * @return {angular.Directive} Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoMap
+ * @module
  */
-exports = function($window, ngeoSyncDataSourcesMap) {
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
+import ngeoDatasourceSyncDataSourcesMap from './datasource/SyncDataSourcesMap.js';
+import olEvents from 'ol/events';
+import olMap from 'ol/Map';
+
+const exports = function($window, ngeoSyncDataSourcesMap) {
   return {
     restrict: 'A',
     /**
@@ -106,3 +75,4 @@ exports = function($window, ngeoSyncDataSourcesMap) {
 };
 
 ngeoBase.module.directive('ngeoMap', exports);
+export default exports;

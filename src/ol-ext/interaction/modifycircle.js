@@ -1,39 +1,27 @@
-goog.module('ngeo.interaction.ModifyCircle');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoInteractionMeasureAzimut = goog.require('ngeo.interaction.MeasureAzimut');
-const olBase = goog.require('ol');
-const olCollection = goog.require('ol.Collection');
-const olFeature = goog.require('ol.Feature');
-const olMapBrowserPointerEvent = goog.require('ol.MapBrowserPointerEvent');
-const olCoordinate = goog.require('ol.coordinate');
-const olEvents = goog.require('ol.events');
-const olExtent = goog.require('ol.extent');
-const olGeomCircle = goog.require('ol.geom.Circle');
-const olGeomLineString = goog.require('ol.geom.LineString');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
-const olInteractionModify = goog.require('ol.interaction.Modify');
-const olInteractionPointer = goog.require('ol.interaction.Pointer');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olSourceVector = goog.require('ol.source.Vector');
-const olStructsRBush = goog.require('ol.structs.RBush');
-const olStyleStyle = goog.require('ol.style.Style');
-
-
 /**
- * @classdesc
- * Interaction for modifying feature geometries.
- *
- * @constructor
- * @struct
- * @extends {ol.interaction.Pointer}
- * @param {olx.interaction.ModifyOptions} options Options.
- * @fires ngeo.interaction.ModifyCircleEvent
- * @export
- * @api
+ * @module
  */
-exports = function(options) {
+import googAsserts from 'goog/asserts';
+import ngeoInteractionMeasureAzimut from '../interaction/MeasureAzimut.js';
+import olBase from 'ol';
+import olCollection from 'ol/Collection';
+import olFeature from 'ol/Feature';
+import olMapBrowserPointerEvent from 'ol/MapBrowserPointerEvent';
+import olCoordinate from 'ol/coordinate';
+import olEvents from 'ol/events';
+import olExtent from 'ol/extent';
+import olGeomCircle from 'ol/geom/Circle';
+import olGeomLineString from 'ol/geom/LineString';
+import olGeomPoint from 'ol/geom/Point';
+import olGeomPolygon from 'ol/geom/Polygon';
+import olInteractionModify from 'ol/interaction/Modify';
+import olInteractionPointer from 'ol/interaction/Pointer';
+import olLayerVector from 'ol/layer/Vector';
+import olSourceVector from 'ol/source/Vector';
+import olStructsRBush from 'ol/structs/RBush';
+import olStyleStyle from 'ol/style/Style';
+
+const exports = function(options) {
 
   googAsserts.assert(options.features);
 
@@ -124,6 +112,7 @@ exports = function(options) {
   olEvents.listen(this.features_, 'remove', this.handleFeatureRemove_, this);
 
 };
+
 olBase.inherits(exports, olInteractionPointer);
 
 
@@ -494,3 +483,4 @@ exports.getDefaultStyleFunction = function() {
     return style[/**@type {ol.geom.GeometryType} */ ('Point')];
   };
 };
+export default exports;

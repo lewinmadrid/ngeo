@@ -1,14 +1,15 @@
-goog.module('ngeo.mobileGeolocationDirective');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoFeatureOverlay = goog.require('ngeo.FeatureOverlay');
-const ngeoFeatureOverlayMgr = goog.require('ngeo.FeatureOverlayMgr');
-const ngeoNotification = goog.require('ngeo.Notification');
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-const olGeolocation = goog.require('ol.Geolocation');
-const olMap = goog.require('ol.Map');
-const olGeomPoint = goog.require('ol.geom.Point');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import ngeoFeatureOverlay from './FeatureOverlay.js';
+import ngeoFeatureOverlayMgr from './FeatureOverlayMgr.js';
+import ngeoNotification from './Notification.js';
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+import olGeolocation from 'ol/Geolocation';
+import olMap from 'ol/Map';
+import olGeomPoint from 'ol/geom/Point';
 
 
 /**
@@ -21,26 +22,7 @@ ngeoBase.MobileGeolocationEventType = {
   ERROR: 'mobile-geolocation-error'
 };
 
-/**
- * Provide a "mobile geolocation" directive.
- *
- * Example:
- *
- *      <button ngeo-mobile-geolocation
- *        ngeo-mobile-geolocation-map="ctrl.map"
- *        ngeo-mobile-geolocation-options="ctrl.mobileGeolocationOptions">
- *      </button>
- *
- * See our live example: [../examples/mobilegeolocation.html](../examples/mobilegeolocation.html)
- *
- * @htmlAttribute {ol.Map} ngeo-mobile-geolocation-map The map.
- * @htmlAttribute {ngeox.MobileGeolocationDirectiveOptions} ngeo-mobile-geolocation-options The options.
- * @return {angular.Directive} The Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoMobileGeolocation
- */
-exports = function() {
+const exports = function() {
   return {
     restrict: 'A',
     scope: {
@@ -326,3 +308,4 @@ ngeoBase.MobileGeolocationController.prototype.handleRotate_ = function(eventAlp
   }
   return currentAlpha;
 };
+export default exports;

@@ -1,42 +1,13 @@
-goog.module('ngeo.profileDirective');
-
-const googAsserts = goog.require('goog.asserts');
-const olEvents = goog.require('ol.events');
-const ngeoBase = goog.require('ngeo');
-const ngeoProfile = goog.require('ngeo.profile');
-const ngeoDebounce = goog.require('ngeo.Debounce');
-
-
 /**
- * Provides a directive used to insert an elevation profile chart
- * in the DOM.
- *
- * Example:
- *
- *      <div ngeo-profile="ctrl.profileData"
- *        ngeo-profile-options="ctrl.profileOptions"
- *        ngeo-profile-pois="ctrl.profilePois">
- *      </div>
- *
- * Where "ctrl.profileOptions" is of type {@link ngeox.profile.ProfileOptions};
- * "ctrl.profileData" and "ctrl.profilePois" are arrays which will be
- * processed by {@link ngeox.profile.ElevationExtractor} and
- * {@link ngeox.profile.PoiExtractor}.
- *
- * See our live example: [../examples/profile.html](../examples/profile.html)
- *
- * @htmlAttribute {?Object} ngeo-profile The profile data.
- * @htmlAttribute {ngeox.profile.ProfileOptions} ngeo-profile-options The options.
- * @htmlAttribute {?Array} ngeo-profile-pois The data for POIs.
- * @htmlAttribute {*} ngeo-profile-highlight Any property on the scope which
- * evaluated value may correspond to distance from origin.
- * @param {ngeo.Debounce} ngeoDebounce ngeo Debounce service.
- * @return {angular.Directive} Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoProfile
+ * @module
  */
-exports = function(ngeoDebounce) {
+import googAsserts from 'goog/asserts';
+import olEvents from 'ol/events';
+import ngeoBase from './index.js';
+import ngeoProfile from './profile.js';
+import ngeoDebounce from './Debounce.js';
+
+const exports = function(ngeoDebounce) {
   return {
     restrict: 'A',
     /**
@@ -126,3 +97,4 @@ exports = function(ngeoDebounce) {
 };
 
 ngeoBase.module.directive('ngeoProfile', exports);
+export default exports;

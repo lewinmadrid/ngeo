@@ -1,8 +1,8 @@
-goog.module('ngeo.olcs.controls3d');
-goog.module.declareLegacyNamespace();
-
-const olEasing = goog.require('ol.easing');
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+import olEasing from 'ol/easing';
+import ngeoBase from '../index.js';
 const ngeoModule = ngeoBase.module;
 
 
@@ -257,8 +257,10 @@ const component = {
 };
 
 const name = 'ngeoOlcsControls3d';
-exports = angular.module(name, [])
+
+const exports = angular.module(name, [])
   .component(name, component)
   .value('ngeoOlcsControls3dTemplateUrl', '');
 
 ngeoModule.requires.push(name);
+export default exports;

@@ -1,11 +1,12 @@
-goog.module('ngeo.scaleselectorDirective');
-
-const ngeoBase = goog.require('ngeo');
-const olArray = goog.require('ol.array');
-const olEvents = goog.require('ol.events');
-const olMap = goog.require('ol.Map');
-const olObject = goog.require('ol.Object');
-const olEvents = goog.require('ol.events');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import olArray from 'ol/array';
+import olEvents from 'ol/events';
+import olMap from 'ol/Map';
+import olObject from 'ol/Object';
+import olEvents from 'ol/events';
 
 
 ngeoBase.module.value('ngeoScaleselectorTemplateUrl',
@@ -21,58 +22,7 @@ ngeoBase.module.value('ngeoScaleselectorTemplateUrl',
   });
 
 
-/**
- * Provides the "ngeoScaleselector" directive, a widget for
- * selecting map scales.
- *
- * Example:
- *
- *     <div ngeo-scaleselector="ctrl.scales" ngeo-scaleselector-map="ctrl.map">
- *     </div>
- *
- * The expression passed to the ngeo-scaleselector attribute should return an
- * array of this form:
- *
- *    [20000, 10000, 5000, 2500]
- *
- * That directive's partial uses Bootstrap's `dropdown` and `dropdown-menu`
- * classes, and `data-toggle="dropdown"`, so it is meant to be used with
- * Bootstrap's "dropdown" jQuery plugin.
- *
- * You can pass options to configure the behaviors of this element. Options is
- * a {@link ngeox.ScaleselectorOptions} object.
- *
- * Example:
- *
- *     <div ngeo-scaleselector="ctrl.scales"
- *       ngeo-scaleselector-map="ctrl.map"
- *       ngeo-scaleselector-options="ctrl.scaleSelectorOptions">
- *     </div>
- *
- * By default the directive uses "scaleselector.html" as its templateUrl. This
- * can be changed by redefining the "ngeoScaleselectorTemplateUrl" value.
- *
- * The directive has its own scope, but it is not isolate scope. That scope
- * includes a reference to the directive's controller: the "scaleselectorCtrl"
- * scope property.
- *
- * The directive doesn't create any watcher. In particular the object including
- * the scales information is now watched.
- *
- * See our live example: [../examples/scaleselector.html](../examples/scaleselector.html)
- *
- * @htmlAttribute {!Array.<number>} ngeo-scaleselector The available scales.
- * @htmlAttribute {ol.Map} ngeo-scaleselector-map The map.
- * @htmlAttribute {ngeox.ScaleselectorOptions} ngeo-scaleselector-options
- *     Optionnal. The configuration options.
- * @param {string|function(!angular.JQLite=, !angular.Attributes=)}
- *     ngeoScaleselectorTemplateUrl Template URL for the directive.
- * @return {angular.Directive} Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoScaleselector
- */
-exports = function(ngeoScaleselectorTemplateUrl) {
+const exports = function(ngeoScaleselectorTemplateUrl) {
   return {
     restrict: 'A',
     scope: true,
@@ -261,3 +211,4 @@ ngeoBase.ScaleselectorController.prototype.registerResolutionChangeListener_ = f
 
 ngeoBase.module.controller('NgeoScaleselectorController',
   ngeoBase.ScaleselectorController);
+export default exports;

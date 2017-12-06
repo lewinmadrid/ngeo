@@ -1,40 +1,11 @@
-goog.module('ngeo.bboxQueryDirective');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoMapQuerent = goog.require('ngeo.MapQuerent');
-const olInteractionDragBox = goog.require('ol.interaction.DragBox');
-
-
 /**
- * Provides a "bbox query" directive.
- *
- * This directive is responsible of binding a map and the ngeo query service
- * together. While active, drawing a bbox while CTRL or the 'meta' key is pressed
- * issues a request to the query service.
- *
- * This directive doesn't require to be rendered in a visible DOM element, but
- * it could be used with a ngeo-btn to manage the activation of the directive.
- * See below an example without any use of UI:
- *
- * Example:
- *
- *      <span
- *        ngeo-bbox-query=""
- *        ngeo-bbox-query-map="::ctrl.map"
- *        ngeo-bbox-query-limit="50"
- *        ngeo-bbox-query-active="ctrl.queryActive">
- *        ngeo-bbox-query-autoclear="ctrl.queryAutoClear">
- *      </span>
- *
- * See the live example: [../examples/bboxquery.html](../examples/bboxquery.html)
- *
- * @param {ngeo.MapQuerent} ngeoMapQuerent The ngeo map querent service.
- * @return {angular.Directive} The Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoBboxQuery
+ * @module
  */
-exports = function(ngeoMapQuerent) {
+import ngeoBase from './index.js';
+import ngeoMapQuerent from './MapQuerent.js';
+import olInteractionDragBox from 'ol/interaction/DragBox';
+
+const exports = function(ngeoMapQuerent) {
   return {
     restrict: 'A',
     scope: false,
@@ -83,3 +54,4 @@ exports = function(ngeoMapQuerent) {
 };
 
 ngeoBase.module.directive('ngeoBboxQuery', exports);
+export default exports;

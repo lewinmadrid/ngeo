@@ -1,14 +1,15 @@
-goog.module('ngeo.FeatureOverlayMgr');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoFeatureOverlay = goog.require('ngeo.FeatureOverlay');
-const olBase = goog.require('ol');
-const olFeature = goog.require('ol.Feature');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olObj = goog.require('ol.obj');
-const olSourceVector = goog.require('ol.source.Vector');
-const olStyleStyle = goog.require('ol.style.Style');
-const googAsserts = goog.require('goog.asserts');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import ngeoFeatureOverlay from './FeatureOverlay.js';
+import olBase from 'ol';
+import olFeature from 'ol/Feature';
+import olLayerVector from 'ol/layer/Vector';
+import olObj from 'ol/obj';
+import olSourceVector from 'ol/source/Vector';
+import olStyleStyle from 'ol/style/Style';
+import googAsserts from 'goog/asserts';
 
 
 /**
@@ -20,30 +21,7 @@ const googAsserts = goog.require('goog.asserts');
 ngeoBase.FeatureOverlayGroup;
 
 
-/**
- * Provides a service that wraps an "unmanaged" vector layer,
- * used as a shared vector layer across the application.
- *
- * Example:
- *
- * The application's main component/controller initializes the feature
- * overlay manager with the map:
- *
- *     ngeoFeatureOverlayMgr.init(map);
- *
- * Once initialized, components of the application can use the manager to
- * create a feature overlay, configuring it with specific styles:
- *
- *     let featureOverlay = ngeoFeatureOverlayMgr.getFeatureOverlay();
- *     featureOverlay.setStyle(myStyle);
- *     featureOverlay.addFeature(myFeature);
- *
- * @constructor
- * @struct
- * @ngdoc service
- * @ngname ngeoFeatureOverlayMgr
- */
-exports = function() {
+const exports = function() {
 
   /**
    * @type {Object.<string, number>}
@@ -186,3 +164,4 @@ exports.prototype.styleFunction_ = function(feature, resolution) {
 
 
 ngeoBase.module.service('ngeoFeatureOverlayMgr', exports);
+export default exports;

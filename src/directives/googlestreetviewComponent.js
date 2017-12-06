@@ -1,11 +1,13 @@
-goog.module('ngeo.googlestreetviewComponent');
-
-const olEvents = goog.require('ol.events');
-const olFeature = goog.require('ol.Feature');
-const olObservable = goog.require('ol.Observable');
-const olGeomPoint = goog.require('ol.geom.Point');
-const ngeoBase = goog.require('ngeo');
-const ngeoFeatureOverlayMgr = goog.require('ngeo.FeatureOverlayMgr');
+/**
+ * @module
+ */
+let exports = {};
+import olEvents from 'ol/events';
+import olFeature from 'ol/Feature';
+import olObservable from 'ol/Observable';
+import olGeomPoint from 'ol/geom/Point';
+import ngeoBase from './index.js';
+import ngeoFeatureOverlayMgr from './FeatureOverlayMgr.js';
 
 
 /**
@@ -365,3 +367,4 @@ ngeoBase.module.component('ngeoGooglestreetview', {
   controller: ngeoBase.GooglestreetviewController,
   templateUrl: () => `${ngeoBase.baseTemplateUrl}/googlestreetview.html`
 });
+export default exports;

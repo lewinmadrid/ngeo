@@ -1,19 +1,21 @@
-goog.module('ngeo.ruleComponent');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoDatePickerDirective = goog.require('ngeo.DatePickerDirective');
-const ngeoDecorateInteraction = goog.require('ngeo.DecorateInteraction');
-const ngeoDrawfeatureDirective = goog.require('ngeo.drawfeatureDirective');
-const ngeoMenu = goog.require('ngeo.Menu');
-const ngeoRuleHelper = goog.require('ngeo.RuleHelper');
-const ngeoToolActivate = goog.require('ngeo.ToolActivate');
-const ngeoInteractionModify = goog.require('ngeo.interaction.Modify');
-const ngeoInteractionRotate = goog.require('ngeo.interaction.Rotate');
-const ngeoInteractionTranslate = goog.require('ngeo.interaction.Translate');
-const ngeoRuleGeometry = goog.require('ngeo.rule.Geometry');
-const ngeoRuleSelect = goog.require('ngeo.rule.Select');
-const olCollection = goog.require('ol.Collection');
-const olEvents = goog.require('ol.events');
+/**
+ * @module
+ */
+let exports = {};
+import ngeoBase from './index.js';
+import ngeoDatePickerDirective from './DatePickerDirective.js';
+import ngeoDecorateInteraction from './DecorateInteraction.js';
+import ngeoDrawfeatureDirective from './drawfeatureDirective.js';
+import ngeoMenu from './Menu.js';
+import ngeoRuleHelper from './RuleHelper.js';
+import ngeoToolActivate from './ToolActivate.js';
+import ngeoInteractionModify from './interaction/Modify.js';
+import ngeoInteractionRotate from './interaction/Rotate.js';
+import ngeoInteractionTranslate from './interaction/Translate.js';
+import ngeoRuleGeometry from './rule/Geometry.js';
+import ngeoRuleSelect from './rule/Select.js';
+import olCollection from 'ol/Collection';
+import olEvents from 'ol/events';
 
 
 /**
@@ -917,3 +919,4 @@ ngeoBase.module.component('ngeoRule', {
   controller: ngeoBase.RuleController,
   templateUrl: () => `${ngeoBase.baseTemplateUrl}/rule.html`
 });
+export default exports;

@@ -1,23 +1,15 @@
-goog.module('ngeo.StateManager');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
-const ngeoLocation = goog.require('ngeo.Location');
+/**
+ * @module
+ */
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
+import ngeoLocation from './Location.js';
 
 
 ngeoBase.module.value('ngeoUsedKeyRegexp', [new RegExp('.*')]);
 
 
-/**
- * Provides a service for managing the application state.
- * The application state is written to both the URL and the local storage.
- * @constructor
- * @struct
- * @param {!ngeo.Location} ngeoLocation ngeo location service.
- * @param {!Array.<!RegExp>} ngeoUsedKeyRegexp regexp used to identify the used keys.
- * @ngInject
- */
-exports = function(ngeoLocation, ngeoUsedKeyRegexp) {
+const exports = function(ngeoLocation, ngeoUsedKeyRegexp) {
 
   /**
    * Object representing the application's initial state.
@@ -174,3 +166,4 @@ exports.prototype.deleteParam = function(key) {
 };
 
 ngeoBase.module.service('ngeoStateManager', exports);
+export default exports;

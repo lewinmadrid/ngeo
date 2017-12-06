@@ -1,7 +1,9 @@
-goog.module('ngeo.SyncArrays');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+let exports = {};
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
 
 
 /**
@@ -95,3 +97,4 @@ ngeoBase.syncArrays = function(arr1, arr2, reverse, scope, filter) {
 
 
 ngeoBase.module.value('ngeoSyncArrays', ngeoBase.syncArrays);
+export default exports;

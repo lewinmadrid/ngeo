@@ -1,30 +1,11 @@
-goog.module('ngeo.attributesComponent');
-
-const olEvents = goog.require('ol.events');
-const ngeoBase = goog.require('ngeo');
-const ngeoEventHelper = goog.require('ngeo.EventHelper');
-
-
 /**
- * Component used to render the attributes of a feature into a form.
- * Example:
- *
- *     <ngeo-attributes
- *       ngeo-attributes-attributes="::ctrl.attributes"
- *       ngeo-attributes-disabled="ctrl.attributesDisabled"
- *       ngeo-attributes-feature="::ctrl.feature">
- *     </ngeo-attributes>
- *
- * @htmlAttribute {Array.<ngeox.Attribute>} ngeo-attributes-attributes The
- *     list of attributes to use.
- * @htmlAttribute {boolean} ngeo-attributes-disabled Whether the fieldset should
- *     be disabled or not.
- * @htmlAttribute {ol.Feature} ngeo-attributes-feature The feature.
- *
- * @ngdoc component
- * @ngname ngeoAttributes
+ * @module
  */
-exports = {
+import olEvents from 'ol/events';
+import ngeoBase from './index.js';
+import ngeoEventHelper from './EventHelper.js';
+
+const exports = {
   controller: 'ngeoAttributesController as attrCtrl',
   bindings: {
     'attributes': '=ngeoAttributesAttributes',
@@ -179,3 +160,4 @@ ngeoBase.AttributesController.prototype.handleFeaturePropertyChange_ = function(
 
 
 ngeoBase.module.controller('ngeoAttributesController', ngeoBase.AttributesController);
+export default exports;

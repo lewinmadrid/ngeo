@@ -1,14 +1,7 @@
-goog.module('ngeo.GridConfig');
-
-
 /**
- * @param {Array.<Object>|undefined} data Entries/objects to be shown in a grid.
- * @param {Array.<ngeox.GridColumnDef>|undefined} columnDefs Column definition of a grid.
- * @constructor
- * @struct
- * @export
+ * @module
  */
-exports = function(data, columnDefs) {
+const exports = function(data, columnDefs) {
   /**
    * @type {Array.<Object>|undefined}
    * @export
@@ -127,3 +120,4 @@ exports.prototype.invertSelection = function() {
     this.toggleRow(attributes);
   });
 };
+export default exports;

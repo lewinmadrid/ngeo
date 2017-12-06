@@ -1,4 +1,7 @@
-goog.module('ngeo.coordinate');
+/**
+ * @module
+ */
+let exports = {};
 
 
 /**
@@ -21,3 +24,4 @@ exports.toXY = function(coordinates, nesting) {
   }
   return coordinates;
 };
+export default exports;

@@ -1,26 +1,12 @@
-goog.module('ngeo.LayertreeController');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoDecorateLayer = goog.require('ngeo.DecorateLayer');
-const ngeoDecorateLayerLoading = goog.require('ngeo.DecorateLayerLoading');
-const olEvents = goog.require('ol.events');
-
-
 /**
- * The controller for the "tree node" directive.
- * @param {angular.Scope} $scope Scope.
- * @param {angular.Scope} $rootScope Angular rootScope.
- * @param {angular.Attributes} $attrs Attributes.
- * @param {ngeo.DecorateLayer} ngeoDecorateLayer layer decorator service.
- * @param {ngeo.DecorateLayerLoading} ngeoDecorateLayerLoading Decorate Layer service.
- * @constructor
- * @ngInject
- * @export
- * @struct
- * @ngdoc controller
- * @ngname NgeoLayertreeController
+ * @module
  */
-exports = function($scope, $rootScope, $attrs, ngeoDecorateLayer, ngeoDecorateLayerLoading) {
+import ngeoBase from './index.js';
+import ngeoDecorateLayer from './DecorateLayer.js';
+import ngeoDecorateLayerLoading from './DecorateLayerLoading.js';
+import olEvents from 'ol/events';
+
+const exports = function($scope, $rootScope, $attrs, ngeoDecorateLayer, ngeoDecorateLayerLoading) {
 
   const isRoot = $attrs['ngeoLayertreeNotroot'] === undefined;
 
@@ -386,3 +372,4 @@ exports.prototype.traverseDepthFirst = function(visitor) {
 
 
 ngeoBase.module.controller('NgeoLayertreeController', exports);
+export default exports;

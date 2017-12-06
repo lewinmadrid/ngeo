@@ -1,17 +1,9 @@
-goog.module('ngeo.PrintUtils');
-
-const ngeoBase = goog.require('ngeo');
-
-
 /**
- * Provides a service with print utility functions.
- *
- * @constructor
- * @struct
- * @ngdoc service
- * @ngname ngeoPrintUtils
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+
+const exports = function() {
 
   /**
    * @type {number}
@@ -286,3 +278,4 @@ exports.prototype.getUpRightCorner = function(mapCenter) {
 
 
 ngeoBase.module.service('ngeoPrintUtils', exports);
+export default exports;

@@ -1,10 +1,10 @@
-goog.module('ngeo.datasource.Group');
+/**
+ * @module
+ */
+import ngeoBase from '../index.js';
+import olCollection from 'ol/Collection';
 
-const ngeoBase = goog.require('ngeo');
-const olCollection = goog.require('ol.Collection');
-
-
-exports = class {
+const exports = class {
 
   /**
    * A Group data source combines multiple `ngeo.datasource.DataSource` objects.
@@ -169,3 +169,4 @@ exports.VisibilityState = {
   OFF: 'off',
   ON: 'on'
 };
+export default exports;

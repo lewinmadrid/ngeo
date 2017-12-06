@@ -1,12 +1,12 @@
-goog.module('ngeo.datasource.WMSGroup');
+/**
+ * @module
+ */
+import ngeoBase from '../index.js';
+import ngeoLayerHelper from '../LayerHelper.js';
+import ngeoDatasourceOGCGroup from '../datasource/OGCGroup.js';
+import ngeoDatasourceOGC from '../datasource/OGC.js';
 
-const ngeoBase = goog.require('ngeo');
-const ngeoLayerHelper = goog.require('ngeo.LayerHelper');
-const ngeoDatasourceOGCGroup = goog.require('ngeo.datasource.OGCGroup');
-const ngeoDatasourceOGC = goog.require('ngeo.datasource.OGC');
-
-
-exports = class extends ngeoDatasourceOGCGroup {
+const exports = class extends ngeoDatasourceOGCGroup {
 
   /**
    * A WMSGroup data source combines multiple `ngeo.datasource.OGC` objects
@@ -199,3 +199,5 @@ exports = class extends ngeoDatasourceOGCGroup {
     }
   }
 };
+
+export default exports;

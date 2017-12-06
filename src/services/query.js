@@ -1,14 +1,15 @@
+/**
+ * @module
+ */
 // DEPRECATED
 
-goog.module('ngeo.Query');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoLayerHelper = goog.require('ngeo.LayerHelper');
-const olFormatWFS = goog.require('ol.format.WFS');
-const olFormatWMSGetFeatureInfo = goog.require('ol.format.WMSGetFeatureInfo');
-const olObj = goog.require('ol.obj');
-const olSourceImageWMS = goog.require('ol.source.ImageWMS');
-const olSourceTileWMS = goog.require('ol.source.TileWMS');
+import ngeoBase from './index.js';
+import ngeoLayerHelper from './LayerHelper.js';
+import olFormatWFS from 'ol/format/WFS';
+import olFormatWMSGetFeatureInfo from 'ol/format/WMSGetFeatureInfo';
+import olObj from 'ol/obj';
+import olSourceImageWMS from 'ol/source/ImageWMS';
+import olSourceTileWMS from 'ol/source/TileWMS';
 
 
 /**
@@ -37,40 +38,7 @@ ngeoBase.QueryCacheItem;
 ngeoBase.QueryableSources;
 
 
-// Moved to mapquerent.js
-/**
- * The `ngeoQueryResult` is the value service where the features of the query
- * result are added.
- */
-//ngeo.module.value('ngeoQueryResult', /** @type {ngeox.QueryResult} */ ({
-//  sources: [],
-//  total: 0,
-//  pending: false
-//}));
-
-
-/**
- * The Query service provides a way to send WMS GetFeatureInfo and WFS GetFeature
- * requests from visible layer objects within a map. Those do not necessarily need to have
- * a WMS source. The Query service requires source configuration in order
- * for layers to actually be considered queryable.
- *
- * To know more about the specification of a source configuration, see
- * `ngeox.QuerySource`
- *
- * @constructor
- * @struct
- * @param {angular.$http} $http Angular $http service.
- * @param {angular.$q} $q The Angular $q service.
- * @param {ngeox.QueryResult} ngeoQueryResult The ngeo query result service.
- * @param {ngeox.QueryOptions|undefined} ngeoQueryOptions The options to
- *     configure the ngeo query service with.
- * @param {ngeo.LayerHelper} ngeoLayerHelper Ngeo Layer Helper.
- * @ngdoc service
- * @ngname ngeoQuery
- * @ngInject
- */
-exports = function($http, $q, ngeoQueryResult, ngeoQueryOptions,
+const exports = function($http, $q, ngeoQueryResult, ngeoQueryOptions,
   ngeoLayerHelper) {
 
   const options = ngeoQueryOptions !== undefined ? ngeoQueryOptions : {};
@@ -841,3 +809,4 @@ exports.prototype.getLimit = function() {
 
 
 ngeoBase.module.service('ngeoQuery', exports);
+export default exports;

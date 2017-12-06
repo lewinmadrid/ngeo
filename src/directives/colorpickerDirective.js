@@ -1,6 +1,7 @@
-goog.module('ngeo.colorpickerDirective');
-
-const ngeoBase = goog.require('ngeo');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
 
 
 ngeoBase.module.value('ngeoColorpickerTemplateUrl',
@@ -15,24 +16,7 @@ ngeoBase.module.value('ngeoColorpickerTemplateUrl',
       `${ngeoBase.baseTemplateUrl}/colorpicker.html`;
   });
 
-/**
- * Provides the "ngeoColorpicker" directive, a widget for
- * selecting a color among predefined ones.
- *
- * Example:
- *
- *     <div ngeo-colorpicker="ctrl.colors">
- *     </div>
- *
- *
- * @param {string|function(!angular.JQLite=, !angular.Attributes=)}
- *     ngeoColorpickerTemplateUrl Template URL for the directive.
- * @return {angular.Directive} Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoColorpicker
- */
-exports = function(ngeoColorpickerTemplateUrl) {
+const exports = function(ngeoColorpickerTemplateUrl) {
   return {
     restrict: 'A',
     scope: {
@@ -96,3 +80,4 @@ ngeoBase.ColorpickerController.prototype.setColor = function(color) {
 
 ngeoBase.module.controller('NgeoColorpickerController',
   ngeoBase.ColorpickerController);
+export default exports;

@@ -1,11 +1,11 @@
 /**
+ * @module
+ */
+/**
  * @module ngeo olcs namespace
  */
-goog.module('ngeo.olcs.olcsModule');
-goog.module.declareLegacyNamespace();
-
-const Service = goog.require('ngeo.olcs.Service');
-const control = goog.require('ngeo.olcs.controls3d');
+import Service from '../olcs/Service.js';
+import control from '../olcs/controls3d.js';
 
 
 /**
@@ -16,4 +16,5 @@ const m = angular.module('ngeoOlcsModule', [
   Service.module.name
 ]);
 
-exports = m;
+const exports = m;
+export default exports;

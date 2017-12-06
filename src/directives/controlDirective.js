@@ -1,32 +1,12 @@
-goog.module('ngeo.controlDirective');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
-const olMap = goog.require('ol.Map');
-const olControlControl = goog.require('ol.control.Control');
-
-
 /**
- * Provides a directive that can be used to add a control to the map
- * using a DOM element.
- *
- * Example:
- *
- *     <div ngeo-control="ctrl.control" ngeo-control-map="ctrl.map"></div>
- *
- * The expression passed to "ngeo-control" should evaluate to a control
- * instance, and the expression passed to "ngeo-control-map" should
- * evaluate to a map instance.
- *
- * See our live example: [../examples/control.html](../examples/control.html)
- *
- * @htmlAttribute {ol.Map} ngeo-control-map The map.
- * @return {angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoControl
+ * @module
  */
-exports = function() {
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
+import olMap from 'ol/Map';
+import olControlControl from 'ol/control/Control';
+
+const exports = function() {
   return {
     restrict: 'A',
     /**
@@ -52,3 +32,4 @@ exports = function() {
 
 
 ngeoBase.module.directive('ngeoControl', exports);
+export default exports;

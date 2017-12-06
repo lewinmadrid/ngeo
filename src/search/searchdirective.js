@@ -1,33 +1,12 @@
 /**
+ * @module
+ */
+/**
  * @module ngeo search.directive namespace
  */
-goog.module('ngeo.search.searchDirective');
+import olBase from 'ol';
 
-const olBase = goog.require('ol');
-
-
-/**
- * Provides the "ngeoSearch" directive, which uses Twitter's
- * typeahead component to change an input text into a search field.
- *
- * Example:
- *
- *      <input type="text"
- *        ngeo-search="ctrl.typeaheadOptions"
- *        ngeo-search-datasets="ctrl.typeaheadDatasets"
- *        ngeo-search-listeners="crtl.typeaheadListeners">
- *
- * See our live example: [../examples/search.html](../examples/search.html)
- *
- * @htmlAttribute {TypeaheadOptions} ngeo-search The options.
- * @htmlAttribute {Array.<TypeaheadDataset>} ngeo-search-datasets The sources datasets.
- * @htmlAttribute {ngeox.SearchDirectiveListeners} ngeo-search-listeners The listeners.
- * @return {angular.Directive} Directive Definition Object.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoSearch
- */
-exports = function() {
+const exports = function() {
   return {
     restrict: 'A',
     /**
@@ -174,3 +153,4 @@ exports.module = angular.module('ngeoSearchDirective', []);
 
 // Register the directive in the module
 exports.module.directive('ngeoSearch', exports);
+export default exports;

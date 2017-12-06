@@ -1,10 +1,10 @@
-goog.module('ngeo.gridComponent');
-goog.module.declareLegacyNamespace();
-
-const ngeoBase = goog.require('ngeo');
-const olHas = goog.require('ol.has');
-const googAsserts = goog.require('goog.asserts');
-const ngeoFilters = goog.require('ngeo.filters');
+/**
+ * @module
+ */
+import ngeoBase from './index.js';
+import olHas from 'ol/has';
+import googAsserts from 'goog/asserts';
+import ngeoFilters from './filters.js';
 
 ngeoBase.module.value('ngeoGridTemplateUrl',
   /**
@@ -288,4 +288,5 @@ GridController.prototype.isShiftKeyOnly_ = function(event) {
 ngeoBase.module.controller('ngeoGridController', GridController);
 
 
-exports = gridComponent;
+const exports = gridComponent;
+export default exports;

@@ -1,22 +1,11 @@
-goog.module('ngeo.interaction.MeasurePointMobile');
-
-const ngeoInteractionMeasure = goog.require('ngeo.interaction.Measure');
-const ngeoInteractionMobileDraw = goog.require('ngeo.interaction.MobileDraw');
-const olGeomPoint = goog.require('ol.geom.Point');
-
-
 /**
- * @classdesc
- * Interaction dedicated to measure by coordinate (point) on mobile devices.
- *
- * @constructor
- * @struct
- * @extends {ngeo.interaction.Measure}
- * @param {ngeox.numberCoordinates} format the Formatter
- * @param {ngeox.interaction.MeasureOptions=} opt_options Options
- * @export
+ * @module
  */
-exports = function(format, opt_options) {
+import ngeoInteractionMeasure from '../interaction/Measure.js';
+import ngeoInteractionMobileDraw from '../interaction/MobileDraw.js';
+import olGeomPoint from 'ol/geom/Point';
+
+const exports = function(format, opt_options) {
 
   const options = opt_options !== undefined ? opt_options : {};
 
@@ -30,6 +19,7 @@ exports = function(format, opt_options) {
   this.format_ = format;
 
 };
+
 ol.inherits(exports, ngeoInteractionMeasure);
 
 
@@ -55,3 +45,4 @@ exports.prototype.handleMeasure = function(callback) {
   const coord = geom.getLastCoordinate();
   callback(output, coord);
 };
+export default exports;

@@ -1,8 +1,8 @@
-goog.module('ngeo.proj.EPSG21781');
-goog.module.declareLegacyNamespace();
-
-const olProj = goog.require('ol.proj');
-const olProjProj4 = goog.require('ol.proj.proj4');
+/**
+ * @module
+ */
+import olProj from 'ol/proj';
+import olProjProj4 from 'ol/proj/proj4';
 
 if (typeof olProjProj4.get() !== 'function' && typeof proj4 === 'function') {
   olProj.setProj4(proj4);
@@ -27,4 +27,5 @@ if (typeof olProjProj4.get() == 'function') {
   olProj.get('EPSG:21781').setExtent(epsg21781extent);
 }
 
-exports = 'EPSG:21781';
+const exports = 'EPSG:21781';
+export default exports;

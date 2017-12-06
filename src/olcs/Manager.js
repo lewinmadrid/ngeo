@@ -1,7 +1,7 @@
-goog.module('ngeo.olcs.Manager');
-goog.module.declareLegacyNamespace();
-
-const olcsContribManager = goog.require('olcs.contrib.Manager');
+/**
+ * @module
+ */
+import olcsContribManager from 'olcs/contrib/Manager';
 
 const Manager = class extends olcsContribManager {
   /**
@@ -33,4 +33,5 @@ const Manager = class extends olcsContribManager {
   }
 };
 
-exports = Manager;
+const exports = Manager;
+export default exports;

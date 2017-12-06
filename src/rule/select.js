@@ -1,9 +1,9 @@
-goog.module('ngeo.rule.Select');
+/**
+ * @module
+ */
+import ngeoRuleRule from '../rule/Rule.js';
 
-const ngeoRuleRule = goog.require('ngeo.rule.Rule');
-
-
-exports = class extends ngeoRuleRule {
+const exports = class extends ngeoRuleRule {
 
   /**
    * A select rule, which allows the selection of multiple values among a list
@@ -60,3 +60,5 @@ exports = class extends ngeoRuleRule {
   }
 
 };
+
+export default exports;

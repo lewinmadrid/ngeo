@@ -1,92 +1,19 @@
-goog.module('ngeo.drawfeatureDirective');
-
-const ngeoBase = goog.require('ngeo');
-const ngeoDecorateInteraction = goog.require('ngeo.DecorateInteraction');
-const ngeoFeatureHelper = goog.require('ngeo.FeatureHelper');
-const ngeoBtnDirective = goog.require('ngeo.btnDirective');
-const ngeoDrawpointDirective = goog.require('ngeo.drawpointDirective');
-const ngeoDrawrectangleDirective = goog.require('ngeo.drawrectangleDirective');
-const ngeoDrawtextDirective = goog.require('ngeo.drawtextDirective');
-const ngeoMeasureareaDirective = goog.require('ngeo.measureareaDirective');
-const ngeoMeasureazimutDirective = goog.require('ngeo.measureazimutDirective');
-const ngeoMeasurelengthDirective = goog.require('ngeo.measurelengthDirective');
-const olFeature = goog.require('ol.Feature');
-
-
 /**
- * Directive used to draw vector features on a map.
- * Example:
- *
- *     <ngeo-drawfeature
- *         ngeo-btn-group
- *         class="btn-group"
- *         ngeo-drawfeature-active="ctrl.drawActive"
- *         ngeo-drawfeature-map="::ctrl.map">
- *       <a
- *         href
- *         translate
- *         ngeo-btn
- *         ngeo-drawpoint
- *         class="btn btn-default ngeo-drawfeature-point"
- *         ng-class="{active: dfCtrl.drawPoint.active}"
- *         ng-model="dfCtrl.drawPoint.active"></a>
- *       <a
- *         href
- *         translate
- *         ngeo-btn
- *         ngeo-measurelength
- *         class="btn btn-default ngeo-drawfeature-linestring"
- *         ng-class="{active: dfCtrl.measureLength.active}"
- *         ng-model="dfCtrl.measureLength.active"></a>
- *       <a
- *         href
- *         translate
- *         ngeo-btn
- *         ngeo-measurearea
- *         class="btn btn-default ngeo-drawfeature-polygon"
- *         ng-class="{active: dfCtrl.measureArea.active}"
- *         ng-model="dfCtrl.measureArea.active"></a>
- *       <a
- *         href
- *         translate
- *         ngeo-btn
- *         ngeo-measureazimut
- *         class="btn btn-default ngeo-drawfeature-circle"
- *         ng-class="{active: dfCtrl.measureAzimut.active}"
- *         ng-model="dfCtrl.measureAzimut.active"></a>
- *       <a
- *         href
- *         translate
- *         ngeo-btn
- *         ngeo-drawrectangle
- *         class="btn btn-default ngeo-drawfeature-rectangle"
- *         ng-class="{active: dfCtrl.drawRectangle.active}"
- *         ng-model="dfCtrl.drawRectangle.active"></a>
- *       <a
- *         href
- *         translate
- *         ngeo-btn
- *         ngeo-drawtext
- *         class="btn btn-default ngeo-drawfeature-text"
- *         ng-class="{active: dfCtrl.drawText.active}"
- *         ng-model="dfCtrl.drawText.active"></a>
- *     </ngeo-drawfeature>
- *
- * @htmlAttribute {boolean} ngeo-drawfeature-active Whether the directive is
- *     active or not.
- * @htmlAttribute {!ol.Collection=} ngeo-drawfeature-features The features
- *     collection in which to push the drawn features. If none is provided,
- *     then the `ngeoFeatures` collection is used.
- * @htmlAttribute {ol.Map} ngeo-drawfeature-map The map.
- * @htmlAttribute {boolean} ngeo-drawfeature-showmeasure. Checks the
- *      checkbox in order to display the feature measurements as a label.
- *      Default to false.
- * @return {angular.Directive} The directive specs.
- * @ngInject
- * @ngdoc directive
- * @ngname ngeoDrawfeature
+ * @module
  */
-exports = function() {
+import ngeoBase from './index.js';
+import ngeoDecorateInteraction from './DecorateInteraction.js';
+import ngeoFeatureHelper from './FeatureHelper.js';
+import ngeoBtnDirective from './btnDirective.js';
+import ngeoDrawpointDirective from './drawpointDirective.js';
+import ngeoDrawrectangleDirective from './drawrectangleDirective.js';
+import ngeoDrawtextDirective from './drawtextDirective.js';
+import ngeoMeasureareaDirective from './measureareaDirective.js';
+import ngeoMeasureazimutDirective from './measureazimutDirective.js';
+import ngeoMeasurelengthDirective from './measurelengthDirective.js';
+import olFeature from 'ol/Feature';
+
+const exports = function() {
   return {
     controller: 'ngeoDrawfeatureController as dfCtrl',
     scope: true,
@@ -336,3 +263,4 @@ ngeoBase.DrawfeatureController.prototype.handleDrawEnd = function(type, event) {
 };
 
 ngeoBase.module.controller('ngeoDrawfeatureController', ngeoBase.DrawfeatureController);
+export default exports;

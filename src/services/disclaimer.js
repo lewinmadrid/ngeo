@@ -1,27 +1,12 @@
-goog.module('ngeo.Disclaimer');
-
-const googAsserts = goog.require('goog.asserts');
-const ngeoBase = goog.require('ngeo');
-const ngeoPopup = goog.require('ngeo.Popup');
-const ngeoMessage = goog.require('ngeo.Message');
-
-
 /**
- * Provides methods to display any sort of messages, disclaimers, errors,
- * etc. Requires Bootstrap library (both CSS and JS) to display the alerts
- * properly.
- *
- * @param {angular.$sce} $sce Angular sce service.
- * @param {angularGettext.Catalog} gettextCatalog Gettext service.
- * @param {ngeo.Popup.Factory} ngeoCreatePopup Popup service.
- * @constructor
- * @struct
- * @extends {ngeo.Message}
- * @ngdoc service
- * @ngname ngeoDisclaimer
- * @ngInject
+ * @module
  */
-exports = function($sce, gettextCatalog, ngeoCreatePopup) {
+import googAsserts from 'goog/asserts';
+import ngeoBase from './index.js';
+import ngeoPopup from './Popup.js';
+import ngeoMessage from './Message.js';
+
+const exports = function($sce, gettextCatalog, ngeoCreatePopup) {
 
   /**
    * @private
@@ -60,6 +45,7 @@ exports = function($sce, gettextCatalog, ngeoCreatePopup) {
   this.messages_ = {};
 
 };
+
 ol.inherits(exports, ngeoMessage);
 
 
@@ -220,3 +206,4 @@ exports.prototype.closeMessage_ = function(message) {
 
 
 ngeoBase.module.service('ngeoDisclaimer', exports);
+export default exports;

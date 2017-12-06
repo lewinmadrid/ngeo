@@ -1,5 +1,6 @@
-goog.module('ngeo.olcs.Service');
-
+/**
+ * @module
+ */
 const Service = class {
   constructor() {
     /**
@@ -29,4 +30,5 @@ const Service = class {
 const name = 'ngeoOlcsService';
 Service.module = angular.module(name, []).service(name, Service);
 
-exports = Service;
+const exports = Service;
+export default exports;

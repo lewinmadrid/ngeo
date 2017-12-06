@@ -1,3 +1,6 @@
+/**
+ * @module
+ */
 goog.provide('ngeo.ToolActivate');
 goog.provide('ngeo.ToolActivate.Mgr');
 

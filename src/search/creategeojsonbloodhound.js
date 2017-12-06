@@ -1,26 +1,14 @@
 /**
+ * @module
+ */
+/**
  * @module ngeo search namespace
  */
-goog.module('ngeo.search.createGeoJSONBloodhound');
+import olBase from 'ol';
+import olFormatGeoJSON from 'ol/format/GeoJSON';
+import olObj from 'ol/obj';
 
-const olBase = goog.require('ol');
-const olFormatGeoJSON = goog.require('ol.format.GeoJSON');
-const olObj = goog.require('ol.obj');
-
-
-/**
- * @param {string} url an URL to a search service.
- * @param {(function(GeoJSONFeature): boolean)=} opt_filter function to filter
- *     results.
- * @param {ol.proj.Projection=} opt_featureProjection Feature projection.
- * @param {ol.proj.Projection=} opt_dataProjection Data projection.
- * @param {BloodhoundOptions=} opt_options optional Bloodhound options. If
- *     undefined, the default Bloodhound config will be used.
- * @param {BloodhoundRemoteOptions=} opt_remoteOptions optional Bloodhound
- * remote options. Effective only if `remote` is not defined in `opt_options`.
- * @return {Bloodhound} The Bloodhound object.
- */
-exports = function(url, opt_filter, opt_featureProjection,
+const exports = function(url, opt_filter, opt_featureProjection,
   opt_dataProjection, opt_options, opt_remoteOptions) {
   const geojsonFormat = new olFormatGeoJSON();
   const bloodhoundOptions = /** @type {BloodhoundOptions} */ ({
@@ -118,3 +106,4 @@ exports.module.value(
  * @ngname search.createGeoJSONBloodhound
  */
 exports.Function;
+export default exports;

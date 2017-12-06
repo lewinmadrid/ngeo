@@ -1,10 +1,10 @@
-goog.module('ngeo.source.Swisstopo');
-goog.module.declareLegacyNamespace();
-
-const googAsserts = goog.require('goog.asserts');
-const olBase = goog.require('ol');
-const olSourceWMTS = goog.require('ol.source.WMTS');
-const olTilegridWMTS = goog.require('ol.tilegrid.WMTS');
+/**
+ * @module
+ */
+import googAsserts from 'goog/asserts';
+import olBase from 'ol';
+import olSourceWMTS from 'ol/source/WMTS';
+import olTilegridWMTS from 'ol/tilegrid/WMTS';
 
 
 /**
@@ -71,18 +71,7 @@ const swisstopoCreateUrl = function(projection, format) {
   googAsserts.fail(`Unsupported projection ${projection}`);
 };
 
-/**
- * Layer source for the Swisstopo tile server.
- * WARNING: This tile server is not publicly available: you have to be
- *          registered by Swisstopo to use the service.
- * @see https://api3.geo.admin.ch/services/sdiservices.html#wmts
- *
- * @constructor
- * @extends {ol.source.WMTS}
- * @param {ngeox.source.SwisstopoOptions} options WMTS options.
- * @export
- */
-exports = function(options) {
+const exports = function(options) {
   const format = options.format || 'image/png';
   const projection = options.projection;
   googAsserts.assert(projection === 'EPSG:21781' || projection === 'EPSG:2056');
@@ -108,4 +97,6 @@ exports = function(options) {
     crossOrigin: options.crossOrigin
   });
 };
+
 olBase.inherits(exports, olSourceWMTS);
+export default exports;

@@ -1,32 +1,20 @@
-goog.module('ngeo.interaction.ModifyRectangle');
-
-const googAsserts = goog.require('goog.asserts');
-const olBase = goog.require('ol');
-const olCollection = goog.require('ol.Collection');
-const olFeature = goog.require('ol.Feature');
-const olMapBrowserPointerEvent = goog.require('ol.MapBrowserPointerEvent');
-const olEvents = goog.require('ol.events');
-const olGeomPoint = goog.require('ol.geom.Point');
-const olGeomPolygon = goog.require('ol.geom.Polygon');
-const olInteractionModify = goog.require('ol.interaction.Modify');
-const olInteractionPointer = goog.require('ol.interaction.Pointer');
-const olLayerVector = goog.require('ol.layer.Vector');
-const olSourceVector = goog.require('ol.source.Vector');
-
-
 /**
- * @classdesc
- * Interaction for modifying feature geometries.
- *
- * @constructor
- * @struct
- * @extends {ol.interaction.Pointer}
- * @param {olx.interaction.ModifyOptions} options Options.
- * @fires ngeo.interaction.ModifyCircleEvent
- * @export
- * @api
+ * @module
  */
-exports = function(options) {
+import googAsserts from 'goog/asserts';
+import olBase from 'ol';
+import olCollection from 'ol/Collection';
+import olFeature from 'ol/Feature';
+import olMapBrowserPointerEvent from 'ol/MapBrowserPointerEvent';
+import olEvents from 'ol/events';
+import olGeomPoint from 'ol/geom/Point';
+import olGeomPolygon from 'ol/geom/Polygon';
+import olInteractionModify from 'ol/interaction/Modify';
+import olInteractionPointer from 'ol/interaction/Pointer';
+import olLayerVector from 'ol/layer/Vector';
+import olSourceVector from 'ol/source/Vector';
+
+const exports = function(options) {
 
   googAsserts.assert(options.features);
 
@@ -90,6 +78,7 @@ exports = function(options) {
   this.features_.forEach(this.addFeature_, this);
 
 };
+
 olBase.inherits(exports, olInteractionPointer);
 
 
@@ -441,3 +430,4 @@ exports.CacheItem;
  * }}
  */
 exports.ModifyParams;
+export default exports;

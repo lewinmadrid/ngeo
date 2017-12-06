@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: ngeo.interaction.ModifyRectangle</title>
+    <title>JSDoc: Class: directive_ <small>directive:ngeoResizemap</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: ngeo.interaction.ModifyRectangle</h1>
+    <h1 class="page-title">Class: directive_ <small>directive:ngeoResizemap</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="CacheItem">
-            <span class="ancestors">ngeo.interaction.ModifyRectangle.</span>CacheItem
+        <h2 id="directive_">
+            <span class="ancestors">ngeo.map.resizemap.</span>directive_
         </h2>
         
     
@@ -40,60 +40,36 @@
     
         
 
-        
-
-
     
-    <h5 class="subsection-title">Properties:</h5>
-    
+
+    <h4 class="name" id="directive_"><span class="type-signature"></span>new directive_<span class="signature">($window)</span><span class="type-signature"></span></h4>
 
     
 
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
 
-        <th>Type</th>
 
-        
-
-        
-
-        
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>corners</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="http://openlayers.org/en/master/apidoc/ol.Feature.html">ol.Feature</a>:<a href="-_.html"></a>></span>
+<div class="description">
+    <p>Provides a directive that resizes the map in an animation loop
+during 1 second when the value of &quot;state&quot; changes. This is especially useful
+when changing the size of other elements with a transition leads to a change
+of the map size.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code> &lt;div ng-class=&quot;ctrl.open ? 'open' : 'close' ngeo-resizemap=&quot;ctrl.map&quot;
+   ngeo-resizemap-state=&quot;open&quot;>
+ &lt;div>
+ &lt;input type=&quot;checkbox&quot; ng-model=&quot;ctrl.open&quot; /></code></pre><p>See our live example: <a href="../examples/animation.html">../examples/animation.html</a></p>
+</div>
 
 
 
-            
-            </td>
 
-            
 
-            
 
-            </td>
-        </tr>
 
-    
-    </tbody>
-</table>
+
+
+
+
 
 
 
@@ -127,7 +103,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/module_for_ngeo_scaleselector/src/ol-ext/interaction/modifyrectangle.js#L429">src/ol-ext/interaction/modifyrectangle.js:429</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/module_for_ngeo_scaleselector/src/map/resizemap.js#L35">src/map/resizemap.js:35</a>
     </div>
     
 
@@ -139,7 +115,33 @@
 </dl>
 
 
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
         
+<div class="param-desc">
+
+    <a href="angular.Directive.html">angular.Directive</a>
+
+
+    <p>The directive specs.</p>
+
+</div>
+
+    
+
+
+
     
     </div>
 
@@ -154,212 +156,15 @@
     
 
     
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2 id="ModifyParams">
-            <span class="ancestors">ngeo.interaction.ModifyRectangle.</span>ModifyParams
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
+        <h3 class="subsection-title">Members</h3>
 
         
-
-
-    
-    <h5 class="subsection-title">Properties:</h5>
-    
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
             
-                <td class="name"><code>originCoordinate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.html#.Coordinate">ol.Coordinate</a></span>
+<h4 class="name" id="~duration"><span class="type-signature">(inner, constant) </span>duration<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> </h4>
 
 
 
-            
-            </td>
 
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>originPixel</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.html#.Pixel">ol.Pixel</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>siblingXPoint</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.geom.Point.html">ol.geom.Point</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>siblingYPoint</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.geom.Point.html">ol.geom.Point</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>vectorX</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>:<a href="-_.html"></a>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>vectorY</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>:<a href="-_.html"></a>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -393,7 +198,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/module_for_ngeo_scaleselector/src/ol-ext/interaction/modifyrectangle.js#L442">src/ol-ext/interaction/modifyrectangle.js:442</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/module_for_ngeo_scaleselector/src/map/resizemap.js#L36">src/map/resizemap.js:36</a>
     </div>
     
 
@@ -405,20 +210,11 @@
 </dl>
 
 
+
+
+
+
         
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
     
 
     

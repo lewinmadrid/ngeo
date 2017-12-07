@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: SyncLayertreeMap <small>service:gmfSyncLayertreeMap</small></title>
+    <title>JSDoc: Class: BackgroundLayerMgr <small>service:ngeoBackgroundLayerMgr</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: SyncLayertreeMap <small>service:gmfSyncLayertreeMap</small></h1>
+    <h1 class="page-title">Class: BackgroundLayerMgr <small>service:ngeoBackgroundLayerMgr</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="SyncLayertreeMap">
-            <span class="ancestors">gmf.</span>SyncLayertreeMap
+        <h2 id="BackgroundLayerMgr">
+            <span class="ancestors">ngeo.</span>BackgroundLayerMgr
         </h2>
         
     
@@ -42,17 +42,36 @@
 
     
 
-    <h4 class="name" id="SyncLayertreeMap"><span class="type-signature"></span>new SyncLayertreeMap<span class="signature">($rootScope, ngeoLayerHelper, ngeoWMSTime, gmfThemes)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="BackgroundLayerMgr"><span class="type-signature"></span>new BackgroundLayerMgr<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Service to create layer based on a ngeo.LayertreeController with a
-GMFThemesGroup ou GMFThemesLeaf as node object.
-This layer is also used to synchronise a state of ngeo.LayertreeController
-and its corresponding layer in the map.</p>
+    <p>Provides a service for setting/unsetting background layers
+in maps.</p>
+<p>The notion of background/base layers doesn't exist in OpenLayers. This
+service adds that notion.</p>
+<p>Setting a background layer to map is done with the <code>set</code> function:</p>
+<pre class="prettyprint source"><code>ngeoBackgroundLayerMgr.set(map, layer);</code></pre><p>To unset the background layer pass <code>null</code> as the <code>layer</code> argument:</p>
+<pre class="prettyprint source"><code>ngeoBackgroundLayerMgr.set(map, null);</code></pre><p>The <code>get</code> function returns the current background layer of the map passed
+as an argument. <code>null</code> is returned if the map doesn't have a background
+layer.</p>
+<p>The background layer is always added at index 0 in the map's layers
+collection. When a background layer is set it is inserted (at index 0)
+if the map does not already have a background layer, otherwise the
+new background layer replaces the previous one at index 0.</p>
+<p>Users can subscribe to a 'change' event to get notified when the background
+layer changes:</p>
+<pre class="prettyprint source"><code>ngeoBackgroundLayerMgr.on('change', function(e) {
+  // do something with the layer
+  let layer = ngeoBackgroundLayerMgr.get();
+  // know which layer was used before
+  let previous = e.previous
+});</code></pre><p>See our live examples:
+<a href="../examples/backgroundlayer.html">../examples/backgroundlayer.html</a>
+<a href="../examples/backgroundlayerdropdown.html">../examples/backgroundlayerdropdown.html</a></p>
 </div>
 
 
@@ -61,112 +80,6 @@ and its corresponding layer in the map.</p>
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>$rootScope</code></td>
-            
-
-            <td class="type">
-            
-                <a href="angular.Scope.html">angular.Scope</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Angular rootScope.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ngeoLayerHelper</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.LayerHelper.html">ngeo.LayerHelper</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Ngeo Layer Helper.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ngeoWMSTime</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.WMSTime.html">ngeo.WMSTime</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>wms time service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gmfThemes</code></td>
-            
-
-            <td class="type">
-            
-                <a href="gmf.Themes.html">gmf.Themes</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The gmf Themes service.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -204,7 +117,7 @@ and its corresponding layer in the map.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/syncLayertreeMap.js#L23">contribs/gmf/src/services/syncLayertreeMap.js:23</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/services/backgroundlayermgr.js#L56">src/services/backgroundlayermgr.js:56</a>
     </div>
     
 
@@ -234,6 +147,17 @@ and its corresponding layer in the map.</p>
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="http://openlayers.org/en/master/apidoc/ol.Observable.html">ol.Observable</a></li>
+    </ul>
+
+
+    
 
     
 
@@ -253,14 +177,15 @@ and its corresponding layer in the map.</p>
 
     
 
-    <h4 class="name" id=".getLayer"><span class="type-signature">(static) </span>getLayer<span class="signature">(treeCtrl)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(map)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Return the layer used by the given treeCtrl.</p>
+    <p>Return the current background layer of a given map. <code>null</code> is returned if
+the map does not have a background layer.</p>
 </div>
 
 
@@ -296,12 +221,12 @@ and its corresponding layer in the map.</p>
 
         <tr>
             
-                <td class="name"><code>treeCtrl</code></td>
+                <td class="name"><code>map</code></td>
             
 
             <td class="type">
             
-                <a href="ngeo.LayertreeController.html">ngeo.LayertreeController</a>
+                <a href="ol.Map.html">ol.Map</a>
             
             </td>
 
@@ -309,7 +234,7 @@ and its corresponding layer in the map.</p>
 
             
 
-            <td class="description last"><p>ngeo layertree controller.</p></td>
+            <td class="description last"><p>Map.</p></td>
         </tr>
 
     
@@ -352,7 +277,7 @@ and its corresponding layer in the map.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/syncLayertreeMap.js#L418">contribs/gmf/src/services/syncLayertreeMap.js:418</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/services/backgroundlayermgr.js#L77">src/services/backgroundlayermgr.js:77</a>
     </div>
     
 
@@ -383,7 +308,7 @@ and its corresponding layer in the map.</p>
     <a href="ol.layer.Base.html">ol.layer.Base</a>
 
 
-    <p>The layer.</p>
+    <p>layer The background layer.</p>
 
 </div>
 
@@ -396,15 +321,15 @@ and its corresponding layer in the map.</p>
 
     
 
-    <h4 class="name" id="createLayer"><span class="type-signature"></span>createLayer<span class="signature">(treeCtrl, map, dataLayerGroup, [opt_position]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="set"><span class="type-signature"></span>set<span class="signature">(map, layer)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Create, insert (or update) and return a layer from the GmfGroup or the
-GmfLayer of the given treeCtrl.</p>
+    <p>Set the background layer of a map. If <code>layer</code> is <code>null</code> the background layer
+is removed.</p>
 </div>
 
 
@@ -428,8 +353,6 @@ GmfLayer of the given treeCtrl.</p>
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -438,34 +361,6 @@ GmfLayer of the given treeCtrl.</p>
     </thead>
 
     <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>treeCtrl</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.LayertreeController.html">ngeo.LayertreeController</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>ngeo layertree controller.</p></td>
-        </tr>
-
     
 
         <tr>
@@ -480,79 +375,30 @@ GmfLayer of the given treeCtrl.</p>
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>A map that contains the group to insert the not first
-    level group layer.</p></td>
+            <td class="description last"><p>The map.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>dataLayerGroup</code></td>
+                <td class="name"><code>layer</code></td>
             
 
             <td class="type">
             
-                <a href="ol.layer.Group.html">ol.layer.Group</a>
+                <a href="ol.layer.Base.html">ol.layer.Base</a>
             
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>the layer group to insert the first
-    level group layer.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[opt_position]</code></td>
-            
-
-            <td class="type">
-            
-                <a href="number=.html">number=</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>for first level Group, you can precise the
-    position to add the group in the array of layers of the dataLayerGroup.</p></td>
+            <td class="description last"><p>The new background layer.</p></td>
         </tr>
 
     
@@ -595,7 +441,7 @@ GmfLayer of the given treeCtrl.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/syncLayertreeMap.js#L67">contribs/gmf/src/services/syncLayertreeMap.js:67</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/services/backgroundlayermgr.js#L91">src/services/backgroundlayermgr.js:91</a>
     </div>
     
 
@@ -623,14 +469,160 @@ GmfLayer of the given treeCtrl.</p>
         
 <div class="param-desc">
 
-    <a href="ol.layer.Base.html">ol.layer.Base</a>|<a href="ol.layer.Group.html">ol.layer.Group</a>
+    <a href="ol.layer.Base.html">ol.layer.Base</a>
 
 
-    <p>a new layer.</p>
+    <p>The previous background layer.</p>
 
 </div>
 
     
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateDimensions"><span class="type-signature"></span>updateDimensions<span class="signature">(map, dimensions)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>map</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Map.html">ol.Map</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The map.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dimensions</code></td>
+            
+
+            <td class="type">
+            
+                <a href="Object.<string, string>.html">Object.<string, string></a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The global dimensions object.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/services/backgroundlayermgr.js#L121">src/services/backgroundlayermgr.js:121</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

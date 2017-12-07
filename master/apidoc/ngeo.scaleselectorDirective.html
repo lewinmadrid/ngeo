@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: SyncLayertreeMap <small>service:gmfSyncLayertreeMap</small></title>
+    <title>JSDoc: Class: scaleselectorDirective <small>directive:ngeoScaleselector</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: SyncLayertreeMap <small>service:gmfSyncLayertreeMap</small></h1>
+    <h1 class="page-title">Class: scaleselectorDirective <small>directive:ngeoScaleselector</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="SyncLayertreeMap">
-            <span class="ancestors">gmf.</span>SyncLayertreeMap
+        <h2 id="scaleselectorDirective">
+            <span class="ancestors">ngeo.</span>scaleselectorDirective
         </h2>
         
     
@@ -42,17 +42,37 @@
 
     
 
-    <h4 class="name" id="SyncLayertreeMap"><span class="type-signature"></span>new SyncLayertreeMap<span class="signature">($rootScope, ngeoLayerHelper, ngeoWMSTime, gmfThemes)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="scaleselectorDirective"><span class="type-signature"></span>new scaleselectorDirective<span class="signature">(ngeoScaleselectorTemplateUrl)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Service to create layer based on a ngeo.LayertreeController with a
-GMFThemesGroup ou GMFThemesLeaf as node object.
-This layer is also used to synchronise a state of ngeo.LayertreeController
-and its corresponding layer in the map.</p>
+    <p>Provides the &quot;ngeoScaleselector&quot; directive, a widget for
+selecting map scales.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>&lt;div ngeo-scaleselector=&quot;ctrl.scales&quot; ngeo-scaleselector-map=&quot;ctrl.map&quot;>
+&lt;/div></code></pre><p>The expression passed to the ngeo-scaleselector attribute should return an
+array of this form:</p>
+<p>   [20000, 10000, 5000, 2500]</p>
+<p>That directive's partial uses Bootstrap's <code>dropdown</code> and <code>dropdown-menu</code>
+classes, and <code>data-toggle=&quot;dropdown&quot;</code>, so it is meant to be used with
+Bootstrap's &quot;dropdown&quot; jQuery plugin.</p>
+<p>You can pass options to configure the behaviors of this element. Options is
+a <a href="ngeox.html#ScaleselectorOptions"><code>ngeox.ScaleselectorOptions</code></a> object.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>&lt;div ngeo-scaleselector=&quot;ctrl.scales&quot;
+  ngeo-scaleselector-map=&quot;ctrl.map&quot;
+  ngeo-scaleselector-options=&quot;ctrl.scaleSelectorOptions&quot;>
+&lt;/div></code></pre><p>By default the directive uses &quot;scaleselector.html&quot; as its templateUrl. This
+can be changed by redefining the &quot;ngeoScaleselectorTemplateUrl&quot; value.</p>
+<p>The directive has its own scope, but it is not isolate scope. That scope
+includes a reference to the directive's controller: the &quot;scaleselectorCtrl&quot;
+scope property.</p>
+<p>The directive doesn't create any watcher. In particular the object including
+the scales information is now watched.</p>
+<p>See our live example: <a href="../examples/scaleselector.html">../examples/scaleselector.html</a></p>
 </div>
 
 
@@ -63,7 +83,9 @@ and its corresponding layer in the map.</p>
 
 
 
-    <h5>Parameters:</h5>
+
+
+    <h5>HTML attributes:</h5>
     
 
 <table class="params">
@@ -88,12 +110,16 @@ and its corresponding layer in the map.</p>
 
         <tr>
             
-                <td class="name"><code>$rootScope</code></td>
+                <td class="name"><code>ngeo-scaleselector</code></td>
             
 
             <td class="type">
             
-                <a href="angular.Scope.html">angular.Scope</a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>:<a href="-_.html"></a>></span>
+
+
+
             
             </td>
 
@@ -101,19 +127,23 @@ and its corresponding layer in the map.</p>
 
             
 
-            <td class="description last"><p>Angular rootScope.</p></td>
+            <td class="description last">The available scales.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ngeoLayerHelper</code></td>
+                <td class="name"><code>ngeo-scaleselector-map</code></td>
             
 
             <td class="type">
             
-                <a href="ngeo.LayerHelper.html">ngeo.LayerHelper</a>
+                
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
+
+
+
             
             </td>
 
@@ -121,19 +151,23 @@ and its corresponding layer in the map.</p>
 
             
 
-            <td class="description last"><p>Ngeo Layer Helper.</p></td>
+            <td class="description last">The map.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ngeoWMSTime</code></td>
+                <td class="name"><code>ngeo-scaleselector-options</code></td>
             
 
             <td class="type">
             
-                <a href="ngeo.WMSTime.html">ngeo.WMSTime</a>
+                
+<span class="param-type"><a href="ngeox.html#ScaleselectorOptions">ngeox.ScaleselectorOptions</a></span>
+
+
+
             
             </td>
 
@@ -141,34 +175,12 @@ and its corresponding layer in the map.</p>
 
             
 
-            <td class="description last"><p>wms time service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>gmfThemes</code></td>
-            
-
-            <td class="type">
-            
-                <a href="gmf.Themes.html">gmf.Themes</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The gmf Themes service.</p></td>
+            <td class="description last">Optionnal. The configuration options.</td>
         </tr>
 
     
     </tbody>
 </table>
-
-
 
 
 
@@ -204,7 +216,7 @@ and its corresponding layer in the map.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/syncLayertreeMap.js#L23">contribs/gmf/src/services/syncLayertreeMap.js:23</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/directives/scaleselector.js#L75">src/directives/scaleselector.js:75</a>
     </div>
     
 
@@ -227,6 +239,19 @@ and its corresponding layer in the map.</p>
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="angular.Directive.html">angular.Directive</a>
+
+
+    <p>Directive Definition Object.</p>
+
+</div>
+
+    
 
 
 
@@ -245,396 +270,6 @@ and its corresponding layer in the map.</p>
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getLayer"><span class="type-signature">(static) </span>getLayer<span class="signature">(treeCtrl)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Return the layer used by the given treeCtrl.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>treeCtrl</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.LayertreeController.html">ngeo.LayertreeController</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>ngeo layertree controller.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/syncLayertreeMap.js#L418">contribs/gmf/src/services/syncLayertreeMap.js:418</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="ol.layer.Base.html">ol.layer.Base</a>
-
-
-    <p>The layer.</p>
-
-</div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="createLayer"><span class="type-signature"></span>createLayer<span class="signature">(treeCtrl, map, dataLayerGroup, [opt_position]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Create, insert (or update) and return a layer from the GmfGroup or the
-GmfLayer of the given treeCtrl.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>treeCtrl</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.LayertreeController.html">ngeo.LayertreeController</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>ngeo layertree controller.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>map</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ol.Map.html">ol.Map</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>A map that contains the group to insert the not first
-    level group layer.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dataLayerGroup</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ol.layer.Group.html">ol.layer.Group</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the layer group to insert the first
-    level group layer.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[opt_position]</code></td>
-            
-
-            <td class="type">
-            
-                <a href="number=.html">number=</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>for first level Group, you can precise the
-    position to add the group in the array of layers of the dataLayerGroup.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/syncLayertreeMap.js#L67">contribs/gmf/src/services/syncLayertreeMap.js:67</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="ol.layer.Base.html">ol.layer.Base</a>|<a href="ol.layer.Group.html">ol.layer.Group</a>
-
-
-    <p>a new layer.</p>
-
-</div>
-
-    
-
-
-
-        
     
 
     

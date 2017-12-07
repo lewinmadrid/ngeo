@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: gmfx.datasource</title>
+    <title>JSDoc: Class: directive_ <small>directive:ngeoScaleselector</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: gmfx.datasource</h1>
+    <h1 class="page-title">Class: directive_ <small>directive:ngeoScaleselector</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="DataSourcePrintReportObject">
-            <span class="ancestors">gmfx.datasource.</span>DataSourcePrintReportObject
+        <h2 id="directive_">
+            <span class="ancestors">ngeo.map.scaleselector.</span>directive_
         </h2>
         
     
@@ -40,16 +40,55 @@
     
         
 
-        
-
-
     
-    <h5 class="subsection-title">Properties:</h5>
-    
+
+    <h4 class="name" id="directive_"><span class="type-signature"></span>new directive_<span class="signature">(ngeoScaleselectorTemplateUrl)</span><span class="type-signature"></span></h4>
 
     
 
-<table class="props">
+
+
+<div class="description">
+    <p>Provides the &quot;ngeoScaleselector&quot; directive, a widget for
+selecting map scales.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>&lt;div ngeo-scaleselector=&quot;ctrl.scales&quot; ngeo-scaleselector-map=&quot;ctrl.map&quot;>
+&lt;/div></code></pre><p>The expression passed to the ngeo-scaleselector attribute should return an
+array of this form:</p>
+<p>   [20000, 10000, 5000, 2500]</p>
+<p>That directive's partial uses Bootstrap's <code>dropdown</code> and <code>dropdown-menu</code>
+classes, and <code>data-toggle=&quot;dropdown&quot;</code>, so it is meant to be used with
+Bootstrap's &quot;dropdown&quot; jQuery plugin.</p>
+<p>You can pass options to configure the behaviors of this element. Options is
+a <a href="ngeox.html#ScaleselectorOptions"><code>ngeox.ScaleselectorOptions</code></a> object.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code>&lt;div ngeo-scaleselector=&quot;ctrl.scales&quot;
+  ngeo-scaleselector-map=&quot;ctrl.map&quot;
+  ngeo-scaleselector-options=&quot;ctrl.scaleSelectorOptions&quot;>
+&lt;/div></code></pre><p>By default the directive uses &quot;scaleselector.html&quot; as its templateUrl. This
+can be changed by redefining the &quot;ngeoScaleselectorTemplateUrl&quot; value.</p>
+<p>The directive has its own scope, but it is not isolate scope. That scope
+includes a reference to the directive's controller: the &quot;scaleselectorCtrl&quot;
+scope property.</p>
+<p>The directive doesn't create any watcher. In particular the object including
+the scales information is now watched.</p>
+<p>See our live example: <a href="../examples/scaleselector.html">../examples/scaleselector.html</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>HTML attributes:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -62,7 +101,7 @@
 
         
 
-        
+        <th class="last">Description</th>
     </tr>
     </thead>
 
@@ -71,13 +110,13 @@
 
         <tr>
             
-                <td class="name"><code>title</code></td>
+                <td class="name"><code>ngeo-scaleselector</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>:<a href="-_.html"></a>></span>
 
 
 
@@ -88,20 +127,20 @@
 
             
 
-            </td>
+            <td class="description last">The available scales.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>table</code></td>
+                <td class="name"><code>ngeo-scaleselector-map</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="gmfx.datasource.html#DataSourceTableObject">gmfx.datasource.DataSourceTableObject</a></span>
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
 
 
 
@@ -112,12 +151,38 @@
 
             
 
+            <td class="description last">The map.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-scaleselector-options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ngeox.html#ScaleselectorOptions">ngeox.ScaleselectorOptions</a></span>
+
+
+
+            
             </td>
+
+            
+
+            
+
+            <td class="description last">Optionnal. The configuration options.</td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -151,7 +216,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/contribs/gmf/options/gmfx.js#L662">contribs/gmf/options/gmfx.js:662</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/src/map/scaleselector.js#L81">src/map/scaleselector.js:81</a>
     </div>
     
 
@@ -163,30 +228,6 @@
 </dl>
 
 
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
 
 
 
@@ -194,146 +235,26 @@
 
 
 
-<section>
 
-<header>
-    
-        <h2 id="DataSourceTableObject">
-            <span class="ancestors">gmfx.datasource.</span>DataSourceTableObject
-        </h2>
-        
-    
-</header>
 
-<article>
-    <div class="container-overview">
-    
-        
+
+
+<h5>Returns:</h5>
 
         
+<div class="param-desc">
+
+    <a href="angular.Directive.html">angular.Directive</a>
 
 
-    
-    <h5 class="subsection-title">Properties:</h5>
-    
+    <p>Directive Definition Object.</p>
 
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>columns</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
+</div>
 
     
 
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>:<a href="-_.html"></a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>:<a href="-_.html"></a>)>></span>
 
 
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/contribs/gmf/options/gmfx.js#L653">contribs/gmf/options/gmfx.js:653</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
     
     </div>
 

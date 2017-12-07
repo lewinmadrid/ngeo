@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: gmfx.datasource</title>
+    <title>JSDoc: Class: FeatureOverlay</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: gmfx.datasource</h1>
+    <h1 class="page-title">Class: FeatureOverlay</h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="DataSourcePrintReportObject">
-            <span class="ancestors">gmfx.datasource.</span>DataSourcePrintReportObject
+        <h2 id="FeatureOverlay">
+            <span class="ancestors">ngeo.map.</span>FeatureOverlay
         </h2>
         
     
@@ -40,16 +40,26 @@
     
         
 
-        
-
-
     
-    <h5 class="subsection-title">Properties:</h5>
-    
+
+    <h4 class="name" id="FeatureOverlay"><span class="type-signature"></span>new FeatureOverlay<span class="signature">(manager, index)</span><span class="type-signature"></span></h4>
 
     
 
-<table class="props">
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -62,7 +72,7 @@
 
         
 
-        
+        <th class="last">Description</th>
     </tr>
     </thead>
 
@@ -71,16 +81,12 @@
 
         <tr>
             
-                <td class="name"><code>title</code></td>
+                <td class="name"><code>manager</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
+                <a href="ngeo.map.FeatureOverlayMgr.html">ngeo.map.FeatureOverlayMgr</a>
             
             </td>
 
@@ -88,23 +94,19 @@
 
             
 
-            </td>
+            <td class="description last"><p>The feature overlay manager.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>table</code></td>
+                <td class="name"><code>index</code></td>
             
 
             <td class="type">
             
-                
-<span class="param-type"><a href="gmfx.datasource.html#DataSourceTableObject">gmfx.datasource.DataSourceTableObject</a></span>
-
-
-
+                number
             
             </td>
 
@@ -112,12 +114,16 @@
 
             
 
-            </td>
+            <td class="description last"><p>This feature overlay's index.</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
+
+
 
 
 
@@ -151,7 +157,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/contribs/gmf/options/gmfx.js#L662">contribs/gmf/options/gmfx.js:662</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/src/map/FeatureOverlay.js#L13">src/map/FeatureOverlay.js:13</a>
     </div>
     
 
@@ -163,7 +169,20 @@
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 
@@ -178,116 +197,15 @@
     
 
     
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2 id="DataSourceTableObject">
-            <span class="ancestors">gmfx.datasource.</span>DataSourceTableObject
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
+        <h3 class="subsection-title">Members</h3>
 
         
-
-
-    
-    <h5 class="subsection-title">Properties:</h5>
-    
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
             
-                <td class="name"><code>columns</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>></span>
+<h4 class="name" id=".module"><span class="type-signature">(static, non-null) </span>module<span class="type-signature">: angular.Module</span> </h4>
 
 
 
-            
-            </td>
 
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>:<a href="-_.html"></a>|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>:<a href="-_.html"></a>)>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -321,7 +239,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/contribs/gmf/options/gmfx.js#L653">contribs/gmf/options/gmfx.js:653</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/src/map/FeatureOverlay.js#L123">src/map/FeatureOverlay.js:123</a>
     </div>
     
 
@@ -333,9 +251,176 @@
 </dl>
 
 
+
+
+
+
         
     
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="addFeature"><span class="type-signature"></span>addFeature<span class="signature">(feature)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Add a feature to the feature overlay.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>feature</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Feature.html">ol.Feature</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The feature to add.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/src/map/FeatureOverlay.js#L40">src/map/FeatureOverlay.js:40</a>
     </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="clear"><span class="type-signature"></span>clear<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Remove all the features from the feature overlay.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
 
     
 
@@ -343,12 +428,448 @@
 
     
 
-     
+    
+
+    
 
     
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/src/map/FeatureOverlay.js#L59">src/map/FeatureOverlay.js:59</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="removeFeature"><span class="type-signature"></span>removeFeature<span class="signature">(feature)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Remove a feature from the feature overlay.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>feature</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Feature.html">ol.Feature</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The feature to remove.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/src/map/FeatureOverlay.js#L50">src/map/FeatureOverlay.js:50</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setFeatures"><span class="type-signature"></span>setFeatures<span class="signature">(features)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Configure this feature overlay with a feature collection. Features added
+to the collection are also added to the overlay. Same for removal. If you
+configure the feature overlay with a feature collection you will use the
+collection to add and remove features instead of using the overlay's
+<code>addFeature</code>, <code>removeFeature</code> and <code>clear</code> functions.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>features</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Collection.<ol.Feature>.html">ol.Collection.<ol.Feature></a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Feature collection.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/src/map/FeatureOverlay.js#L73">src/map/FeatureOverlay.js:73</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setStyle"><span class="type-signature"></span>setStyle<span class="signature">(style)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set a style for the feature overlay.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>style</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.style.Style.html">ol.style.Style</a>|<a href="Array.<ol.style.Style>.html">Array.<ol.style.Style></a>|<a href="ol.StyleFunction.html">ol.StyleFunction</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Style.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/move_last_ngeo_map_services/src/map/FeatureOverlay.js#L96">src/map/FeatureOverlay.js:96</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     

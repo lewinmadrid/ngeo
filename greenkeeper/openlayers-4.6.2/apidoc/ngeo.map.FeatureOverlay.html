@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: StateManager</title>
+    <title>JSDoc: Class: FeatureOverlay</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: StateManager</h1>
+    <h1 class="page-title">Class: FeatureOverlay</h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="StateManager">
-            <span class="ancestors">ngeo.</span>StateManager
+        <h2 id="FeatureOverlay">
+            <span class="ancestors">ngeo.map.</span>FeatureOverlay
         </h2>
         
     
@@ -42,16 +42,11 @@
 
     
 
-    <h4 class="name" id="StateManager"><span class="type-signature"></span>new StateManager<span class="signature">(ngeoLocation, ngeoUsedKeyRegexp)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="FeatureOverlay"><span class="type-signature"></span>new FeatureOverlay<span class="signature">(manager, index)</span><span class="type-signature"></span></h4>
 
     
 
 
-
-<div class="description">
-    <p>Provides a service for managing the application state.
-The application state is written to both the URL and the local storage.</p>
-</div>
 
 
 
@@ -86,12 +81,12 @@ The application state is written to both the URL and the local storage.</p>
 
         <tr>
             
-                <td class="name"><code>ngeoLocation</code></td>
+                <td class="name"><code>manager</code></td>
             
 
             <td class="type">
             
-                <a href="!ngeo.Location.html">!ngeo.Location</a>
+                <a href="ngeo.map.FeatureOverlayMgr.html">ngeo.map.FeatureOverlayMgr</a>
             
             </td>
 
@@ -99,19 +94,19 @@ The application state is written to both the URL and the local storage.</p>
 
             
 
-            <td class="description last"><p>ngeo location service.</p></td>
+            <td class="description last"><p>The feature overlay manager.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ngeoUsedKeyRegexp</code></td>
+                <td class="name"><code>index</code></td>
             
 
             <td class="type">
             
-                <a href="!Array.<!RegExp>.html">!Array.<!RegExp></a>
+                number
             
             </td>
 
@@ -119,7 +114,7 @@ The application state is written to both the URL and the local storage.</p>
 
             
 
-            <td class="description last"><p>regexp used to identify the used keys.</p></td>
+            <td class="description last"><p>This feature overlay's index.</p></td>
         </tr>
 
     
@@ -162,7 +157,7 @@ The application state is written to both the URL and the local storage.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L20">src/services/statemanager.js:20</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/map/FeatureOverlay.js#L13">src/map/FeatureOverlay.js:13</a>
     </div>
     
 
@@ -206,67 +201,7 @@ The application state is written to both the URL and the local storage.</p>
 
         
             
-<h4 class="name" id="initialState"><span class="type-signature">(non-null) </span>initialState<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>></span> </h4>
-
-
-
-
-<div class="description">
-    <p>Object representing the application's initial state.</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L26">src/services/statemanager.js:26</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="ngeoLocation"><span class="type-signature">(non-null) </span>ngeoLocation<span class="type-signature">: <a href="ngeo.Location.html">ngeo.Location</a></span> </h4>
+<h4 class="name" id=".module"><span class="type-signature">(static, non-null) </span>module<span class="type-signature">: angular.Module</span> </h4>
 
 
 
@@ -304,119 +239,7 @@ The application state is written to both the URL and the local storage.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L31">src/services/statemanager.js:31</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="usedKeyRegexp"><span class="type-signature">(non-null) </span>usedKeyRegexp<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;!RegExp:<a href="-_.html"></a>></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L37">src/services/statemanager.js:37</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="useLocalStorage"><span class="type-signature"></span>useLocalStorage<span class="type-signature">: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span> </h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L42">src/services/statemanager.js:42</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/map/FeatureOverlay.js#L123">src/map/FeatureOverlay.js:123</a>
     </div>
     
 
@@ -443,14 +266,14 @@ The application state is written to both the URL and the local storage.</p>
 
     
 
-    <h4 class="name" id="deleteParam"><span class="type-signature"></span>deleteParam<span class="signature">(key)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addFeature"><span class="type-signature"></span>addFeature<span class="signature">(feature)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Delete a parameter</p>
+    <p>Add a feature to the feature overlay.</p>
 </div>
 
 
@@ -486,12 +309,12 @@ The application state is written to both the URL and the local storage.</p>
 
         <tr>
             
-                <td class="name"><code>key</code></td>
+                <td class="name"><code>feature</code></td>
             
 
             <td class="type">
             
-                string
+                <a href="ol.Feature.html">ol.Feature</a>
             
             </td>
 
@@ -499,7 +322,7 @@ The application state is written to both the URL and the local storage.</p>
 
             
 
-            <td class="description last"><p>Key.</p></td>
+            <td class="description last"><p>The feature to add.</p></td>
         </tr>
 
     
@@ -542,7 +365,7 @@ The application state is written to both the URL and the local storage.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L169">src/services/statemanager.js:169</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/map/FeatureOverlay.js#L40">src/map/FeatureOverlay.js:40</a>
     </div>
     
 
@@ -573,14 +396,14 @@ The application state is written to both the URL and the local storage.</p>
 
     
 
-    <h4 class="name" id="getInitialBooleanValue"><span class="type-signature"></span>getInitialBooleanValue<span class="signature">(key)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="clear"><span class="type-signature"></span>clear<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Get the state value for <code>key</code>.</p>
+    <p>Remove all the features from the feature overlay.</p>
 </div>
 
 
@@ -589,52 +412,6 @@ The application state is written to both the URL and the local storage.</p>
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                string
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>State key.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -672,7 +449,7 @@ The application state is written to both the URL and the local storage.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L139">src/services/statemanager.js:139</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/map/FeatureOverlay.js#L59">src/map/FeatureOverlay.js:59</a>
     </div>
     
 
@@ -695,19 +472,6 @@ The application state is written to both the URL and the local storage.</p>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    boolean|undefined
-
-
-    <p>State value.</p>
-
-</div>
-
-    
 
 
 
@@ -716,14 +480,14 @@ The application state is written to both the URL and the local storage.</p>
 
     
 
-    <h4 class="name" id="getInitialNumberValue"><span class="type-signature"></span>getInitialNumberValue<span class="signature">(key)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="removeFeature"><span class="type-signature"></span>removeFeature<span class="signature">(feature)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Get the state value for <code>key</code>.</p>
+    <p>Remove a feature from the feature overlay.</p>
 </div>
 
 
@@ -759,12 +523,12 @@ The application state is written to both the URL and the local storage.</p>
 
         <tr>
             
-                <td class="name"><code>key</code></td>
+                <td class="name"><code>feature</code></td>
             
 
             <td class="type">
             
-                string
+                <a href="ol.Feature.html">ol.Feature</a>
             
             </td>
 
@@ -772,7 +536,7 @@ The application state is written to both the URL and the local storage.</p>
 
             
 
-            <td class="description last"><p>State key.</p></td>
+            <td class="description last"><p>The feature to remove.</p></td>
         </tr>
 
     
@@ -815,7 +579,7 @@ The application state is written to both the URL and the local storage.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L125">src/services/statemanager.js:125</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/map/FeatureOverlay.js#L50">src/map/FeatureOverlay.js:50</a>
     </div>
     
 
@@ -838,19 +602,6 @@ The application state is written to both the URL and the local storage.</p>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    number|undefined
-
-
-    <p>State value.</p>
-
-</div>
-
-    
 
 
 
@@ -859,14 +610,18 @@ The application state is written to both the URL and the local storage.</p>
 
     
 
-    <h4 class="name" id="getInitialStringValue"><span class="type-signature"></span>getInitialStringValue<span class="signature">(key)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setFeatures"><span class="type-signature"></span>setFeatures<span class="signature">(features)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Get the state value for <code>key</code>.</p>
+    <p>Configure this feature overlay with a feature collection. Features added
+to the collection are also added to the overlay. Same for removal. If you
+configure the feature overlay with a feature collection you will use the
+collection to add and remove features instead of using the overlay's
+<code>addFeature</code>, <code>removeFeature</code> and <code>clear</code> functions.</p>
 </div>
 
 
@@ -902,12 +657,12 @@ The application state is written to both the URL and the local storage.</p>
 
         <tr>
             
-                <td class="name"><code>key</code></td>
+                <td class="name"><code>features</code></td>
             
 
             <td class="type">
             
-                string
+                <a href="ol.Collection.<ol.Feature>.html">ol.Collection.<ol.Feature></a>
             
             </td>
 
@@ -915,7 +670,7 @@ The application state is written to both the URL and the local storage.</p>
 
             
 
-            <td class="description last"><p>State key.</p></td>
+            <td class="description last"><p>Feature collection.</p></td>
         </tr>
 
     
@@ -958,7 +713,7 @@ The application state is written to both the URL and the local storage.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L111">src/services/statemanager.js:111</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/map/FeatureOverlay.js#L73">src/map/FeatureOverlay.js:73</a>
     </div>
     
 
@@ -981,19 +736,6 @@ The application state is written to both the URL and the local storage.</p>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    string|undefined
-
-
-    <p>State value.</p>
-
-</div>
-
-    
 
 
 
@@ -1002,14 +744,14 @@ The application state is written to both the URL and the local storage.</p>
 
     
 
-    <h4 class="name" id="getInitialValue"><span class="type-signature"></span>getInitialValue<span class="signature">(key)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setStyle"><span class="type-signature"></span>setStyle<span class="signature">(style)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Get the state value for <code>key</code>.</p>
+    <p>Set a style for the feature overlay.</p>
 </div>
 
 
@@ -1045,12 +787,12 @@ The application state is written to both the URL and the local storage.</p>
 
         <tr>
             
-                <td class="name"><code>key</code></td>
+                <td class="name"><code>style</code></td>
             
 
             <td class="type">
             
-                string
+                <a href="ol.style.Style.html">ol.style.Style</a>|<a href="Array.<ol.style.Style>.html">Array.<ol.style.Style></a>|<a href="ol.StyleFunction.html">ol.StyleFunction</a>
             
             </td>
 
@@ -1058,7 +800,7 @@ The application state is written to both the URL and the local storage.</p>
 
             
 
-            <td class="description last"><p>State key.</p></td>
+            <td class="description last"><p>Style.</p></td>
         </tr>
 
     
@@ -1101,150 +843,7 @@ The application state is written to both the URL and the local storage.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L101">src/services/statemanager.js:101</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    string|undefined
-
-
-    <p>State value.</p>
-
-</div>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="updateState"><span class="type-signature"></span>updateState<span class="signature">(object)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Update the application state with the values in <code>object</code>.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>object</code></td>
-            
-
-            <td class="type">
-            
-                <a href="!Object.<string, string>.html">!Object.<string, string></a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Object.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/services/statemanager.js#L152">src/services/statemanager.js:152</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/greenkeeper/openlayers-4.6.2/src/map/FeatureOverlay.js#L96">src/map/FeatureOverlay.js:96</a>
     </div>
     
 

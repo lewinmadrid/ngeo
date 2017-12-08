@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: component <small>component:ngeoOlcsControls3d</small></title>
+    <title>JSDoc: Namespace: ngeo.ToolActivateMgr</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: component <small>component:ngeoOlcsControls3d</small></h1>
+    <h1 class="page-title">Namespace: ngeo.ToolActivateMgr</h1>
 
     
 
@@ -28,7 +28,8 @@
 
 <header>
     
-        <h2 id="component">component
+        <h2 id="ToolMgrEntry">
+            <span class="ancestors">ngeo.ToolActivateMgr.</span>ToolMgrEntry
         </h2>
         
     
@@ -38,39 +39,19 @@
     <div class="container-overview">
     
         
+            <div class="description"><p>An entry for a tool in a <code>ngeo.ToolActivateMgr</code> group.</p></div>
+        
+
+        
+
+
+    
+    <h5 class="subsection-title">Properties:</h5>
+    
 
     
 
-    <h4 class="name" id="component"><span class="type-signature">(non-null) </span>new component<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Provides the &quot;ngeoOlcsControls3d&quot; component, a widget for
-controlling the 3D camera.</p>
-<p>Example:</p>
-<pre class="prettyprint source"><code>&lt;ngeo-olcs-controls3d ng-if=&quot;$ctrl.manager && $ctrl.manager.is3dEnabled()&quot;>
-&lt;/ngeo-olcs-controls3d></code></pre><p>By default the directive uses &quot;controls3d.html&quot; as its templateUrl. This
-can be changed by redefining the &quot;ngeoOlcsControls3dTemplateUrl&quot; value.</p>
-<p>See our live example: <a href="../examples/simple3d.html">../examples/simple3d.html</a></p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>HTML attributes:</h5>
-    
-
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -83,7 +64,7 @@ can be changed by redefining the &quot;ngeoOlcsControls3dTemplateUrl&quot; value
 
         
 
-        <th class="last">Description</th>
+        
     </tr>
     </thead>
 
@@ -92,13 +73,13 @@ can be changed by redefining the &quot;ngeoOlcsControls3dTemplateUrl&quot; value
 
         <tr>
             
-                <td class="name"><code>ngeo-olcs-manager</code></td>
+                <td class="name"><code>tool</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">olcs.contrib.Manager</span>
+<span class="param-type"><a href="ngeo.ToolActivate.html">ngeo.ToolActivate</a></span>
 
 
 
@@ -109,14 +90,60 @@ can be changed by redefining the &quot;ngeoOlcsControls3dTemplateUrl&quot; value
 
             
 
-            <td class="description last">The OL-Cesium manager.</td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>defaultTool</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>unlisten</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            </td>
         </tr>
 
     
     </tbody>
 </table>
-
-
 
 
 
@@ -150,7 +177,7 @@ can be changed by redefining the &quot;ngeoOlcsControls3dTemplateUrl&quot; value
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/olcs/controls3d.js#L248">src/olcs/controls3d.js:248</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/services/toolActivateMgr.js#L14">src/services/toolActivateMgr.js:14</a>
     </div>
     
 
@@ -162,20 +189,7 @@ can be changed by redefining the &quot;ngeoOlcsControls3dTemplateUrl&quot; value
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     
     </div>
 

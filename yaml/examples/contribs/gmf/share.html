@@ -41,10 +41,10 @@
       </button>
     </div>
 
-    <ngeo-modal ng-model="ctrl.modalShareShown" ngeo-modal-destroy-content-on-hide="true">
+    <ngeo-modal ng-model="ctrl.modalShareShown">
       <gmf-share gmf-share-email="false"/>
     </ngeo-modal>
-    <ngeo-modal ng-model="ctrl.modalShareWithEmailShown" ngeo-modal-destroy-content-on-hide="true">
+    <ngeo-modal ng-model="ctrl.modalShareWithEmailShown">
       <gmf-share gmf-share-email="true"/>
     </ngeo-modal>
 
@@ -63,7 +63,7 @@
     <script src="../../lib/bootstrap.min.js"></script>
     <script src="../../lib/proj4.js"></script>
     <script src="../../lib/transpile.js"></script>
-    <script src="default.js"></script>
+    <script src="share.js"></script>
     <script src="../../lib/watchwatchers.js"></script>
     <script>
       var gmfModule = angular.module('gmf');

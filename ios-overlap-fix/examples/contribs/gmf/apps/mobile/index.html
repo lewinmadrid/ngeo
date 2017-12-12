@@ -172,15 +172,16 @@
     <script>
       // Hack for ios Safari browser (UI overlapping on iOS 10)
       var userAgent = window.navigator.userAgent;
-      var iOS = !!userAgent.match(/iP(hone|od|ad)/i);
-      var webkit = !!userAgent.match(/WebKit/i);
+      var regEx = /iP(hone|od|ad)/;
+      var iOS = regEx.test(userAgent);
+      var webkit = /WebKit/i.test(userAgent);
+      var criOS = /CriOS/i.test(userAgent);
+      var platform = regEx.test(window.navigator.platform);
 
-      if(iOS && webkit && !userAgent.match(/CriOS/i)) {
+      if(iOS && webkit && platform && !criOS && !window.MSStream) {
         function iosChecker() {
-          if (/iP(hone|od|ad)/.test(window.navigator.platform)) {
-            var v = (window.navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
-            return [parseInt(v[1], 10), parseInt(v  [2], 10), parseInt(v[3] || 0, 10)];
-          }
+          var v = (window.navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+          return [parseInt(v[1], 10), parseInt(v  [2], 10), parseInt(v[3] || 0, 10)];
         }
 
         var iosVersion = iosChecker()[0];
@@ -201,7 +202,7 @@
     </script>
     <script>
       (function() {
-        var cacheVersion = 'd307f28ea05be829f5327a42e0bd3cb492f96de3';
+        var cacheVersion = 'f42f1aed63dbc141f0047f66e074f41e326053bf';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

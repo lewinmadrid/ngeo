@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Translate</title>
+    <title>JSDoc: Namespace: gmf.authentication.Service</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Translate</h1>
+    <h1 class="page-title">Namespace: gmf.authentication.Service</h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="Translate">
-            <span class="ancestors">ngeo.interaction.</span>Translate
+        <h2 id="RouteSuffix">
+            <span class="ancestors">gmf.authentication.Service.</span>RouteSuffix
         </h2>
         
     
@@ -40,36 +40,16 @@
     
         
 
+        
+
+
+    
+    <h5 class="subsection-title">Enumeration:</h5>
     
 
-    <h4 class="name" id="Translate"><span class="type-signature"></span>new Translate<span class="signature">(options)</span><span class="type-signature"></span></h4>
-
     
 
-
-
-<div class="description">
-    <p>An extension of the OpenLayers Translate interaction that adds the following
-features to it:</p>
-<ul>
-<li>show a small arrow icon in the middle of the features allowing a visual
-aspect that tells the user &quot;this feature can be moved&quot;</li>
-<li>pressing the ESC key automatically deactivate the interaction.</li>
-</ul>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
+<table class="props">
     <thead>
     <tr>
         
@@ -82,7 +62,9 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 
         
 
+        
         <th class="last">Description</th>
+        
     </tr>
     </thead>
 
@@ -91,12 +73,16 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>CHANGE_PASSWORD</code></td>
             
 
             <td class="type">
             
-                <a href="ngeox.interaction.TranslateOptions.html">ngeox.interaction.TranslateOptions</a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
             
             </td>
 
@@ -104,16 +90,118 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 
             
 
-            <td class="description last"><p>Options.</p></td>
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>IS_LOGGED_IN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>LOGIN</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>LOGOUT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>RESET_PASSWORD</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            
+            <td class="description last"></td>
+            </td>
         </tr>
 
     
     </tbody>
 </table>
-
-
-
-
 
 
 
@@ -147,7 +235,7 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/ios-overlap-fix/src/interaction/translate.js#L26">src/interaction/translate.js:26</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/ios-overlap-fix/contribs/gmf/src/authentication/Service.js#L200">contribs/gmf/src/authentication/Service.js:200</a>
     </div>
     
 
@@ -159,33 +247,9 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     
     </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li><a href="http://openlayers.org/en/master/apidoc/ol.interaction.Translate.html">ol.interaction.Translate</a></li>
-    </ul>
-
 
     
 
@@ -199,272 +263,6 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="setActive"><span class="type-signature"></span>setActive<span class="signature">(active)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Activate or deactivate the interaction.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>active</code></td>
-            
-
-            <td class="type">
-            
-                boolean
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Active.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/ios-overlap-fix/src/interaction/translate.js#L88">src/interaction/translate.js:88</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="setMap"><span class="type-signature"></span>setMap<span class="signature">(map)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Remove the interaction from its current map and attach it to the new map.
-Subclasses may set up event handlers to get notified about changes to
-the map here.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>map</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ol.PluggableMap.html">ol.PluggableMap</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Map.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/ios-overlap-fix/src/interaction/translate.js#L117">src/interaction/translate.js:117</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
     
 
     

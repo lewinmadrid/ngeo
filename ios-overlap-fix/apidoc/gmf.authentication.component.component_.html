@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Translate</title>
+    <title>JSDoc: Class: component_ <small>component:gmfAuthentication</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Translate</h1>
+    <h1 class="page-title">Class: component_ <small>component:gmfAuthentication</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="Translate">
-            <span class="ancestors">ngeo.interaction.</span>Translate
+        <h2 id="component_">
+            <span class="ancestors">gmf.authentication.component.</span>component_
         </h2>
         
     
@@ -42,20 +42,27 @@
 
     
 
-    <h4 class="name" id="Translate"><span class="type-signature"></span>new Translate<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="component_"><span class="type-signature"></span>new component_<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>An extension of the OpenLayers Translate interaction that adds the following
-features to it:</p>
-<ul>
-<li>show a small arrow icon in the middle of the features allowing a visual
-aspect that tells the user &quot;this feature can be moved&quot;</li>
-<li>pressing the ESC key automatically deactivate the interaction.</li>
-</ul>
+    <p>An &quot;authentication&quot; component for a GeoMapFish application. With the
+use of the &quot;authentication&quot; service, it features a complete interface
+for the user to be able to login, logout, change or reset his or her
+password.  The <code>gmfUser</code> angular value is also used to keep track of
+the user information. When empty, that means that the user isn't connected
+yet.</p>
+<p>While not logged in, the &quot;login&quot; form is shown, which allows the user to
+either log in or ask for a password reset.</p>
+<p>Once logged in, the &quot;logout&quot; form is shown, which allows the user to either
+log out or change his or her password.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code> &lt;gmf-authentication
+   gmf-authentication-allow-password-change=&quot;true&quot;>
+ &lt;/gmf-authentication></code></pre>
 </div>
 
 
@@ -66,7 +73,9 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 
 
 
-    <h5>Parameters:</h5>
+
+
+    <h5>HTML attributes:</h5>
     
 
 <table class="params">
@@ -91,12 +100,16 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>gmf-authentication-allow-password-change</code></td>
             
 
             <td class="type">
             
-                <a href="ngeox.interaction.TranslateOptions.html">ngeox.interaction.TranslateOptions</a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
             
             </td>
 
@@ -104,14 +117,13 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 
             
 
-            <td class="description last"><p>Options.</p></td>
+            <td class="description last">Whether to
+    show the change password button. Default to true.</td>
         </tr>
 
     
     </tbody>
 </table>
-
-
 
 
 
@@ -147,7 +159,7 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/ios-overlap-fix/src/interaction/translate.js#L26">src/interaction/translate.js:26</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/ios-overlap-fix/contribs/gmf/src/authentication/component.js#L69">contribs/gmf/src/authentication/component.js:69</a>
     </div>
     
 
@@ -175,17 +187,6 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 
     
     </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li><a href="http://openlayers.org/en/master/apidoc/ol.interaction.Translate.html">ol.interaction.Translate</a></li>
-    </ul>
-
 
     
 
@@ -199,272 +200,6 @@ aspect that tells the user &quot;this feature can be moved&quot;</li>
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="setActive"><span class="type-signature"></span>setActive<span class="signature">(active)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Activate or deactivate the interaction.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>active</code></td>
-            
-
-            <td class="type">
-            
-                boolean
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Active.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/ios-overlap-fix/src/interaction/translate.js#L88">src/interaction/translate.js:88</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="setMap"><span class="type-signature"></span>setMap<span class="signature">(map)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Remove the interaction from its current map and attach it to the new map.
-Subclasses may set up event handlers to get notified about changes to
-the map here.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>map</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ol.PluggableMap.html">ol.PluggableMap</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Map.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/ios-overlap-fix/src/interaction/translate.js#L117">src/interaction/translate.js:117</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
     
 
     

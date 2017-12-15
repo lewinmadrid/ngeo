@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: controlDirective <small>directive:ngeoControl</small></title>
+    <title>JSDoc: Class: Utils <small>service:ngeoPrintUtils</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: controlDirective <small>directive:ngeoControl</small></h1>
+    <h1 class="page-title">Class: Utils <small>service:ngeoPrintUtils</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="controlDirective">
-            <span class="ancestors">ngeo.</span>controlDirective
+        <h2 id="Utils">
+            <span class="ancestors">ngeo.print.</span>Utils
         </h2>
         
     
@@ -42,20 +42,14 @@
 
     
 
-    <h4 class="name" id="controlDirective"><span class="type-signature"></span>new controlDirective<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Utils"><span class="type-signature"></span>new Utils<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Provides a directive that can be used to add a control to the map
-using a DOM element.</p>
-<p>Example:</p>
-<pre class="prettyprint source"><code>&lt;div ngeo-control=&quot;ctrl.control&quot; ngeo-control-map=&quot;ctrl.map&quot;>&lt;/div></code></pre><p>The expression passed to &quot;ngeo-control&quot; should evaluate to a control
-instance, and the expression passed to &quot;ngeo-control-map&quot; should
-evaluate to a map instance.</p>
-<p>See our live example: <a href="../examples/control.html">../examples/control.html</a></p>
+    <p>Provides a service with print utility functions.</p>
 </div>
 
 
@@ -66,56 +60,6 @@ evaluate to a map instance.</p>
 
 
 
-
-
-    <h5>HTML attributes:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>ngeo-control-map</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The map.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -151,7 +95,260 @@ evaluate to a map instance.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/directives/control.js#L29">src/directives/control.js:29</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/print/Utils.js#L16">src/print/Utils.js:16</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".module"><span class="type-signature">(static, non-null) </span>module<span class="type-signature">: angular.Module</span> </h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/print/Utils.js#L291">src/print/Utils.js:291</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="createPrintMaskPostcompose"><span class="type-signature"></span>createPrintMaskPostcompose<span class="signature">(getSize, getScale, opt_rotation)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Return a function to use as map postcompose listener for drawing a print
+mask on the map.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>getSize</code></td>
+            
+
+            <td class="type">
+            
+                <a href="function():ol.Size.html">function():ol.Size</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User-defined function returning the
+    size in dots of the map to print.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>getScale</code></td>
+            
+
+            <td class="type">
+            
+                <a href="function(olx.FrameState):number.html">function(olx.FrameState):number</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User-defined function
+    returning the scale of the map to print.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opt_rotation</code></td>
+            
+
+            <td class="type">
+            
+                <a href="function():number=.html">function():number=</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User defined function returning the
+    inclination of the canvas in degree (-180 to 180).
+returning the scale of the map to print.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/print/Utils.js#L61">src/print/Utils.js:61</a>
     </div>
     
 
@@ -179,10 +376,11 @@ evaluate to a map instance.</p>
         
 <div class="param-desc">
 
-    <a href="angular.Directive.html">angular.Directive</a>
+    <a href="function(ol.render.Event).html">function(ol.render.Event)</a>
 
 
-    <p>The directive specs.</p>
+    <p>Function to use as a map postcompose
+listener.</p>
 
 </div>
 
@@ -190,8 +388,225 @@ evaluate to a map instance.</p>
 
 
 
+        
+            
+
     
+
+    <h4 class="name" id="getBottomLeftCorner"><span class="type-signature"></span>getBottomLeftCorner<span class="signature">(mapCenter)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get the coordinates of the bottom left corner of the printed map.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mapCenter</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Coordinate.html">ol.Coordinate</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Center of the map to print.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/print/Utils.js#L250">src/print/Utils.js:250</a>
     </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="ol.Coordinate.html">ol.Coordinate</a>
+
+
+    <p>The coordinates of the bottom left corner.</p>
+
+</div>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getBottomRightCorner"><span class="type-signature"></span>getBottomRightCorner<span class="signature">(mapCenter)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get the coordinates of the bottom rigth corner of the printed map.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mapCenter</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Coordinate.html">ol.Coordinate</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Center of the map to print.ç</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
 
     
 
@@ -199,12 +614,744 @@ evaluate to a map instance.</p>
 
     
 
-     
+    
+
+    
 
     
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/print/Utils.js#L261">src/print/Utils.js:261</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="ol.Coordinate.html">ol.Coordinate</a>
+
+
+    <p>The coordinates of the bottom rigth corner.</p>
+
+</div>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getOptimalResolution"><span class="type-signature"></span>getOptimalResolution<span class="signature">(mapSize, printMapSize, printMapScale)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get the optimal map resolution for a print scale and a map size.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mapSize</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Size.html">ol.Size</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Size of the map on the screen (px).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>printMapSize</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Size.html">ol.Size</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Size of the map on the paper (dots).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>printMapScale</code></td>
+            
+
+            <td class="type">
+            
+                number
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Map scale on the paper.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/print/Utils.js#L228">src/print/Utils.js:228</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    number
+
+
+    <p>The optimal map resolution.</p>
+
+</div>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getOptimalScale"><span class="type-signature"></span>getOptimalScale<span class="signature">(mapSize, mapResolution, printMapSize, printMapScales)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get the optimal print scale for a map, the map being defined by its
+size (in pixels) and resolution (in map units per pixel).</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mapSize</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Size.html">ol.Size</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Size of the map on the screen (px).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mapResolution</code></td>
+            
+
+            <td class="type">
+            
+                number
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Resolution of the map on the screen.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>printMapSize</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Size.html">ol.Size</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Size of the map on the paper (dots).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>printMapScales</code></td>
+            
+
+            <td class="type">
+            
+                <a href="Array.<number>.html">Array.<number></a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Supported map scales on the paper.
+The scales are provided as scale denominators, sorted in ascending order.
+E.g. <code>[500, 1000, 2000, 4000]</code>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/print/Utils.js#L196">src/print/Utils.js:196</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    number
+
+
+    <p>The best scale. <code>-1</code> is returned if there is no optimal
+scale, that is the optimal scale is lower than or equal to the first value
+in <code>printMapScales</code>.</p>
+
+</div>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getUpLeftCorner"><span class="type-signature"></span>getUpLeftCorner<span class="signature">(mapCenter)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get the coordinates of the up left corner of the printed map.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mapCenter</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Coordinate.html">ol.Coordinate</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Center of the map to print.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/print/Utils.js#L272">src/print/Utils.js:272</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="ol.Coordinate.html">ol.Coordinate</a>
+
+
+    <p>The coordinates of the up left corner.</p>
+
+</div>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getUpRightCorner"><span class="type-signature"></span>getUpRightCorner<span class="signature">(mapCenter)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get the coordinates of the up right corner of the printed map.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mapCenter</code></td>
+            
+
+            <td class="type">
+            
+                <a href="ol.Coordinate.html">ol.Coordinate</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Center of the map to print.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="tag-source">
+    
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack_new/src/print/Utils.js#L283">src/print/Utils.js:283</a>
+    </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="ol.Coordinate.html">ol.Coordinate</a>
+
+
+    <p>The coordinates of the up right corner.</p>
+
+</div>
+
+    
+
+
+
+        
     
 
     

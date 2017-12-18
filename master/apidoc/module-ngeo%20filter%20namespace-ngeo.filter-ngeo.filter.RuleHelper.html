@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: NumberCoordinates <small>filter:ngeoNumberCoordinates</small></title>
+    <title>JSDoc: Class: RuleHelper <small>service:ngeoRuleHelper</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: NumberCoordinates <small>filter:ngeoNumberCoordinates</small></h1>
+    <h1 class="page-title">Class: RuleHelper <small>service:ngeoRuleHelper</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="NumberCoordinates">
-            <span class="ancestors">ngeo.</span>NumberCoordinates
+        <h2 id="RuleHelper">
+            <span class="ancestors">module:ngeo filter namespace~ngeo.filter~ngeo.filter.</span>RuleHelper
         </h2>
         
     
@@ -42,30 +42,15 @@
 
     
 
-    <h4 class="name" id="NumberCoordinates"><span class="type-signature"></span>new NumberCoordinates<span class="signature">($filter)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="RuleHelper"><span class="type-signature"></span>new RuleHelper<span class="signature">(gettextCatalog, ngeoFeatureHelper, ngeoWMSTime)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Format a couple of numbers as number coordinates.</p>
-<p>Example without parameters (en-US localization):</p>
-<pre class="prettyprint source"><code> &lt;p>{{[7.1234, 46.9876] | ngeoNumberCoordinates}}&lt;/p>
- &lt;!-- will Become 7 47 --></code></pre><p>Example with defined fractionDigits and template (en-US localization):</p>
-<pre class="prettyprint source"><code> &lt;p>{{[7.1234, 46.9876] | ngeoNumberCoordinates:2:'co {x} E; {y} N'}}&lt;/p>
- &lt;!-- will Become co 7.12 E; 46.99 N --></code></pre><p>Example without fractionDigits but with defined template and localize:</p>
-<pre class="prettyprint source"><code> &lt;!-- With en-US localization (opt_localize can be true or undefined) -->
- &lt;p>{{[2600000, 1600000] | ngeoNumberCoordinates:0:'{x}, {y}'}}&lt;/p>
- &lt;!-- will Become 2,600,000, 1,600,000 -->
- &lt;br/>
- &lt;!-- With fr-CH localization (opt_localize can be true or undefined) -->
- &lt;p>{{[2600000, 1600000] | ngeoNumberCoordinates:0:'{x}, {y}'}}&lt;/p>
- &lt;!-- will Become 2'600'000, 1'600'000 -->
- &lt;br/>
- &lt;!-- With en-US localization but with localization to false -->
- &lt;p>{{[2600000, 1600000] | ngeoNumberCoordinates:0:'{x}, {y}'}}&lt;/p>
- &lt;!-- will Become 2'600'000, 1'600'000 --></code></pre>
+    <p>A service that provides utility methods to create <code>ngeo.rule.Rule</code>
+objects.</p>
 </div>
 
 
@@ -101,12 +86,12 @@
 
         <tr>
             
-                <td class="name"><code>$filter</code></td>
+                <td class="name"><code>gettextCatalog</code></td>
             
 
             <td class="type">
             
-                <a href="angular.$filter.html">angular.$filter</a>
+                <a href="!angularGettext.Catalog.html">!angularGettext.Catalog</a>
             
             </td>
 
@@ -114,7 +99,47 @@
 
             
 
-            <td class="description last"><p>Angular filter</p></td>
+            <td class="description last"><p>Gettext service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeoFeatureHelper</code></td>
+            
+
+            <td class="type">
+            
+                <a href="!ngeo.FeatureHelper.html">!ngeo.FeatureHelper</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Ngeo feature helper service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeoWMSTime</code></td>
+            
+
+            <td class="type">
+            
+                <a href="!ngeo.WMSTime.html">!ngeo.WMSTime</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>wms time service.</p></td>
         </tr>
 
     
@@ -157,7 +182,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/filters.js#L214">src/filters.js:214</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/filter/RuleHelper.js#L33">src/filter/RuleHelper.js:33</a>
     </div>
     
 
@@ -180,19 +205,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="ngeox.numberCoordinates.html">ngeox.numberCoordinates</a>
-
-
-    <p>A function to format numbers into coordinates string.</p>
-
-</div>
-
-    
 
 
 
@@ -211,223 +223,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="~filterFn"><span class="type-signature">(inner) </span>filterFn<span class="signature">(coordinates, [opt_fractionDigits]<span class="signature-attributes">opt</span>, [opt_template]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>coordinates</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ol.Coordinate.html">ol.Coordinate</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Array of two numbers.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[opt_fractionDigits]</code></td>
-            
-
-            <td class="type">
-            
-                <a href="(number.html">(number</a>|<a href="string)=.html">string)=</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Optional number of digit.
-    Default to 0.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[opt_template]</code></td>
-            
-
-            <td class="type">
-            
-                <a href="string=.html">string=</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Optional template. Default to '{x} {y}'.
-    Where &quot;{x}&quot; will be replaced by the easting coordinate and &quot;{y}&quot; by the
-    northing one. Note: Use a html entity to use the semicolon symbol
-    into a template.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/filters.js#L225">src/filters.js:225</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    string
-
-
-    <p>Number formatted coordinates.</p>
-
-</div>
-
-    
-
-
-
-        
     
 
     

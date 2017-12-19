@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Menu</title>
+    <title>JSDoc: Class: RuleHelper <small>service:ngeoRuleHelper</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Menu</h1>
+    <h1 class="page-title">Class: RuleHelper <small>service:ngeoRuleHelper</small></h1>
 
     
 
@@ -28,13 +28,9 @@
 
 <header>
     
-        <h2 id="Menu">
-            <span class="ancestors">ngeo.</span>Menu
+        <h2 id="RuleHelper">
+            <span class="ancestors">ngeo.filter~ngeo.filter.</span>RuleHelper
         </h2>
-        
-            <div class="class-description"><p>An OpenLayers overlay that shows a contextual menu with configurable actions
-anchored from its top left to a specific location. An event is fired when
-any of the action is clicked.</p></div>
         
     
 </header>
@@ -45,295 +41,16 @@ any of the action is clicked.</p></div>
         
 
     
-    <h2>Constructor</h2>
-    
 
-    <h4 class="name" id="Menu"><span class="type-signature"></span>new Menu<span class="signature">([menuOptions]<span class="signature-attributes">opt</span>, [opt_overlayOptions]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>[menuOptions]</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeox.MenuOptions=.html">ngeox.MenuOptions=</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Menu options.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[opt_overlayOptions]</code></td>
-            
-
-            <td class="type">
-            
-                <a href="olx.OverlayOptions=.html">olx.OverlayOptions=</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Overlay options.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/webpack-error/src/menu.js#L20">src/menu.js:20</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li><a href="http://openlayers.org/en/master/apidoc/ol.Overlay.html">ol.Overlay</a></li>
-    </ul>
-
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="close"><span class="type-signature"></span>close<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/webpack-error/src/menu.js#L160">src/menu.js:160</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="open"><span class="type-signature"></span>open<span class="signature">(coordinate)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="RuleHelper"><span class="type-signature"></span>new RuleHelper<span class="signature">(gettextCatalog, ngeoFeatureHelper, ngeoWMSTime)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Opens the menu at the desited coordinate. Also starts listening for the
-clickout if autoClose is enabled.</p>
+    <p>A service that provides utility methods to create <code>ngeo.rule.Rule</code>
+objects.</p>
 </div>
 
 
@@ -369,12 +86,12 @@ clickout if autoClose is enabled.</p>
 
         <tr>
             
-                <td class="name"><code>coordinate</code></td>
+                <td class="name"><code>gettextCatalog</code></td>
             
 
             <td class="type">
             
-                <a href="ol.Coordinate.html">ol.Coordinate</a>
+                <a href="!angularGettext.Catalog.html">!angularGettext.Catalog</a>
             
             </td>
 
@@ -382,125 +99,19 @@ clickout if autoClose is enabled.</p>
 
             
 
-            <td class="description last"><p>Where to open the menu.</p></td>
+            <td class="description last"><p>Gettext service.</p></td>
         </tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/webpack-error/src/menu.js#L143">src/menu.js:143</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="setMap"><span class="type-signature"></span>setMap<span class="signature">(map)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>map</code></td>
+                <td class="name"><code>ngeoFeatureHelper</code></td>
             
 
             <td class="type">
             
-                <a href="ol.PluggableMap.html">ol.PluggableMap</a>|undefined
+                <a href="!ngeo.FeatureHelper.html">!ngeo.FeatureHelper</a>
             
             </td>
 
@@ -508,7 +119,27 @@ clickout if autoClose is enabled.</p>
 
             
 
-            <td class="description last"><p>Map.</p></td>
+            <td class="description last"><p>Ngeo feature helper service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeoWMSTime</code></td>
+            
+
+            <td class="type">
+            
+                <a href="!ngeo.WMSTime.html">!ngeo.WMSTime</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>wms time service.</p></td>
         </tr>
 
     
@@ -551,7 +182,7 @@ clickout if autoClose is enabled.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/webpack-error/src/menu.js#L101">src/menu.js:101</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/webpack-error/src/filter/RuleHelper.js#L30">src/filter/RuleHelper.js:30</a>
     </div>
     
 
@@ -577,7 +208,21 @@ clickout if autoClose is enabled.</p>
 
 
 
-        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
     
 
     

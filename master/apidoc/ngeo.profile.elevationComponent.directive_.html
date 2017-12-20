@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: editfeatureselectorDirective <small>directive:gmfEditfeatureselector</small></title>
+    <title>JSDoc: Class: directive_ <small>directive:ngeoProfile</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: editfeatureselectorDirective <small>directive:gmfEditfeatureselector</small></h1>
+    <h1 class="page-title">Class: directive_ <small>directive:ngeoProfile</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="editfeatureselectorDirective">
-            <span class="ancestors">gmf.</span>editfeatureselectorDirective
+        <h2 id="directive_">
+            <span class="ancestors">ngeo.profile.elevationComponent.</span>directive_
         </h2>
         
     
@@ -42,24 +42,24 @@
 
     
 
-    <h4 class="name" id="editfeatureselectorDirective"><span class="type-signature"></span>new editfeatureselectorDirective<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="directive_"><span class="type-signature"></span>new directive_<span class="signature">(ngeoDebounce)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Directive that uses the GMF Theme service to collect the editable layers
-and create a drop-down list out of them. When the user selects one of the
-layer from the list, a <code>gmf-editfeature</code> directive is created and shown,
-which allows the user to edit that layer.</p>
+    <p>Provides a directive used to insert an elevation profile chart
+in the DOM.</p>
 <p>Example:</p>
-<pre class="prettyprint source"><code>&lt;gmf-editfeatureselector
-    gmf-editfeatureselector-active=&quot;ctrl.editFeatureSelectorActive&quot;
-    gmf-editfeatureselector-map=&quot;::ctrl.map&quot;
-    gmf-editfeatureselector-tolerance=&quot;::ctrl.tolerance&quot;
-    gmf-editfeatureselector-vector=&quot;::ctrl.vectorLayer&quot;>
-&lt;/gmf-editfeatureselector></code></pre>
+<pre class="prettyprint source"><code> &lt;div ngeo-profile=&quot;ctrl.profileData&quot;
+   ngeo-profile-options=&quot;ctrl.profileOptions&quot;
+   ngeo-profile-pois=&quot;ctrl.profilePois&quot;>
+ &lt;/div></code></pre><p>Where &quot;ctrl.profileOptions&quot; is of type <a href="ngeox.profile.html#ProfileOptions"><code>ngeox.profile.ProfileOptions</code></a>;
+&quot;ctrl.profileData&quot; and &quot;ctrl.profilePois&quot; are arrays which will be
+processed by <code>ngeox.profile.ElevationExtractor</code> and
+<a href="ngeox.profile.html#PoiExtractor"><code>ngeox.profile.PoiExtractor</code></a>.</p>
+<p>See our live example: <a href="../examples/profile.html">../examples/profile.html</a></p>
 </div>
 
 
@@ -85,6 +85,8 @@ which allows the user to edit that layer.</p>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -97,13 +99,13 @@ which allows the user to edit that layer.</p>
 
         <tr>
             
-                <td class="name"><code>gmf-editfeatureselector-active</code></td>
+                <td class="name"><code>ngeo-profile</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>
 
 
 
@@ -111,24 +113,33 @@ which allows the user to edit that layer.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">Whether the
-    directive is active or not.</td>
+            <td class="description last">The profile data.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>gmf-editfeatureselector-map</code></td>
+                <td class="name"><code>ngeo-profile-options</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
+<span class="param-type"><a href="ngeox.profile.html#ProfileOptions">ngeox.profile.ProfileOptions</a></span>
 
 
 
@@ -136,26 +147,31 @@ which allows the user to edit that layer.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">The map.</td>
+            <td class="description last">The options.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>gmf-editfeatureselector-tolerance</code></td>
+                <td class="name"><code>ngeo-profile-pois</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>
-|
-
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>
 
 
 
@@ -163,24 +179,33 @@ which allows the user to edit that layer.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">The
-    buffer in pixels to use when making queries to get the features.</td>
+            <td class="description last">The data for POIs.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>gmf-editfeatureselector-vector</code></td>
+                <td class="name"><code>ngeo-profile-highlight</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.layer.Vector.html">ol.layer.Vector</a></span>
+<span class="param-type">*</span>
 
 
 
@@ -188,11 +213,19 @@ which allows the user to edit that layer.</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">The vector
-    layer where the selected or created features are drawn.</td>
+            <td class="description last">Any property on the scope which
+evaluated value may correspond to distance from origin.</td>
         </tr>
 
     
@@ -233,7 +266,7 @@ which allows the user to edit that layer.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/directives/editfeatureselector.js#L37">contribs/gmf/src/directives/editfeatureselector.js:37</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/profile/elevationComponent.js#L47">src/profile/elevationComponent.js:47</a>
     </div>
     
 
@@ -264,7 +297,7 @@ which allows the user to edit that layer.</p>
     <a href="angular.Directive.html">angular.Directive</a>
 
 
-    <p>The directive specs.</p>
+    <p>Directive Definition Object.</p>
 
 </div>
 

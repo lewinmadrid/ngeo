@@ -20,7 +20,7 @@ module.exports = function(config) {
       'node_modules/bootstrap/dist/js/bootstrap.js',
       'test/spec/beforeeach.js',
       'test/spec/**/*.spec.js',
-      'contribs/gmf/test/spec/**/*.spec.js',
+//      'contribs/gmf/test/spec/**/*.spec.js',
     ],
 
     // preprocess matching files before serving them to the browser

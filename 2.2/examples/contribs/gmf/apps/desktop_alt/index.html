@@ -30,12 +30,16 @@
 
       <div class="gmf-app-data-panel">
         <div class="gmf-app-header">
-          <div class="dropdown">
-            <a href class="btn btn-default btn-block btn-primary"
-              data-toggle="dropdown">
-              <span class="fa fa-grid"></span>
-              <span translate>Themes</span>
-              <span class="caret"></span>
+          <div class="dropdown" ng-cloak>
+            <a href class="btn btn-default btn-block btn-primary" data-toggle="dropdown">
+              <span ng-if="mainCtrl.gmfThemeManager.isLoading()">
+                <span translate>Loading...</span>
+              </span>
+              <span ng-if="!mainCtrl.gmfThemeManager.isLoading()">
+                <span class="fa fa-grid"></span>
+                <span translate>Themes</span>
+                <span class="caret"></span>
+              </span>
             </a>
             <div class="import">
               <div>Local</div>
@@ -334,7 +338,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = 'f6898b175f3d7e4973ce77828d86f538d2a28638';
+        var cacheVersion = '1157d1d44be6f0fec671aea15e353b692e24efba';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

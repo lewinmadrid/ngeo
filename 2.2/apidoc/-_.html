@@ -41,7 +41,7 @@
 
     
 
-    <h4 class="name" id=""><span class="type-signature"></span>new <span class="signature">($timeout, gettext, ngeoFile, ngeoImportLocalTemplateUrl)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=""><span class="type-signature"></span>new <span class="signature">($window, $document, $q, gettextCatalog, ngeoFile, ngeoImportDndTemplateUrl)</span><span class="type-signature"></span></h4>
 
     
 
@@ -80,12 +80,52 @@
 
         <tr>
             
-                <td class="name"><code>$timeout</code></td>
+                <td class="name"><code>$window</code></td>
             
 
             <td class="type">
             
-                <a href="angular.$timeout.html">angular.$timeout</a>
+                <a href="Window.html">Window</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The window.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>$document</code></td>
+            
+
+            <td class="type">
+            
+                <a href="jQuery.html">jQuery</a>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The document.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>$q</code></td>
+            
+
+            <td class="type">
+            
+                <a href="angular.$q.html">angular.$q</a>
             
             </td>
 
@@ -100,12 +140,12 @@
 
         <tr>
             
-                <td class="name"><code>gettext</code></td>
+                <td class="name"><code>gettextCatalog</code></td>
             
 
             <td class="type">
             
-                <a href="gettext.html">gettext</a>
+                <a href="angularGettext.Catalog.html">angularGettext.Catalog</a>
             
             </td>
 
@@ -113,7 +153,7 @@
 
             
 
-            <td class="description last"><p>.</p></td>
+            <td class="description last"><p>Gettext catalog.</p></td>
         </tr>
 
     
@@ -133,14 +173,14 @@
 
             
 
-            <td class="description last"><p>.</p></td>
+            <td class="description last"><p>The ngeo file service.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ngeoImportLocalTemplateUrl</code></td>
+                <td class="name"><code>ngeoImportDndTemplateUrl</code></td>
             
 
             <td class="type">
@@ -153,7 +193,7 @@
 
             
 
-            <td class="description last"><p>Template URL for the directive.</p></td>
+            <td class="description last"><p>The template url.</p></td>
         </tr>
 
     
@@ -196,7 +236,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/2.2/src/modules/import/importlocal.js#L16">src/modules/import/importlocal.js:16</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/2.2/src/modules/import/importdnd.js#L18">src/modules/import/importdnd.js:18</a>
     </div>
     
 
@@ -651,7 +691,7 @@ WARNING: This tile server is not publicly available: you have to be
 
     
 
-    <h4 class="name" id=""><span class="type-signature"></span>new <span class="signature">($window, $document, $q, gettextCatalog, ngeoFile, ngeoImportDndTemplateUrl)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=""><span class="type-signature"></span>new <span class="signature">($timeout, gettext, ngeoFile, ngeoImportLocalTemplateUrl)</span><span class="type-signature"></span></h4>
 
     
 
@@ -690,52 +730,12 @@ WARNING: This tile server is not publicly available: you have to be
 
         <tr>
             
-                <td class="name"><code>$window</code></td>
+                <td class="name"><code>$timeout</code></td>
             
 
             <td class="type">
             
-                <a href="Window.html">Window</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The window.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>$document</code></td>
-            
-
-            <td class="type">
-            
-                <a href="jQuery.html">jQuery</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The document.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>$q</code></td>
-            
-
-            <td class="type">
-            
-                <a href="angular.$q.html">angular.$q</a>
+                <a href="angular.$timeout.html">angular.$timeout</a>
             
             </td>
 
@@ -750,12 +750,12 @@ WARNING: This tile server is not publicly available: you have to be
 
         <tr>
             
-                <td class="name"><code>gettextCatalog</code></td>
+                <td class="name"><code>gettext</code></td>
             
 
             <td class="type">
             
-                <a href="angularGettext.Catalog.html">angularGettext.Catalog</a>
+                <a href="gettext.html">gettext</a>
             
             </td>
 
@@ -763,7 +763,7 @@ WARNING: This tile server is not publicly available: you have to be
 
             
 
-            <td class="description last"><p>Gettext catalog.</p></td>
+            <td class="description last"><p>.</p></td>
         </tr>
 
     
@@ -783,14 +783,14 @@ WARNING: This tile server is not publicly available: you have to be
 
             
 
-            <td class="description last"><p>The ngeo file service.</p></td>
+            <td class="description last"><p>.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ngeoImportDndTemplateUrl</code></td>
+                <td class="name"><code>ngeoImportLocalTemplateUrl</code></td>
             
 
             <td class="type">
@@ -803,7 +803,7 @@ WARNING: This tile server is not publicly available: you have to be
 
             
 
-            <td class="description last"><p>The template url.</p></td>
+            <td class="description last"><p>Template URL for the directive.</p></td>
         </tr>
 
     
@@ -846,7 +846,7 @@ WARNING: This tile server is not publicly available: you have to be
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/2.2/src/modules/import/importdnd.js#L18">src/modules/import/importdnd.js:18</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/2.2/src/modules/import/importlocal.js#L16">src/modules/import/importlocal.js:16</a>
     </div>
     
 

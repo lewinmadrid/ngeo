@@ -95,6 +95,7 @@ jobs:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
     - make test || true
+    - ls -l .build/coverage/
     - cat .build/coverage/lcov.info || true
     - make lint
     - sed '/ngeo:/d' -i .eslintrc.yaml

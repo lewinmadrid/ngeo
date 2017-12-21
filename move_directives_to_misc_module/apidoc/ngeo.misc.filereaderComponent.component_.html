@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: RuleHelper <small>service:ngeoRuleHelper</small></title>
+    <title>JSDoc: Class: component_ <small>directive:ngeoFilereader</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: RuleHelper <small>service:ngeoRuleHelper</small></h1>
+    <h1 class="page-title">Class: component_ <small>directive:ngeoFilereader</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="RuleHelper">
-            <span class="ancestors">ngeo.filter~ngeo.filter.</span>RuleHelper
+        <h2 id="component_">
+            <span class="ancestors">ngeo.misc.filereaderComponent.</span>component_
         </h2>
         
     
@@ -42,15 +42,21 @@
 
     
 
-    <h4 class="name" id="RuleHelper"><span class="type-signature"></span>new RuleHelper<span class="signature">(gettextCatalog, ngeoFeatureHelper, ngeoWMSTime)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="component_"><span class="type-signature"></span>new component_<span class="signature">($window)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>A service that provides utility methods to create <code>ngeo.rule.Rule</code>
-objects.</p>
+    <p>This directive is to used on an input file element. When a file is selected
+the directive uses the browser <code>FileReader</code> API to read the file. The file
+content is provided to the directive user through the assignable expression.
+Only works for text files (<code>readAsText</code> used for reading the file). And does
+not work in Internet Explorer 9.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code> &lt;input type=&quot;file&quot; ngeo-filereader=&quot;ctrl.fileContent&quot;
+   ngeo-filereader-supported=&quot;ctrl.supported&quot;/></code></pre><p>See our live example: <a href="../examples/importfeatures.html">../examples/importfeatures.html</a></p>
 </div>
 
 
@@ -61,7 +67,9 @@ objects.</p>
 
 
 
-    <h5>Parameters:</h5>
+
+
+    <h5>HTML attributes:</h5>
     
 
 <table class="params">
@@ -73,6 +81,8 @@ objects.</p>
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -86,67 +96,71 @@ objects.</p>
 
         <tr>
             
-                <td class="name"><code>gettextCatalog</code></td>
+                <td class="name"><code>ngeo-filereader</code></td>
             
 
             <td class="type">
             
-                <a href="!angularGettext.Catalog.html">!angularGettext.Catalog</a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>Gettext service.</p></td>
+            <td class="description last">The content of the file read.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ngeoFeatureHelper</code></td>
+                <td class="name"><code>ngeo-filereader-supported</code></td>
             
 
             <td class="type">
             
-                <a href="!ngeo.misc.FeatureHelper.html">!ngeo.misc.FeatureHelper</a>
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
-            
+                
 
-            <td class="description last"><p>Ngeo feature helper service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ngeoWMSTime</code></td>
-            
-
-            <td class="type">
-            
-                <a href="!ngeo.misc.WMSTime.html">!ngeo.misc.WMSTime</a>
-            
-            </td>
-
+                
+                </td>
             
 
             
 
-            <td class="description last"><p>wms time service.</p></td>
+            <td class="description last">Whether the FileReader API is supported.</td>
         </tr>
 
     
     </tbody>
 </table>
-
-
 
 
 
@@ -182,7 +196,7 @@ objects.</p>
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/move_directives_to_misc_module/src/filter/RuleHelper.js#L30">src/filter/RuleHelper.js:30</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/move_directives_to_misc_module/src/misc/filereaderComponent.js#L36">src/misc/filereaderComponent.js:36</a>
     </div>
     
 
@@ -205,6 +219,19 @@ objects.</p>
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="angular.Directive.html">angular.Directive</a>
+
+
+    <p>Directive Definition Object.</p>
+
+</div>
+
+    
 
 
 

@@ -171,7 +171,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = 'bc3db3072ed2ddb7593dc330c7ce1522706f1ef8';
+        var cacheVersion = '4bfe07f4ca94c08aac0444cac058948b02e7fc35';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);
@@ -182,9 +182,9 @@
 
         var langUrls = {};
         ['en', 'fr', 'de'].forEach(function(lang) {
-            var langUrlElements = urlElements.slice(0, urlElements.length - 3);
-            langUrlElements.push('build', 'gmf-' + lang + '.json?cache_version=' + cacheVersion)
-            langUrls[lang] = langUrlElements.join('/')
+          var langUrlElements = urlElements.slice(0, urlElements.length - 3);
+          langUrlElements.push('build', 'gmf-' + lang + '.json?cache_version=' + cacheVersion)
+          langUrls[lang] = langUrlElements.join('/')
         });
 
         var module = angular.module('app');

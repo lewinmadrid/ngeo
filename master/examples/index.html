@@ -63,11 +63,6 @@
       </div>
       <hr>
       <div>
-        <a href="control.html">Control example</a>
-        <p>This example shows how to use the <code><a href="../apidoc/ngeo.controlDirective.html" title="Read our documentation">ngeo-control</a></code> directive to insert an OpenLayers control in the page.</p>
-      </div>
-      <hr>
-      <div>
         <a href="createfeature.html">Create Feature Example</a>
         <p>
       This example shows how to use the <code>ngeo-createfeature</code>
@@ -128,21 +123,6 @@
       </div>
       <hr>
       <div>
-        <a href="importfeatures.html">Import features example</a>
-        <p>This example shows how to use the <code><a href="../apidoc/ngeo.filereaderDirective.html" title="Read our documentation">ngeo-filereader</a></code> directive to import features from a KML file read from the user's file system.</p>
-      </div>
-      <hr>
-      <div>
-        <a href="interactionbtngroup.html">Interaction button group example</a>
-        <p>This example shows how to use the <code><a href="../apidoc/ngeo.btngroupDirective.html" title="Read our documentation">ngeo-btn-group</a></code> and <code><a href="../apidoc/ngeo.btnDirective.html" title="Read our documentation">ngeo-btn</a></code> directives to activate/deactivate OpenLayers interactions in a toggle group.</p>
-      </div>
-      <hr>
-      <div>
-        <a href="layerorder.html">Layer order example</a>
-        <p>This example shows how to use the <code><a href="../apidoc/ngeo.sortableDirective.html" title="Read our documentation">ngeo-sortable</a></code> directive and the <code><a href="../apidoc/ngeo.misc.syncArrays.html" title="Read our documentation">ngeo.misc.syncArrays</a></code> function to create a list of layers where the order of layers can be changed using drag-and-drop.</p>
-      </div>
-      <hr>
-      <div>
         <a href="layertree.html">Layer tree example</a>
         <p>This example shows how to use ngeo's layer tree directive (<code><a href="../apidoc/ngeo.layertree.component.html" title="Read our documentation">ngeo-layertree</a></code>). It also shows how to define an application-specific HTML partial for the tree nodes.</p>
       </div>
@@ -161,6 +141,17 @@
       <div>
         <a href="mapfishprint.html">Print example</a>
         <p>This example shows how to use <code><a href="../apidoc/ngeo.createPrintServiceFactory.html" title="Read our documentation">ngeo.Print</a></code> to print an OpenLayers map with MapFish Print v3.</p>
+      </div>
+      <hr>
+      <div>
+        <a href="mapquery.html">Map Query example</a>
+        <p>
+      This example shows how to use the <code><a href="../apidoc/ngeo.query.mapQueryComponent.html" title="Read our documentation">ngeo-map-query</a></code>
+      directive. It also shows how the <code><a href="../apidoc/ngeo.misc.ToolActivateMgr.html" title="Read our documentation">ngeo.misc.ToolActivate</a></code> can be
+      used to make the directive inactive when an other tool becomes active.
+      The "Dummy" button here does nothing, but when toggled the query
+      directive becomes inactive.
+    </p>
       </div>
       <hr>
       <div>
@@ -208,6 +199,11 @@
       display the messages. You can also define all sorts of options:
       the type of message, the delay, etc.
     </p>
+      </div>
+      <hr>
+      <div>
+        <a href="permalink.html">Permalink example</a>
+        <p>This example shows how to create an application-specific map directive based on the <code><a href="../apidoc/ngeo.map.directive.html" title="Read our documentation">ngeoMap</a></code> directive that uses the <code><a href="../apidoc/ngeo.statemanager.Location.html" title="Read our documentation">ngeoLocation</a></code> and <code><a href="../apidoc/ngeo.misc.debounce.html" title="Read our documentation">ngeoDebounce</a></code> services to update the browser address bar URL when the map view changes.</p>
       </div>
       <hr>
       <div>
@@ -265,29 +261,28 @@
       </div>
       <hr>
       <div>
-        <a href="interactiontoggle.html">Interaction toggle example</a>
-        <p>This examples shows how to use <code><a href="../apidoc/ngeo.DecorateInteraction.html" title="Read our documentation">ngeoDecorateInteraction</a></code> to activate/deactivate an interaction through <code>ng-model</code>.</p>
-      </div>
-      <hr>
-      <div>
-        <a href="mapquery.html">Map Query example</a>
-        <p>
-      This example shows how to use the <code><a href="../apidoc/ngeo.query.mapQueryComponent.html" title="Read our documentation">ngeo-map-query</a></code>
-      directive. It also shows how the <code><a href="../apidoc/ngeo.ToolActivateMgr.html" title="Read our documentation">ngeo.ToolActivate</a></code> can be
-      used to make the directive inactive when an other tool becomes active.
-      The "Dummy" button here does nothing, but when toggled the query
-      directive becomes inactive.
-    </p>
-      </div>
-      <hr>
-      <div>
-        <a href="permalink.html">Permalink example</a>
-        <p>This example shows how to create an application-specific map directive based on the <code><a href="../apidoc/ngeo.map.directive.html" title="Read our documentation">ngeoMap</a></code> directive that uses the <code><a href="../apidoc/ngeo.statemanager.Location.html" title="Read our documentation">ngeoLocation</a></code> and <code><a href="../apidoc/ngeo.Debounce.html" title="Read our documentation">ngeoDebounce</a></code> services to update the browser address bar URL when the map view changes.</p>
-      </div>
-      <hr>
-      <div>
         <a href="toolActivate.html">Activate tools example</a>
-        <p>This example shows how to use <code><a href="../apidoc/ngeo.ToolActivate.html" title="Read our documentation">ngeo.ToolActivate</a></code> objects with the <code><a href="../apidoc/ngeo.ToolActivateMgr.html" title="Read our documentation">ngeo.ToolActivateMgr</a></code>to active only one map control at once. If none draw control is choose, the click on the map is enabled.</p>
+        <p>This example shows how to use <code><a href="../apidoc/ngeo.misc.ToolActivate.html" title="Read our documentation">ngeo.misc.ToolActivate</a></code> objects with the <code><a href="../apidoc/ngeo.misc.ToolActivateMgr.html" title="Read our documentation">ngeo.misc.ToolActivateMgr</a></code>to active only one map control at once. If none draw control is choose, the click on the map is enabled.</p>
+      </div>
+      <hr>
+      <div>
+        <a href="control.html">Control example</a>
+        <p>This example shows how to use the <code><a href="../apidoc/ngeo.controlDirective.html" title="Read our documentation">ngeo-control</a></code> directive to insert an OpenLayers control in the page.</p>
+      </div>
+      <hr>
+      <div>
+        <a href="importfeatures.html">Import features example</a>
+        <p>This example shows how to use the <code><a href="../apidoc/ngeo.filereaderDirective.html" title="Read our documentation">ngeo-filereader</a></code> directive to import features from a KML file read from the user's file system.</p>
+      </div>
+      <hr>
+      <div>
+        <a href="interactionbtngroup.html">Interaction button group example</a>
+        <p>This example shows how to use the <code><a href="../apidoc/ngeo.btngroupDirective.html" title="Read our documentation">ngeo-btn-group</a></code> and <code><a href="../apidoc/ngeo.btnDirective.html" title="Read our documentation">ngeo-btn</a></code> directives to activate/deactivate OpenLayers interactions in a toggle group.</p>
+      </div>
+      <hr>
+      <div>
+        <a href="layerorder.html">Layer order example</a>
+        <p>This example shows how to use the <code><a href="../apidoc/ngeo.sortableDirective.html" title="Read our documentation">ngeo-sortable</a></code> directive and the <code><a href="../apidoc/ngeo.misc.syncArrays.html" title="Read our documentation">ngeo.misc.syncArrays</a></code> function to create a list of layers where the order of layers can be changed using drag-and-drop.</p>
       </div>
       <hr>
     </div>

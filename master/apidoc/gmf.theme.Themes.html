@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: gmf.Snapping</title>
+    <title>JSDoc: Namespace: gmf.theme.Themes</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: gmf.Snapping</h1>
+    <h1 class="page-title">Namespace: gmf.theme.Themes</h1>
 
     
 
@@ -28,99 +28,8 @@
 
 <header>
     
-        <h2 id="Cache">
-            <span class="ancestors">gmf.Snapping.</span>Cache
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/snapping.js#L535">contribs/gmf/src/services/snapping.js:535</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2 id="CacheItem">
-            <span class="ancestors">gmf.Snapping.</span>CacheItem
+        <h2 id="NodeType">
+            <span class="ancestors">gmf.theme.Themes.</span>NodeType
         </h2>
         
     
@@ -135,7 +44,7 @@
 
 
     
-    <h5 class="subsection-title">Properties:</h5>
+    <h5 class="subsection-title">Enumeration:</h5>
     
 
     
@@ -154,6 +63,8 @@
         
 
         
+        <th class="last">Description</th>
+        
     </tr>
     </thead>
 
@@ -162,31 +73,7 @@
 
         <tr>
             
-                <td class="name"><code>active</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>featureNS</code></td>
+                <td class="name"><code>MIXED_GROUP</code></td>
             
 
             <td class="type">
@@ -203,6 +90,8 @@
 
             
 
+            
+            <td class="description last"></td>
             </td>
         </tr>
 
@@ -210,7 +99,7 @@
 
         <tr>
             
-                <td class="name"><code>featurePrefix</code></td>
+                <td class="name"><code>NOT_MIXED_GROUP</code></td>
             
 
             <td class="type">
@@ -227,6 +116,8 @@
 
             
 
+            
+            <td class="description last"></td>
             </td>
         </tr>
 
@@ -234,31 +125,7 @@
 
         <tr>
             
-                <td class="name"><code>features</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Collection.html">ol.Collection</a>:<a href="-_.html"></a>.&lt;<a href="http://openlayers.org/en/master/apidoc/ol.Feature.html">ol.Feature</a>:<a href="-_.html"></a>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>geometryName</code></td>
+                <td class="name"><code>WMTS</code></td>
             
 
             <td class="type">
@@ -275,6 +142,8 @@
 
             
 
+            
+            <td class="description last"></td>
             </td>
         </tr>
 
@@ -282,13 +151,13 @@
 
         <tr>
             
-                <td class="name"><code>interaction</code></td>
+                <td class="name"><code>WMS</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.interaction.Snap.html">ol.interaction.Snap</a></span>
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
 
 
 
@@ -299,150 +168,8 @@
 
             
 
-            </td>
-        </tr>
-
-    
-
-        <tr>
             
-                <td class="name"><code>maxFeatures</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>requestDeferred</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">angular.$q.Deferred</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>snappingConfig</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="gmfThemes.GmfSnappingConfig.html">gmfThemes.GmfSnappingConfig</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>stateWatcherUnregister</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>treeCtrl</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="ngeo.layertree.Controller.html">ngeo.layertree.Controller</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>wfsConfig</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="gmf.Snapping.html#WFSConfig">gmf.Snapping.WFSConfig</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
+            <td class="description last"></td>
             </td>
         </tr>
 
@@ -482,177 +209,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/snapping.js#L554">contribs/gmf/src/services/snapping.js:554</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2 id="WFSConfig">
-            <span class="ancestors">gmf.Snapping.</span>WFSConfig
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-        
-
-
-    
-    <h5 class="subsection-title">Properties:</h5>
-    
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>featureTypes</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>url</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/services/snapping.js#L563">contribs/gmf/src/services/snapping.js:563</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/contribs/gmf/src/theme/Themes.js#L574">contribs/gmf/src/theme/Themes.js:574</a>
     </div>
     
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: directive_ <small>directive:ngeoRecenter</small></title>
+    <title>JSDoc: Class: directive_ <small>directive:ngeoCreateregularpolygonfromclick</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: directive_ <small>directive:ngeoRecenter</small></h1>
+    <h1 class="page-title">Class: directive_ <small>directive:ngeoCreateregularpolygonfromclick</small></h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2 id="directive_">
-            <span class="ancestors">ngeo.map.recenter.</span>directive_
+            <span class="ancestors">ngeo.editing.createregularpolygonfromclickComponent.</span>directive_
         </h2>
         
     
@@ -49,19 +49,31 @@
 
 
 <div class="description">
-    <p>Provides the &quot;ngeoRecenter&quot; directive, a widget for recentering a map
-to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom level
-(by using <code>ngeo-zoom</code>).</p>
+    <p>A directive used to draw vector features of a single geometry type using
+either a 'draw' or 'measure' interaction. Once a feature is finished being
+drawn, it is added to a collection of features.</p>
+<p>The geometry types supported are:</p>
+<ul>
+<li>Point</li>
+<li>LineString</li>
+<li>Polygon</li>
+</ul>
 <p>Example:</p>
-<pre class="prettyprint source"><code> &lt;div ngeo-recenter ngeo-recenter-map=&quot;::ctrl.map&quot;>
-   &lt;a href=&quot;#&quot; ngeo-extent=&quot;[-1898084, 4676723, 3972279, 8590299]&quot;>A&lt;/a>
-   &lt;a href=&quot;#&quot; ngeo-extent=&quot;[727681, 5784754, 1094579, 6029353]&quot;>B&lt;/a>
-   &lt;a href=&quot;#&quot; ngeo-zoom=&quot;1&quot;>Zoom to level 1&lt;/a>
- &lt;/div></code></pre><p>Or with a select:</p>
-<pre class="prettyprint source"><code> &lt;select ngeo-recenter ngeo-recenter-map=&quot;::ctrl.map&quot;>
-   &lt;option ngeo-extent=&quot;[-1898084, 4676723, 3972279, 8590299]&quot;>A&lt;/option>
-   &lt;option ngeo-extent=&quot;[727681, 5784754, 1094579, 6029353]&quot;>B&lt;/option>
- &lt;/select></code></pre><p>See our live example: <a href="../examples/recenter.html">../examples/recenter.html</a></p>
+<pre class="prettyprint source"><code>&lt;a
+  href
+  translate
+  ngeo-btn
+  ngeo-createregularpolygonfromclick
+  ngeo-createregularpolygonfromclick-active=&quot;ctrl.active&quot;
+  ngeo-createregularpolygonfromclick-angle=&quot;::ctrl.angle&quot;
+  ngeo-createregularpolygonfromclick-features=&quot;ctrl.features&quot;
+  ngeo-createregularpolygonfromclick-map=&quot;::ctrl.map&quot;
+  ngeo-createregularpolygonfromclick-radius=&quot;::ctrl.radius&quot;
+  ngeo-createregularpolygonfromclick-sides=&quot;::ctrl.sides&quot;
+  class=&quot;btn btn-default ngeo-createregularpolygonfromclick&quot;
+  ng-class=&quot;{active: ctrl.active}&quot;
+  ng-model=&quot;ctrl.active&quot;>
+&lt;/a></code></pre>
 </div>
 
 
@@ -99,7 +111,84 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
 
         <tr>
             
-                <td class="name"><code>ngeo-recenter-map</code></td>
+                <td class="name"><code>ngeo-createregularpolygonfromclick-active</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Whether
+    the directive is active or not.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-createregularpolygonfromclick-angle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>
+|
+
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Angle in radians. A value of 0 will have one of the shape's point
+    facing up. Default value is 0.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-createregularpolygonfromclick-features</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Collection.html">ol.Collection</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The collection of features where to add those created by this directive.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-createregularpolygonfromclick-map</code></td>
             
 
             <td class="type">
@@ -117,6 +206,58 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
             
 
             <td class="description last">The map.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-createregularpolygonfromclick-radius</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Radius
+    size in map units.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-createregularpolygonfromclick-sides</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>
+|
+
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The number of sides for the regular polygon. Default value is 3.</td>
         </tr>
 
     
@@ -157,7 +298,7 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/recenter.js#L39">src/map/recenter.js:39</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/editing/createregularpolygonfromclickcomponent.js#L60">src/editing/createregularpolygonfromclickcomponent.js:60</a>
     </div>
     
 
@@ -188,7 +329,7 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
     <a href="angular.Directive.html">angular.Directive</a>
 
 
-    <p>Directive Definition Object.</p>
+    <p>The directive specs.</p>
 
 </div>
 

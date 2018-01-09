@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: directive_ <small>directive:ngeoRecenter</small></title>
+    <title>JSDoc: Class: directive_ <small>directive:ngeoCreatefeature</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: directive_ <small>directive:ngeoRecenter</small></h1>
+    <h1 class="page-title">Class: directive_ <small>directive:ngeoCreatefeature</small></h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2 id="directive_">
-            <span class="ancestors">ngeo.map.recenter.</span>directive_
+            <span class="ancestors">ngeo.editing.createfeatureComponent.</span>directive_
         </h2>
         
     
@@ -49,19 +49,29 @@
 
 
 <div class="description">
-    <p>Provides the &quot;ngeoRecenter&quot; directive, a widget for recentering a map
-to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom level
-(by using <code>ngeo-zoom</code>).</p>
+    <p>A directive used to draw vector features of a single geometry type using
+either a 'draw' or 'measure' interaction. Once a feature is finished being
+drawn, it is added to a collection of features.</p>
+<p>The geometry types supported are:</p>
+<ul>
+<li>Point</li>
+<li>LineString</li>
+<li>Polygon</li>
+</ul>
 <p>Example:</p>
-<pre class="prettyprint source"><code> &lt;div ngeo-recenter ngeo-recenter-map=&quot;::ctrl.map&quot;>
-   &lt;a href=&quot;#&quot; ngeo-extent=&quot;[-1898084, 4676723, 3972279, 8590299]&quot;>A&lt;/a>
-   &lt;a href=&quot;#&quot; ngeo-extent=&quot;[727681, 5784754, 1094579, 6029353]&quot;>B&lt;/a>
-   &lt;a href=&quot;#&quot; ngeo-zoom=&quot;1&quot;>Zoom to level 1&lt;/a>
- &lt;/div></code></pre><p>Or with a select:</p>
-<pre class="prettyprint source"><code> &lt;select ngeo-recenter ngeo-recenter-map=&quot;::ctrl.map&quot;>
-   &lt;option ngeo-extent=&quot;[-1898084, 4676723, 3972279, 8590299]&quot;>A&lt;/option>
-   &lt;option ngeo-extent=&quot;[727681, 5784754, 1094579, 6029353]&quot;>B&lt;/option>
- &lt;/select></code></pre><p>See our live example: <a href="../examples/recenter.html">../examples/recenter.html</a></p>
+<pre class="prettyprint source"><code>&lt;a
+  href
+  translate
+  ngeo-btn
+  ngeo-createfeature
+  ngeo-createfeature-active=&quot;ctrl.createPointActive&quot;
+  ngeo-createfeature-features=&quot;ctrl.features&quot;
+  ngeo-createfeature-geom-type=&quot;ctrl.pointGeomType&quot;
+  ngeo-createfeature-map=&quot;::ctrl.map&quot;
+  class=&quot;btn btn-default ngeo-createfeature-point&quot;
+  ng-class=&quot;{active: ctrl.createPointActive}&quot;
+  ng-model=&quot;ctrl.createPointActive&quot;>
+&lt;/a></code></pre>
 </div>
 
 
@@ -99,7 +109,82 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
 
         <tr>
             
-                <td class="name"><code>ngeo-recenter-map</code></td>
+                <td class="name"><code>ngeo-createfeature-active</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Whether the directive is
+    active or not.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-createfeature-features</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Collection.html">ol.Collection</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The collection of
+    features where to add those created by this directive.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-createfeature-geom-type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Determines the type
+    of geometry this directive should draw.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-createfeature-map</code></td>
             
 
             <td class="type">
@@ -157,7 +242,7 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/recenter.js#L39">src/map/recenter.js:39</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/editing/createfeaturecomponent.js#L62">src/editing/createfeaturecomponent.js:62</a>
     </div>
     
 
@@ -188,7 +273,7 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
     <a href="angular.Directive.html">angular.Directive</a>
 
 
-    <p>Directive Definition Object.</p>
+    <p>The directive specs.</p>
 
 </div>
 

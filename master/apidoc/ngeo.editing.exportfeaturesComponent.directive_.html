@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: directive_ <small>directive:ngeoRecenter</small></title>
+    <title>JSDoc: Class: directive_ <small>directive:ngeoExportfeatures</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: directive_ <small>directive:ngeoRecenter</small></h1>
+    <h1 class="page-title">Class: directive_ <small>directive:ngeoExportfeatures</small></h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2 id="directive_">
-            <span class="ancestors">ngeo.map.recenter.</span>directive_
+            <span class="ancestors">ngeo.editing.exportfeaturesComponent.</span>directive_
         </h2>
         
     
@@ -49,19 +49,17 @@
 
 
 <div class="description">
-    <p>Provides the &quot;ngeoRecenter&quot; directive, a widget for recentering a map
-to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom level
-(by using <code>ngeo-zoom</code>).</p>
-<p>Example:</p>
-<pre class="prettyprint source"><code> &lt;div ngeo-recenter ngeo-recenter-map=&quot;::ctrl.map&quot;>
-   &lt;a href=&quot;#&quot; ngeo-extent=&quot;[-1898084, 4676723, 3972279, 8590299]&quot;>A&lt;/a>
-   &lt;a href=&quot;#&quot; ngeo-extent=&quot;[727681, 5784754, 1094579, 6029353]&quot;>B&lt;/a>
-   &lt;a href=&quot;#&quot; ngeo-zoom=&quot;1&quot;>Zoom to level 1&lt;/a>
- &lt;/div></code></pre><p>Or with a select:</p>
-<pre class="prettyprint source"><code> &lt;select ngeo-recenter ngeo-recenter-map=&quot;::ctrl.map&quot;>
-   &lt;option ngeo-extent=&quot;[-1898084, 4676723, 3972279, 8590299]&quot;>A&lt;/option>
-   &lt;option ngeo-extent=&quot;[727681, 5784754, 1094579, 6029353]&quot;>B&lt;/option>
- &lt;/select></code></pre><p>See our live example: <a href="../examples/recenter.html">../examples/recenter.html</a></p>
+    <p>Directive used to export vector features in different types of format.
+To configure which formats to use, define the <code>ngeoExportFeatureFormats</code>
+value, as such:</p>
+<pre class="prettyprint source"><code>app.module.value('ngeoExportFeatureFormats', [
+    ngeo.misc.FeatureHelper.FormatType.KML,
+    ngeo.misc.FeatureHelper.FormatType.GPX
+]);</code></pre><p>Example:</p>
+<pre class="prettyprint source"><code>&lt;button
+  ngeo-exportfeatures
+  ngeo-exportfeatures-features=&quot;ctrl.features&quot;
+  class=&quot;btn btn-link&quot;>Export&lt;/button></code></pre>
 </div>
 
 
@@ -99,13 +97,13 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
 
         <tr>
             
-                <td class="name"><code>ngeo-recenter-map</code></td>
+                <td class="name"><code>ngeo-exportfeatures-features</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Collection.html">ol.Collection</a>:<a href="-_.html"></a>.&lt;<a href="http://openlayers.org/en/master/apidoc/ol.Feature.html">ol.Feature</a>:<a href="-_.html"></a>></span>
 
 
 
@@ -116,7 +114,8 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
 
             
 
-            <td class="description last">The map.</td>
+            <td class="description last">The
+    features to export</td>
         </tr>
 
     
@@ -157,7 +156,7 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/recenter.js#L39">src/map/recenter.js:39</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/editing/exportfeaturescomponent.js#L39">src/editing/exportfeaturescomponent.js:39</a>
     </div>
     
 
@@ -188,7 +187,7 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
     <a href="angular.Directive.html">angular.Directive</a>
 
 
-    <p>Directive Definition Object.</p>
+    <p>The directive specs.</p>
 
 </div>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: directive_ <small>directive:ngeoRecenter</small></title>
+    <title>JSDoc: Class: component_ <small>component:ngeoAttributes</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: directive_ <small>directive:ngeoRecenter</small></h1>
+    <h1 class="page-title">Class: component_ <small>component:ngeoAttributes</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="directive_">
-            <span class="ancestors">ngeo.map.recenter.</span>directive_
+        <h2 id="component_">
+            <span class="ancestors">ngeo.editing.attributesComponent.</span>component_
         </h2>
         
     
@@ -42,26 +42,20 @@
 
     
 
-    <h4 class="name" id="directive_"><span class="type-signature"></span>new directive_<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="component_"><span class="type-signature"></span>new component_<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Provides the &quot;ngeoRecenter&quot; directive, a widget for recentering a map
-to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom level
-(by using <code>ngeo-zoom</code>).</p>
-<p>Example:</p>
-<pre class="prettyprint source"><code> &lt;div ngeo-recenter ngeo-recenter-map=&quot;::ctrl.map&quot;>
-   &lt;a href=&quot;#&quot; ngeo-extent=&quot;[-1898084, 4676723, 3972279, 8590299]&quot;>A&lt;/a>
-   &lt;a href=&quot;#&quot; ngeo-extent=&quot;[727681, 5784754, 1094579, 6029353]&quot;>B&lt;/a>
-   &lt;a href=&quot;#&quot; ngeo-zoom=&quot;1&quot;>Zoom to level 1&lt;/a>
- &lt;/div></code></pre><p>Or with a select:</p>
-<pre class="prettyprint source"><code> &lt;select ngeo-recenter ngeo-recenter-map=&quot;::ctrl.map&quot;>
-   &lt;option ngeo-extent=&quot;[-1898084, 4676723, 3972279, 8590299]&quot;>A&lt;/option>
-   &lt;option ngeo-extent=&quot;[727681, 5784754, 1094579, 6029353]&quot;>B&lt;/option>
- &lt;/select></code></pre><p>See our live example: <a href="../examples/recenter.html">../examples/recenter.html</a></p>
+    <p>Component used to render the attributes of a feature into a form.
+Example:</p>
+<pre class="prettyprint source"><code>&lt;ngeo-attributes
+  ngeo-attributes-attributes=&quot;::ctrl.attributes&quot;
+  ngeo-attributes-disabled=&quot;ctrl.attributesDisabled&quot;
+  ngeo-attributes-feature=&quot;::ctrl.feature&quot;>
+&lt;/ngeo-attributes></code></pre>
 </div>
 
 
@@ -99,13 +93,13 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
 
         <tr>
             
-                <td class="name"><code>ngeo-recenter-map</code></td>
+                <td class="name"><code>ngeo-attributes-attributes</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="ngeox.html#.Attribute">ngeox.Attribute</a>:<a href="-_.html"></a>></span>
 
 
 
@@ -116,7 +110,57 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
 
             
 
-            <td class="description last">The map.</td>
+            <td class="description last">The
+    list of attributes to use.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-attributes-disabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Whether the fieldset should
+    be disabled or not.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ngeo-attributes-feature</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Feature.html">ol.Feature</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The feature.</td>
         </tr>
 
     
@@ -157,7 +201,7 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/master/src/map/recenter.js#L39">src/map/recenter.js:39</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/master/src/editing/attributescomponent.js#L34">src/editing/attributescomponent.js:34</a>
     </div>
     
 
@@ -180,19 +224,6 @@ to a specific extent (by using <code>ngeo-extent</code>) or a specific zoom leve
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-
-    <a href="angular.Directive.html">angular.Directive</a>
-
-
-    <p>Directive Definition Object.</p>
-
-</div>
-
-    
 
 
 

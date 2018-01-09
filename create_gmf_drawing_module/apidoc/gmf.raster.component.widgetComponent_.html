@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: gmf.ObjecteditingtoolsController</title>
+    <title>JSDoc: Class: widgetComponent_ <small>component:gmfElevationwidget</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: gmf.ObjecteditingtoolsController</h1>
+    <h1 class="page-title">Class: widgetComponent_ <small>component:gmfElevationwidget</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="ProcessType">
-            <span class="ancestors">gmf.ObjecteditingtoolsController.</span>ProcessType
+        <h2 id="widgetComponent_">
+            <span class="ancestors">gmf.raster.component.</span>widgetComponent_
         </h2>
         
     
@@ -40,16 +40,39 @@
     
         
 
-        
-
-
     
-    <h5 class="subsection-title">Enumeration:</h5>
-    
+
+    <h4 class="name" id="widgetComponent_"><span class="type-signature"></span>new widgetComponent_<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
-<table class="props">
+
+
+<div class="description">
+    <p>Provides a component which encapsulates the elevation component (see above)
+in a button with dropdown menu to be included in a application directly.</p>
+<p>Example:
+ <gmf-elevationwidget
+     gmf-elevationwidget-map="::mainCtrl.map"
+     gmf-elevationwidget-layers="::mainCtrl.elevationLayers"
+     gmf-elevationwidget-active="mainCtrl.showInfobar">
+ </gmf-elevationwidget></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>HTML attributes:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -62,9 +85,7 @@
 
         
 
-        
         <th class="last">Description</th>
-        
     </tr>
     </thead>
 
@@ -73,13 +94,13 @@
 
         <tr>
             
-                <td class="name"><code>ADD</code></td>
+                <td class="name"><code>gmf-elevationwidget-map</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
 
 
 
@@ -90,22 +111,20 @@
 
             
 
-            
-            <td class="description last"></td>
-            </td>
+            <td class="description last">The map.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>DELETE</code></td>
+                <td class="name"><code>gmf-elevationwidget-layers</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>:<a href="-_.html"></a>.&lt;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>:<a href="-_.html"></a>></span>
 
 
 
@@ -116,14 +135,40 @@
 
             
 
+            <td class="description last">The list of
+    layers.</td>
+        </tr>
+
+    
+
+        <tr>
             
-            <td class="description last"></td>
+                <td class="name"><code>gmf-elevationwidget-active</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
+
+
+
+            
             </td>
+
+            
+
+            
+
+            <td class="description last">Whether to activate the
+    elevation component.</td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -157,7 +202,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_drawing_module/contribs/gmf/src/directives/objecteditingtools.js#L341">contribs/gmf/src/directives/objecteditingtools.js:341</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_drawing_module/contribs/gmf/src/raster/component.js#L255">contribs/gmf/src/raster/component.js:255</a>
     </div>
     
 
@@ -169,7 +214,20 @@
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     </div>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: gmf.ObjecteditingtoolsController</title>
+    <title>JSDoc: Class: component_ <small>directive:gmfElevation</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: gmf.ObjecteditingtoolsController</h1>
+    <h1 class="page-title">Class: component_ <small>directive:gmfElevation</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="ProcessType">
-            <span class="ancestors">gmf.ObjecteditingtoolsController.</span>ProcessType
+        <h2 id="component_">
+            <span class="ancestors">gmf.raster.component.</span>component_
         </h2>
         
     
@@ -40,16 +40,43 @@
     
         
 
-        
-
-
     
-    <h5 class="subsection-title">Enumeration:</h5>
-    
+
+    <h4 class="name" id="component_"><span class="type-signature"></span>new component_<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
-<table class="props">
+
+
+<div class="description">
+    <p>Provide a directive that set a value each 500ms with the elevation under the
+mouse cursor position on the map. The value must come from the elevation
+service of a c2cgeoportal server. The server's URL must be defined as
+config value of the application.</p>
+<p>Example:</p>
+<pre class="prettyprint source"><code> &lt;span gmf-elevation
+       gmf-elevation-active=&quot;elevationActive&quot;
+       gmf-elevation-elevation=&quot;elevationValue&quot;
+       gmf-elevation-layer=&quot;mainCtrl.elevationLayer&quot;
+       gmf-elevation-map=&quot;::mainCtrl.map&quot;>
+       {{elevationValue | number:2}}m
+ &lt;/span></code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>HTML attributes:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -62,9 +89,7 @@
 
         
 
-        
         <th class="last">Description</th>
-        
     </tr>
     </thead>
 
@@ -73,13 +98,13 @@
 
         <tr>
             
-                <td class="name"><code>ADD</code></td>
+                <td class="name"><code>gmf-elevation-active</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>
 
 
 
@@ -90,16 +115,40 @@
 
             
 
-            
-            <td class="description last"></td>
-            </td>
+            <td class="description last">A boolean to set active or
+    deactive the component.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>DELETE</code></td>
+                <td class="name"><code>gmf-elevation-elevation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The value to set with the
+    elevation value.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gmf-elevation-layer</code></td>
             
 
             <td class="type">
@@ -116,14 +165,38 @@
 
             
 
+            <td class="description last">Elevation layer to use.</td>
+        </tr>
+
+    
+
+        <tr>
             
-            <td class="description last"></td>
+                <td class="name"><code>gmf-elevation-map</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="http://openlayers.org/en/master/apidoc/ol.Map.html">ol.Map</a></span>
+
+
+
+            
             </td>
+
+            
+
+            
+
+            <td class="description last">The map.</td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -157,7 +230,7 @@
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_drawing_module/contribs/gmf/src/directives/objecteditingtools.js#L341">contribs/gmf/src/directives/objecteditingtools.js:341</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_drawing_module/contribs/gmf/src/raster/component.js#L48">contribs/gmf/src/raster/component.js:48</a>
     </div>
     
 
@@ -169,7 +242,33 @@
 </dl>
 
 
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
         
+<div class="param-desc">
+
+    <a href="angular.Directive.html">angular.Directive</a>
+
+
+    <p>Directive Definition Object.</p>
+
+</div>
+
+    
+
+
+
     
     </div>
 

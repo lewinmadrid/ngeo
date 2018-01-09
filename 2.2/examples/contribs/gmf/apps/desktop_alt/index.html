@@ -131,7 +131,10 @@
                 {{'Login' | translate}}
                 <a class="btn close" ng-click="mainCtrl.loginActive = false">&times;</a>
               </div>
-              <gmf-authentication gmf-authentication-allow-password-reset="false" gmf-authentication-allow-password-change="false"></gmf-authentication>
+              <gmf-authentication
+                  gmf-authentication-allow-password-reset="::false"
+                  gmf-authentication-allow-password-change="::false">
+              </gmf-authentication>
             </div>
           </div>
           <div ng-show="mainCtrl.printPanelActive" class="row">
@@ -338,7 +341,7 @@
     <script src="../../../../lib/watchwatchers.js"></script>
     <script>
       (function() {
-        var cacheVersion = 'ab7ca07d7740478c18050534d0bca6797284810e';
+        var cacheVersion = '1a817f94082fe9f905cff505157164ffb3b4c3da';
         var urlElements = window.location.pathname.split('/');
 
         var angularLocaleScriptUrlElements = urlElements.slice(0, urlElements.length - 3);

@@ -75,12 +75,13 @@
     "less-loader": "4.0.5",
     "less-plugin-autoprefix": "1.5.1",
     "less-plugin-clean-css": "1.5.1",
+    "ls": "^0.2.1",
     "moment": "2.20.1",
     "nomnom": "1.8.1",
-    "openlayers": "4.6.4",
     "ol": "4.6.4",
     "ol-cesium": "1.33.0",
     "olcs": "0.0.1",
+    "openlayers": "4.6.4",
     "phantomjs-prebuilt": "2.1.16",
     "proj4": "2.4.4",
     "svg2ttf": "4.1.0",
@@ -95,5 +96,6 @@
     "webpack": "3.10.0",
     "webpack-dev-server": "2.10.0",
     "webpack-merge": "4.1.1"
-  }
+  },
+  "dependencies": {}
 }

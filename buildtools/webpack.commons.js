@@ -1,4 +1,5 @@
 const path = require('path');
+const ls = require('ls');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LessPluginCleanCSS = require('less-plugin-clean-css');
@@ -76,12 +77,37 @@ const iconRule = {
   }
 };
 
+const plugins = [
+  new webpack.optimize.ModuleConcatenationPlugin(),
+  provideJQueryPlugin,
+  new ExtractTextPlugin('[name].css'),
+  new ExtractTextPlugin('[name].less')
+];
+
+const entry = {
+};
+
+for (const filename of ls('examples/*.html')) {
+  const name = filename.name;
+  entry[name] = `./examples/${name}.js`;
+  plugins.push(
+    new HtmlWebpackPlugin({
+      template: `examples/${name}.html`,
+      chunksSortMode: 'manual',
+      filename: name + '.html',
+      chunks: ['ngeo', name],
+    }),
+  );
+}
+plugins.push(new webpack.optimize.CommonsChunkPlugin({
+  name: 'ngeo',
+  chunks: Object.keys(entry),
+}));
+
 const config = {
   context: path.resolve(__dirname, '../'),
   devtool: 'source-map',
-  entry: {
-    app: './examples/search.js',
-  },
+  entry: entry,
   output: {
     path: path.resolve(__dirname, '../dist/')
   },
@@ -95,18 +121,7 @@ const config = {
       iconRule
     ]
   },
-  plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    provideJQueryPlugin,
-    new ExtractTextPlugin('[name].css'),
-    new ExtractTextPlugin('[name].less'),
-    new HtmlWebpackPlugin({
-      template: 'examples/search.html',
-      chunksSortMode: 'manual',
-      filename: 'search.html',
-      chunks: ['app'],
-    }),
-  ],
+  plugins: plugins,
   resolve: {
     modules: [
       '../node_modules'

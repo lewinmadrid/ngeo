@@ -548,39 +548,6 @@ dist/gmf.js.map: dist/gmf.js
 
 node_modules/angular/angular.min.js: .build/node_modules.timestamp
 
-.PRECIOUS: .build/examples-hosted/%.html
-.build/examples-hosted/%.html: examples/%.html \
-		.build/examples-hosted/%.js \
-		$(NGEO_EXAMPLES_HOSTED_REQUIREMENTS)
-	mkdir -p $(dir $@)
-	sed -e 's|\.\./node_modules/openlayers/css/ol.css|lib/ngeo.css|' \
-		-e 's|\.\./node_modules/bootstrap/dist/css/bootstrap.css|lib/bootstrap.min.css|' \
-		-e 's|\.\./node_modules/font-awesome/css/font-awesome.css|lib/font-awesome.min.css|' \
-		-e 's|\.\./node_modules/jquery/dist/jquery.js|lib/jquery.min.js|' \
-		-e 's|\.\./third-party/jquery-ui/jquery-ui.min\.js|lib/jquery-ui.min.js|' \
-		-e 's|\.\./node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js|lib/jquery.ui.touch-punch.min.js|' \
-		-e 's|\.\./third-party/jquery-ui/jquery-ui.min\.css|lib/jquery-ui.min.css|' \
-		-e 's|\.\./node_modules/bootstrap/dist/js/bootstrap.js|lib/bootstrap.min.js|' \
-		-e 's|\.\./node_modules/angular/angular.js|lib/angular.min.js|' \
-		-e 's|\.\./node_modules/angular-animate/angular-animate.js|lib/angular-animate.min.js|' \
-		-e 's|\.\./node_modules/angular-float-thead/angular-floatThead.js|lib/angular-floatThead.js|' \
-		-e 's|\.\./node_modules/floatthead/dist/jquery.floatThead.min.js|lib/jquery.floatThead.min.js|' \
-		-e 's|\.\./node_modules/angular-gettext/dist/angular-gettext.js|lib/angular-gettext.min.js|' \
-		-e 's|\.\./node_modules/angular-touch/angular-touch.js|lib/angular-touch.min.js|' \
-		-e 's|\.\./node_modules/angular-dynamic-locale/dist/tmhDynamicLocale.js|lib/tmhDynamicLocale.min.js|' \
-		-e 's|\.\./node_modules/angular-ui-date/dist/date.js|lib/date.min.js|' \
-		-e 's|\.\./node_modules/d3/build/d3.js|lib/d3.min.js|' \
-		-e 's|\.\./node_modules/file-saver/FileSaver.min.js|lib/FileSaver.min.js|' \
-		-e 's|\.\./node_modules/corejs-typeahead/dist/typeahead.bundle.js|lib/typeahead.bundle.min.js|' \
-		-e 's|\.\./node_modules/proj4/dist/proj4\.js|lib/proj4.js|' \
-		-e 's|\.\./node_modules/jsts/dist/jsts\.min\.js|lib/jsts.min.js|' \
-		-e 's|\.\./node_modules/moment/min/moment\.min\.js|lib/moment.min.js|' \
-		-e 's|\.\./node_modules/url-polyfill/url-polyfill.js|lib/url-polyfill/url-polyfill.min.js|' \
-		-e 's|/@?main=$*.js|lib/transpile.js|' \
-		-e 's|default\.js|$*.js|' \
-		-e 's|\.\./utils/watchwatchers.js|lib/watchwatchers.js|' \
-		-e '/<head>/a\$(SED_NEW_LINE)    <script src="https.js"></script>$(SED_NEW_LINE)' $< > $@
-
 .PRECIOUS: .build/examples-hosted/contribs/gmf/%.html
 .build/examples-hosted/contribs/gmf/%.html: contribs/gmf/examples/%.html \
 		.build/examples-hosted/contribs/gmf/%.js \
@@ -692,8 +659,8 @@ node_modules/angular/angular.min.js: .build/node_modules.timestamp
 .build/examples-hosted/contribs/gmf/apps/mobile/image/background-layer-button.png:
 	# no background layer button for the mobile
 
-.PRECIOUS: .build/examples-hosted/%.js
-.build/examples-hosted/%.js: .build/examples/%.js
+.PRECIOUS: .build/examples-hosted/%
+.build/examples-hosted/%: dist/%
 	mkdir -p $(dir $@)
 	cp $< $@
 
@@ -729,6 +696,8 @@ node_modules/angular/angular.min.js: .build/node_modules.timestamp
 
 .build/%.check.timestamp: .build/examples-hosted/%.html \
 		.build/examples-hosted/%.js \
+		.build/examples-hosted/%.js.map \
+		.build/examples-hosted/%.css \
 		.build/node_modules.timestamp
 	mkdir -p $(dir $@)
 	./node_modules/.bin/phantomjs --local-to-remote-url-access=true buildtools/check-example.js $<

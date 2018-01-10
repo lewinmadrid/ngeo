@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ToolActivateMgr <small>service:ngeoToolActivateMgr</small></title>
+    <title>JSDoc: Class: contentDirective_ <small>directive:gmfContextualdatacontent</small></title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ToolActivateMgr <small>service:ngeoToolActivateMgr</small></h1>
+    <h1 class="page-title">Class: contentDirective_ <small>directive:gmfContextualdatacontent</small></h1>
 
     
 
@@ -28,8 +28,8 @@
 
 <header>
     
-        <h2 id="ToolActivateMgr">
-            <span class="ancestors">ngeo.misc.</span>ToolActivateMgr
+        <h2 id="contentDirective_">
+            <span class="ancestors">gmf.contextualdata.component.</span>contentDirective_
         </h2>
         
     
@@ -42,24 +42,30 @@
 
     
 
-    <h4 class="name" id="ToolActivateMgr"><span class="type-signature"></span>new ToolActivateMgr<span class="signature">($rootScope)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="contentDirective_"><span class="type-signature"></span>new contentDirective_<span class="signature">(gmfContextualdatacontentTemplateUrl)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Provides a service to manage the activation of <code>ngeo.misc.ToolActivate</code> objects.</p>
-<p>Example:</p>
-<p>Each tool must be registered before using it.</p>
-<pre class="prettyprint source"><code>let tool = new ngeo.misc.ToolActivate(interaction, 'active');
-ngeoToolActivateMgr.registerTool('mapTools', tool);</code></pre><p>A tool will be registered in a group identified by a group name.
-Once registered a tool can be activated and deactivated. When activating a
-tool, all others tools in the same group will be deactivated.</p>
-<pre class="prettyprint source"><code>ngeoToolActivateMgr.activateTool(tool);
-ngeoToolActivateMgr.deactivateTool(tool);</code></pre><p>See our live examples:
-<a href="../examples/mapquery.html">../examples/mapquery.html</a>
-<a href="../examples/toolActivate.html">../examples/toolActivate.html</a></p>
+    <p>Provide a directive responsible of formatting the content of the popover for
+the contextual data directive.</p>
+<p>Its main purpose is to configure the template to be used.
+Integrators should ensure that the template values match the configuration
+of the contextual data directive.</p>
+<p>For each projection the following expressions can be used (replace xxxx by
+the relevant projection code:</p>
+<ul>
+<li>{{coord_xxxx}},</li>
+<li>{{coord_xxxx_eastern}},</li>
+<li>{{coord_xxxx_northern}}</li>
+</ul>
+<p>Tip: one should use the <code>ngeoNumberCoordinates</code> and <code>ngeoDMSCoordinates</code>.</p>
+<p>The raster service is requested to query additional information. The
+integrators can also use <code>{{xxxx}}</code> where <code>xxxx</code> will be replaced by
+the name of the raster layers (for example 'srtm').</p>
+<p>See the <a href="../examples/contribs/gmf/contextualdata.html">../examples/contribs/gmf/contextualdata.html</a> example for a usage sample.</p>
 </div>
 
 
@@ -68,52 +74,6 @@ ngeoToolActivateMgr.deactivateTool(tool);</code></pre><p>See our live examples:
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>$rootScope</code></td>
-            
-
-            <td class="type">
-            
-                <a href="angular.Scope.html">angular.Scope</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The rootScope provider.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -151,7 +111,7 @@ ngeoToolActivateMgr.deactivateTool(tool);</code></pre><p>See our live examples:
     
     <div class="tag-source">
     
-        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_editing_module/src/misc/ToolActivateMgr.js#L36">src/misc/ToolActivateMgr.js:36</a>
+        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_editing_module/contribs/gmf/src/contextualdata/component.js#L268">contribs/gmf/src/contextualdata/component.js:268</a>
     </div>
     
 
@@ -174,6 +134,19 @@ ngeoToolActivateMgr.deactivateTool(tool);</code></pre><p>See our live examples:
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+
+    <a href="angular.Directive.html">angular.Directive</a>
+
+
+    <p>The Directive Definition Object.</p>
+
+</div>
+
+    
 
 
 
@@ -192,749 +165,6 @@ ngeoToolActivateMgr.deactivateTool(tool);</code></pre><p>See our live examples:
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="activateTool"><span class="type-signature"></span>activateTool<span class="signature">(tool)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Activate a tool.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>tool</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.misc.ToolActivate.html">ngeo.misc.ToolActivate</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Tool to activate.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_editing_module/src/misc/ToolActivateMgr.js#L142">src/misc/ToolActivateMgr.js:142</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="deactivateTool"><span class="type-signature"></span>deactivateTool<span class="signature">(tool)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Deactivate a tool.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>tool</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.misc.ToolActivate.html">ngeo.misc.ToolActivate</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Tool to deactivate.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_editing_module/src/misc/ToolActivateMgr.js#L152">src/misc/ToolActivateMgr.js:152</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="registerTool"><span class="type-signature"></span>registerTool<span class="signature">(groupName, tool, [opt_defaultActivate]<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Register a tool.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>groupName</code></td>
-            
-
-            <td class="type">
-            
-                string
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Name of the group of this tool.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>tool</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.misc.ToolActivate.html">ngeo.misc.ToolActivate</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Tool to register.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[opt_defaultActivate]</code></td>
-            
-
-            <td class="type">
-            
-                <a href="boolean=.html">boolean=</a>
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>If true, this tool will be activated
-    when all other tools in the group are deactivated.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_editing_module/src/misc/ToolActivateMgr.js#L61">src/misc/ToolActivateMgr.js:61</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="unregisterGroup"><span class="type-signature"></span>unregisterGroup<span class="signature">(groupName)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Unregister each tool from a group.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>groupName</code></td>
-            
-
-            <td class="type">
-            
-                string
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Name of the group of tools to unregister.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_editing_module/src/misc/ToolActivateMgr.js#L126">src/misc/ToolActivateMgr.js:126</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="unregisterTool"><span class="type-signature"></span>unregisterTool<span class="signature">(groupName, tool)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Unregister a tool from a group.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>groupName</code></td>
-            
-
-            <td class="type">
-            
-                string
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Name of the group of this tool.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>tool</code></td>
-            
-
-            <td class="type">
-            
-                <a href="ngeo.misc.ToolActivate.html">ngeo.misc.ToolActivate</a>
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Tool to unregister.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="tag-source">
-    
-        <a href="https://github.com/camptocamp/ngeo/blob/create_gmf_editing_module/src/misc/ToolActivateMgr.js#L107">src/misc/ToolActivateMgr.js:107</a>
-    </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
     
 
     
